@@ -2,16 +2,15 @@
     <div class="container">
         <div class="footer-wrapper">
             <div class="footer-left">
-                <p>&copy; {{ 2025 }} Kevin Franz Jr.</p>
+                <p>{{ footer.copyright }}</p>
             </div>
             <div class="footer-right">
-                <p>Email: <a href="mailto:[PARENT-EMAIL]@example.com">[Parent/Contact Email]</a></p>
+                <p>Email: <a href="mailto:{{ footer.email }}">{{ footer.email }}</a></p>
                 <div class="footer-links">
-                    <a href="#" target="_blank">Highlight Video</a>
-                    <span>•</span>
-                    <a href="#" target="_blank">Hudl</a>
-                    <span>•</span>
-                    <a href="#" target="_blank">YouTube</a>
+                    {% for link in footer.links %}
+                    <a href="{{ link.url }}" target="_blank">{{ link.text }}</a>
+                    {% if not loop.last %}<span>•</span>{% endif %}
+                    {% endfor %}
                 </div>
             </div>
         </div>

@@ -1,7 +1,7 @@
 ---
 layout: base.njk
 title: Home
-description: Kevin Franz Jr. - Class of 2028 Guard & Student-Athlete. 6'2" guard working to play college basketball and study atmospheric science.
+description: Kevin Franz Jr. - Class of 2028 Guard & Student-Athlete working to play college basketball and study atmospheric science.
 ---
 
 {# Hero Section #}
@@ -9,16 +9,16 @@ description: Kevin Franz Jr. - Class of 2028 Guard & Student-Athlete. 6'2" guard
     <div class="container">
         <div class="hero-grid">
             <div class="hero-text">
-                <span class="label-eyebrow">Student–Athlete • Guard • Class of 2028</span>
-                <h1 class="hero-heading">Kevin Franz Jr.</h1>
-                <p class="hero-subheadline">6'2" guard and driven student, working to play college basketball and study atmospheric science.</p>
+                <span class="label-eyebrow">{{ pages.home.hero.eyebrow }}</span>
+                <h1 class="hero-heading">{{ pages.home.hero.heading }}</h1>
+                <p class="hero-subheadline">{{ pages.home.hero.subheading }}</p>
                 <div class="hero-cta-wrapper">
-                    <a href="/basketball/" class="btn-primary">View Basketball Profile</a>
-                    <a href="/files/academic-resume.pdf" class="btn-secondary">Download Academic Resume</a>
+                    <a href="{{ pages.home.hero.primaryButtonLink }}" class="btn-primary">{{ pages.home.hero.primaryButtonText }}</a>
+                    <a href="{{ pages.home.hero.secondaryButtonLink }}" class="btn-secondary">{{ pages.home.hero.secondaryButtonText }}</a>
                 </div>
             </div>
             <div class="hero-image-wrapper">
-                <img src="/images/hero-photo.jpg" alt="Kevin Franz Jr. in action on the court" class="hero-image">
+                <img src="{{ pages.home.hero.image }}" alt="{{ pages.home.hero.heading }} in action" class="hero-image">
             </div>
         </div>
     </div>
@@ -29,34 +29,15 @@ description: Kevin Franz Jr. - Class of 2028 Guard & Student-Athlete. 6'2" guard
     <div class="container">
         <h2 class="section-heading-centered">At a Glance</h2>
         <div class="glance-grid">
+            {% for card in pages.home.glanceCards %}
             <div class="card-glance">
-                <h3 class="card-title">Academics</h3>
+                <h3 class="card-title">{{ card.title }}</h3>
                 <div class="card-body">
-                    <p><strong>GPA:</strong> [Current GPA]</p>
-                    <p><strong>School:</strong> [High School Name]</p>
-                    <p><strong>Interest:</strong> Atmospheric Science & Meteorology</p>
+                    {{ card.body | safe | replace('\n', '<br>') }}
                 </div>
-                <a href="/academics/" class="card-link">View Academics →</a>
+                <a href="{{ card.linkUrl }}" class="card-link">{{ card.linkText }}</a>
             </div>
-
-            <div class="card-glance">
-                <h3 class="card-title">Basketball</h3>
-                <div class="card-body">
-                    <p><strong>Position:</strong> Guard</p>
-                    <p><strong>Height:</strong> 6'2"</p>
-                    <p><strong>Teams:</strong> [High School Team], [Club/AAU Team]</p>
-                    <p><strong>2024–25:</strong> [X] PPG • [Y] APG</p>
-                </div>
-                <a href="/basketball/" class="card-link">Full Basketball Profile →</a>
-            </div>
-
-            <div class="card-glance">
-                <h3 class="card-title">Beyond the Court</h3>
-                <div class="card-body">
-                    <p>Weather nerd. Film-room junkie. Big on leadership, family, and helping younger players grow.</p>
-                </div>
-                <a href="/projects/" class="card-link">Projects & Passions →</a>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>
@@ -66,14 +47,12 @@ description: Kevin Franz Jr. - Class of 2028 Guard & Student-Athlete. 6'2" guard
     <div class="container">
         <div class="about-grid">
             <div class="about-text">
-                <span class="label-eyebrow">About Kevin</span>
-                <h2 class="section-heading">Student. Teammate. Future meteorologist.</h2>
-                <p class="body-text">I'm Kevin Franz Jr, a 6'2" guard in the Class of 2028 at [High School Name] in [City, State].</p>
-                <p class="body-text">On the court, I'm a pace-pusher and playmaker – I love creating for teammates, defending full court, and making the right reads under pressure. Off the court, I'm just as serious about the classroom. I'm especially drawn to weather and atmospheric science and plan to study meteorology in college.</p>
-                <p class="body-text">My goals are simple: help my team win, keep growing as a leader, and earn the opportunity to play college basketball while pursuing a degree that challenges me.</p>
+                <span class="label-eyebrow">{{ pages.home.about.eyebrow }}</span>
+                <h2 class="section-heading">{{ pages.home.about.heading }}</h2>
+                {{ pages.home.about.body | safe | replace('\n\n', '</p><p class="body-text">') | replace('\n', '<br>') | safe }}
             </div>
             <div class="about-image-wrapper">
-                <img src="/images/about-photo.jpg" alt="Kevin Franz Jr. portrait" class="about-image">
+                <img src="{{ pages.home.about.image }}" alt="{{ player.name }} portrait" class="about-image">
             </div>
         </div>
     </div>
@@ -84,29 +63,13 @@ description: Kevin Franz Jr. - Class of 2028 Guard & Student-Athlete. 6'2" guard
     <div class="container">
         <h2 class="section-heading-centered">What You'll Find Here</h2>
         <div class="tiles-grid">
+            {% for tile in pages.home.tiles %}
             <div class="tile-card">
-                <h3 class="tile-title">Basketball Profile</h3>
-                <p class="tile-body">Stats, schedule, highlight videos, and how I approach the game.</p>
-                <a href="/basketball/" class="tile-cta">Go to Basketball →</a>
+                <h3 class="tile-title">{{ tile.title }}</h3>
+                <p class="tile-body">{{ tile.body }}</p>
+                <a href="{{ tile.linkUrl }}" class="tile-cta">{{ tile.linkText }}</a>
             </div>
-
-            <div class="tile-card">
-                <h3 class="tile-title">Academics & Resume</h3>
-                <p class="tile-body">Courses, GPA, awards, and work experience in one place.</p>
-                <a href="/academics/" class="tile-cta">Go to Academics →</a>
-            </div>
-
-            <div class="tile-card">
-                <h3 class="tile-title">Projects & Passions</h3>
-                <p class="tile-body">Weather projects, personal goals, and what I'm curious about right now.</p>
-                <a href="/projects/" class="tile-cta">Explore Projects →</a>
-            </div>
-
-            <div class="tile-card">
-                <h3 class="tile-title">Character & Service</h3>
-                <p class="tile-body">Community work, leadership roles, and what I'm trying to stand for.</p>
-                <a href="/character/" class="tile-cta">See Character & Service →</a>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>
