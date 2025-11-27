@@ -1,0 +1,37 @@
+{
+  "playerInfo": {
+    "height": "6'1\"",
+    "position": "Combo Guard",
+    "name": "Kevin Franz Jr.",
+    "hand": "Right",
+    "jersey": "30",
+    "aauTeam": "YouHoop 3SSB",
+    "school": "Blue Valley Southwest",
+    "class": "2028",
+    "weight": "185 lbs",
+    "image": "/images/img_1003.jpg"
+  },
+  "highlights": [],
+  "contacts": [],
+  "title": "Basketball",
+  "header": {
+    "eyebrow": "Guard • Class of 2028",
+    "heading": "6'1\" combo guard focused on pace, decision-making, and on-ball defense.",
+    "subheading": "Current teams: Blue Valley Southwest • YouHoop 3SSB Gold",
+    "supportingText": "Focused on becoming the best I can be"
+  },
+  "stats": {
+    "intro": "n/a"
+  },
+  "achievements": {
+    "quote": {
+      "text": "n/a",
+      "attribution": "n/a"
+    }
+  },
+  "training": {
+    "focusAreas": "Off-Season Focus Areas\nBall handling under pressure and pick-and-roll reads\nCatch-and-shoot 3s and off-the-dribble shooting\nOn-ball defense and strength",
+    "routine": "### Training Routine\n\n* Skill sessions: \\[X] days per week with \\[Trainer/Coach Name]\n* Weight room: \\[X] days per week focused on strength and mobility\n* Film study: breaking down our games and college guards I want to emulate",
+    "statement": "I'm always working to become a more complete guard – someone who can run a team, guard multiple positions, and make teammates better."
+  }
+}
