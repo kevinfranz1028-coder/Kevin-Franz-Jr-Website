@@ -28,6 +28,13 @@ module.exports = function(eleventyConfig) {
     return array.slice(0, limit);
   });
 
+  // Split filter for strings
+  eleventyConfig.addFilter("split", function(value, separator = ",") {
+    if (value === null || value === undefined) return value;
+    if (typeof value !== "string") return value;
+    return value.split(separator);
+  });
+
   // Collections
   eleventyConfig.addCollection("updates", function(collectionApi) {
     return collectionApi.getFilteredByGlob("src/updates/*.md").sort((a, b) => {
