@@ -1,0 +1,400 @@
+/* AI Site Editor Overlay Styles */
+
+/* Floating Button */
+.ai-floating-button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    z-index: 9998;
+}
+
+.ai-floating-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+.ai-floating-button:active {
+    transform: translateY(0);
+}
+
+.ai-floating-button svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* Overlay */
+.ai-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.ai-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.ai-overlay-content {
+    background: white;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.ai-overlay.active .ai-overlay-content {
+    transform: scale(1);
+}
+
+.ai-overlay-header {
+    padding: 24px;
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ai-overlay-header h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #1f2937;
+}
+
+.ai-close-button {
+    background: none;
+    border: none;
+    font-size: 32px;
+    color: #6b7280;
+    cursor: pointer;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: background 0.2s ease;
+}
+
+.ai-close-button:hover {
+    background: #f3f4f6;
+    color: #1f2937;
+}
+
+.ai-overlay-body {
+    padding: 24px;
+    overflow-y: auto;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Context Info */
+.ai-context-info {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.ai-context-info p {
+    margin: 8px 0;
+    font-size: 14px;
+    color: #4b5563;
+}
+
+.ai-context-info strong {
+    color: #1f2937;
+}
+
+.ai-help-text {
+    font-style: italic;
+    color: #6b7280;
+}
+
+/* Chat Container */
+.ai-chat-container {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-height: 200px;
+    max-height: 400px;
+}
+
+.ai-message {
+    padding: 12px 16px;
+    border-radius: 8px;
+    max-width: 85%;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.ai-message-user {
+    background: #667eea;
+    color: white;
+    align-self: flex-end;
+    margin-left: auto;
+}
+
+.ai-message-assistant {
+    background: #f3f4f6;
+    color: #1f2937;
+    align-self: flex-start;
+}
+
+.ai-message-error {
+    background: #fef2f2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+    align-self: flex-start;
+}
+
+.ai-message-content {
+    margin: 0;
+    line-height: 1.5;
+    white-space: pre-wrap;
+}
+
+.ai-message-details {
+    margin-top: 8px;
+    padding: 8px;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+    font-size: 12px;
+    font-family: monospace;
+    overflow-x: auto;
+}
+
+/* Reload Prompt */
+.ai-reload-prompt {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    padding: 16px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.ai-reload-prompt p {
+    margin: 8px 0;
+}
+
+.ai-reload-prompt button,
+.ai-reload-prompt a {
+    background: white;
+    color: #059669;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    margin: 4px;
+    display: inline-block;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+}
+
+.ai-reload-prompt button:hover,
+.ai-reload-prompt a:hover {
+    transform: scale(1.05);
+}
+
+/* Input Container */
+.ai-input-container {
+    display: flex;
+    gap: 12px;
+    align-items: flex-end;
+}
+
+#ai-input {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: inherit;
+    resize: vertical;
+    min-height: 60px;
+    transition: border-color 0.2s ease;
+}
+
+#ai-input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+#ai-input:disabled {
+    background: #f3f4f6;
+    cursor: not-allowed;
+}
+
+.ai-submit-button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 100px;
+}
+
+.ai-submit-button:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.ai-submit-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.ai-submit-loading {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ai-spinner {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Examples */
+.ai-examples {
+    border-top: 1px solid #e5e7eb;
+    padding-top: 16px;
+}
+
+.ai-examples p {
+    margin: 0 0 12px 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #4b5563;
+}
+
+.ai-example-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.ai-example-btn {
+    background: #f3f4f6;
+    border: 1px solid #d1d5db;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.ai-example-btn:hover {
+    background: #e5e7eb;
+    border-color: #9ca3af;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .ai-floating-button {
+        bottom: 20px;
+        right: 20px;
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    .ai-floating-button span {
+        display: none;
+    }
+
+    .ai-floating-button {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        padding: 0;
+        justify-content: center;
+    }
+
+    .ai-overlay-content {
+        width: 95%;
+        max-height: 95vh;
+        margin: 10px;
+    }
+
+    .ai-overlay-header {
+        padding: 16px;
+    }
+
+    .ai-overlay-header h2 {
+        font-size: 20px;
+    }
+
+    .ai-overlay-body {
+        padding: 16px;
+    }
+
+    .ai-input-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .ai-submit-button {
+        width: 100%;
+    }
+
+    .ai-message {
+        max-width: 90%;
+    }
+}

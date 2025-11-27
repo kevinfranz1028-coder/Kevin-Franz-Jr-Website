@@ -6,6 +6,7 @@
     <title>{% if title %}{{ title }} - {% endif %}Kevin Franz Jr.</title>
     <meta name="description" content="{{ description or 'Kevin Franz Jr. - Class of 2028 Guard & Student-Athlete. Basketball profile, academics, and recruiting information.' }}">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/ai-overlay.css">
     <script defer src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
@@ -18,6 +19,7 @@
     {% include "footer.njk" %}
 
     <script src="/js/main.js"></script>
+    <script src="/js/ai-overlay.js"></script>
     <script>
       if (window.netlifyIdentity) {
         window.netlifyIdentity.on("init", user => {
