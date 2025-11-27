@@ -15,10 +15,35 @@ exports.handler = async (event, context) => {
   const githubRepo = process.env.GITHUB_REPO; // Format: "owner/repo"
   const githubBranch = process.env.GITHUB_BRANCH || 'claude/webflow-athlete-site-01HLo1N59xxVGUuATbNLk2s4';
 
-  if (!anthropicKey) {
+  if (!anthropicKey || anthropicKey.trim() === '') {
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: 'Anthropic API key not configured' })
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      },
+      body: JSON.stringify({
+        success: false,
+        error: 'Anthropic API key not configured',
+        message: 'Please set the ANTHROPIC_API_KEY environment variable in Netlify. Get your API key from https://console.anthropic.com/'
+      })
+    };
+  }
+
+  // Validate API key format
+  if (!anthropicKey.startsWith('sk-ant-')) {
+    console.error('Invalid Anthropic API key format. Key should start with "sk-ant-"');
+    return {
+      statusCode: 500,
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      },
+      body: JSON.stringify({
+        success: false,
+        error: 'Invalid API key format',
+        message: 'The ANTHROPIC_API_KEY appears to be invalid. It should start with "sk-ant-". Please check your Netlify environment variables.'
+      })
     };
   }
 
@@ -230,7 +255,18 @@ function callClaudeAPI(apiKey, message, systemPrompt) {
           const response = JSON.parse(body);
 
           if (res.statusCode !== 200) {
-            reject(new Error(response.error?.message || 'Claude API request failed'));
+            // Enhanced error reporting
+            const errorMessage = response.error?.message || response.error?.type || 'Claude API request failed';
+            const errorType = response.error?.type || 'unknown';
+            const fullError = `${errorMessage} (Status: ${res.statusCode}, Type: ${errorType})`;
+
+            console.error('Claude API Error:', {
+              statusCode: res.statusCode,
+              error: response.error,
+              fullResponse: response
+            });
+
+            reject(new Error(fullError));
             return;
           }
 

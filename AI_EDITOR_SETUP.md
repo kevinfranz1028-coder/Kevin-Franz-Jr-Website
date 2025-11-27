@@ -151,9 +151,13 @@ The AI understands your site structure:
 - Verify the token has `repo` permissions
 - Make sure the repository name format is `owner/repo`
 
-### "API key not configured"
-- Verify ANTHROPIC_API_KEY is set in Netlify environment variables
-- Check that the API key is valid and has credits
+### "API key not configured" or "Error: model: claude-3-5-sonnet-..."
+- **This error means the ANTHROPIC_API_KEY is either missing or invalid**
+- Go to Netlify Dashboard → Your Site → Site settings → Environment variables
+- Verify ANTHROPIC_API_KEY is set (should start with `sk-ant-`)
+- Get a new API key from https://console.anthropic.com/ if needed
+- Check that the API key is valid and has available credits
+- After updating, redeploy your site for changes to take effect
 
 ### Changes not appearing
 - Wait 1-2 minutes for Netlify to rebuild and deploy
