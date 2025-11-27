@@ -21,7 +21,7 @@ collections:
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Summary", name: "summary", widget: "text", hint: "Short description (150 characters max)"}
       - {label: "Cover Image", name: "coverImage", widget: "image", required: false}
-      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Body", name: "body", widget: "claude-ai"}
       - {label: "Featured", name: "featured", widget: "boolean", default: false, required: false}
 
   # ============================================
@@ -83,7 +83,7 @@ collections:
         fields:
           - {label: "Image", name: "image", widget: "image"}
           - {label: "Caption", name: "caption", widget: "string"}
-      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Body", name: "body", widget: "claude-ai"}
 
   # ============================================
   # PAGES (Editable Content)
@@ -129,7 +129,7 @@ collections:
             fields:
               - {label: "Eyebrow Text", name: "eyebrow", widget: "string", default: "About Kevin"}
               - {label: "Heading", name: "heading", widget: "string"}
-              - {label: "Body", name: "body", widget: "markdown"}
+              - {label: "Body", name: "body", widget: "claude-ai"}
               - {label: "Image", name: "image", widget: "image"}
 
           # What You'll Find Here Tiles
