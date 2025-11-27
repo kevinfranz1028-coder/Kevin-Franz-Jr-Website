@@ -1,0 +1,12 @@
+{
+  "siteName": "Kevin Franz Jr.",
+  "links": [
+    { "text": "Home", "url": "/" },
+    { "text": "Basketball", "url": "/basketball/" },
+    { "text": "Academics", "url": "/academics/" },
+    { "text": "Projects & Passions", "url": "/projects/" },
+    { "text": "Character & Service", "url": "/character/" },
+    { "text": "Updates", "url": "/updates/" },
+    { "text": "Contact", "url": "/contact/" }
+  ]
+}

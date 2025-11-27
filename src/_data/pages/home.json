@@ -1,0 +1,65 @@
+{
+  "title": "Home",
+  "hero": {
+    "eyebrow": "Student–Athlete • Guard • Class of 2028",
+    "heading": "Kevin Franz Jr.",
+    "subheading": "6'2\" guard and driven student, working to play college basketball and study atmospheric science.",
+    "image": "/images/hero-photo.jpg",
+    "primaryButtonText": "View Basketball Profile",
+    "primaryButtonLink": "/basketball/",
+    "secondaryButtonText": "Download Academic Resume",
+    "secondaryButtonLink": "/files/academic-resume.pdf"
+  },
+  "glanceCards": [
+    {
+      "title": "Academics",
+      "body": "GPA: [Current GPA]\nSchool: [High School Name]\nInterest: Atmospheric Science & Meteorology",
+      "linkText": "View Academics →",
+      "linkUrl": "/academics/"
+    },
+    {
+      "title": "Basketball",
+      "body": "Position: Guard\nHeight: 6'2\"\nTeams: [High School Team], [Club/AAU Team]\n2024–25: [X] PPG • [Y] APG",
+      "linkText": "Full Basketball Profile →",
+      "linkUrl": "/basketball/"
+    },
+    {
+      "title": "Beyond the Court",
+      "body": "Weather nerd. Film-room junkie. Big on leadership, family, and helping younger players grow.",
+      "linkText": "Projects & Passions →",
+      "linkUrl": "/projects/"
+    }
+  ],
+  "about": {
+    "eyebrow": "About Kevin",
+    "heading": "Student. Teammate. Future meteorologist.",
+    "body": "I'm Kevin Franz Jr, a 6'2\" guard in the Class of 2028 at [High School Name] in [City, State].\n\nOn the court, I'm a pace-pusher and playmaker – I love creating for teammates, defending full court, and making the right reads under pressure. Off the court, I'm just as serious about the classroom. I'm especially drawn to weather and atmospheric science and plan to study meteorology in college.\n\nMy goals are simple: help my team win, keep growing as a leader, and earn the opportunity to play college basketball while pursuing a degree that challenges me.",
+    "image": "/images/about-photo.jpg"
+  },
+  "tiles": [
+    {
+      "title": "Basketball Profile",
+      "body": "Stats, schedule, highlight videos, and how I approach the game.",
+      "linkText": "Go to Basketball →",
+      "linkUrl": "/basketball/"
+    },
+    {
+      "title": "Academics & Resume",
+      "body": "Courses, GPA, awards, and work experience in one place.",
+      "linkText": "Go to Academics →",
+      "linkUrl": "/academics/"
+    },
+    {
+      "title": "Projects & Passions",
+      "body": "Weather projects, personal goals, and what I'm curious about right now.",
+      "linkText": "Explore Projects →",
+      "linkUrl": "/projects/"
+    },
+    {
+      "title": "Character & Service",
+      "body": "Community work, leadership roles, and what I'm trying to stand for.",
+      "linkText": "See Character & Service →",
+      "linkUrl": "/character/"
+    }
+  ]
+}

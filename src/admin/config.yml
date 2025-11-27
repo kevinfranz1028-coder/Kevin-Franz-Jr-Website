@@ -6,9 +6,11 @@ media_folder: "src/images"
 public_folder: "/images"
 
 collections:
-  # Updates Collection (Blog Posts)
+  # ============================================
+  # BLOG POSTS & UPDATES
+  # ============================================
   - name: "updates"
-    label: "Updates"
+    label: "Updates (Blog)"
     folder: "src/updates"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
@@ -22,9 +24,11 @@ collections:
       - {label: "Body", name: "body", widget: "markdown"}
       - {label: "Featured", name: "featured", widget: "boolean", default: false, required: false}
 
-  # Games Collection (Schedule)
+  # ============================================
+  # GAME SCHEDULE
+  # ============================================
   - name: "games"
-    label: "Games"
+    label: "Games (Schedule)"
     folder: "src/games"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
@@ -41,10 +45,302 @@ collections:
       - {label: "Season", name: "season", widget: "select", options: ["2024-25", "2025-26", "2026-27", "2027-28"], default: "2024-25"}
       - {label: "Notes", name: "notes", widget: "text", required: false, hint: "Internal notes (not displayed on site)"}
 
-  # Site Settings (for easy updates to key info)
+  # ============================================
+  # PAGES (Editable Content)
+  # ============================================
+  - name: "pages"
+    label: "Pages"
+    files:
+      # HOME PAGE
+      - label: "Home Page"
+        name: "home"
+        file: "src/_data/pages/home.json"
+        fields:
+          - {label: "Page Title", name: "title", widget: "string", default: "Home"}
+
+          # Hero Section
+          - label: "Hero Section"
+            name: "hero"
+            widget: "object"
+            fields:
+              - {label: "Eyebrow Text", name: "eyebrow", widget: "string", default: "Student–Athlete • Guard • Class of 2028"}
+              - {label: "Main Heading", name: "heading", widget: "string", default: "Kevin Franz Jr."}
+              - {label: "Subheading", name: "subheading", widget: "text"}
+              - {label: "Hero Image", name: "image", widget: "image"}
+              - {label: "Primary Button Text", name: "primaryButtonText", widget: "string", default: "View Basketball Profile"}
+              - {label: "Primary Button Link", name: "primaryButtonLink", widget: "string", default: "/basketball/"}
+              - {label: "Secondary Button Text", name: "secondaryButtonText", widget: "string", default: "Download Academic Resume"}
+              - {label: "Secondary Button Link", name: "secondaryButtonLink", widget: "string", default: "/files/academic-resume.pdf"}
+
+          # At a Glance Cards
+          - label: "At a Glance Cards"
+            name: "glanceCards"
+            widget: "list"
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Body Text", name: "body", widget: "text"}
+              - {label: "Link Text", name: "linkText", widget: "string"}
+              - {label: "Link URL", name: "linkUrl", widget: "string"}
+
+          # About Section
+          - label: "About Section"
+            name: "about"
+            widget: "object"
+            fields:
+              - {label: "Eyebrow Text", name: "eyebrow", widget: "string", default: "About Kevin"}
+              - {label: "Heading", name: "heading", widget: "string"}
+              - {label: "Body", name: "body", widget: "markdown"}
+              - {label: "Image", name: "image", widget: "image"}
+
+          # What You'll Find Here Tiles
+          - label: "Feature Tiles"
+            name: "tiles"
+            widget: "list"
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Description", name: "body", widget: "text"}
+              - {label: "Link Text", name: "linkText", widget: "string"}
+              - {label: "Link URL", name: "linkUrl", widget: "string"}
+
+      # BASKETBALL PAGE
+      - label: "Basketball Page"
+        name: "basketball"
+        file: "src/_data/pages/basketball.json"
+        fields:
+          - {label: "Page Title", name: "title", widget: "string", default: "Basketball Profile"}
+
+          # Page Header
+          - label: "Page Header"
+            name: "header"
+            widget: "object"
+            fields:
+              - {label: "Eyebrow", name: "eyebrow", widget: "string"}
+              - {label: "Heading", name: "heading", widget: "string"}
+              - {label: "Subheading", name: "subheading", widget: "text"}
+              - {label: "Supporting Text", name: "supportingText", widget: "text"}
+
+          # Player Info
+          - label: "Player Information"
+            name: "playerInfo"
+            widget: "object"
+            fields:
+              - {label: "Name", name: "name", widget: "string"}
+              - {label: "Class", name: "class", widget: "string"}
+              - {label: "Position", name: "position", widget: "string"}
+              - {label: "Height", name: "height", widget: "string"}
+              - {label: "Weight", name: "weight", widget: "string"}
+              - {label: "Hand", name: "hand", widget: "string"}
+              - {label: "School", name: "school", widget: "string"}
+              - {label: "Jersey Number", name: "jersey", widget: "string"}
+              - {label: "AAU/Club Team", name: "aauTeam", widget: "string"}
+              - {label: "Info Image", name: "image", widget: "image"}
+
+          # Highlight Videos
+          - label: "Highlight Videos"
+            name: "highlights"
+            widget: "list"
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Description", name: "description", widget: "text"}
+              - {label: "Video Embed Code", name: "embedCode", widget: "text", hint: "Paste YouTube/Vimeo embed code", required: false}
+              - {label: "Video URL", name: "videoUrl", widget: "string", required: false}
+
+          # Season Stats
+          - label: "Season Stats"
+            name: "stats"
+            widget: "object"
+            fields:
+              - {label: "Intro Text", name: "intro", widget: "text"}
+              - label: "Stats Table"
+                name: "table"
+                widget: "list"
+                fields:
+                  - {label: "Season", name: "season", widget: "string"}
+                  - {label: "Team", name: "team", widget: "string"}
+                  - {label: "GP", name: "gp", widget: "string"}
+                  - {label: "MPG", name: "mpg", widget: "string"}
+                  - {label: "PPG", name: "ppg", widget: "string"}
+                  - {label: "RPG", name: "rpg", widget: "string"}
+                  - {label: "APG", name: "apg", widget: "string"}
+                  - {label: "SPG", name: "spg", widget: "string"}
+                  - {label: "3P%", name: "threePct", widget: "string"}
+                  - {label: "FT%", name: "ftPct", widget: "string"}
+
+          # Achievements
+          - label: "Achievements"
+            name: "achievements"
+            widget: "object"
+            fields:
+              - label: "Achievement List"
+                name: "list"
+                widget: "list"
+                field: {label: "Achievement", name: "item", widget: "string"}
+              - label: "Coach Quote"
+                name: "quote"
+                widget: "object"
+                fields:
+                  - {label: "Quote Text", name: "text", widget: "text"}
+                  - {label: "Attribution", name: "attribution", widget: "string"}
+              - label: "Press/Articles"
+                name: "press"
+                widget: "list"
+                required: false
+                fields:
+                  - {label: "Article Title", name: "title", widget: "string"}
+                  - {label: "Publication", name: "publication", widget: "string"}
+                  - {label: "URL", name: "url", widget: "string", required: false}
+
+          # Training
+          - label: "Training & Development"
+            name: "training"
+            widget: "object"
+            fields:
+              - {label: "Focus Areas (one per line)", name: "focusAreas", widget: "text"}
+              - {label: "Training Routine", name: "routine", widget: "markdown"}
+              - {label: "Closing Statement", name: "statement", widget: "text"}
+
+          # Contact/References
+          - label: "Coach Contacts"
+            name: "contacts"
+            widget: "list"
+            fields:
+              - {label: "Role", name: "role", widget: "string", hint: "e.g., Head Coach - High School"}
+              - {label: "Name", name: "name", widget: "string"}
+              - {label: "Email", name: "email", widget: "string"}
+              - {label: "Phone", name: "phone", widget: "string", required: false}
+
+      # ACADEMICS PAGE
+      - label: "Academics Page"
+        name: "academics"
+        file: "src/_data/pages/academics.json"
+        fields:
+          - {label: "Page Title", name: "title", widget: "string", default: "Academics"}
+          - {label: "Heading", name: "heading", widget: "string"}
+          - {label: "Subheading", name: "subheading", widget: "text"}
+
+          - label: "Academic Overview"
+            name: "overview"
+            widget: "object"
+            fields:
+              - {label: "GPA (Unweighted)", name: "gpa", widget: "string"}
+              - {label: "GPA (Weighted)", name: "gpaWeighted", widget: "string", required: false}
+              - {label: "Class Rank", name: "rank", widget: "string"}
+              - {label: "School", name: "school", widget: "string"}
+              - {label: "Graduation", name: "graduation", widget: "string"}
+
+          - label: "Coursework"
+            name: "coursework"
+            widget: "object"
+            fields:
+              - label: "Honors/AP Classes"
+                name: "honorsAP"
+                widget: "list"
+                field: {label: "Course", name: "course", widget: "string"}
+              - label: "STEM Focus"
+                name: "stem"
+                widget: "list"
+                field: {label: "Course", name: "course", widget: "string"}
+
+          - {label: "Academic Interests", name: "interests", widget: "markdown"}
+
+          - label: "Awards"
+            name: "awards"
+            widget: "list"
+            field: {label: "Award", name: "award", widget: "string"}
+
+          - {label: "Resume PDF", name: "resumePdf", widget: "file", required: false}
+          - {label: "Sidebar Image", name: "image", widget: "image", required: false}
+
+      # PROJECTS & PASSIONS PAGE
+      - label: "Projects & Passions Page"
+        name: "projects"
+        file: "src/_data/pages/projects.json"
+        fields:
+          - {label: "Page Title", name: "title", widget: "string", default: "Projects & Passions"}
+          - {label: "Heading", name: "heading", widget: "string"}
+          - {label: "Subheading", name: "subheading", widget: "text"}
+
+          - label: "Project Categories"
+            name: "categories"
+            widget: "list"
+            fields:
+              - {label: "Category Title", name: "title", widget: "string"}
+              - {label: "Description", name: "description", widget: "markdown"}
+              - label: "Projects"
+                name: "projects"
+                widget: "list"
+                fields:
+                  - {label: "Project Title", name: "title", widget: "string"}
+                  - {label: "Description", name: "description", widget: "text"}
+                  - {label: "Link", name: "link", widget: "string", required: false}
+
+      # CHARACTER & SERVICE PAGE
+      - label: "Character & Service Page"
+        name: "character"
+        file: "src/_data/pages/character.json"
+        fields:
+          - {label: "Page Title", name: "title", widget: "string", default: "Character & Service"}
+          - {label: "Heading", name: "heading", widget: "string"}
+          - {label: "Subheading", name: "subheading", widget: "text"}
+
+          - label: "Core Values"
+            name: "values"
+            widget: "list"
+            fields:
+              - {label: "Value Title", name: "title", widget: "string"}
+              - {label: "Description", name: "description", widget: "text"}
+
+          - label: "Community Service"
+            name: "service"
+            widget: "list"
+            fields:
+              - {label: "Activity Title", name: "title", widget: "string"}
+              - {label: "Description", name: "description", widget: "text"}
+
+          - label: "Leadership Roles"
+            name: "leadership"
+            widget: "list"
+            field: {label: "Role", name: "role", widget: "string"}
+
+          - label: "Testimonial"
+            name: "testimonial"
+            widget: "object"
+            required: false
+            fields:
+              - {label: "Quote", name: "quote", widget: "text"}
+              - {label: "Attribution", name: "attribution", widget: "string"}
+
+      # CONTACT PAGE
+      - label: "Contact Page"
+        name: "contact"
+        file: "src/_data/pages/contact.json"
+        fields:
+          - {label: "Page Title", name: "title", widget: "string", default: "Contact"}
+          - {label: "Heading", name: "heading", widget: "string"}
+          - {label: "Subheading", name: "subheading", widget: "text"}
+
+          - label: "Quick Links"
+            name: "quickLinks"
+            widget: "list"
+            fields:
+              - {label: "Link Text", name: "text", widget: "string"}
+              - {label: "URL", name: "url", widget: "string"}
+
+          - label: "Coach Contacts"
+            name: "coaches"
+            widget: "list"
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Name", name: "name", widget: "string"}
+              - {label: "Email", name: "email", widget: "string"}
+
+  # ============================================
+  # SITE SETTINGS
+  # ============================================
   - name: "settings"
     label: "Site Settings"
     files:
+      # PLAYER INFORMATION
       - label: "Player Information"
         name: "player"
         file: "src/_data/player.json"
@@ -66,3 +362,30 @@ collections:
           - {label: "Highlight Video URL", name: "highlightVideo", widget: "string", required: false}
           - {label: "Hudl URL", name: "hudlUrl", widget: "string", required: false}
           - {label: "YouTube URL", name: "youtubeUrl", widget: "string", required: false}
+
+      # NAVIGATION
+      - label: "Navigation Menu"
+        name: "navigation"
+        file: "src/_data/navigation.json"
+        fields:
+          - {label: "Site Name", name: "siteName", widget: "string", default: "Kevin Franz Jr."}
+          - label: "Navigation Links"
+            name: "links"
+            widget: "list"
+            fields:
+              - {label: "Text", name: "text", widget: "string"}
+              - {label: "URL", name: "url", widget: "string"}
+
+      # FOOTER
+      - label: "Footer"
+        name: "footer"
+        file: "src/_data/footer.json"
+        fields:
+          - {label: "Copyright Text", name: "copyright", widget: "string"}
+          - {label: "Contact Email", name: "email", widget: "string"}
+          - label: "Footer Links"
+            name: "links"
+            widget: "list"
+            fields:
+              - {label: "Text", name: "text", widget: "string"}
+              - {label: "URL", name: "url", widget: "string"}
