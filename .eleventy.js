@@ -20,6 +20,14 @@ module.exports = function(eleventyConfig) {
     return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat('yyyy-LL-dd');
   });
 
+  // Limit filter for arrays
+  eleventyConfig.addFilter("limit", function(array, n) {
+    if (!Array.isArray(array)) return array;
+    const limit = parseInt(n, 10);
+    if (isNaN(limit)) return array;
+    return array.slice(0, limit);
+  });
+
   // Collections
   eleventyConfig.addCollection("updates", function(collectionApi) {
     return collectionApi.getFilteredByGlob("src/updates/*.md").sort((a, b) => {
