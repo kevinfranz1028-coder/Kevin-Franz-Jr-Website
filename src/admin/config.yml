@@ -42,8 +42,48 @@ collections:
       - {label: "Kevin's Points", name: "points", widget: "number", required: false}
       - {label: "Kevin's Rebounds", name: "rebounds", widget: "number", required: false}
       - {label: "Kevin's Assists", name: "assists", widget: "number", required: false}
-      - {label: "Season", name: "season", widget: "select", options: ["2024-25", "2025-26", "2026-27", "2027-28"], default: "2024-25"}
+      - {label: "Season", name: "season", widget: "string", default: "2024-2025", hint: "e.g., 2024-2025, 2023-2024"}
+      - {label: "Team", name: "team", widget: "select", options: ["Varsity", "JV", "AAU", "Youth"], default: "JV"}
       - {label: "Notes", name: "notes", widget: "text", required: false, hint: "Internal notes (not displayed on site)"}
+
+  # ============================================
+  # BASKETBALL TIMELINE
+  # ============================================
+  - name: "timeline"
+    label: "Basketball Timeline"
+    folder: "src/timeline"
+    create: true
+    slug: "{{year}}-{{slug}}"
+    fields:
+      - {label: "Layout", name: "layout", widget: "hidden", default: "timeline-year.njk"}
+      - {label: "Permalink", name: "permalink", widget: "hidden", default: "/timeline/{{year | slug}}/"}
+      - {label: "Year", name: "year", widget: "string", hint: "e.g., 2024-2025, 2019-2020"}
+      - {label: "Grade", name: "grade", widget: "string", hint: "e.g., Freshman (9th Grade), 8th Grade"}
+      - {label: "Team", name: "team", widget: "string", hint: "e.g., Blue Valley Southwest JV, Middle School Team"}
+      - {label: "Order", name: "order", widget: "number", hint: "Display order (1-12, use grade number)"}
+      - {label: "Summary", name: "summary", widget: "text", hint: "Brief one-line summary for timeline"}
+      - {label: "Season Type", name: "season", widget: "select", options: ["Elementary", "Middle School", "High School", "AAU"]}
+      - label: "Highlights"
+        name: "highlights"
+        widget: "list"
+        field: {label: "Highlight", name: "item", widget: "string"}
+      - label: "Stats"
+        name: "stats"
+        widget: "object"
+        required: false
+        fields:
+          - {label: "Games", name: "games", widget: "string", required: false}
+          - {label: "Points Per Game", name: "ppg", widget: "string", required: false}
+          - {label: "Assists Per Game", name: "apg", widget: "string", required: false}
+          - {label: "Rebounds Per Game", name: "rpg", widget: "string", required: false}
+      - label: "Gallery"
+        name: "gallery"
+        widget: "list"
+        required: false
+        fields:
+          - {label: "Image", name: "image", widget: "image"}
+          - {label: "Caption", name: "caption", widget: "string"}
+      - {label: "Body", name: "body", widget: "markdown"}
 
   # ============================================
   # PAGES (Editable Content)
@@ -209,6 +249,36 @@ collections:
               - {label: "Email", name: "email", widget: "string"}
               - {label: "Phone", name: "phone", widget: "string", required: false}
 
+          # Recruiting Profiles
+          - label: "Recruiting Profiles"
+            name: "recruitingProfiles"
+            widget: "object"
+            fields:
+              - {label: "Heading", name: "heading", widget: "string", default: "Recruiting Profiles"}
+              - {label: "Description", name: "description", widget: "text"}
+              - label: "Profiles"
+                name: "profiles"
+                widget: "list"
+                fields:
+                  - {label: "Platform Name", name: "name", widget: "string", hint: "e.g., Prephoops, NCSA"}
+                  - {label: "Profile URL", name: "url", widget: "string"}
+                  - {label: "Description", name: "description", widget: "string"}
+
+          # Social Media
+          - label: "Social Media"
+            name: "socialMedia"
+            widget: "object"
+            fields:
+              - {label: "Heading", name: "heading", widget: "string", default: "Connect"}
+              - {label: "Description", name: "description", widget: "text"}
+              - label: "Social Links"
+                name: "links"
+                widget: "list"
+                fields:
+                  - {label: "Platform", name: "platform", widget: "string", hint: "e.g., Instagram (Basketball)"}
+                  - {label: "Handle", name: "handle", widget: "string", hint: "e.g., @kfranzjr2028"}
+                  - {label: "URL", name: "url", widget: "string"}
+
       # ACADEMICS PAGE
       - label: "Academics Page"
         name: "academics"
@@ -333,6 +403,82 @@ collections:
               - {label: "Title", name: "title", widget: "string"}
               - {label: "Name", name: "name", widget: "string"}
               - {label: "Email", name: "email", widget: "string"}
+
+      # MEDIA & PHOTOGRAPHY PAGE
+      - label: "Media & Photography Page"
+        name: "media"
+        file: "src/_data/pages/media.json"
+        fields:
+          - {label: "Page Title", name: "title", widget: "string", default: "Photography & Media Production"}
+
+          - label: "Header"
+            name: "header"
+            widget: "object"
+            fields:
+              - {label: "Eyebrow", name: "eyebrow", widget: "string"}
+              - {label: "Heading", name: "heading", widget: "string"}
+              - {label: "Subheading", name: "subheading", widget: "string"}
+              - {label: "Image", name: "image", widget: "image", required: false}
+
+          - label: "Profile"
+            name: "profile"
+            widget: "object"
+            fields:
+              - {label: "Heading", name: "heading", widget: "string", default: "Profile"}
+              - label: "Paragraphs"
+                name: "paragraphs"
+                widget: "list"
+                field: {label: "Paragraph", name: "text", widget: "text"}
+
+          - label: "Experience"
+            name: "experience"
+            widget: "object"
+            fields:
+              - {label: "Heading", name: "heading", widget: "string"}
+              - label: "Items"
+                name: "items"
+                widget: "list"
+                field: {label: "Experience", name: "item", widget: "string"}
+
+          - label: "Skills"
+            name: "skills"
+            widget: "object"
+            fields:
+              - {label: "Heading", name: "heading", widget: "string"}
+              - label: "Items"
+                name: "items"
+                widget: "list"
+                field: {label: "Skill", name: "item", widget: "string"}
+
+          - label: "Hobbies"
+            name: "hobbies"
+            widget: "object"
+            fields:
+              - {label: "Heading", name: "heading", widget: "string"}
+              - {label: "Text", name: "text", widget: "text"}
+
+          - label: "Contact"
+            name: "contact"
+            widget: "object"
+            fields:
+              - {label: "Heading", name: "heading", widget: "string"}
+              - {label: "Phone", name: "phone", widget: "string"}
+              - {label: "Email", name: "email", widget: "string"}
+              - {label: "Instagram Handle", name: "instagram", widget: "string"}
+              - {label: "Instagram URL", name: "instagramUrl", widget: "string"}
+
+          - label: "Gallery"
+            name: "gallery"
+            widget: "object"
+            fields:
+              - {label: "Heading", name: "heading", widget: "string"}
+              - label: "Items"
+                name: "items"
+                widget: "list"
+                fields:
+                  - {label: "Title", name: "title", widget: "string"}
+                  - {label: "Description", name: "description", widget: "text"}
+                  - {label: "Image", name: "image", widget: "image", required: false}
 
   # ============================================
   # SITE SETTINGS

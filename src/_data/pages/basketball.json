@@ -11,7 +11,18 @@
     "weight": "185 lbs",
     "image": "/images/img_1003.jpg"
   },
-  "highlights": [],
+  "highlights": [
+    {
+      "title": "Highlight Reel 2024-25",
+      "description": "Season highlights featuring game action, scoring, and playmaking",
+      "videoUrl": "https://youtu.be/D99uLbwXy7s"
+    },
+    {
+      "title": "Full Game Film",
+      "description": "Complete game footage showcasing overall play and decision-making",
+      "videoUrl": "https://www.youtube.com/watch?v=rSJUcL_66c0"
+    }
+  ],
   "contacts": [],
   "title": "Basketball ",
   "header": {
@@ -33,5 +44,42 @@
     "focusAreas": "Off-Season Focus Areas\nBall handling under pressure and pick-and-roll reads\nCatch-and-shoot 3s and off-the-dribble shooting\nOn-ball defense and strength",
     "routine": "### Training Routine\n\n* Skill sessions: \\[X] days per week with \\[Trainer/Coach Name]\n* Weight room: \\[X] days per week focused on strength and mobility\n* Film study: breaking down our games and college guards I want to emulate",
     "statement": "I'm always working to become a more complete guard – someone who can run a team, guard multiple positions, and make teammates better."
+  },
+  "recruitingProfiles": {
+    "heading": "Recruiting Profiles",
+    "description": "View my complete recruiting profiles and stats across multiple platforms",
+    "profiles": [
+      {
+        "name": "Prephoops",
+        "url": "https://prephoops.com/player/kevin-franz/",
+        "description": "Player profile and rankings"
+      },
+      {
+        "name": "NCSA Sports",
+        "url": "https://www.ncsasports.org/mens-basketball-recruiting/kansas/overland-park/blue-valley-southwest-high-school/kevin-franz3",
+        "description": "Complete recruiting profile"
+      },
+      {
+        "name": "Sports Passports",
+        "url": "https://sportspassports.com/player/kevin-franz/",
+        "description": "Tournament history and stats"
+      }
+    ]
+  },
+  "socialMedia": {
+    "heading": "Connect",
+    "description": "Follow my basketball journey on social media",
+    "links": [
+      {
+        "platform": "Instagram (Basketball)",
+        "handle": "@kfranzjr2028",
+        "url": "https://instagram.com/kfranzjr2028"
+      },
+      {
+        "platform": "Instagram (Media)",
+        "handle": "@Shots_By_Franz",
+        "url": "https://instagram.com/Shots_By_Franz"
+      }
+    ]
   }
 }

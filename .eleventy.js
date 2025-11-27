@@ -41,6 +41,12 @@ module.exports = function(eleventyConfig) {
     });
   });
 
+  eleventyConfig.addCollection("timeline", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("src/timeline/*.md").sort((a, b) => {
+      return (a.data.order || 0) - (b.data.order || 0);
+    });
+  });
+
   return {
     dir: {
       input: "src",

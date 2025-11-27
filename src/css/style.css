@@ -9,8 +9,10 @@
 }
 
 :root {
-    --primary-color: #1E3A8A;
-    --secondary-color: #F59E0B;
+    /* Blue Valley Southwest Timberwolves Colors */
+    --primary-color: #1B5E20;        /* Dark Forest Green */
+    --secondary-color: #43A047;      /* Medium Green */
+    --accent-color: #C5E1A5;         /* Light Green Accent */
     --text-dark: #1a1a1a;
     --text-gray: #666666;
     --text-light: #999999;
@@ -142,7 +144,7 @@ main {
 }
 
 .btn-primary:hover {
-    background-color: #1e40af;
+    background-color: var(--secondary-color);
     color: white;
     transform: translateY(-1px);
     box-shadow: var(--shadow-md);
@@ -959,6 +961,26 @@ main {
 }
 
 /* ===================================
+   Basketball Timeline
+   =================================== */
+
+.timeline-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md) !important;
+    background: white !important;
+}
+
+.timeline-dot {
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover .timeline-dot {
+    width: 24px !important;
+    height: 24px !important;
+    background: var(--secondary-color) !important;
+}
+
+/* ===================================
    Responsive Design
    =================================== */
 
@@ -1061,6 +1083,25 @@ main {
 
     .table-wrapper {
         overflow-x: scroll;
+    }
+
+    /* Timeline mobile layout */
+    .timeline-item {
+        grid-template-columns: 1fr !important;
+    }
+
+    .timeline-item .timeline-content {
+        text-align: left !important;
+        padding-left: 3rem !important;
+        padding-right: 0 !important;
+    }
+
+    .timeline-line {
+        left: 1rem !important;
+    }
+
+    .timeline-dot {
+        left: 1rem !important;
     }
 }
 

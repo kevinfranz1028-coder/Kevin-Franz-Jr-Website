@@ -1,0 +1,115 @@
+---
+layout: base.njk
+title: Photography & Media Production
+---
+
+{# Hero Section #}
+<section class="section-page-header">
+    <div class="container">
+        <div class="page-header-centered">
+            <span class="label-eyebrow">{{ pages.media.header.eyebrow }}</span>
+            <h1>{{ pages.media.header.heading }}</h1>
+            <p class="supporting-text">{{ pages.media.header.subheading }}</p>
+        </div>
+    </div>
+</section>
+
+{# Profile Section #}
+<section class="section-about">
+    <div class="container">
+        <div class="about-grid">
+            <div>
+                <h2>{{ pages.media.profile.heading }}</h2>
+                {% for paragraph in pages.media.profile.paragraphs %}
+                <p class="body-text">{{ paragraph }}</p>
+                {% endfor %}
+            </div>
+            <div>
+                {% if pages.media.header.image %}
+                <img src="{{ pages.media.header.image }}" alt="{{ pages.media.title }}" class="about-image">
+                {% else %}
+                <div style="aspect-ratio: 2/3; background: var(--bg-light); border-radius: 0.5rem; display: flex; align-items: center; justify-content: center; color: var(--text-gray);">
+                    [Insert Photo: 2x2.5" Portrait]
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{# Experience Section #}
+<section class="section-content" style="background-color: var(--bg-white); padding: 4rem 0;">
+    <div class="container">
+        <h2>{{ pages.media.experience.heading }}</h2>
+        <ul style="margin-top: 1.5rem; line-height: 1.8;">
+            {% for item in pages.media.experience.items %}
+            <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
+
+{# Skills Section #}
+<section class="section-content" style="background-color: var(--bg-light); padding: 4rem 0;">
+    <div class="container">
+        <h2>{{ pages.media.skills.heading }}</h2>
+        <ul style="margin-top: 1.5rem; line-height: 1.8;">
+            {% for item in pages.media.skills.items %}
+            <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
+
+{# Gallery Section #}
+<section class="section-content" style="background-color: var(--bg-white); padding: 4rem 0;">
+    <div class="container">
+        <h2 class="text-center">{{ pages.media.gallery.heading }}</h2>
+        <div class="glance-grid" style="margin-top: 2rem;">
+            {% for item in pages.media.gallery.items %}
+            <div class="card-glance">
+                {% if item.image %}
+                <img src="{{ item.image }}" alt="{{ item.title }}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 0.5rem; margin-bottom: 1rem;">
+                {% else %}
+                <div style="width: 100%; height: 200px; background: var(--bg-light); border-radius: 0.5rem; margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; color: var(--text-gray); font-size: 0.875rem;">
+                    [Photo Placeholder]
+                </div>
+                {% endif %}
+                <h3 class="card-title">{{ item.title }}</h3>
+                <p>{{ item.description }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{# Hobbies Section #}
+<section class="section-content" style="background-color: var(--bg-light); padding: 4rem 0;">
+    <div class="container">
+        <h2>{{ pages.media.hobbies.heading }}</h2>
+        <p class="body-text" style="margin-top: 1.5rem;">{{ pages.media.hobbies.text }}</p>
+    </div>
+</section>
+
+{# Contact Section #}
+<section class="section-content" style="background-color: var(--bg-white); padding: 4rem 0;">
+    <div class="container">
+        <div class="contact-card">
+            <h2 class="text-center">{{ pages.media.contact.heading }}</h2>
+            <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; text-align: center;">
+                <div>
+                    <strong style="color: var(--primary-color);">Phone:</strong>
+                    <a href="tel:{{ pages.media.contact.phone }}">{{ pages.media.contact.phone }}</a>
+                </div>
+                <div>
+                    <strong style="color: var(--primary-color);">Email:</strong>
+                    <a href="mailto:{{ pages.media.contact.email }}">{{ pages.media.contact.email }}</a>
+                </div>
+                <div>
+                    <strong style="color: var(--primary-color);">Instagram:</strong>
+                    <a href="{{ pages.media.contact.instagramUrl }}" target="_blank" rel="noopener noreferrer">{{ pages.media.contact.instagram }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

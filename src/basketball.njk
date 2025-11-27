@@ -81,6 +81,51 @@ permalink: /basketball/
     </div>
 </section>
 
+{# Basketball Timeline #}
+<section class="section-timeline" style="background-color: var(--bg-white); padding: 4rem 0;">
+    <div class="container">
+        <h2 class="text-center">Basketball Journey</h2>
+        <p class="subtitle text-center">Follow Kevin's basketball development from elementary through high school</p>
+
+        <div class="timeline-container" style="margin-top: 3rem; position: relative;">
+            {# Timeline Line #}
+            <div class="timeline-line" style="position: absolute; left: 50%; top: 0; bottom: 0; width: 3px; background: var(--border-color); transform: translateX(-50%);"></div>
+
+            {# Timeline Items #}
+            {% for item in collections.timeline %}
+            <div class="timeline-item" style="position: relative; margin-bottom: 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center;">
+                {% if loop.index % 2 == 1 %}
+                {# Odd items - content on left #}
+                <div class="timeline-content" style="text-align: right; padding-right: 2rem;">
+                    <div class="timeline-card" data-year="{{ item.data.year }}" style="background: var(--bg-light); padding: 1.5rem; border-radius: 0.5rem; box-shadow: var(--shadow-sm); cursor: pointer; transition: all 0.3s ease;">
+                        <div class="timeline-year" style="font-size: 1.5rem; font-weight: 700; color: var(--primary-color); margin-bottom: 0.5rem;">{{ item.data.year }}</div>
+                        <div class="timeline-grade" style="font-size: 0.875rem; color: var(--text-gray); margin-bottom: 0.75rem;">{{ item.data.grade }}</div>
+                        <div class="timeline-summary" style="color: var(--text-dark); line-height: 1.6; margin-bottom: 1rem;">{{ item.data.summary }}</div>
+                        <a href="{{ item.url }}" class="timeline-link" style="color: var(--primary-color); font-weight: 600;">View Details →</a>
+                    </div>
+                </div>
+                <div></div>
+                {% else %}
+                {# Even items - content on right #}
+                <div></div>
+                <div class="timeline-content" style="text-align: left; padding-left: 2rem;">
+                    <div class="timeline-card" data-year="{{ item.data.year }}" style="background: var(--bg-light); padding: 1.5rem; border-radius: 0.5rem; box-shadow: var(--shadow-sm); cursor: pointer; transition: all 0.3s ease;">
+                        <div class="timeline-year" style="font-size: 1.5rem; font-weight: 700; color: var(--primary-color); margin-bottom: 0.5rem;">{{ item.data.year }}</div>
+                        <div class="timeline-grade" style="font-size: 0.875rem; color: var(--text-gray); margin-bottom: 0.75rem;">{{ item.data.grade }}</div>
+                        <div class="timeline-summary" style="color: var(--text-dark); line-height: 1.6; margin-bottom: 1rem;">{{ item.data.summary }}</div>
+                        <a href="{{ item.url }}" class="timeline-link" style="color: var(--primary-color); font-weight: 600;">View Details →</a>
+                    </div>
+                </div>
+                {% endif %}
+
+                {# Timeline Dot #}
+                <div class="timeline-dot" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 20px; height: 20px; background: var(--primary-color); border: 3px solid var(--bg-white); border-radius: 50%; z-index: 10;"></div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
 {# Season Stats #}
 <section class="section-stats">
     <div class="container">
@@ -201,6 +246,39 @@ permalink: /basketball/
             {% if pages.basketball.training.statement %}
             <p style="margin-top: 2rem;">{{ pages.basketball.training.statement }}</p>
             {% endif %}
+        </div>
+    </div>
+</section>
+
+{# Recruiting Profiles #}
+<section style="padding: 4rem 0; background-color: var(--bg-white);">
+    <div class="container">
+        <h2>{{ pages.basketball.recruitingProfiles.heading }}</h2>
+        <p class="subtitle">{{ pages.basketball.recruitingProfiles.description }}</p>
+        <div class="glance-grid" style="margin-top: 2rem;">
+            {% for profile in pages.basketball.recruitingProfiles.profiles %}
+            <div class="card-glance">
+                <h3 class="card-title">{{ profile.name }}</h3>
+                <p class="card-body">{{ profile.description }}</p>
+                <a href="{{ profile.url }}" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="margin-top: 1rem;">View Profile →</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{# Social Media #}
+<section style="padding: 4rem 0; background-color: var(--bg-light);">
+    <div class="container">
+        <h2 class="text-center">{{ pages.basketball.socialMedia.heading }}</h2>
+        <p class="subtitle text-center">{{ pages.basketball.socialMedia.description }}</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; margin-top: 2rem;">
+            {% for link in pages.basketball.socialMedia.links %}
+            <div style="background: var(--bg-white); padding: 2rem; border-radius: 0.5rem; box-shadow: var(--shadow-sm); min-width: 250px; text-align: center;">
+                <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">{{ link.platform }}</h3>
+                <a href="{{ link.url }}" target="_blank" rel="noopener noreferrer" style="font-size: 1.25rem; font-weight: 600;">{{ link.handle }}</a>
+            </div>
+            {% endfor %}
         </div>
     </div>
 </section>

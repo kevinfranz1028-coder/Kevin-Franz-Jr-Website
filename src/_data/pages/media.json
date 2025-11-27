@@ -1,0 +1,68 @@
+{
+  "title": "Photography & Media Production",
+  "header": {
+    "eyebrow": "Student Media Photographer & Videographer",
+    "heading": "Photography & Media Production",
+    "subheading": "Class of 2028 | Blue Valley Southwest High School | Wolf Bite Media Production Team",
+    "image": "/images/media-hero.jpg"
+  },
+  "profile": {
+    "heading": "Profile",
+    "paragraphs": [
+      "Kevin Franz Jr. is a Class of 2028 student at Blue Valley Southwest High School and an active member of the Wolf Bite media production team. He splits his time between the classroom, athletics, and the sideline, where he's most at home behind a camera capturing live sports and school events.",
+      "Over the past few seasons, Kevin has developed a strong interest in sports media and content production, especially photography and short-form video. Through Wolf Bite, he has covered multiple Blue Valley Southwest athletic programs, including soccer and volleyball, focusing on storytelling through game action, candid moments, and behind-the-scenes content that highlight both school athletics and community.",
+      "Kevin is also intentionally building experience at the college level. Most recently, he shot photos and video at a college football game—Penn State vs. Northwest Missouri State at Children's Mercy Park (Sporting KC)—where he focused on capturing the atmosphere, game action, and fan experience from a media perspective. That opportunity reinforced his interest in working around college athletics and growing his skills within a professional media environment."
+    ]
+  },
+  "experience": {
+    "heading": "Media & Creative Experience",
+    "items": [
+      "Active member of the Wolf Bite media production team at Blue Valley Southwest High School",
+      "Covers multiple school athletic programs, including soccer and volleyball",
+      "Focuses on game action, candid moments, and behind-the-scenes storytelling of athletes and school spirit",
+      "Recently photographed and filmed a college football game: Penn State vs. Northwest Missouri State at Children's Mercy Park (Sporting KC)",
+      "Interested in observing and learning from how college and professional media teams operate on game day"
+    ]
+  },
+  "skills": {
+    "heading": "Skills & Interests",
+    "items": [
+      "Sports photography (game action, sidelines, atmosphere)",
+      "Videography and highlight-style content for social and digital platforms",
+      "Basic editing and post-production workflow (organizing clips, selecting highlights, simple edits)",
+      "Planning shot lists and thinking through storylines before events",
+      "Learning more about professional sports media, content strategy, and game-day operations"
+    ]
+  },
+  "hobbies": {
+    "heading": "Hobbies & Activities",
+    "text": "Outside of formal media work, Kevin is a student-athlete who loves basketball and staying connected to sports in any way he can—playing, watching film, or creating content. He enjoys experimenting with new camera angles, trying different perspectives, and learning new editing techniques to tell better stories about athletes, teams, and big moments on campus."
+  },
+  "contact": {
+    "heading": "Contact",
+    "phone": "913-229-2945",
+    "email": "Kfranzjr30@gmail.com",
+    "instagram": "@Shots_By_Franz",
+    "instagramUrl": "https://instagram.com/Shots_By_Franz"
+  },
+  "gallery": {
+    "heading": "Featured Work",
+    "items": [
+      {
+        "title": "High School Sports Coverage",
+        "description": "Game action and sideline photography from BVSW athletics",
+        "image": "/images/gallery/sports-1.jpg"
+      },
+      {
+        "title": "College Football Experience",
+        "description": "Penn State vs. Northwest Missouri State at Children's Mercy Park",
+        "image": "/images/gallery/college-game.jpg"
+      },
+      {
+        "title": "Behind-the-Scenes Content",
+        "description": "Storytelling through candid moments and athlete features",
+        "image": "/images/gallery/bts-1.jpg"
+      }
+    ]
+  }
+}
