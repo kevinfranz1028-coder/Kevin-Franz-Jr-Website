@@ -1,0 +1,23 @@
+<nav class="navbar">
+    <div class="container">
+        <div class="navbar-wrapper">
+            <a href="/" class="logo">Kevin Franz Jr.</a>
+
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="nav-links">
+                <li><a href="/" {% if page.url == "/" %}class="active"{% endif %}>Home</a></li>
+                <li><a href="/basketball/" {% if "/basketball/" in page.url %}class="active"{% endif %}>Basketball</a></li>
+                <li><a href="/academics/" {% if "/academics/" in page.url %}class="active"{% endif %}>Academics</a></li>
+                <li><a href="/projects/" {% if "/projects/" in page.url %}class="active"{% endif %}>Projects & Passions</a></li>
+                <li><a href="/character/" {% if "/character/" in page.url %}class="active"{% endif %}>Character & Service</a></li>
+                <li><a href="/updates/" {% if "/updates/" in page.url %}class="active"{% endif %}>Updates</a></li>
+                <li><a href="/contact/" {% if "/contact/" in page.url %}class="active"{% endif %}>Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>

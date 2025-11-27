@@ -1,0 +1,19 @@
+{
+  "name": "Kevin Franz Jr.",
+  "position": "Guard",
+  "height": "6'2\"",
+  "weight": "175",
+  "class": "2028",
+  "jersey": "10",
+  "highSchool": "[High School Name]",
+  "location": "[City, State]",
+  "aauTeam": "[AAU/Club Team Name]",
+  "gpa": "4.0",
+  "ppg": "14.5",
+  "apg": "5.0",
+  "parentEmail": "parent@example.com",
+  "parentPhone": "",
+  "highlightVideo": "",
+  "hudlUrl": "",
+  "youtubeUrl": ""
+}

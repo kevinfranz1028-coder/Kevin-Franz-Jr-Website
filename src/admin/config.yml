@@ -1,0 +1,68 @@
+backend:
+  name: git-gateway
+  branch: claude/webflow-athlete-site-01HLo1N59xxVGUuATbNLk2s4
+
+media_folder: "src/images"
+public_folder: "/images"
+
+collections:
+  # Updates Collection (Blog Posts)
+  - name: "updates"
+    label: "Updates"
+    folder: "src/updates"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Layout", name: "layout", widget: "hidden", default: "post.njk"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Type", name: "type", widget: "select", options: ["Game Recap", "Tournament", "Academic Milestone", "Project Update", "Personal"]}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Summary", name: "summary", widget: "text", hint: "Short description (150 characters max)"}
+      - {label: "Cover Image", name: "coverImage", widget: "image", required: false}
+      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Featured", name: "featured", widget: "boolean", default: false, required: false}
+
+  # Games Collection (Schedule)
+  - name: "games"
+    label: "Games"
+    folder: "src/games"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Opponent", name: "opponent", widget: "string"}
+      - {label: "Game Date", name: "date", widget: "datetime"}
+      - {label: "Location", name: "location", widget: "string", hint: "e.g., Home, Away, or venue name"}
+      - {label: "Home/Away", name: "homeAway", widget: "select", options: ["Home", "Away", "Neutral"]}
+      - {label: "Time", name: "time", widget: "string", hint: "e.g., 7:00 PM"}
+      - {label: "Result", name: "result", widget: "string", required: false, hint: "e.g., W 62-58 or L 55-60 (leave blank for future games)"}
+      - {label: "Kevin's Points", name: "points", widget: "number", required: false}
+      - {label: "Kevin's Rebounds", name: "rebounds", widget: "number", required: false}
+      - {label: "Kevin's Assists", name: "assists", widget: "number", required: false}
+      - {label: "Season", name: "season", widget: "select", options: ["2024-25", "2025-26", "2026-27", "2027-28"], default: "2024-25"}
+      - {label: "Notes", name: "notes", widget: "text", required: false, hint: "Internal notes (not displayed on site)"}
+
+  # Site Settings (for easy updates to key info)
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - label: "Player Information"
+        name: "player"
+        file: "src/_data/player.json"
+        fields:
+          - {label: "Full Name", name: "name", widget: "string", default: "Kevin Franz Jr."}
+          - {label: "Position", name: "position", widget: "string", default: "Guard"}
+          - {label: "Height", name: "height", widget: "string", default: "6'2\""}
+          - {label: "Weight", name: "weight", widget: "string"}
+          - {label: "Class", name: "class", widget: "string", default: "2028"}
+          - {label: "Jersey Number", name: "jersey", widget: "string"}
+          - {label: "High School", name: "highSchool", widget: "string"}
+          - {label: "City/State", name: "location", widget: "string"}
+          - {label: "AAU/Club Team", name: "aauTeam", widget: "string"}
+          - {label: "GPA", name: "gpa", widget: "string"}
+          - {label: "Current PPG", name: "ppg", widget: "string"}
+          - {label: "Current APG", name: "apg", widget: "string"}
+          - {label: "Parent Email", name: "parentEmail", widget: "string"}
+          - {label: "Parent Phone", name: "parentPhone", widget: "string", required: false}
+          - {label: "Highlight Video URL", name: "highlightVideo", widget: "string", required: false}
+          - {label: "Hudl URL", name: "hudlUrl", widget: "string", required: false}
+          - {label: "YouTube URL", name: "youtubeUrl", widget: "string", required: false}

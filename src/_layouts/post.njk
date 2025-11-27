@@ -1,0 +1,31 @@
+---
+layout: base.njk
+---
+
+<article class="post">
+    <header class="post-header">
+        <div class="container-narrow">
+            <span class="post-type-label">{{ type }}</span>
+            <h1 class="post-title">{{ title }}</h1>
+            <time class="post-date" datetime="{{ date | htmlDateString }}">{{ date | readableDate }}</time>
+        </div>
+    </header>
+
+    {% if coverImage %}
+    <div class="post-cover">
+        <img src="{{ coverImage }}" alt="{{ title }}" class="post-cover-image">
+    </div>
+    {% endif %}
+
+    <div class="post-content">
+        <div class="container-narrow">
+            {{ content | safe }}
+        </div>
+    </div>
+
+    <footer class="post-footer">
+        <div class="container-narrow">
+            <a href="/updates/" class="back-link">← Back to All Updates</a>
+        </div>
+    </footer>
+</article>

@@ -1,0 +1,222 @@
+---
+layout: base.njk
+title: Basketball Profile
+description: Complete basketball profile for Kevin Franz Jr. - stats, highlights, schedule, and recruiting information for Class of 2028 guard.
+permalink: /basketball/
+---
+
+{# Page Header #}
+<section class="section-basketball-hero">
+    <div class="container">
+        <div class="page-header-centered">
+            <span class="label-eyebrow">Basketball Profile</span>
+            <h1>Guard • Class of 2028</h1>
+            <p class="hero-subheadline">6'2" combo guard focused on pace, decision-making, and on-ball defense.</p>
+            <p class="supporting-text">Current teams: [High School Name] ([State Classification if relevant]) • [Club/AAU Team Name]</p>
+        </div>
+    </div>
+</section>
+
+{# Player Information #}
+<section class="section-measurables">
+    <div class="container">
+        <div class="measurables-grid">
+            <div class="measurables-text">
+                <h2>Player Information</h2>
+                <div class="info-list">
+                    <div class="info-item"><strong>Name:</strong> Kevin Franz Jr</div>
+                    <div class="info-item"><strong>Class:</strong> 2028</div>
+                    <div class="info-item"><strong>Position:</strong> Guard</div>
+                    <div class="info-item"><strong>Height / Weight:</strong> 6'2" / [Weight] lbs</div>
+                    <div class="info-item"><strong>Dominant Hand:</strong> Right</div>
+                    <div class="info-item"><strong>School:</strong> [High School Name] – [City, State]</div>
+                    <div class="info-item"><strong>Jersey:</strong> #[Number] (Varsity)</div>
+                    <div class="info-item"><strong>AAU / Club:</strong> [Team Name] – [Coach Name]</div>
+                </div>
+            </div>
+            <div class="measurables-image-wrapper">
+                <img src="/images/basketball-action.jpg" alt="Kevin Franz Jr. basketball action shot" class="measurables-image">
+            </div>
+        </div>
+    </div>
+</section>
+
+{# Highlights #}
+<section class="section-highlights">
+    <div class="container">
+        <h2>Highlights</h2>
+        <p class="subtitle">Recent highlight clips and full game film.</p>
+        <div class="highlights-videos">
+            <div class="video-wrapper">
+                <div class="video-embed">
+                    {# Replace with actual YouTube/Vimeo embed #}
+                    <div class="video-placeholder">
+                        <p>Season Highlights 2024–25</p>
+                        <small>(Video embed placeholder - add your YouTube/Vimeo link)</small>
+                    </div>
+                </div>
+                <div class="video-caption">
+                    <h3 class="video-title">Season Highlights – 2024–25 (2–4 min)</h3>
+                    <p>Mix of offensive and defensive clips from the first half of the 2024–25 season.</p>
+                </div>
+            </div>
+
+            <div class="video-wrapper">
+                <div class="video-embed">
+                    <div class="video-placeholder">
+                        <p>Full Game Film</p>
+                        <small>(Video embed placeholder - add your YouTube/Vimeo link)</small>
+                    </div>
+                </div>
+                <div class="video-caption">
+                    <h3 class="video-title">Full Game – vs [Opponent Name]</h3>
+                    <p>Full game footage showing on-ball defense, decision-making, and off-ball movement.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{# Season Stats #}
+<section class="section-stats">
+    <div class="container">
+        <h2>Season Stats</h2>
+        <p class="intro-text">Here are my current season averages. Detailed game logs are available on request or in the Updates section.</p>
+        <div class="table-wrapper">
+            <table class="stats-table">
+                <thead>
+                    <tr>
+                        <th>Season</th>
+                        <th>Team</th>
+                        <th>GP</th>
+                        <th>MPG</th>
+                        <th>PPG</th>
+                        <th>RPG</th>
+                        <th>APG</th>
+                        <th>SPG</th>
+                        <th>3P%</th>
+                        <th>FT%</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2024–25</td>
+                        <td>[High School Varsity]</td>
+                        <td>[GP]</td>
+                        <td>[MPG]</td>
+                        <td>[PPG]</td>
+                        <td>[RPG]</td>
+                        <td>[APG]</td>
+                        <td>[SPG]</td>
+                        <td>[3P%]</td>
+                        <td>[FT%]</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+{# Schedule #}
+<section class="section-schedule">
+    <div class="container">
+        <h2>Current Season Schedule</h2>
+        <div class="schedule-wrapper">
+            <div class="schedule-header">
+                <div class="schedule-col">Date</div>
+                <div class="schedule-col">Opponent</div>
+                <div class="schedule-col">Location</div>
+                <div class="schedule-col">Time</div>
+                <div class="schedule-col">Result</div>
+            </div>
+            {% set currentGames = collections.games %}
+            {% for game in currentGames %}
+            <div class="schedule-row">
+                <div class="schedule-col">{{ game.date | shortDate }}</div>
+                <div class="schedule-col">{{ game.data.opponent }}</div>
+                <div class="schedule-col">{{ game.data.location }}</div>
+                <div class="schedule-col">{{ game.data.time }}</div>
+                <div class="schedule-col">{{ game.data.result or '–' }}</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{# Achievements #}
+<section class="section-achievements">
+    <div class="container">
+        <h2>Achievements & Recognition</h2>
+        <div class="achievements-grid">
+            <div class="achievements-list">
+                <h3>Honors & Awards</h3>
+                <ul>
+                    <li>2024 – [League/Conference Name] All-[League] Honorable Mention</li>
+                    <li>2023 – JV Team Captain</li>
+                    <li>2023 – [Tournament Name] All-Tournament Team</li>
+                    <li>2023 – [High School Name] Academic Honor Roll (4.0 GPA)</li>
+                </ul>
+            </div>
+            <div class="quote-section">
+                <div class="quote-card">
+                    <p class="quote-text">"Kevin sets the tone on both ends of the floor. He's a leader in our locker room and a coach on the court."</p>
+                    <p class="quote-attribution">— [Coach Name], Head Coach, [High School Name]</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{# Training & Development #}
+<section class="section-training">
+    <div class="container">
+        <h2>Training & Development</h2>
+        <div class="training-content">
+            <h3>Off-Season Focus Areas</h3>
+            <ul>
+                <li>Ball handling under pressure and pick-and-roll reads</li>
+                <li>Catch-and-shoot 3s and off-the-dribble shooting</li>
+                <li>On-ball defense and strength</li>
+            </ul>
+
+            <h3>Training Routine</h3>
+            <ul>
+                <li>Skill sessions: [X] days per week with [Trainer/Coach Name]</li>
+                <li>Weight room: [X] days per week focused on strength and mobility</li>
+                <li>Film study: breaking down our games and college guards I want to emulate</li>
+            </ul>
+
+            <p>I'm always working to become a more complete guard – someone who can run a team, guard multiple positions, and make teammates better.</p>
+        </div>
+    </div>
+</section>
+
+{# Contact & References #}
+<section class="section-coach-contact">
+    <div class="container">
+        <div class="contact-card">
+            <h2>Contact & References</h2>
+            <div class="contact-content">
+                <div class="contact-block">
+                    <h4>Head Coach – [High School Name]</h4>
+                    <p>[Coach Name] – <a href="mailto:[coach@email.com]">[Coach Email]</a> – [Coach Phone]</p>
+                </div>
+
+                <div class="contact-block">
+                    <h4>Club / AAU Coach</h4>
+                    <p>[Coach Name] – <a href="mailto:[coach@email.com]">[Coach Email]</a> – [Coach Phone]</p>
+                </div>
+
+                <div class="contact-block">
+                    <h4>Family Contact</h4>
+                    <p>For recruiting or academic questions, please reach out to my dad, Kevin Franz:</p>
+                    <p><a href="mailto:[parent@email.com]">[Parent Email]</a> · [Parent Phone, if desired]</p>
+                </div>
+
+                <div class="contact-cta">
+                    <a href="mailto:[parent@email.com]?subject=Recruiting Inquiry – Kevin Franz Jr." class="btn-primary">Email About Recruiting</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

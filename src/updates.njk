@@ -1,0 +1,39 @@
+---
+layout: base.njk
+title: Updates
+description: Latest updates, game recaps, and news from Kevin Franz Jr., Class of 2028 student-athlete.
+permalink: /updates/
+---
+
+<section class="section-page-header">
+    <div class="container">
+        <div class="page-header-centered">
+            <span class="label-eyebrow">Updates</span>
+            <h1>Latest News</h1>
+            <p class="hero-subheadline">Game recaps, academic milestones, and what's on my mind.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section-content">
+    <div class="container">
+        <div class="updates-list">
+            {% for post in collections.updates %}
+            <div class="update-card">
+                {% if post.data.coverImage %}
+                <img src="{{ post.data.coverImage }}" alt="{{ post.data.title }}" class="update-card-image">
+                {% endif %}
+                <div class="update-card-content">
+                    <span class="update-card-type">{{ post.data.type }}</span>
+                    <h2 class="update-card-title">{{ post.data.title }}</h2>
+                    <time class="update-card-date" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
+                    <p class="update-card-summary">{{ post.data.summary }}</p>
+                    <a href="{{ post.url }}" class="update-card-link">Read more →</a>
+                </div>
+            </div>
+            {% else %}
+            <p class="text-center">No updates yet – check back soon!</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>

@@ -1,0 +1,82 @@
+---
+layout: base.njk
+title: Contact
+description: Get in touch with Kevin Franz Jr. for recruiting inquiries, academic questions, or general information.
+permalink: /contact/
+---
+
+<section class="section-page-header">
+    <div class="container">
+        <div class="page-header-centered">
+            <span class="label-eyebrow">Contact</span>
+            <h1>Get in Touch</h1>
+            <p class="hero-subheadline">Questions about recruiting, academics, or scheduling a call? Reach out below.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section-content">
+    <div class="container">
+        <div class="contact-layout">
+            <div class="contact-form-wrapper">
+                <h2>Send a Message</h2>
+                <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                    <input type="hidden" name="form-name" value="contact">
+                    <p class="hidden">
+                        <label>Don't fill this out if you're human: <input name="bot-field"></label>
+                    </p>
+
+                    <div class="form-group">
+                        <label for="name">Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject *</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Select a subject</option>
+                            <option value="recruiting">Recruiting Inquiry</option>
+                            <option value="academic">Academic Question</option>
+                            <option value="general">General Question</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" rows="6" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-primary">Send Message</button>
+                </form>
+            </div>
+
+            <div class="contact-info">
+                <h2>Quick Links</h2>
+                <ul class="contact-links">
+                    <li><a href="#" target="_blank">Highlight Video (YouTube)</a></li>
+                    <li><a href="#" target="_blank">Hudl Profile</a></li>
+                    <li><a href="/files/academic-resume.pdf" download>Download Academic Resume</a></li>
+                    <li><a href="mailto:[parent@email.com]">Email: [Parent/Contact Email]</a></li>
+                </ul>
+
+                <h3>Coach Contacts</h3>
+                <div class="coach-contact">
+                    <p><strong>High School Coach</strong></p>
+                    <p>[Coach Name]<br>
+                    <a href="mailto:[coach@email.com]">[Coach Email]</a></p>
+                </div>
+
+                <div class="coach-contact">
+                    <p><strong>AAU Coach</strong></p>
+                    <p>[Coach Name]<br>
+                    <a href="mailto:[coach@email.com]">[Coach Email]</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
