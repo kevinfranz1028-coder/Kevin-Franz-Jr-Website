@@ -1,0 +1,41 @@
+{
+  "title": "Character & Service",
+  "heading": "What I Stand For",
+  "subheading": "How I try to give back and the values that guide me.",
+  "values": [
+    {
+      "title": "Team First",
+      "description": "Success is measured by what we achieve together."
+    },
+    {
+      "title": "Accountability",
+      "description": "Hold myself to high standards on and off the court."
+    },
+    {
+      "title": "Curiosity",
+      "description": "Always learning, always asking questions."
+    },
+    {
+      "title": "Family",
+      "description": "Everything starts with the people who support me."
+    }
+  ],
+  "service": [
+    {
+      "title": "Youth Basketball Camps",
+      "description": "Volunteer coach for elementary players, teaching fundamentals and helping young athletes develop a love for the game."
+    },
+    {
+      "title": "Food Drive",
+      "description": "Organized collection for local shelter, working with teammates to give back to our community."
+    }
+  ],
+  "leadership": [
+    "JV Team Captain (2023)",
+    "Mentor for incoming freshmen on varsity"
+  ],
+  "testimonial": {
+    "quote": "Kevin leads by example. He's the first one in the gym and the last to leave. His work ethic is contagious.",
+    "attribution": "— [Coach/Teacher Name], [Title]"
+  }
+}

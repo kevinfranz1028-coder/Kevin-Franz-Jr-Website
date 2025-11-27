@@ -1,6 +1,6 @@
 ---
 layout: base.njk
-title: Contact
+title: {{ pages.contact.title }}
 description: Get in touch with Kevin Franz Jr. for recruiting inquiries, academic questions, or general information.
 permalink: /contact/
 ---
@@ -8,9 +8,9 @@ permalink: /contact/
 <section class="section-page-header">
     <div class="container">
         <div class="page-header-centered">
-            <span class="label-eyebrow">Contact</span>
-            <h1>Get in Touch</h1>
-            <p class="hero-subheadline">Questions about recruiting, academics, or scheduling a call? Reach out below.</p>
+            <span class="label-eyebrow">{{ pages.contact.title }}</span>
+            <h1>{{ pages.contact.heading }}</h1>
+            <p class="hero-subheadline">{{ pages.contact.subheadline }}</p>
         </div>
     </div>
 </section>
@@ -56,26 +56,25 @@ permalink: /contact/
             </div>
 
             <div class="contact-info">
+                {% if pages.contact.quickLinks.length > 0 %}
                 <h2>Quick Links</h2>
                 <ul class="contact-links">
-                    <li><a href="#" target="_blank">Highlight Video (YouTube)</a></li>
-                    <li><a href="#" target="_blank">Hudl Profile</a></li>
-                    <li><a href="/files/academic-resume.pdf" download>Download Academic Resume</a></li>
-                    <li><a href="mailto:[parent@email.com]">Email: [Parent/Contact Email]</a></li>
+                    {% for link in pages.contact.quickLinks %}
+                    <li><a href="{{ link.url }}" {% if 'http' in link.url %}target="_blank"{% endif %}>{{ link.text }}</a></li>
+                    {% endfor %}
                 </ul>
+                {% endif %}
 
+                {% if pages.contact.coaches.length > 0 %}
                 <h3>Coach Contacts</h3>
+                {% for coach in pages.contact.coaches %}
                 <div class="coach-contact">
-                    <p><strong>High School Coach</strong></p>
-                    <p>[Coach Name]<br>
-                    <a href="mailto:[coach@email.com]">[Coach Email]</a></p>
+                    <p><strong>{{ coach.title }}</strong></p>
+                    <p>{{ coach.name }}<br>
+                    <a href="mailto:{{ coach.email }}">{{ coach.email }}</a></p>
                 </div>
-
-                <div class="coach-contact">
-                    <p><strong>AAU Coach</strong></p>
-                    <p>[Coach Name]<br>
-                    <a href="mailto:[coach@email.com]">[Coach Email]</a></p>
-                </div>
+                {% endfor %}
+                {% endif %}
             </div>
         </div>
     </div>

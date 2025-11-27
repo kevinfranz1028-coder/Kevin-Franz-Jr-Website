@@ -1,0 +1,35 @@
+{
+  "title": "Contact",
+  "heading": "Get in Touch",
+  "subheading": "Questions about recruiting, academics, or scheduling a call? Reach out below.",
+  "quickLinks": [
+    {
+      "text": "Highlight Video (YouTube)",
+      "url": "https://youtu.be/D99uLbwXy7s"
+    },
+    {
+      "text": "Hudl Profile",
+      "url": "#"
+    },
+    {
+      "text": "Download Academic Resume",
+      "url": "/files/academic-resume.pdf"
+    },
+    {
+      "text": "Email: Kevinfranz1028@gmail.com",
+      "url": "mailto:Kevinfranz1028@gmail.com"
+    }
+  ],
+  "coaches": [
+    {
+      "title": "High School Coach",
+      "name": "[Coach Name]",
+      "email": "[coach@email.com]"
+    },
+    {
+      "title": "AAU Coach",
+      "name": "[Coach Name]",
+      "email": "[coach@email.com]"
+    }
+  ]
+}

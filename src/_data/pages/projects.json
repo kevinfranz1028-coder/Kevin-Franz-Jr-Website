@@ -1,0 +1,38 @@
+{
+  "title": "Projects & Passions",
+  "heading": "What I'm Working On",
+  "subheading": "What I'm learning and chasing outside of basketball.",
+  "categories": [
+    {
+      "title": "Weather & Meteorology",
+      "description": "",
+      "projects": [
+        {
+          "title": "Weather Blog",
+          "description": "Weekly forecasts and storm breakdowns analyzing atmospheric patterns and severe weather events.",
+          "link": ""
+        },
+        {
+          "title": "Severe Weather Tracking",
+          "description": "Following tornado outbreaks and analyzing data to understand storm formation and behavior.",
+          "link": ""
+        },
+        {
+          "title": "Science Fair Project",
+          "description": "[Project topic]",
+          "link": ""
+        }
+      ]
+    },
+    {
+      "title": "Film Study & Basketball IQ",
+      "description": "I spend hours each week breaking down film – both our games and college guards I admire. I'm obsessed with understanding why certain plays work, how great guards read defenses, and what makes a team click.",
+      "projects": []
+    },
+    {
+      "title": "Leadership & Mentorship",
+      "description": "I mentor younger players in our program, helping them with ball-handling drills and understanding defensive rotations. Teaching the game has made me a better player and leader.",
+      "projects": []
+    }
+  ]
+}

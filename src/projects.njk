@@ -1,6 +1,6 @@
 ---
 layout: base.njk
-title: Projects & Passions
+title: {{ pages.projects.title }}
 description: Personal projects and interests of Kevin Franz Jr. - meteorology, leadership, and what drives him beyond basketball.
 permalink: /projects/
 ---
@@ -8,49 +8,34 @@ permalink: /projects/
 <section class="section-page-header">
     <div class="container">
         <div class="page-header-centered">
-            <span class="label-eyebrow">Projects & Passions</span>
-            <h1>What I'm Working On</h1>
-            <p class="hero-subheadline">What I'm learning and chasing outside of basketball.</p>
+            <span class="label-eyebrow">{{ pages.projects.title }}</span>
+            <h1>{{ pages.projects.heading }}</h1>
+            <p class="hero-subheadline">{{ pages.projects.subheadline }}</p>
         </div>
     </div>
 </section>
 
 <section class="section-content">
     <div class="container">
-        <h2>Weather & Meteorology</h2>
+        {% for category in pages.projects.categories %}
+        <h2>{{ category.title }}</h2>
+        {% if category.description %}
+        <div>{{ category.description | safe }}</div>
+        {% endif %}
+
+        {% if category.projects and category.projects.length > 0 %}
         <div class="tiles-grid">
+            {% for project in category.projects %}
             <div class="tile-card">
-                <h3 class="tile-title">Weather Blog</h3>
-                <p class="tile-body">Weekly forecasts and storm breakdowns analyzing atmospheric patterns and severe weather events.</p>
+                <h3 class="tile-title">{{ project.title }}</h3>
+                <p class="tile-body">{{ project.description }}</p>
+                {% if project.link %}
+                <a href="{{ project.link }}" class="tile-cta" target="_blank">Learn More →</a>
+                {% endif %}
             </div>
-
-            <div class="tile-card">
-                <h3 class="tile-title">Severe Weather Tracking</h3>
-                <p class="tile-body">Following tornado outbreaks and analyzing data to understand storm formation and behavior.</p>
-            </div>
-
-            <div class="tile-card">
-                <h3 class="tile-title">Science Fair Project</h3>
-                <p class="tile-body">[Project topic - e.g., "Analyzing Temperature Inversions and Their Effect on Storm Development"]</p>
-            </div>
-
-            <div class="tile-card">
-                <h3 class="tile-title">Online Course</h3>
-                <p class="tile-body">Completed course on atmospheric dynamics and weather forecasting fundamentals.</p>
-            </div>
+            {% endfor %}
         </div>
-
-        <h2>Film Study & Basketball IQ</h2>
-        <p>I spend hours each week breaking down film – both our games and college guards I admire. I'm obsessed with understanding why certain plays work, how great guards read defenses, and what makes a team click.</p>
-
-        <h2>Leadership & Mentorship</h2>
-        <p>I mentor younger players in our program, helping them with ball-handling drills and understanding defensive rotations. Teaching the game has made me a better player and leader.</p>
-
-        <h2>What's Next</h2>
-        <ul>
-            <li>Earn a college scholarship and play at the next level</li>
-            <li>Study meteorology and work as a broadcast meteorologist or researcher</li>
-            <li>Keep learning, competing, and growing as a person</li>
-        </ul>
+        {% endif %}
+        {% endfor %}
     </div>
 </section>

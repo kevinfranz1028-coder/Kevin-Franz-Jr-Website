@@ -1,0 +1,31 @@
+{
+  "title": "Academics",
+  "heading": "Student-Athlete, Future Meteorologist",
+  "subheadline": "Committed to excellence in the classroom and on the court.",
+  "overview": {
+    "gpa": "3.85",
+    "gpaWeighted": "",
+    "rank": "[Rank] of [Total]",
+    "school": "Blue Valley Southwest",
+    "graduation": "Spring 2028"
+  },
+  "coursework": {
+    "honorsAP": [
+      "AP Environmental Science",
+      "Honors Algebra II",
+      "Honors English 10"
+    ],
+    "stem": [
+      "Atmospheric Science elective",
+      "Physics",
+      "Chemistry"
+    ]
+  },
+  "interests": "I'm especially drawn to atmospheric science and meteorology. I love analyzing weather patterns, understanding storm systems, and the challenge of turning data into forecasts. In college, I plan to study meteorology or atmospheric science while playing basketball.",
+  "awards": [
+    "Honor Roll (all semesters)",
+    "Blue Valley Southwest Academic Excellence Award"
+  ],
+  "resumePdf": "/files/academic-resume.pdf",
+  "image": "/images/academic-photo.jpg"
+}

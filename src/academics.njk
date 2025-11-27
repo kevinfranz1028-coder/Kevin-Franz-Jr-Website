@@ -1,6 +1,6 @@
 ---
 layout: base.njk
-title: Academics
+title: {{ pages.academics.title }}
 description: Academic profile for Kevin Franz Jr. - GPA, coursework, awards, and resume for Class of 2028 student-athlete.
 permalink: /academics/
 ---
@@ -8,9 +8,9 @@ permalink: /academics/
 <section class="section-page-header">
     <div class="container">
         <div class="page-header-centered">
-            <span class="label-eyebrow">Academics</span>
-            <h1>Student-Athlete, Future Meteorologist</h1>
-            <p class="hero-subheadline">Committed to excellence in the classroom and on the court.</p>
+            <span class="label-eyebrow">{{ pages.academics.title }}</span>
+            <h1>{{ pages.academics.heading }}</h1>
+            <p class="hero-subheadline">{{ pages.academics.subheadline }}</p>
         </div>
     </div>
 </section>
@@ -21,45 +21,54 @@ permalink: /academics/
             <div class="content-main">
                 <h2>Academic Overview</h2>
                 <div class="info-list">
-                    <div class="info-item"><strong>GPA:</strong> [Current GPA] (Unweighted) / [Weighted GPA] (Weighted)</div>
-                    <div class="info-item"><strong>Class Rank:</strong> [Rank] of [Total]</div>
-                    <div class="info-item"><strong>School:</strong> [High School Name]</div>
-                    <div class="info-item"><strong>Anticipated Graduation:</strong> Spring 2028</div>
+                    <div class="info-item"><strong>GPA:</strong> {{ pages.academics.overview.gpa }} (Unweighted){% if pages.academics.overview.gpaWeighted %} / {{ pages.academics.overview.gpaWeighted }} (Weighted){% endif %}</div>
+                    <div class="info-item"><strong>Class Rank:</strong> {{ pages.academics.overview.rank }}</div>
+                    <div class="info-item"><strong>School:</strong> {{ pages.academics.overview.school }}</div>
+                    <div class="info-item"><strong>Anticipated Graduation:</strong> {{ pages.academics.overview.graduation }}</div>
                 </div>
 
                 <h2>Current & Recent Coursework</h2>
+                {% if pages.academics.coursework.honorsAP.length > 0 %}
                 <h3>Honors / AP Classes</h3>
                 <ul>
-                    <li>AP Environmental Science</li>
-                    <li>Honors Algebra II</li>
-                    <li>Honors English 10</li>
-                    <li>[Additional courses]</li>
+                    {% for course in pages.academics.coursework.honorsAP %}
+                    <li>{{ course }}</li>
+                    {% endfor %}
                 </ul>
+                {% endif %}
 
+                {% if pages.academics.coursework.stem.length > 0 %}
                 <h3>STEM Focus</h3>
                 <ul>
-                    <li>Atmospheric Science elective</li>
-                    <li>Physics</li>
-                    <li>Chemistry</li>
+                    {% for course in pages.academics.coursework.stem %}
+                    <li>{{ course }}</li>
+                    {% endfor %}
                 </ul>
+                {% endif %}
 
                 <h2>Academic Interests & Goals</h2>
-                <p>I'm especially drawn to atmospheric science and meteorology. I love analyzing weather patterns, understanding storm systems, and the challenge of turning data into forecasts. In college, I plan to study meteorology or atmospheric science while playing basketball.</p>
+                <div>{{ pages.academics.interests | safe }}</div>
 
+                {% if pages.academics.awards.length > 0 %}
                 <h2>Awards & Recognition</h2>
                 <ul>
-                    <li>Honor Roll (all semesters)</li>
-                    <li>[School Name] Academic Excellence Award</li>
-                    <li>[Other awards]</li>
+                    {% for award in pages.academics.awards %}
+                    <li>{{ award }}</li>
+                    {% endfor %}
                 </ul>
+                {% endif %}
 
+                {% if pages.academics.resumePdf %}
                 <div class="cta-section">
-                    <a href="/files/academic-resume.pdf" class="btn-primary" download>Download Academic Resume (PDF)</a>
+                    <a href="{{ pages.academics.resumePdf }}" class="btn-primary" download>Download Academic Resume (PDF)</a>
                 </div>
+                {% endif %}
             </div>
 
             <div class="content-sidebar">
-                <img src="/images/academic-photo.jpg" alt="Kevin Franz Jr. academic photo" class="sidebar-image">
+                {% if pages.academics.image %}
+                <img src="{{ pages.academics.image }}" alt="{{ player.name }} academic photo" class="sidebar-image">
+                {% endif %}
             </div>
         </div>
     </div>

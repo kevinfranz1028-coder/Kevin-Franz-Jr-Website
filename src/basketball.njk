@@ -1,6 +1,6 @@
 ---
 layout: base.njk
-title: Basketball Profile
+title: {{ pages.basketball.title }}
 description: Complete basketball profile for Kevin Franz Jr. - stats, highlights, schedule, and recruiting information for Class of 2028 guard.
 permalink: /basketball/
 ---
@@ -9,10 +9,10 @@ permalink: /basketball/
 <section class="section-basketball-hero">
     <div class="container">
         <div class="page-header-centered">
-            <span class="label-eyebrow">Basketball Profile</span>
-            <h1>Guard • Class of 2028</h1>
-            <p class="hero-subheadline">6'2" combo guard focused on pace, decision-making, and on-ball defense.</p>
-            <p class="supporting-text">Current teams: [High School Name] ([State Classification if relevant]) • [Club/AAU Team Name]</p>
+            <span class="label-eyebrow">{{ pages.basketball.header.eyebrow }}</span>
+            <h1>{{ pages.basketball.header.heading }}</h1>
+            <p class="hero-subheadline">{{ pages.basketball.header.subheading }}</p>
+            <p class="supporting-text">{{ pages.basketball.header.supportingText }}</p>
         </div>
     </div>
 </section>
@@ -24,18 +24,18 @@ permalink: /basketball/
             <div class="measurables-text">
                 <h2>Player Information</h2>
                 <div class="info-list">
-                    <div class="info-item"><strong>Name:</strong> Kevin Franz Jr</div>
-                    <div class="info-item"><strong>Class:</strong> 2028</div>
-                    <div class="info-item"><strong>Position:</strong> Guard</div>
-                    <div class="info-item"><strong>Height / Weight:</strong> 6'2" / [Weight] lbs</div>
-                    <div class="info-item"><strong>Dominant Hand:</strong> Right</div>
-                    <div class="info-item"><strong>School:</strong> [High School Name] – [City, State]</div>
-                    <div class="info-item"><strong>Jersey:</strong> #[Number] (Varsity)</div>
-                    <div class="info-item"><strong>AAU / Club:</strong> [Team Name] – [Coach Name]</div>
+                    <div class="info-item"><strong>Name:</strong> {{ pages.basketball.playerInfo.name }}</div>
+                    <div class="info-item"><strong>Class:</strong> {{ pages.basketball.playerInfo.class }}</div>
+                    <div class="info-item"><strong>Position:</strong> {{ pages.basketball.playerInfo.position }}</div>
+                    <div class="info-item"><strong>Height / Weight:</strong> {{ pages.basketball.playerInfo.height }} / {{ pages.basketball.playerInfo.weight }}</div>
+                    <div class="info-item"><strong>Dominant Hand:</strong> {{ pages.basketball.playerInfo.hand }}</div>
+                    <div class="info-item"><strong>School:</strong> {{ pages.basketball.playerInfo.school }}</div>
+                    <div class="info-item"><strong>Jersey:</strong> #{{ pages.basketball.playerInfo.jersey }} (Varsity)</div>
+                    <div class="info-item"><strong>AAU / Club:</strong> {{ pages.basketball.playerInfo.aauTeam }}</div>
                 </div>
             </div>
             <div class="measurables-image-wrapper">
-                <img src="/images/basketball-action.jpg" alt="Kevin Franz Jr. basketball action shot" class="measurables-image">
+                <img src="{{ pages.basketball.playerInfo.image }}" alt="{{ pages.basketball.playerInfo.name }} basketball action shot" class="measurables-image">
             </div>
         </div>
     </div>
@@ -47,32 +47,36 @@ permalink: /basketball/
         <h2>Highlights</h2>
         <p class="subtitle">Recent highlight clips and full game film.</p>
         <div class="highlights-videos">
-            <div class="video-wrapper">
-                <div class="video-embed">
-                    {# Replace with actual YouTube/Vimeo embed #}
-                    <div class="video-placeholder">
-                        <p>Season Highlights 2024–25</p>
-                        <small>(Video embed placeholder - add your YouTube/Vimeo link)</small>
+            {% if pages.basketball.highlights and pages.basketball.highlights.length > 0 %}
+                {% for video in pages.basketball.highlights %}
+                <div class="video-wrapper">
+                    <div class="video-embed">
+                        {% if video.embedCode %}
+                            {{ video.embedCode | safe }}
+                        {% elif video.videoUrl %}
+                            {% if 'youtube.com' in video.videoUrl or 'youtu.be' in video.videoUrl %}
+                                {% set videoId = video.videoUrl | replace('https://youtu.be/', '') | replace('https://www.youtube.com/watch?v=', '') | replace('&', '?') | split('?') | first %}
+                                <iframe width="100%" height="315" src="https://www.youtube.com/embed/{{ videoId }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            {% else %}
+                                <div class="video-placeholder">
+                                    <p><a href="{{ video.videoUrl }}" target="_blank">Watch Video</a></p>
+                                </div>
+                            {% endif %}
+                        {% else %}
+                            <div class="video-placeholder">
+                                <p>Video Coming Soon</p>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="video-caption">
+                        <h3 class="video-title">{{ video.title }}</h3>
+                        <p>{{ video.description }}</p>
                     </div>
                 </div>
-                <div class="video-caption">
-                    <h3 class="video-title">Season Highlights – 2024–25 (2–4 min)</h3>
-                    <p>Mix of offensive and defensive clips from the first half of the 2024–25 season.</p>
-                </div>
-            </div>
-
-            <div class="video-wrapper">
-                <div class="video-embed">
-                    <div class="video-placeholder">
-                        <p>Full Game Film</p>
-                        <small>(Video embed placeholder - add your YouTube/Vimeo link)</small>
-                    </div>
-                </div>
-                <div class="video-caption">
-                    <h3 class="video-title">Full Game – vs [Opponent Name]</h3>
-                    <p>Full game footage showing on-ball defense, decision-making, and off-ball movement.</p>
-                </div>
-            </div>
+                {% endfor %}
+            {% else %}
+                <p>Highlight videos coming soon! Check back for updated footage.</p>
+            {% endif %}
         </div>
     </div>
 </section>
@@ -81,7 +85,11 @@ permalink: /basketball/
 <section class="section-stats">
     <div class="container">
         <h2>Season Stats</h2>
-        <p class="intro-text">Here are my current season averages. Detailed game logs are available on request or in the Updates section.</p>
+        {% if pages.basketball.stats.intro %}
+        <p class="intro-text">{{ pages.basketball.stats.intro }}</p>
+        {% endif %}
+
+        {% if pages.basketball.stats.table and pages.basketball.stats.table.length > 0 %}
         <div class="table-wrapper">
             <table class="stats-table">
                 <thead>
@@ -99,21 +107,24 @@ permalink: /basketball/
                     </tr>
                 </thead>
                 <tbody>
+                    {% for row in pages.basketball.stats.table %}
                     <tr>
-                        <td>2024–25</td>
-                        <td>[High School Varsity]</td>
-                        <td>[GP]</td>
-                        <td>[MPG]</td>
-                        <td>[PPG]</td>
-                        <td>[RPG]</td>
-                        <td>[APG]</td>
-                        <td>[SPG]</td>
-                        <td>[3P%]</td>
-                        <td>[FT%]</td>
+                        <td>{{ row.season }}</td>
+                        <td>{{ row.team }}</td>
+                        <td>{{ row.gp }}</td>
+                        <td>{{ row.mpg }}</td>
+                        <td>{{ row.ppg }}</td>
+                        <td>{{ row.rpg }}</td>
+                        <td>{{ row.apg }}</td>
+                        <td>{{ row.spg }}</td>
+                        <td>{{ row.threePct }}</td>
+                        <td>{{ row.ftPct }}</td>
                     </tr>
+                    {% endfor %}
                 </tbody>
             </table>
         </div>
+        {% endif %}
     </div>
 </section>
 
@@ -150,18 +161,23 @@ permalink: /basketball/
         <div class="achievements-grid">
             <div class="achievements-list">
                 <h3>Honors & Awards</h3>
+                {% if pages.basketball.achievements.list and pages.basketball.achievements.list.length > 0 %}
                 <ul>
-                    <li>2024 – [League/Conference Name] All-[League] Honorable Mention</li>
-                    <li>2023 – JV Team Captain</li>
-                    <li>2023 – [Tournament Name] All-Tournament Team</li>
-                    <li>2023 – [High School Name] Academic Honor Roll (4.0 GPA)</li>
+                    {% for achievement in pages.basketball.achievements.list %}
+                    <li>{{ achievement }}</li>
+                    {% endfor %}
                 </ul>
+                {% else %}
+                <p>Achievements coming soon!</p>
+                {% endif %}
             </div>
             <div class="quote-section">
+                {% if pages.basketball.achievements.quote %}
                 <div class="quote-card">
-                    <p class="quote-text">"Kevin sets the tone on both ends of the floor. He's a leader in our locker room and a coach on the court."</p>
-                    <p class="quote-attribution">— [Coach Name], Head Coach, [High School Name]</p>
+                    <p class="quote-text">"{{ pages.basketball.achievements.quote.text }}"</p>
+                    <p class="quote-attribution">{{ pages.basketball.achievements.quote.attribution }}</p>
                 </div>
+                {% endif %}
             </div>
         </div>
     </div>
@@ -172,21 +188,19 @@ permalink: /basketball/
     <div class="container">
         <h2>Training & Development</h2>
         <div class="training-content">
+            {% if pages.basketball.training.focusAreas %}
             <h3>Off-Season Focus Areas</h3>
-            <ul>
-                <li>Ball handling under pressure and pick-and-roll reads</li>
-                <li>Catch-and-shoot 3s and off-the-dribble shooting</li>
-                <li>On-ball defense and strength</li>
-            </ul>
+            <div>{{ pages.basketball.training.focusAreas | replace('\n', '<br>') | safe }}</div>
+            {% endif %}
 
+            {% if pages.basketball.training.routine %}
             <h3>Training Routine</h3>
-            <ul>
-                <li>Skill sessions: [X] days per week with [Trainer/Coach Name]</li>
-                <li>Weight room: [X] days per week focused on strength and mobility</li>
-                <li>Film study: breaking down our games and college guards I want to emulate</li>
-            </ul>
+            <div>{{ pages.basketball.training.routine | replace('\n', '<br>') | safe }}</div>
+            {% endif %}
 
-            <p>I'm always working to become a more complete guard – someone who can run a team, guard multiple positions, and make teammates better.</p>
+            {% if pages.basketball.training.statement %}
+            <p style="margin-top: 2rem;">{{ pages.basketball.training.statement }}</p>
+            {% endif %}
         </div>
     </div>
 </section>
@@ -197,24 +211,26 @@ permalink: /basketball/
         <div class="contact-card">
             <h2>Contact & References</h2>
             <div class="contact-content">
-                <div class="contact-block">
-                    <h4>Head Coach – [High School Name]</h4>
-                    <p>[Coach Name] – <a href="mailto:[coach@email.com]">[Coach Email]</a> – [Coach Phone]</p>
-                </div>
-
-                <div class="contact-block">
-                    <h4>Club / AAU Coach</h4>
-                    <p>[Coach Name] – <a href="mailto:[coach@email.com]">[Coach Email]</a> – [Coach Phone]</p>
-                </div>
-
+                {% if pages.basketball.contacts and pages.basketball.contacts.length > 0 %}
+                    {% for contact in pages.basketball.contacts %}
+                    <div class="contact-block">
+                        <h4>{{ contact.role }}</h4>
+                        <p>{{ contact.name }}
+                        {% if contact.email %} – <a href="mailto:{{ contact.email }}">{{ contact.email }}</a>{% endif %}
+                        {% if contact.phone %} – {{ contact.phone }}{% endif %}
+                        </p>
+                    </div>
+                    {% endfor %}
+                {% else %}
                 <div class="contact-block">
                     <h4>Family Contact</h4>
-                    <p>For recruiting or academic questions, please reach out to my dad, Kevin Franz:</p>
-                    <p><a href="mailto:[parent@email.com]">[Parent Email]</a> · [Parent Phone, if desired]</p>
+                    <p>For recruiting or academic questions, please reach out:</p>
+                    <p><a href="mailto:{{ player.parentEmail }}">{{ player.parentEmail }}</a>{% if player.parentPhone %} · {{ player.parentPhone }}{% endif %}</p>
                 </div>
+                {% endif %}
 
                 <div class="contact-cta">
-                    <a href="mailto:[parent@email.com]?subject=Recruiting Inquiry – Kevin Franz Jr." class="btn-primary">Email About Recruiting</a>
+                    <a href="mailto:{{ player.parentEmail }}?subject=Recruiting Inquiry – {{ player.name }}" class="btn-primary">Email About Recruiting</a>
                 </div>
             </div>
         </div>
