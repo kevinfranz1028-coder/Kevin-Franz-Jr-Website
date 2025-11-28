@@ -1,7 +1,7 @@
 /**
- * Claude AI Widget for Netlify CMS
+ * Enhanced Claude AI Widget for Netlify CMS
  *
- * This custom widget adds AI-powered content generation capabilities
+ * This custom widget adds AI-powered content generation AND site editing capabilities
  * to the Netlify CMS interface using Claude API.
  */
 
@@ -13,7 +13,9 @@ const ClaudeControl = window.createClass({
       message: '',
       isLoading: false,
       chatHistory: [],
-      error: null
+      error: null,
+      mode: 'content', // 'content' or 'site-editor'
+      uploadQueue: []
     };
   },
 
@@ -34,6 +36,18 @@ const ClaudeControl = window.createClass({
     this.setState({ isOpen: !this.state.isOpen });
   },
 
+  switchMode(mode) {
+    this.setState({
+      mode: mode,
+      chatHistory: [...this.state.chatHistory, {
+        role: 'system',
+        content: mode === 'content'
+          ? 'Switched to Content Generation mode. I\'ll help you create content for this field.'
+          : 'Switched to Site Editor mode. I can now edit any part of your website, not just this field!'
+      }]
+    });
+  },
+
   handleMessageChange(e) {
     this.setState({ message: e.target.value });
   },
@@ -41,7 +55,7 @@ const ClaudeControl = window.createClass({
   async sendMessage(e) {
     e.preventDefault();
 
-    const { message, chatHistory } = this.state;
+    const { message, chatHistory, mode } = this.state;
     if (!message.trim()) return;
 
     // Add user message to chat
@@ -58,47 +72,13 @@ const ClaudeControl = window.createClass({
     });
 
     try {
-      // Get context from the current entry
-      const entry = this.props.entry;
-      const contentType = this.getContentType();
-      const context = this.buildContext(entry);
-
-      // Call Netlify Function
-      const response = await fetch('/.netlify/functions/claude-ai', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          message: message,
-          contentType: contentType,
-          context: context
-        })
-      });
-
-      if (!response.ok) {
-        throw new Error(`API request failed: ${response.status}`);
+      if (mode === 'site-editor') {
+        // Site Editor Mode - Make changes across the entire site
+        await this.handleSiteEditorRequest(message, newHistory);
+      } else {
+        // Content Generation Mode - Generate content for this field only
+        await this.handleContentGenerationRequest(message, newHistory);
       }
-
-      const data = await response.json();
-
-      // Add AI response to chat
-      const assistantMessage = {
-        role: 'assistant',
-        content: data.rawResponse || JSON.stringify(data.data, null, 2),
-        data: data.data
-      };
-
-      this.setState({
-        isLoading: false,
-        chatHistory: [...newHistory, assistantMessage]
-      });
-
-      // If the response contains structured content, offer to apply it
-      if (data.data && data.data.content) {
-        this.offerToApplyContent(data.data.content);
-      }
-
     } catch (error) {
       console.error('Error calling Claude API:', error);
       this.setState({
@@ -113,6 +93,116 @@ const ClaudeControl = window.createClass({
         ]
       });
     }
+  },
+
+  async handleContentGenerationRequest(message, newHistory) {
+    // Get context from the current entry
+    const entry = this.props.entry;
+    const contentType = this.getContentType();
+    const context = this.buildContext(entry);
+
+    // Call Netlify Function for content generation
+    const response = await fetch('/.netlify/functions/claude-ai', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        message: message,
+        contentType: contentType,
+        context: context
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error(`API request failed: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    // Add AI response to chat
+    const assistantMessage = {
+      role: 'assistant',
+      content: data.rawResponse || JSON.stringify(data.data, null, 2),
+      data: data.data
+    };
+
+    this.setState({
+      isLoading: false,
+      chatHistory: [...newHistory, assistantMessage]
+    });
+
+    // If the response contains structured content, offer to apply it
+    if (data.data && data.data.content) {
+      this.offerToApplyContent(data.data.content);
+    }
+  },
+
+  async handleSiteEditorRequest(message, newHistory) {
+    // Get page context
+    const pageContext = this.gatherPageContext();
+
+    // Call Site Editor Function
+    const response = await fetch('/.netlify/functions/ai-site-editor', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        message: message,
+        context: pageContext
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error(`API request failed: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    if (data.success) {
+      const assistantMessage = {
+        role: 'assistant',
+        content: data.message,
+        details: data.details
+      };
+
+      this.setState({
+        isLoading: false,
+        chatHistory: [...newHistory, assistantMessage]
+      });
+
+      // If changes were made, show reload prompt
+      if (data.changesApplied) {
+        this.setState({
+          chatHistory: [
+            ...newHistory,
+            assistantMessage,
+            {
+              role: 'system',
+              content: '✅ Changes deployed! Your site is being rebuilt. It may take a minute to see the changes live.',
+              deployUrl: data.deployUrl
+            }
+          ]
+        });
+      }
+    } else {
+      throw new Error(data.error || 'Site editor request failed');
+    }
+  },
+
+  gatherPageContext() {
+    // Get entry context if available
+    const entry = this.props.entry;
+    const collection = this.props.collection;
+
+    return {
+      url: window.location.pathname,
+      contentType: this.getContentType(),
+      collectionName: collection ? collection.get('name') : 'unknown',
+      entryData: entry ? this.buildContext(entry) : {},
+      timestamp: new Date().toISOString()
+    };
   },
 
   offerToApplyContent(content) {
@@ -178,7 +268,7 @@ const ClaudeControl = window.createClass({
   },
 
   render() {
-    const { isOpen, message, isLoading, chatHistory, error, suggestedContent } = this.state;
+    const { isOpen, message, isLoading, chatHistory, error, suggestedContent, mode } = this.state;
     const { forID, value, classNameWrapper } = this.props;
 
     return window.h(
@@ -194,7 +284,7 @@ const ClaudeControl = window.createClass({
             className: 'claude-toggle-btn',
             onClick: this.toggleWidget
           },
-          '🤖 AI Assistant' + (isOpen ? ' (Click to close)' : '')
+          '🤖 AI Assistant' + (isOpen ? ' (Click to close)' : '') + (mode === 'site-editor' ? ' - Site Editor Mode' : '')
         ),
 
         // AI Chat Panel
@@ -209,14 +299,47 @@ const ClaudeControl = window.createClass({
               [
                 window.h('h3', { key: 'title' }, '🤖 Claude AI Assistant'),
                 window.h(
-                  'button',
-                  {
-                    key: 'clear',
-                    type: 'button',
-                    className: 'claude-clear-btn',
-                    onClick: this.clearChat
-                  },
-                  'Clear Chat'
+                  'div',
+                  { key: 'actions', className: 'claude-header-actions' },
+                  [
+                    // Mode Switcher
+                    window.h(
+                      'div',
+                      { key: 'mode-switcher', className: 'claude-mode-switcher' },
+                      [
+                        window.h(
+                          'button',
+                          {
+                            key: 'content-mode',
+                            type: 'button',
+                            className: 'claude-mode-btn' + (mode === 'content' ? ' active' : ''),
+                            onClick: () => this.switchMode('content')
+                          },
+                          '📝 Content'
+                        ),
+                        window.h(
+                          'button',
+                          {
+                            key: 'editor-mode',
+                            type: 'button',
+                            className: 'claude-mode-btn' + (mode === 'site-editor' ? ' active' : ''),
+                            onClick: () => this.switchMode('site-editor')
+                          },
+                          '🛠️ Site Editor'
+                        )
+                      ]
+                    ),
+                    window.h(
+                      'button',
+                      {
+                        key: 'clear',
+                        type: 'button',
+                        className: 'claude-clear-btn',
+                        onClick: this.clearChat
+                      },
+                      'Clear'
+                    )
+                  ]
                 )
               ]
             ),
@@ -294,7 +417,9 @@ const ClaudeControl = window.createClass({
                   className: 'claude-input',
                   value: message,
                   onChange: this.handleMessageChange,
-                  placeholder: 'Ask Claude to generate or modify content...\n\nExamples:\n- "Create a game recap for yesterday vs Lincoln High"\n- "Generate a timeline entry for freshman year"\n- "Write an update about my latest tournament"',
+                  placeholder: mode === 'content'
+                    ? 'Ask Claude to generate or modify content for this field...\n\nExamples:\n- "Create a game recap for yesterday vs Lincoln High"\n- "Generate a timeline entry for freshman year"\n- "Write an update about my latest tournament"'
+                    : 'Tell me what you want to change on your website...\n\nExamples:\n- "Add my latest GPA to the academics page"\n- "Update the hero image on the homepage"\n- "Create a new game entry for tonight\'s match"',
                   rows: 4,
                   disabled: isLoading
                 }),
