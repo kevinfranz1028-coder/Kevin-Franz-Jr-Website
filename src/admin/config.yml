@@ -5,7 +5,7 @@ backend:
   name: github
   repo: kevinfranz1028-coder/Kevin-Franz-Jr-Website
   branch: claude/webflow-athlete-site-01HLo1N59xxVGUuATbNLk2s4
-  base_url: https://your-site.pages.dev  # ← CHANGE THIS to your actual URL!
+  base_url: https://kevin-franz-jr.kevinfranz1028.workers.dev
   auth_endpoint: auth
 
 # Media Files
