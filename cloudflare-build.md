@@ -17,11 +17,27 @@ When setting up your Cloudflare Pages project, use these settings:
 You'll need to set these in Cloudflare Pages Dashboard → Settings → Environment variables:
 
 ```
+# AI Functions
 ANTHROPIC_API_KEY=sk-ant-xxxxxxxxxxxxxxxxxxxxxxxx
 GITHUB_TOKEN=ghp_xxxxxxxxxxxxxxxxxxxxxxxx
 GITHUB_REPO=kevinfranz1028-coder/Kevin-Franz-Jr-Website
-GITHUB_BRANCH=claude/webflow-athlete-site-01HLo1N59xxVGUuATbNLk2s4
+GITHUB_BRANCH=claude/new-session-01NzEvUVxZkbsoz2ehxruTvK
+
+# Decap CMS OAuth (Required for CMS authentication)
+GITHUB_OAUTH_CLIENT_ID=Ov23xxxxxxxxxxxx
+GITHUB_OAUTH_CLIENT_SECRET=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
+
+#### How to get OAuth credentials:
+
+1. Go to GitHub Settings → Developer settings → OAuth Apps: https://github.com/settings/developers
+2. Click "New OAuth App" (or use your existing "Kevin Franz Jr Website CMS" app)
+3. Set these values:
+   - **Application name**: Kevin Franz Jr Website CMS
+   - **Homepage URL**: `https://kevin-franz-jr-website-2.pages.dev`
+   - **Authorization callback URL**: `https://kevin-franz-jr-website-2.pages.dev/callback`
+4. After creating, copy the **Client ID** and generate a new **Client Secret**
+5. Add both to Cloudflare Pages environment variables
 
 ### Branch Configuration
 
