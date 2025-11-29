@@ -11,13 +11,15 @@
     <script defer src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
-    {% include "nav.njk" %}
+    {# Modern Layout with Sidebar Navigation #}
+    <div class="main-wrapper">
+        {% include "sidebar.njk" %}
 
-    <main>
-        {{ content | safe }}
-    </main>
-
-    {% include "footer.njk" %}
+        <main class="main-content">
+            {{ content | safe }}
+            {% include "footer.njk" %}
+        </main>
+    </div>
 
     <script src="/js/main.js"></script>
     <script src="/js/modern-animations.js"></script>
