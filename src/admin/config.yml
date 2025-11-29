@@ -1,8 +1,14 @@
+# Backend Configuration
+# IMPORTANT: Update base_url to match your actual Cloudflare Pages URL
+# Example: https://kevin-franz-jr-website.pages.dev
 backend:
   name: github
   repo: kevinfranz1028-coder/Kevin-Franz-Jr-Website
   branch: claude/webflow-athlete-site-01HLo1N59xxVGUuATbNLk2s4
+  base_url: https://your-site.pages.dev  # ← CHANGE THIS to your actual URL!
+  auth_endpoint: auth
 
+# Media Files
 media_folder: "src/images"
 public_folder: "/images"
 
