@@ -7,7 +7,7 @@
   <link rel="icon" type="image/png" href="/images/favicon.png" />
 
   <!-- Decap CMS (formerly Netlify CMS) -->
-  <script src="https://unpkg.com/decap-cms@^3.3.0/dist/decap-cms.js"></script>
+  <script src="https://unpkg.com/decap-cms@^3.3.0/dist/decap-cms.js" defer></script>
 
   <!-- Custom CMS Styling -->
   <style>
@@ -177,18 +177,31 @@
   <!-- Decap CMS will be injected here -->
 
   <script>
-    // Initialize CMS
-    CMS.init();
+    // Wait for DOM and CMS to be ready
+    window.addEventListener('DOMContentLoaded', function() {
+      // Check if CMS is loaded, if not wait for it
+      function initializeCMS() {
+        if (window.CMS) {
+          console.log('✅ Decap CMS script loaded');
 
-    // Register custom preview styles
-    CMS.registerPreviewStyle("/css/style.css");
-    CMS.registerPreviewStyle("/css/style-modern.css");
+          // Initialize CMS
+          CMS.init();
 
-    // Custom configuration
-    if (window.CMS) {
-      console.log('✅ Content Management System loaded successfully');
-      console.log('📝 Modern, professional CMS interface active');
-    }
+          // Register custom preview styles
+          CMS.registerPreviewStyle("/css/style.css");
+          CMS.registerPreviewStyle("/css/style-modern.css");
+
+          console.log('✅ Content Management System initialized successfully');
+          console.log('📝 Modern, professional CMS interface active');
+        } else {
+          console.log('⏳ Waiting for Decap CMS to load...');
+          // Retry after a short delay
+          setTimeout(initializeCMS, 100);
+        }
+      }
+
+      initializeCMS();
+    });
   </script>
 </body>
 </html>
