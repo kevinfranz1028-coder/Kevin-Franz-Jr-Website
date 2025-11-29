@@ -1,6 +1,4 @@
 # Backend Configuration
-# IMPORTANT: Update base_url to match your actual Cloudflare Pages URL
-# Example: https://kevin-franz-jr-website.pages.dev
 backend:
   name: github
   repo: kevinfranz1028-coder/Kevin-Franz-Jr-Website
@@ -8,9 +6,19 @@ backend:
   base_url: https://kevin-franz-jr.kevinfranz1028.workers.dev
   auth_endpoint: auth
 
-# Media Files
+# Media Library Configuration - Native with drag & drop support
 media_folder: "src/images"
 public_folder: "/images"
+
+# Site URL
+site_url: https://kevin-franz-jr-website.pages.dev
+display_url: https://kevin-franz-jr-website.pages.dev
+
+# Editor Settings - Editorial Workflow for review before publish
+publish_mode: editorial_workflow
+
+# Logo (optional - uncomment when you have a logo)
+# logo_url: /images/logo.png
 
 collections:
   # ============================================
@@ -28,7 +36,7 @@ collections:
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Summary", name: "summary", widget: "text", hint: "Short description (150 characters max)"}
       - {label: "Cover Image", name: "coverImage", widget: "image", required: false}
-      - {label: "Body", name: "body", widget: "claude-ai"}
+      - {label: "Body", name: "body", widget: "markdown"}
       - {label: "Featured", name: "featured", widget: "boolean", default: false, required: false}
 
   # ============================================
@@ -90,7 +98,7 @@ collections:
         fields:
           - {label: "Image", name: "image", widget: "image"}
           - {label: "Caption", name: "caption", widget: "string"}
-      - {label: "Body", name: "body", widget: "claude-ai"}
+      - {label: "Body", name: "body", widget: "markdown"}
 
   # ============================================
   # PAGES (Editable Content)
@@ -136,7 +144,7 @@ collections:
             fields:
               - {label: "Eyebrow Text", name: "eyebrow", widget: "string", default: "About Kevin"}
               - {label: "Heading", name: "heading", widget: "string"}
-              - {label: "Body", name: "body", widget: "claude-ai"}
+              - {label: "Body", name: "body", widget: "markdown"}
               - {label: "Image", name: "image", widget: "image"}
 
           # What You'll Find Here Tiles
@@ -542,3 +550,119 @@ collections:
             fields:
               - {label: "Text", name: "text", widget: "string"}
               - {label: "URL", name: "url", widget: "string"}
+
+      # DESIGN SETTINGS (Webflow-like controls)
+      - label: "Design & Styling"
+        name: "design"
+        file: "src/_data/design.json"
+        fields:
+          # Colors
+          - label: "Colors"
+            name: "colors"
+            widget: "object"
+            collapsed: false
+            fields:
+              - {label: "Primary Color", name: "primary", widget: "color", default: "#1B5E20", hint: "Main brand color"}
+              - {label: "Primary Dark", name: "primaryDark", widget: "color", default: "#0d3d11"}
+              - {label: "Secondary Color", name: "secondary", widget: "color", default: "#43A047"}
+              - {label: "Secondary Light", name: "secondaryLight", widget: "color", default: "#66BB6A"}
+              - {label: "Accent Color", name: "accent", widget: "color", default: "#C5E1A5"}
+              - {label: "Accent Gold", name: "accentGold", widget: "color", default: "#FFB300"}
+              - {label: "Text Dark", name: "textDark", widget: "color", default: "#0f172a"}
+              - {label: "Text Gray", name: "textGray", widget: "color", default: "#475569"}
+              - {label: "Text Light", name: "textLight", widget: "color", default: "#94a3b8"}
+              - {label: "Background Light", name: "bgLight", widget: "color", default: "#f8fafc"}
+              - {label: "Background White", name: "bgWhite", widget: "color", default: "#ffffff"}
+              - {label: "Border Color", name: "borderColor", widget: "color", default: "#e2e8f0"}
+
+          # Typography
+          - label: "Typography"
+            name: "typography"
+            widget: "object"
+            collapsed: false
+            fields:
+              - label: "Font Family"
+                name: "fontFamily"
+                widget: "select"
+                default: "system"
+                options:
+                  - {label: "System Default", value: "system"}
+                  - {label: "Inter", value: "inter"}
+                  - {label: "Roboto", value: "roboto"}
+                  - {label: "Open Sans", value: "opensans"}
+                  - {label: "Lato", value: "lato"}
+                  - {label: "Montserrat", value: "montserrat"}
+                  - {label: "Poppins", value: "poppins"}
+                  - {label: "Work Sans", value: "worksans"}
+              - label: "Heading Font"
+                name: "headingFont"
+                widget: "select"
+                default: "system"
+                options:
+                  - {label: "Same as Body", value: "system"}
+                  - {label: "Inter", value: "inter"}
+                  - {label: "Roboto", value: "roboto"}
+                  - {label: "Montserrat", value: "montserrat"}
+                  - {label: "Poppins", value: "poppins"}
+              - {label: "Base Font Size (px)", name: "baseFontSize", widget: "number", default: 16, min: 14, max: 20}
+              - {label: "Line Height", name: "lineHeight", widget: "number", default: 1.7, step: 0.1, min: 1.2, max: 2}
+              - {label: "Heading Weight", name: "headingWeight", widget: "select", options: ["600", "700", "800", "900"], default: "800"}
+
+          # Spacing
+          - label: "Spacing & Layout"
+            name: "spacing"
+            widget: "object"
+            collapsed: true
+            fields:
+              - {label: "Container Max Width (px)", name: "containerWidth", widget: "number", default: 1200, min: 960, max: 1600}
+              - {label: "Section Padding Top/Bottom (rem)", name: "sectionPadding", widget: "number", default: 6, min: 3, max: 10, step: 0.5}
+              - {label: "Card Border Radius (rem)", name: "cardBorderRadius", widget: "number", default: 1, min: 0, max: 2, step: 0.25}
+              - {label: "Button Border Radius (rem)", name: "buttonBorderRadius", widget: "number", default: 0.75, min: 0, max: 2, step: 0.25}
+
+          # Effects
+          - label: "Visual Effects"
+            name: "effects"
+            widget: "object"
+            collapsed: true
+            fields:
+              - {label: "Enable Shadows", name: "enableShadows", widget: "boolean", default: true}
+              - {label: "Enable Animations", name: "enableAnimations", widget: "boolean", default: true}
+              - {label: "Transition Speed (ms)", name: "transitionSpeed", widget: "number", default: 250, min: 100, max: 500, step: 50}
+              - label: "Shadow Intensity"
+                name: "shadowIntensity"
+                widget: "select"
+                default: "medium"
+                options:
+                  - {label: "Subtle", value: "subtle"}
+                  - {label: "Medium", value: "medium"}
+                  - {label: "Strong", value: "strong"}
+
+          # Navigation Style
+          - label: "Navigation"
+            name: "navigation"
+            widget: "object"
+            collapsed: true
+            fields:
+              - label: "Navigation Position"
+                name: "position"
+                widget: "select"
+                default: "sticky"
+                options:
+                  - {label: "Sticky (stays at top)", value: "sticky"}
+                  - {label: "Fixed (always visible)", value: "fixed"}
+                  - {label: "Static (scrolls away)", value: "static"}
+              - {label: "Background Color", name: "backgroundColor", widget: "color", default: "#ffffff"}
+              - {label: "Text Color", name: "textColor", widget: "color", default: "#0f172a"}
+              - {label: "Enable Backdrop Blur", name: "backdropBlur", widget: "boolean", default: true}
+
+          # Button Styles
+          - label: "Buttons"
+            name: "buttons"
+            widget: "object"
+            collapsed: true
+            fields:
+              - {label: "Primary Button Background", name: "primaryBg", widget: "color", default: "#1B5E20"}
+              - {label: "Primary Button Text", name: "primaryText", widget: "color", default: "#ffffff"}
+              - {label: "Secondary Button Border", name: "secondaryBorder", widget: "color", default: "#1B5E20"}
+              - {label: "Button Padding (rem)", name: "padding", widget: "string", default: "1rem 2.5rem"}
+              - {label: "Button Font Size (rem)", name: "fontSize", widget: "number", default: 1, min: 0.875, max: 1.25, step: 0.125}

@@ -1,0 +1,48 @@
+{
+  "colors": {
+    "primary": "#1B5E20",
+    "primaryDark": "#0d3d11",
+    "secondary": "#43A047",
+    "secondaryLight": "#66BB6A",
+    "accent": "#C5E1A5",
+    "accentGold": "#FFB300",
+    "textDark": "#0f172a",
+    "textGray": "#475569",
+    "textLight": "#94a3b8",
+    "bgLight": "#f8fafc",
+    "bgWhite": "#ffffff",
+    "borderColor": "#e2e8f0"
+  },
+  "typography": {
+    "fontFamily": "system",
+    "headingFont": "system",
+    "baseFontSize": 16,
+    "lineHeight": 1.7,
+    "headingWeight": "800"
+  },
+  "spacing": {
+    "containerWidth": 1200,
+    "sectionPadding": 6,
+    "cardBorderRadius": 1,
+    "buttonBorderRadius": 0.75
+  },
+  "effects": {
+    "enableShadows": true,
+    "enableAnimations": true,
+    "transitionSpeed": 250,
+    "shadowIntensity": "medium"
+  },
+  "navigation": {
+    "position": "sticky",
+    "backgroundColor": "#ffffff",
+    "textColor": "#0f172a",
+    "backdropBlur": true
+  },
+  "buttons": {
+    "primaryBg": "#1B5E20",
+    "primaryText": "#ffffff",
+    "secondaryBorder": "#1B5E20",
+    "padding": "1rem 2.5rem",
+    "fontSize": 1
+  }
+}

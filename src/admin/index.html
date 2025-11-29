@@ -1,21 +1,194 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Content Manager - Kevin Franz Jr.</title>
-  <!-- Enhanced Widget Styles -->
-  <link rel="stylesheet" href="/admin/claude-widget.css" />
-  <link rel="stylesheet" href="/admin/media-upload-widget.css" />
+  <link rel="icon" type="image/png" href="/images/favicon.png" />
+
+  <!-- Decap CMS (formerly Netlify CMS) -->
+  <script src="https://unpkg.com/decap-cms@^3.3.0/dist/decap-cms.js"></script>
+
+  <!-- Custom CMS Styling -->
+  <style>
+    /* Professional, Modern CMS Interface */
+    :root {
+      --primary-color: #1B5E20;
+      --primary-hover: #2E7D32;
+      --background: #f5f5f5;
+      --sidebar-bg: #ffffff;
+      --text-primary: #1a1a1a;
+      --text-secondary: #666666;
+      --border-color: #e0e0e0;
+    }
+
+    /* Clean, modern sidebar */
+    [class*="SidebarContainer"] {
+      background-color: var(--sidebar-bg) !important;
+      border-right: 1px solid var(--border-color) !important;
+    }
+
+    /* Modern top bar */
+    [class*="AppHeader"] {
+      background: var(--sidebar-bg) !important;
+      border-bottom: 1px solid var(--border-color) !important;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05) !important;
+    }
+
+    /* Clean buttons */
+    button[class*="Button"] {
+      border-radius: 6px !important;
+      font-weight: 500 !important;
+      transition: all 0.2s ease !important;
+    }
+
+    button[class*="Button-primary"] {
+      background-color: var(--primary-color) !important;
+      border-color: var(--primary-color) !important;
+    }
+
+    button[class*="Button-primary"]:hover {
+      background-color: var(--primary-hover) !important;
+      border-color: var(--primary-hover) !important;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(27, 94, 32, 0.3) !important;
+    }
+
+    /* Modern cards */
+    [class*="Card"] {
+      border-radius: 8px !important;
+      border: 1px solid var(--border-color) !important;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05) !important;
+      transition: all 0.2s ease !important;
+    }
+
+    [class*="Card"]:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08) !important;
+      transform: translateY(-2px);
+    }
+
+    /* Clean inputs */
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    input[type="url"],
+    textarea,
+    select {
+      border-radius: 6px !important;
+      border: 1px solid var(--border-color) !important;
+      padding: 10px 14px !important;
+      font-size: 14px !important;
+      transition: all 0.2s ease !important;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: var(--primary-color) !important;
+      box-shadow: 0 0 0 3px rgba(27, 94, 32, 0.1) !important;
+      outline: none !important;
+    }
+
+    /* Modern collection list */
+    [class*="ListCard"] {
+      border-radius: 8px !important;
+      margin-bottom: 12px !important;
+    }
+
+    /* Clean media library */
+    [class*="MediaLibrary"] {
+      border-radius: 8px !important;
+    }
+
+    /* Professional color picker */
+    input[type="color"] {
+      width: 60px !important;
+      height: 40px !important;
+      border-radius: 6px !important;
+      border: 1px solid var(--border-color) !important;
+      cursor: pointer !important;
+    }
+
+    /* Modern toggle switches */
+    [class*="Toggle"] {
+      border-radius: 12px !important;
+    }
+
+    /* Clean markdown editor */
+    [class*="MarkdownControl"] {
+      border-radius: 8px !important;
+      border: 1px solid var(--border-color) !important;
+    }
+
+    /* Modern image upload area */
+    [class*="ImageUpload"] {
+      border-radius: 8px !important;
+      border: 2px dashed var(--border-color) !important;
+      background-color: #fafafa !important;
+      transition: all 0.2s ease !important;
+    }
+
+    [class*="ImageUpload"]:hover {
+      border-color: var(--primary-color) !important;
+      background-color: rgba(27, 94, 32, 0.02) !important;
+    }
+
+    /* Remove outdated/retro styling */
+    * {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif !important;
+    }
+
+    /* Success messages */
+    [class*="Toast-success"] {
+      background-color: #4CAF50 !important;
+      border-radius: 8px !important;
+    }
+
+    /* Error messages */
+    [class*="Toast-error"] {
+      background-color: #f44336 !important;
+      border-radius: 8px !important;
+    }
+
+    /* Loading spinner */
+    [class*="Loader"] {
+      color: var(--primary-color) !important;
+    }
+
+    /* Sidebar navigation */
+    [class*="SidebarNav"] a {
+      border-radius: 6px !important;
+      margin: 4px 8px !important;
+      transition: all 0.2s ease !important;
+    }
+
+    [class*="SidebarNav"] a:hover {
+      background-color: rgba(27, 94, 32, 0.08) !important;
+    }
+
+    [class*="SidebarNav"] a[class*="active"] {
+      background-color: rgba(27, 94, 32, 0.12) !important;
+      color: var(--primary-color) !important;
+      font-weight: 600 !important;
+    }
+  </style>
 </head>
 <body>
-  <!-- Include the script that builds the page and powers Decap CMS (formerly Netlify CMS) -->
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <!-- Decap CMS will be injected here -->
 
-  <!-- Enhanced Claude AI Widget (with site editing) -->
-  <script src="/admin/claude-widget.js"></script>
+  <script>
+    // Initialize CMS
+    CMS.init();
 
-  <!-- Enhanced Media Upload Widget -->
-  <script src="/admin/media-upload-widget.js"></script>
+    // Register custom preview styles
+    CMS.registerPreviewStyle("/css/style.css");
+    CMS.registerPreviewStyle("/css/style-modern.css");
+
+    // Custom configuration
+    if (window.CMS) {
+      console.log('✅ Content Management System loaded successfully');
+      console.log('📝 Modern, professional CMS interface active');
+    }
+  </script>
 </body>
 </html>
