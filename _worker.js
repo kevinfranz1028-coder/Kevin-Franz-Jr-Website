@@ -8,6 +8,19 @@ export default {
     const url = new URL(request.url);
     const pathname = url.pathname;
 
+    // Debug endpoint to check environment variables
+    if (pathname === '/debug-env') {
+      return new Response(JSON.stringify({
+        hasClientId: !!env.GITHUB_OAUTH_CLIENT_ID,
+        hasClientSecret: !!env.GITHUB_OAUTH_CLIENT_SECRET,
+        clientIdLength: env.GITHUB_OAUTH_CLIENT_ID?.length || 0,
+        clientSecretLength: env.GITHUB_OAUTH_CLIENT_SECRET?.length || 0,
+        allEnvKeys: Object.keys(env)
+      }, null, 2), {
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
+
     // Route OAuth endpoints
     if (pathname === '/auth') {
       return handleAuth({ request, env, ctx });
