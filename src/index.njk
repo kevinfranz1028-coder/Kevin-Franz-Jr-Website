@@ -4,33 +4,45 @@ title: Home
 description: Kevin Franz Jr. - Class of 2028 Guard & Student-Athlete working to play college basketball and study atmospheric science.
 ---
 
-{# Hero Section #}
-<section class="section-hero">
+{# Hero Section - Modern Design #}
+<section class="section-hero-modern">
     <div class="container">
-        <div class="hero-grid">
-            <div class="hero-text">
-                <span class="label-eyebrow">{{ pages.home.hero.eyebrow }}</span>
-                <h1 class="hero-heading">{{ pages.home.hero.heading }}</h1>
-                <p class="hero-subheadline">{{ pages.home.hero.subheading }}</p>
-                <div class="hero-cta-wrapper">
-                    <a href="{{ pages.home.hero.primaryButtonLink }}" class="btn-primary">{{ pages.home.hero.primaryButtonText }}</a>
-                    <a href="{{ pages.home.hero.secondaryButtonLink }}" class="btn-secondary">{{ pages.home.hero.secondaryButtonText }}</a>
-                </div>
+        <div class="hero-content-modern">
+            <div class="hero-label">
+                <span>{{ pages.home.hero.eyebrow }}</span>
             </div>
-            <div class="hero-image-wrapper">
-                <img src="{{ pages.home.hero.image }}" alt="{{ pages.home.hero.heading }} in action" class="hero-image">
+
+            <h1 class="hero-heading-modern text-gradient">
+                {{ pages.home.hero.heading }}
+            </h1>
+
+            <p class="hero-subtitle-modern">
+                {{ pages.home.hero.subheading }}
+            </p>
+
+            <div class="hero-cta-group">
+                <a href="{{ pages.home.hero.primaryButtonLink }}" class="btn-modern-primary">
+                    {{ pages.home.hero.primaryButtonText }}
+                    <span class="btn-icon">→</span>
+                </a>
+                <a href="{{ pages.home.hero.secondaryButtonLink }}" class="btn-modern-secondary">
+                    {{ pages.home.hero.secondaryButtonText }}
+                    <span class="btn-icon">→</span>
+                </a>
             </div>
         </div>
     </div>
 </section>
 
-{# At a Glance Section #}
+{# At a Glance Section - Enhanced #}
 <section class="section-at-a-glance">
     <div class="container">
-        <h2 class="section-heading-centered">At a Glance</h2>
+        <div class="section-header">
+            <h2 class="section-title text-gradient">At a Glance</h2>
+        </div>
         <div class="glance-grid">
             {% for card in pages.home.glanceCards %}
-            <div class="card-glance">
+            <div class="card-glance fade-in stagger-{{ loop.index }}">
                 <h3 class="card-title">{{ card.title }}</h3>
                 <div class="card-body">
                     {{ card.body | safe | replace('\n', '<br>') }}
@@ -42,29 +54,33 @@ description: Kevin Franz Jr. - Class of 2028 Guard & Student-Athlete working to 
     </div>
 </section>
 
-{# About Kevin Section #}
+{# About Kevin Section - Modern #}
 <section class="section-about">
     <div class="container">
         <div class="about-grid">
-            <div class="about-text">
-                <span class="label-eyebrow">{{ pages.home.about.eyebrow }}</span>
-                <h2 class="section-heading">{{ pages.home.about.heading }}</h2>
-                {{ pages.home.about.body | safe | replace('\n\n', '</p><p class="body-text">') | replace('\n', '<br>') | safe }}
+            <div class="about-text fade-in slide-in-left">
+                <span class="section-eyebrow">{{ pages.home.about.eyebrow }}</span>
+                <h2 class="section-title text-gradient">{{ pages.home.about.heading }}</h2>
+                <div class="body-text">
+                    {{ pages.home.about.body | safe | replace('\n\n', '</p><p class="body-text">') | replace('\n', '<br>') | safe }}
+                </div>
             </div>
-            <div class="about-image-wrapper">
+            <div class="about-image-wrapper fade-in slide-in-right">
                 <img src="{{ pages.home.about.image }}" alt="{{ player.name }} portrait" class="about-image">
             </div>
         </div>
     </div>
 </section>
 
-{# What You'll Find Here Tiles #}
+{# What You'll Find Here Tiles - Enhanced #}
 <section class="section-tiles">
     <div class="container">
-        <h2 class="section-heading-centered">What You'll Find Here</h2>
+        <div class="section-header">
+            <h2 class="section-title text-gradient">What You'll Find Here</h2>
+        </div>
         <div class="tiles-grid">
             {% for tile in pages.home.tiles %}
-            <div class="tile-card">
+            <div class="tile-card fade-in scale-in stagger-{{ loop.index }}">
                 <h3 class="tile-title">{{ tile.title }}</h3>
                 <p class="tile-body">{{ tile.body }}</p>
                 <a href="{{ tile.linkUrl }}" class="tile-cta">{{ tile.linkText }}</a>
@@ -74,14 +90,17 @@ description: Kevin Franz Jr. - Class of 2028 Guard & Student-Athlete working to 
     </div>
 </section>
 
-{# Recent Updates Section #}
+{# Recent Updates Section - Modern #}
 <section class="section-updates">
     <div class="container">
-        <h2 class="section-heading-centered">Recent Updates</h2>
+        <div class="section-header">
+            <span class="section-eyebrow">Latest News</span>
+            <h2 class="section-title text-gradient">Recent Updates</h2>
+        </div>
         <div class="updates-list">
             {% set recentUpdates = collections.updates | reverse | limit(3) %}
             {% for post in recentUpdates %}
-            <div class="update-card">
+            <div class="update-card fade-in stagger-{{ loop.index }}">
                 {% if post.data.coverImage %}
                 <img src="{{ post.data.coverImage }}" alt="{{ post.data.title }}" class="update-card-image">
                 {% endif %}
@@ -96,7 +115,7 @@ description: Kevin Franz Jr. - Class of 2028 Guard & Student-Athlete working to 
             {% endfor %}
         </div>
         <div class="text-center" style="margin-top: 2rem;">
-            <a href="/updates/" class="btn-secondary">View All Updates</a>
+            <a href="/updates/" class="btn-modern-secondary">View All Updates</a>
         </div>
     </div>
 </section>
