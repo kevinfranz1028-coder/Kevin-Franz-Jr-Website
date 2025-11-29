@@ -4,7 +4,7 @@ backend:
   repo: kevinfranz1028-coder/Kevin-Franz-Jr-Website
   branch: claude/new-session-01NzEvUVxZkbsoz2ehxruTvK
   base_url: https://kevin-franz-jr.kevinfranz1028.workers.dev
-  auth_endpoint: auth
+  auth_endpoint: /auth
 
 # Media Library Configuration - Native with drag & drop support
 media_folder: "src/images"
