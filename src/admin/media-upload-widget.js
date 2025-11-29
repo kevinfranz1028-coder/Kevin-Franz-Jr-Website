@@ -1,5 +1,5 @@
 /**
- * Enhanced Media Upload Widget for Netlify CMS
+ * Enhanced Media Upload Widget for Decap CMS
  *
  * Supports multiple file uploads (images, videos, PDFs, etc.)
  * with preview, drag & drop, and bulk upload capabilities
@@ -113,8 +113,8 @@ const MediaUploadControl = window.createClass({
     this.setState({ isUploading: true });
 
     try {
-      // Use Netlify CMS's media library upload functionality
-      // This integrates with the configured backend (git-gateway)
+      // Use Decap CMS's media library upload functionality
+      // This integrates with the configured backend (GitHub)
       const mediaLibrary = this.props.mediaPaths;
       const mediaFolder = 'src/images'; // From config.yml
       const publicFolder = '/images';
@@ -128,7 +128,7 @@ const MediaUploadControl = window.createClass({
       // Read file as base64
       const base64 = await this.readFileAsBase64(file);
 
-      // For Netlify CMS, we'll store the path and let the CMS handle the actual upload
+      // For Decap CMS, we'll store the path and let the CMS handle the actual upload
       // when the entry is saved
       this.setState({ isUploading: false });
 
@@ -364,7 +364,7 @@ const MediaUploadPreview = window.createClass({
   }
 });
 
-// Register the widget with Netlify CMS
+// Register the widget with Decap CMS
 if (window.CMS) {
   window.CMS.registerWidget(
     'media-upload',
@@ -373,5 +373,5 @@ if (window.CMS) {
   );
   console.log('✅ Media Upload widget registered successfully!');
 } else {
-  console.error('❌ Netlify CMS not found. Make sure it loads before this script.');
+  console.error('❌ Decap CMS not found. Make sure it loads before this script.');
 }

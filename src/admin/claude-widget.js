@@ -1,8 +1,8 @@
 /**
- * Enhanced Claude AI Widget for Netlify CMS
+ * Enhanced Claude AI Widget for Decap CMS
  *
  * This custom widget adds AI-powered content generation AND site editing capabilities
- * to the Netlify CMS interface using Claude API.
+ * to the Decap CMS interface using Claude API.
  */
 
 // Widget Control Component
@@ -101,7 +101,7 @@ const ClaudeControl = window.createClass({
     const contentType = this.getContentType();
     const context = this.buildContext(entry);
 
-    // Call Netlify Function for content generation
+    // Call Cloudflare Function for content generation
     const response = await fetch('/functions/claude-ai', {
       method: 'POST',
       headers: {
@@ -465,7 +465,7 @@ const ClaudePreview = window.createClass({
   }
 });
 
-// Register the widget with Netlify CMS
+// Register the widget with Decap CMS
 if (window.CMS) {
   window.CMS.registerWidget(
     'claude-ai',
@@ -474,5 +474,5 @@ if (window.CMS) {
   );
   console.log('✅ Claude AI widget registered successfully!');
 } else {
-  console.error('❌ Netlify CMS not found. Make sure it loads before this script.');
+  console.error('❌ Decap CMS not found. Make sure it loads before this script.');
 }
