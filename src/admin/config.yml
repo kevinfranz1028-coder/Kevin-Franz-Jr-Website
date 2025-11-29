@@ -3,16 +3,16 @@ backend:
   name: github
   repo: kevinfranz1028-coder/Kevin-Franz-Jr-Website
   branch: claude/new-session-01NzEvUVxZkbsoz2ehxruTvK
-  base_url: https://kevin-franz-jr.kevinfranz1028.workers.dev
+  base_url: https://your-site-name.pages.dev
   auth_endpoint: /auth
 
 # Media Library Configuration - Native with drag & drop support
 media_folder: "src/images"
 public_folder: "/images"
 
-# Site URL
-site_url: https://kevin-franz-jr-website.pages.dev
-display_url: https://kevin-franz-jr-website.pages.dev
+# Site URL (you'll update this after deployment)
+site_url: https://your-site-name.pages.dev
+display_url: https://your-site-name.pages.dev
 
 # Editor Settings - Editorial Workflow for review before publish
 publish_mode: editorial_workflow

@@ -1,8 +1,0 @@
-{
-  "name": "kevin-franz-jr-website",
-  "main": "_worker.js",
-  "compatibility_date": "2025-11-29",
-  "assets": {
-    "directory": "./_site"
-  }
-}
