@@ -177,30 +177,27 @@
   <!-- Decap CMS will be injected here -->
 
   <script>
-    // Wait for DOM and CMS to be ready
+    // Wait for CMS to auto-initialize, then register custom configurations
     window.addEventListener('DOMContentLoaded', function() {
-      // Check if CMS is loaded, if not wait for it
-      function initializeCMS() {
+      // Check if CMS is loaded, then register preview styles
+      function registerCMSConfig() {
         if (window.CMS) {
-          console.log('✅ Decap CMS script loaded');
+          console.log('✅ Decap CMS loaded');
 
-          // Initialize CMS
-          CMS.init();
-
-          // Register custom preview styles
+          // Register custom preview styles (do NOT call init - CMS auto-initializes)
           CMS.registerPreviewStyle("/css/style.css");
           CMS.registerPreviewStyle("/css/style-modern.css");
 
-          console.log('✅ Content Management System initialized successfully');
+          console.log('✅ CMS preview styles registered');
           console.log('📝 Modern, professional CMS interface active');
         } else {
           console.log('⏳ Waiting for Decap CMS to load...');
           // Retry after a short delay
-          setTimeout(initializeCMS, 100);
+          setTimeout(registerCMSConfig, 100);
         }
       }
 
-      initializeCMS();
+      registerCMSConfig();
     });
   </script>
 </body>
