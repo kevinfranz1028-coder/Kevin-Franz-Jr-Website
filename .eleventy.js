@@ -7,6 +7,10 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/images");
   eleventyConfig.addPassthroughCopy("src/admin");
 
+  // Cloudflare Pages configuration
+  eleventyConfig.addPassthroughCopy("src/_routes.json");
+  eleventyConfig.addPassthroughCopy("src/_headers");
+
   // Date filters
   eleventyConfig.addFilter("readableDate", dateObj => {
     return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat("MMMM dd, yyyy");
