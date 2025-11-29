@@ -50,7 +50,7 @@ Benefits: Unlimited bandwidth, faster performance, and 100% free!
    ```bash
    git add .
    git commit -m "Initial site build"
-   git push -u origin claude/webflow-athlete-site-01HLo1N59xxVGUuATbNLk2s4
+   git push -u origin claude/new-session-01NzEvUVxZkbsoz2ehxruTvK
    ```
 
 ### Step 2: Deploy to Netlify
@@ -63,7 +63,7 @@ Benefits: Unlimited bandwidth, faster performance, and 100% free!
    - Choose "Deploy with GitHub"
    - Authorize Netlify to access your GitHub
    - Select the `kevin-franz-jr-website` repository
-   - Choose branch: `claude/webflow-athlete-site-01HLo1N59xxVGUuATbNLk2s4`
+   - Choose branch: `claude/new-session-01NzEvUVxZkbsoz2ehxruTvK`
 
 3. **Build settings** (should auto-detect):
    - Build command: `npm run build`

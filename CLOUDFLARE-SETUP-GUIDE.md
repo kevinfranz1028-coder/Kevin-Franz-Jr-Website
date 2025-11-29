@@ -43,7 +43,7 @@ On the setup page, enter these settings:
 
 **Project name**: `kevin-franz-jr` (or whatever you want)
 
-**Production branch**: `claude/webflow-athlete-site-01HLo1N59xxVGUuATbNLk2s4`
+**Production branch**: `claude/new-session-01NzEvUVxZkbsoz2ehxruTvK`
 
 **Build settings**:
 - Framework preset: **None** (or Eleventy if available)
@@ -57,7 +57,7 @@ On the setup page, enter these settings:
 | `ANTHROPIC_API_KEY` | Your Claude API key (sk-ant-...) |
 | `GITHUB_TOKEN` | Your GitHub token (ghp_...) |
 | `GITHUB_REPO` | `kevinfranz1028-coder/Kevin-Franz-Jr-Website` |
-| `GITHUB_BRANCH` | `claude/webflow-athlete-site-01HLo1N59xxVGUuATbNLk2s4` |
+| `GITHUB_BRANCH` | `claude/new-session-01NzEvUVxZkbsoz2ehxruTvK` |
 
 > **Where to get these?**
 > - **ANTHROPIC_API_KEY**: Copy from your Netlify environment variables (or get new one at https://console.anthropic.com)

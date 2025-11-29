@@ -4,7 +4,7 @@
 backend:
   name: github
   repo: kevinfranz1028-coder/Kevin-Franz-Jr-Website
-  branch: claude/webflow-athlete-site-01HLo1N59xxVGUuATbNLk2s4
+  branch: claude/new-session-01NzEvUVxZkbsoz2ehxruTvK
   base_url: https://kevin-franz-jr.kevinfranz1028.workers.dev
   auth_endpoint: auth
 
