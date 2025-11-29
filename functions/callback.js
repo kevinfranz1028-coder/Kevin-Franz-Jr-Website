@@ -49,6 +49,9 @@ export async function onRequest(context) {
       throw new Error(tokenData.error_description || tokenData.error);
     }
 
+    // Serialize token data for embedding in HTML
+    const tokenDataJSON = JSON.stringify(tokenData);
+
     // Return HTML that sends the token to the parent window (Decap CMS)
     const html = `
 <!DOCTYPE html>
@@ -95,9 +98,11 @@ export async function onRequest(context) {
   </div>
   <script>
     (function() {
+      var tokenData = ${tokenDataJSON};
+
       function receiveMessage(message) {
         window.opener.postMessage(
-          `authorization:github:success:${JSON.stringify(tokenData)}`,
+          'authorization:github:success:' + JSON.stringify(tokenData),
           message.origin
         );
         window.removeEventListener('message', receiveMessage, false);
