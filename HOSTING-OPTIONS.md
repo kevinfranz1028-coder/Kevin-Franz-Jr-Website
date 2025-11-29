@@ -1,6 +1,16 @@
 # Hosting Options & Solutions
 
-## Current Setup: Netlify (Recommended to Stay)
+## ✨ NEW: Migrating to Cloudflare Pages
+
+**Your site is being migrated to Cloudflare Pages for unlimited bandwidth and better performance!**
+
+👉 **See [CLOUDFLARE-SETUP-GUIDE.md](CLOUDFLARE-SETUP-GUIDE.md) for simple step-by-step instructions.**
+
+All code has been updated and is ready to deploy. Just follow the guide!
+
+---
+
+## Previous Setup: Netlify (Why We're Migrating)
 
 Your site is already on Netlify, which is excellent for this use case. Here's why:
 

@@ -1,5 +1,6 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: kevinfranz1028-coder/Kevin-Franz-Jr-Website
   branch: claude/webflow-athlete-site-01HLo1N59xxVGUuATbNLk2s4
 
 media_folder: "src/images"

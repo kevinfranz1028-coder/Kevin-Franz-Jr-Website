@@ -1,6 +1,12 @@
 # Kevin Franz Jr. - Student-Athlete Website
 
-A modern, professional recruiting profile website for Kevin Franz Jr., Class of 2028 guard. Built with 11ty (Eleventy) static site generator and Netlify CMS for easy content management.
+A modern, professional recruiting profile website for Kevin Franz Jr., Class of 2028 guard. Built with 11ty (Eleventy) static site generator and CMS for easy content management.
+
+## 🚀 Quick Deploy to Cloudflare Pages
+
+**Ready to deploy?** See [CLOUDFLARE-SETUP-GUIDE.md](CLOUDFLARE-SETUP-GUIDE.md) for step-by-step instructions.
+
+Benefits: Unlimited bandwidth, faster performance, and 100% free!
 
 ## 🌟 Features
 

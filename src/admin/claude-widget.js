@@ -102,7 +102,7 @@ const ClaudeControl = window.createClass({
     const context = this.buildContext(entry);
 
     // Call Netlify Function for content generation
-    const response = await fetch('/.netlify/functions/claude-ai', {
+    const response = await fetch('/functions/claude-ai', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -143,7 +143,7 @@ const ClaudeControl = window.createClass({
     const pageContext = this.gatherPageContext();
 
     // Call Site Editor Function
-    const response = await fetch('/.netlify/functions/ai-site-editor', {
+    const response = await fetch('/functions/ai-site-editor', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
