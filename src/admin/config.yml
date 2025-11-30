@@ -1,7 +1,7 @@
 # Backend Configuration
 backend:
   name: github
-  repo: kevinfranz1028/Kevin-Franz-Jr-Website
+  repo: kevinfranz1028-coder/Kevin-Franz-Jr-Website
   branch: main
   base_url: https://kevin-franz-jr-website-2.pages.dev
   auth_endpoint: /auth
