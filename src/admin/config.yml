@@ -2,7 +2,7 @@
 backend:
   name: github
   repo: kevinfranz1028-coder/Kevin-Franz-Jr-Website
-  branch: main
+  branch: claude/review-deployments-answer-01KDSuvjBiv7qjNd2ScZhKgh
   base_url: https://kevin-franz-jr-website-2.pages.dev
   auth_endpoint: /auth
 
