@@ -62,7 +62,7 @@ export async function onRequest(context) {
     <p>Please set up the following in Cloudflare Pages:</p>
     <ol>
       <li>Create a GitHub OAuth App at <a href="https://github.com/settings/developers" target="_blank">github.com/settings/developers</a></li>
-      <li>Set callback URL to: <code>https://kevin-franz-jr.kevinfranz1028.workers.dev/callback</code></li>
+      <li>Set callback URL to: <code>https://kevin-franz-jr-website-2.pages.dev/callback</code></li>
       <li>Add environment variables in Cloudflare Pages Settings:
         <ul>
           <li><code>GITHUB_OAUTH_CLIENT_ID</code></li>
