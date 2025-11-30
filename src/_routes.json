@@ -1,5 +1,6 @@
 {
   "version": 1,
-  "include": ["/*"],
+  "description": "Route API endpoints to Functions, serve everything else as static",
+  "include": ["/auth*", "/callback*", "/claude-ai*", "/ai-site-editor*"],
   "exclude": []
 }
