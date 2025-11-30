@@ -81,77 +81,82 @@ permalink: /basketball/
     </div>
 </section>
 
-{# Basketball Timeline - NBPA Style #}
+{# Basketball Timeline - Modern Horizontal Style #}
 <section class="timeline-horizontal">
     <link rel="stylesheet" href="/css/timeline.css">
 
     <div class="timeline-horizontal-wrapper">
-        {# Photo Cards #}
-        <div class="timeline-cards">
-            {% for item in collections.timeline %}
-            <div class="timeline-photo-card"
-                 data-year="{{ item.data.year }}"
-                 data-title="{{ item.data.grade }}"
-                 data-description="{{ item.data.summary }}"
-                 data-stats='{{ item.data.stats | dump | safe }}'>
-                <div class="timeline-card-border">
-                    {% if item.data.gallery and item.data.gallery[0] and item.data.gallery[0].image %}
-                    <img src="{{ item.data.gallery[0].image }}" alt="{{ item.data.year }} season" class="timeline-card-image">
-                    {% else %}
-                    <img src="/images/placeholder-basketball.jpg" alt="{{ item.data.year }} season" class="timeline-card-image">
-                    {% endif %}
-                </div>
-                <div class="timeline-card-year">{{ item.data.year }}</div>
-            </div>
-            {% endfor %}
+        {# Timeline Header #}
+        <div class="timeline-header">
+            <h2>Basketball Journey</h2>
+            <p>Follow Kevin's basketball development through the years</p>
         </div>
 
-        {# Featured Content Panel #}
-        <div class="timeline-featured">
-            <div class="timeline-featured-year">2024</div>
-            <div class="timeline-featured-content">
-                <h2 class="timeline-featured-title">Freshman Season</h2>
-                <p class="timeline-featured-description">
-                    First year of high school basketball, developing skills and contributing to the team.
-                </p>
+        {# Photo Cards - Each Clickable #}
+        <div class="timeline-cards">
+            {% for item in collections.timeline %}
+            <a href="{{ item.url }}" class="timeline-photo-card">
+                <div class="timeline-card-border">
+                    {# Photo #}
+                    {% if item.data.gallery and item.data.gallery[0] and item.data.gallery[0].image %}
+                    <img src="{{ item.data.gallery[0].image }}" alt="{{ item.data.year }} - {{ item.data.grade }}" class="timeline-card-image">
+                    {% else %}
+                    <img src="/images/placeholder-basketball.jpg" alt="{{ item.data.year }} - {{ item.data.grade }}" class="timeline-card-image">
+                    {% endif %}
 
-                {# Stats Display #}
-                <div class="timeline-featured-stats">
-                    <div class="timeline-stat" data-stat="games">
-                        <span class="timeline-stat-value">18</span>
-                        <span class="timeline-stat-label">Games</span>
+                    {# Overlay with Info #}
+                    <div class="timeline-card-overlay">
+                        <div class="timeline-card-year-large">{{ item.data.year }}</div>
+                        <div class="timeline-card-title">{{ item.data.grade }}</div>
+                        <div class="timeline-card-description">{{ item.data.summary }}</div>
+
+                        {# Optional Stats #}
+                        {% if item.data.stats %}
+                        <div class="timeline-stats-badge">
+                            {% if item.data.stats.ppg %}
+                            <div class="timeline-stat-item">
+                                <span class="timeline-stat-value">{{ item.data.stats.ppg }}</span>
+                                <span class="timeline-stat-label">PPG</span>
+                            </div>
+                            {% endif %}
+                            {% if item.data.stats.apg %}
+                            <div class="timeline-stat-item">
+                                <span class="timeline-stat-value">{{ item.data.stats.apg }}</span>
+                                <span class="timeline-stat-label">APG</span>
+                            </div>
+                            {% endif %}
+                            {% if item.data.stats.rpg %}
+                            <div class="timeline-stat-item">
+                                <span class="timeline-stat-value">{{ item.data.stats.rpg }}</span>
+                                <span class="timeline-stat-label">RPG</span>
+                            </div>
+                            {% endif %}
+                        </div>
+                        {% endif %}
                     </div>
-                    <div class="timeline-stat" data-stat="ppg">
-                        <span class="timeline-stat-value">10</span>
-                        <span class="timeline-stat-label">PPG</span>
-                    </div>
-                    <div class="timeline-stat" data-stat="apg">
-                        <span class="timeline-stat-value">3</span>
-                        <span class="timeline-stat-label">APG</span>
-                    </div>
+
+                    {# Badge for Current Season #}
+                    {% if item.data.year == "2024-2025" %}
+                    <div class="timeline-card-badge">Current</div>
+                    {% endif %}
                 </div>
-            </div>
 
-            {# Navigation Arrow #}
-            <div class="timeline-nav-arrow" title="Next">→</div>
+                {# Year Marker Circle #}
+                <div class="timeline-card-year-marker">{{ item.data.year }}</div>
+            </a>
+            {% endfor %}
         </div>
 
         {# Timeline Rail #}
         <div class="timeline-rail"></div>
 
-        {# Year Markers #}
+        {# Year Markers Below #}
         <div class="timeline-years">
             {% for item in collections.timeline %}
             <div class="timeline-year-marker">{{ item.data.year }}</div>
             {% endfor %}
         </div>
-
-        {# Basketball Icon Slider #}
-        <div class="timeline-basketball-icon">🏀</div>
     </div>
-
-    {# Load Timeline JavaScript #}
-    <script src="/js/timeline.js"></script>
 </section>
 
 {# Season Stats #}

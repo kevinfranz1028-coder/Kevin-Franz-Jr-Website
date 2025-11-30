@@ -1,30 +1,51 @@
 /* ===================================
-   HORIZONTAL TIMELINE - NBPA Style
+   HORIZONTAL TIMELINE - Modern Athletic Style
    =================================== */
 
 .timeline-horizontal {
   position: relative;
   padding: 6rem 0;
-  background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 50%, #2c2c2c 50%, #1a1a1a 100%);
+  background: linear-gradient(180deg, var(--bg-white) 0%, var(--bg-light) 100%);
   overflow: hidden;
 }
 
 .timeline-horizontal-wrapper {
   position: relative;
-  max-width: 100%;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 2rem;
+}
+
+.timeline-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.timeline-header h2 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+}
+
+.timeline-header p {
+  font-size: 1.125rem;
+  color: var(--text-gray);
 }
 
 /* Timeline Rail */
 .timeline-rail {
   position: absolute;
-  bottom: 100px;
-  left: 10%;
-  right: 10%;
-  height: 3px;
-  background: linear-gradient(90deg, #c9a961 0%, #d4af37 50%, #c9a961 100%);
-  box-shadow: 0 2px 8px rgba(201, 169, 97, 0.3);
+  bottom: 80px;
+  left: 8%;
+  right: 8%;
+  height: 4px;
+  background: linear-gradient(90deg,
+    var(--primary-light) 0%,
+    var(--secondary-color) 50%,
+    var(--primary-light) 100%);
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(27, 94, 32, 0.2);
 }
 
 .timeline-rail::before,
@@ -33,81 +54,71 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 12px;
-  height: 12px;
-  background: #d4af37;
+  width: 16px;
+  height: 16px;
+  background: var(--primary-color);
+  border: 3px solid var(--bg-white);
   border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .timeline-rail::before {
-  left: 0;
+  left: -8px;
 }
 
 .timeline-rail::after {
-  right: 0;
-}
-
-/* Year Markers */
-.timeline-years {
-  position: absolute;
-  bottom: 60px;
-  left: 10%;
-  right: 10%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.timeline-year-marker {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #d4af37;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  font-family: 'Georgia', serif;
+  right: -8px;
 }
 
 /* Photo Cards Container */
 .timeline-cards {
   position: relative;
-  height: 500px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  gap: 2rem;
-  padding-bottom: 150px;
+  gap: 2.5rem;
+  padding-bottom: 140px;
+  flex-wrap: wrap;
 }
 
 /* Individual Photo Card */
 .timeline-photo-card {
   position: relative;
-  width: 280px;
-  height: 380px;
+  width: 320px;
   flex-shrink: 0;
+  text-decoration: none;
+  display: block;
+  transition: all var(--transition-base);
   cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  filter: grayscale(100%);
-  opacity: 0.6;
 }
 
 .timeline-photo-card:hover {
-  filter: grayscale(0%);
-  opacity: 1;
-  transform: translateY(-10px);
+  transform: translateY(-12px);
 }
 
-.timeline-photo-card.active {
-  filter: grayscale(0%);
-  opacity: 1;
-  transform: scale(1.05) translateY(-15px);
-  z-index: 10;
+.timeline-photo-card:hover .timeline-card-image {
+  transform: scale(1.05);
+}
+
+.timeline-photo-card:hover .timeline-card-overlay {
+  opacity: 0;
 }
 
 .timeline-card-border {
-  position: absolute;
-  inset: 0;
-  border: 3px solid #d4af37;
-  box-shadow: 0 8px 24px rgba(201, 169, 97, 0.3);
+  position: relative;
+  height: 420px;
+  border-radius: 12px;
   overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 3px solid transparent;
+  background: linear-gradient(var(--bg-white), var(--bg-white)) padding-box,
+              var(--gradient-primary) border-box;
+  transition: all var(--transition-base);
+}
+
+.timeline-photo-card:hover .timeline-card-border {
+  box-shadow: var(--shadow-xl);
+  border-color: var(--primary-color);
 }
 
 .timeline-card-image {
@@ -115,225 +126,186 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: transform var(--transition-slow);
 }
 
-.timeline-card-year {
+.timeline-card-overlay {
   position: absolute;
-  bottom: -20px;
-  left: 15px;
-  width: 60px;
-  height: 60px;
-  background: #2c2c2c;
-  border: 3px solid #d4af37;
+  inset: 0;
+  background: linear-gradient(180deg,
+    rgba(27, 94, 32, 0) 0%,
+    rgba(27, 94, 32, 0.7) 70%,
+    rgba(27, 94, 32, 0.9) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2rem;
+  transition: opacity var(--transition-base);
+}
+
+.timeline-card-year-large {
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--text-white);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.timeline-card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-white);
+  margin-bottom: 0.5rem;
+}
+
+.timeline-card-description {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.timeline-card-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: var(--gradient-gold);
+  color: var(--text-dark);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: var(--shadow-md);
+}
+
+.timeline-card-year-marker {
+  position: absolute;
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70px;
+  height: 70px;
+  background: var(--bg-white);
+  border: 4px solid var(--primary-color);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 0.875rem;
-  font-weight: 700;
-  color: #d4af37;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  font-weight: 800;
+  color: var(--primary-color);
+  box-shadow: var(--shadow-lg);
   z-index: 5;
+  transition: all var(--transition-base);
 }
 
-/* Featured Content Panel */
-.timeline-featured {
+.timeline-photo-card:hover .timeline-card-year-marker {
+  background: var(--primary-color);
+  color: var(--text-white);
+  transform: translateX(-50%) scale(1.1);
+}
+
+/* Year Labels Below Rail */
+.timeline-years {
   position: absolute;
-  top: 50%;
-  right: 5%;
-  transform: translateY(-50%);
-  width: 500px;
-  background: white;
-  padding: 0;
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 20;
+  bottom: 20px;
+  left: 8%;
+  right: 8%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.timeline-featured.active {
-  opacity: 1;
-  visibility: visible;
-}
-
-.timeline-featured-year {
-  font-size: 5rem;
+.timeline-year-marker {
+  font-size: 1rem;
   font-weight: 700;
-  color: #d4af37;
-  line-height: 1;
-  margin: 0;
-  padding: 2rem 2rem 0;
-  font-family: 'Georgia', serif;
+  color: var(--primary-color);
+  text-align: center;
 }
 
-.timeline-featured-content {
-  padding: 0 2rem 2rem;
-}
-
-.timeline-featured-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #1a1a1a;
-  margin: 1rem 0 0.5rem;
-  line-height: 1.3;
-}
-
-.timeline-featured-description {
-  color: #666;
-  line-height: 1.7;
-  margin-bottom: 1.5rem;
-}
-
-.timeline-featured-stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+/* Stats Badge (Optional) */
+.timeline-stats-badge {
+  display: flex;
   gap: 1rem;
-  margin-top: 1.5rem;
-  padding-top: 1.5rem;
-  border-top: 2px solid #f0f0f0;
+  margin-top: 1rem;
 }
 
-.timeline-stat {
+.timeline-stat-item {
   text-align: center;
 }
 
 .timeline-stat-value {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #d4af37;
   display: block;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--accent-gold);
 }
 
 .timeline-stat-label {
-  font-size: 0.75rem;
-  color: #999;
+  display: block;
+  font-size: 0.625rem;
+  color: rgba(255, 255, 255, 0.8);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  margin-top: 0.25rem;
-}
-
-.timeline-nav-arrow {
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 50px;
-  height: 50px;
-  background: #1a1a1a;
-  border: 2px solid #d4af37;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  color: #d4af37;
-  font-size: 1.5rem;
-}
-
-.timeline-nav-arrow:hover {
-  background: #d4af37;
-  color: #1a1a1a;
-  transform: translateX(-50%) scale(1.1);
-}
-
-.timeline-basketball-icon {
-  position: absolute;
-  bottom: 85px;
-  left: 10%;
-  width: 32px;
-  height: 32px;
-  background: #d4af37;
-  border: 3px solid #1a1a1a;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1rem;
-  transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 15;
-  box-shadow: 0 4px 12px rgba(201, 169, 97, 0.4);
 }
 
 /* Responsive Design */
 @media (max-width: 1200px) {
-  .timeline-featured {
-    width: 400px;
+  .timeline-photo-card {
+    width: 280px;
   }
 
-  .timeline-photo-card {
-    width: 240px;
-    height: 320px;
+  .timeline-card-border {
+    height: 380px;
   }
 }
 
 @media (max-width: 968px) {
-  .timeline-horizontal {
-    background: linear-gradient(180deg, #f5f5f5 0%, #2c2c2c 100%);
-  }
-
   .timeline-cards {
     flex-direction: column;
-    height: auto;
-    gap: 3rem;
-    padding: 2rem 0 200px;
+    align-items: center;
+    gap: 4rem;
+    padding-bottom: 3rem;
   }
 
   .timeline-photo-card {
     width: 100%;
-    max-width: 350px;
-    filter: grayscale(0%);
-    opacity: 1;
-  }
-
-  .timeline-featured {
-    position: static;
-    transform: none;
-    width: 100%;
-    max-width: 500px;
-    margin: 2rem auto;
-    opacity: 1;
-    visibility: visible;
+    max-width: 400px;
   }
 
   .timeline-rail {
-    left: 50%;
-    right: auto;
-    width: 3px;
-    height: 60%;
-    top: 10%;
-    bottom: 30%;
-    transform: translateX(-50%);
+    display: none;
   }
 
   .timeline-years {
-    flex-direction: column;
-    left: 50%;
-    right: auto;
-    bottom: 15%;
-    top: 15%;
-    transform: translateX(-50%);
-    gap: 2rem;
+    display: none;
   }
 
-  .timeline-basketball-icon {
-    left: 50%;
-    transform: translateX(-50%);
+  .timeline-card-year-marker {
+    bottom: -30px;
   }
 }
 
 @media (max-width: 640px) {
-  .timeline-featured-year {
-    font-size: 3.5rem;
-  }
-
-  .timeline-featured-title {
-    font-size: 1.25rem;
+  .timeline-header h2 {
+    font-size: 2rem;
   }
 
   .timeline-photo-card {
-    width: 100%;
-    max-width: 280px;
+    max-width: 100%;
+  }
+
+  .timeline-card-border {
+    height: 420px;
+  }
+
+  .timeline-card-year-large {
+    font-size: 2.5rem;
   }
 }
