@@ -2,7 +2,7 @@ import media from './media'
 import update from './update'
 import game from './game'
 import timelineYear from './timelineYear'
-import page from './page'
+import websitePage from './websitePage'
 import siteSettings from './siteSettings'
 
 export const schemas = [
@@ -10,6 +10,6 @@ export const schemas = [
   update,
   game,
   timelineYear,
-  page,
+  websitePage,
   siteSettings,
 ]
