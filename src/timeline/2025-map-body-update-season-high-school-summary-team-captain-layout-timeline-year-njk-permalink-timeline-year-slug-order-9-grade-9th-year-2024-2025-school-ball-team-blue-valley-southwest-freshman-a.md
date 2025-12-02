@@ -7,5 +7,8 @@ team: Blue Valley Southwest Freshman A
 order: 9
 summary: Team Captain
 season: High School
+gallery:
+  - image: /images/img_1003.jpg
+    caption: Ball
 ---
 Update
