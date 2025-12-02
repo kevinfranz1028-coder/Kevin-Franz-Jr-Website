@@ -32,6 +32,16 @@ export default {
       rows: 3,
     },
     {
+      name: 'thumbnailImage',
+      title: '📸 Thumbnail/Featured Image',
+      type: 'image',
+      description: 'Main photo shown on the basketball timeline page',
+      options: {
+        hotspot: true,
+      },
+      validation: Rule => Rule.required(),
+    },
+    {
       name: 'season',
       title: 'Season Type',
       type: 'string',
@@ -126,7 +136,7 @@ export default {
     select: {
       title: 'year',
       subtitle: 'grade',
-      media: 'gallery.0.image',
+      media: 'thumbnailImage',
     },
   },
   orderings: [

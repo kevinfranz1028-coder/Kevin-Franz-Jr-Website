@@ -11,6 +11,7 @@ module.exports = async function() {
     grade,
     order,
     summary,
+    "thumbnailImage": thumbnailImage.asset->url,
     season,
     team,
     achievements,
