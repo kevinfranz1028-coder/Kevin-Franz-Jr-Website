@@ -8,7 +8,7 @@ export default defineConfig({
   name: 'default',
   title: 'Kevin Franz Jr. - Content Manager',
 
-  projectId: 'YOUR_PROJECT_ID', // You'll get this when you create a Sanity project
+  projectId: 'q1z27lr2',
   dataset: 'production',
 
   plugins: [
