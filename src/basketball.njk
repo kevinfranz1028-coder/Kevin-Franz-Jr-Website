@@ -218,7 +218,7 @@ permalink: /basketball/
                 <div class="schedule-col">Time</div>
                 <div class="schedule-col">Result</div>
             </div>
-            {% set currentGames = collections.games %}
+            {% set currentGames = sanityGames %}
             {% for game in currentGames %}
             <div class="schedule-row">
                 <div class="schedule-col">{{ game.date | shortDate }}</div>
