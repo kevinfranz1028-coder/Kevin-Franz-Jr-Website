@@ -18,7 +18,7 @@ permalink: /updates/
 <section class="section-content">
     <div class="container">
         <div class="updates-list">
-            {% for post in collections.updates %}
+            {% for post in sanityUpdates %}
             <div class="update-card">
                 {% if post.data.coverImage %}
                 <img src="{{ post.data.coverImage }}" alt="{{ post.data.title }}" class="update-card-image">
