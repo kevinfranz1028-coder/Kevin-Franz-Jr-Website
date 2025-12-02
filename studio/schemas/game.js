@@ -18,6 +18,31 @@ export default {
       validation: Rule => Rule.required(),
     },
     {
+      name: 'time',
+      title: 'Game Time',
+      type: 'string',
+      description: 'Time of the game (e.g., "3:30 PM")',
+    },
+    {
+      name: 'season',
+      title: 'Season',
+      type: 'string',
+      description: 'Which season (e.g., "2024-2025")',
+    },
+    {
+      name: 'team',
+      title: 'Team Level',
+      type: 'string',
+      description: 'Which team (e.g., "JV", "Varsity")',
+      options: {
+        list: [
+          {title: 'Varsity', value: 'Varsity'},
+          {title: 'JV', value: 'JV'},
+          {title: 'Freshman', value: 'Freshman'},
+        ],
+      },
+    },
+    {
       name: 'location',
       title: 'Location',
       type: 'string',
@@ -68,10 +93,28 @@ export default {
       ],
     },
     {
+      name: 'points',
+      title: 'Points',
+      type: 'string',
+      description: 'Points scored',
+    },
+    {
+      name: 'rebounds',
+      title: 'Rebounds',
+      type: 'string',
+      description: 'Total rebounds',
+    },
+    {
+      name: 'assists',
+      title: 'Assists',
+      type: 'string',
+      description: 'Total assists',
+    },
+    {
       name: 'stats',
-      title: 'Kevin\'s Stats',
+      title: 'Kevin\'s Detailed Stats',
       type: 'object',
-      description: 'Kevin\'s individual performance',
+      description: 'Kevin\'s individual performance (detailed)',
       fields: [
         {name: 'points', title: 'Points', type: 'number'},
         {name: 'rebounds', title: 'Rebounds', type: 'number'},
