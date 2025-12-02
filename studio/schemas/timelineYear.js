@@ -112,6 +112,13 @@ export default {
       ],
     },
     {
+      name: 'body',
+      title: 'Body Content',
+      type: 'text',
+      description: 'Main text content from markdown',
+      rows: 10,
+    },
+    {
       name: 'story',
       title: 'Full Story',
       type: 'array',
