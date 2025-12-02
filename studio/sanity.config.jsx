@@ -59,9 +59,8 @@ export default defineConfig({
     }),
     visionTool(),
     media(), // Advanced media library
+    scheduleImportTool(), // Excel/CSV import tool
   ],
-
-  tools: [scheduleImportTool],
 
   schema: {
     types: schemas,
