@@ -98,7 +98,7 @@ description: Kevin Franz Jr. - Class of 2028 Guard & Student-Athlete working to 
             <h2 class="section-title text-gradient">Recent Updates</h2>
         </div>
         <div class="updates-list">
-            {% set recentUpdates = sanityUpdates | reverse | limit(3) %}
+            {% set recentUpdates = collections.updates | reverse | limit(3) %}
             {% for post in recentUpdates %}
             <div class="update-card fade-in stagger-{{ loop.index }}">
                 {% if post.data.coverImage %}

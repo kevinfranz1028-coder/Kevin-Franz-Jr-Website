@@ -21,6 +21,7 @@
   "dependencies": {
     "csv-parser": "^3.0.0",
     "gray-matter": "^4.0.3",
-    "luxon": "^3.4.4"
+    "luxon": "^3.4.4",
+    "xlsx": "^0.18.5"
   }
 }

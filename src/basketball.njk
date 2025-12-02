@@ -94,7 +94,7 @@ permalink: /basketball/
 
         {# Photo Cards - Each Clickable #}
         <div class="timeline-cards">
-            {% for item in sanityTimeline %}
+            {% for item in collections.timeline %}
             <a href="{{ item.url }}" class="timeline-photo-card">
                 <div class="timeline-card-border">
                     {# Photo #}
@@ -152,7 +152,7 @@ permalink: /basketball/
 
         {# Year Markers Below #}
         <div class="timeline-years">
-            {% for item in sanityTimeline %}
+            {% for item in collections.timeline %}
             <div class="timeline-year-marker">{{ item.data.year }}</div>
             {% endfor %}
         </div>
@@ -218,7 +218,7 @@ permalink: /basketball/
                 <div class="schedule-col">Time</div>
                 <div class="schedule-col">Result</div>
             </div>
-            {% set currentGames = sanityGames %}
+            {% set currentGames = collections.games %}
             {% for game in currentGames %}
             <div class="schedule-row">
                 <div class="schedule-col">{{ game.date | shortDate }}</div>
