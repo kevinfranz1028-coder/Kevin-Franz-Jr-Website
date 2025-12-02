@@ -4,6 +4,7 @@ import {visionTool} from '@sanity/vision'
 import {media} from 'sanity-plugin-media'
 import {schemas} from './schemas'
 import {structure} from './structure'
+import scheduleImportTool from './tools'
 
 // Import custom styling
 import './custom-studio.css'
@@ -58,6 +59,7 @@ export default defineConfig({
     }),
     visionTool(),
     media(), // Advanced media library
+    scheduleImportTool(), // Excel/CSV import tool
   ],
 
   schema: {
