@@ -1,0 +1,311 @@
+/* ===================================
+   HORIZONTAL TIMELINE - Modern Athletic Style
+   =================================== */
+
+.timeline-horizontal {
+  position: relative;
+  padding: 6rem 0;
+  background: linear-gradient(180deg, var(--bg-white) 0%, var(--bg-light) 100%);
+  overflow: hidden;
+}
+
+.timeline-horizontal-wrapper {
+  position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.timeline-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.timeline-header h2 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+}
+
+.timeline-header p {
+  font-size: 1.125rem;
+  color: var(--text-gray);
+}
+
+/* Timeline Rail */
+.timeline-rail {
+  position: absolute;
+  bottom: 80px;
+  left: 8%;
+  right: 8%;
+  height: 4px;
+  background: linear-gradient(90deg,
+    var(--primary-light) 0%,
+    var(--secondary-color) 50%,
+    var(--primary-light) 100%);
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(27, 94, 32, 0.2);
+}
+
+.timeline-rail::before,
+.timeline-rail::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background: var(--primary-color);
+  border: 3px solid var(--bg-white);
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.timeline-rail::before {
+  left: -8px;
+}
+
+.timeline-rail::after {
+  right: -8px;
+}
+
+/* Photo Cards Container */
+.timeline-cards {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2.5rem;
+  padding-bottom: 140px;
+  flex-wrap: wrap;
+}
+
+/* Individual Photo Card */
+.timeline-photo-card {
+  position: relative;
+  width: 320px;
+  flex-shrink: 0;
+  text-decoration: none;
+  display: block;
+  transition: all var(--transition-base);
+  cursor: pointer;
+}
+
+.timeline-photo-card:hover {
+  transform: translateY(-12px);
+}
+
+.timeline-photo-card:hover .timeline-card-image {
+  transform: scale(1.05);
+}
+
+.timeline-photo-card:hover .timeline-card-overlay {
+  opacity: 0;
+}
+
+.timeline-card-border {
+  position: relative;
+  height: 420px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 3px solid transparent;
+  background: linear-gradient(var(--bg-white), var(--bg-white)) padding-box,
+              var(--gradient-primary) border-box;
+  transition: all var(--transition-base);
+}
+
+.timeline-photo-card:hover .timeline-card-border {
+  box-shadow: var(--shadow-xl);
+  border-color: var(--primary-color);
+}
+
+.timeline-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--transition-slow);
+}
+
+.timeline-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,
+    rgba(27, 94, 32, 0) 0%,
+    rgba(27, 94, 32, 0.7) 70%,
+    rgba(27, 94, 32, 0.9) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2rem;
+  transition: opacity var(--transition-base);
+}
+
+.timeline-card-year-large {
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--text-white);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.timeline-card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-white);
+  margin-bottom: 0.5rem;
+}
+
+.timeline-card-description {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.timeline-card-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: var(--gradient-gold);
+  color: var(--text-dark);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: var(--shadow-md);
+}
+
+.timeline-card-year-marker {
+  position: absolute;
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70px;
+  height: 70px;
+  background: var(--bg-white);
+  border: 4px solid var(--primary-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  font-weight: 800;
+  color: var(--primary-color);
+  box-shadow: var(--shadow-lg);
+  z-index: 5;
+  transition: all var(--transition-base);
+}
+
+.timeline-photo-card:hover .timeline-card-year-marker {
+  background: var(--primary-color);
+  color: var(--text-white);
+  transform: translateX(-50%) scale(1.1);
+}
+
+/* Year Labels Below Rail */
+.timeline-years {
+  position: absolute;
+  bottom: 20px;
+  left: 8%;
+  right: 8%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.timeline-year-marker {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  text-align: center;
+}
+
+/* Stats Badge (Optional) */
+.timeline-stats-badge {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.timeline-stat-item {
+  text-align: center;
+}
+
+.timeline-stat-value {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--accent-gold);
+}
+
+.timeline-stat-label {
+  display: block;
+  font-size: 0.625rem;
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .timeline-photo-card {
+    width: 280px;
+  }
+
+  .timeline-card-border {
+    height: 380px;
+  }
+}
+
+@media (max-width: 968px) {
+  .timeline-cards {
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+    padding-bottom: 3rem;
+  }
+
+  .timeline-photo-card {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .timeline-rail {
+    display: none;
+  }
+
+  .timeline-years {
+    display: none;
+  }
+
+  .timeline-card-year-marker {
+    bottom: -30px;
+  }
+}
+
+@media (max-width: 640px) {
+  .timeline-header h2 {
+    font-size: 2rem;
+  }
+
+  .timeline-photo-card {
+    max-width: 100%;
+  }
+
+  .timeline-card-border {
+    height: 420px;
+  }
+
+  .timeline-card-year-large {
+    font-size: 2.5rem;
+  }
+}
