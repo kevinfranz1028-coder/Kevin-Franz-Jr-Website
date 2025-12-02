@@ -11,6 +11,7 @@ module.exports = async function() {
     grade,
     order,
     summary,
+    body,
     "thumbnailImage": thumbnailImage.asset->url,
     season,
     team,
@@ -25,7 +26,11 @@ module.exports = async function() {
 
   try {
     const timeline = await client.fetch(query)
-    return timeline
+    // Add URL field for each item (matching the permalink pattern)
+    return timeline.map(item => ({
+      ...item,
+      url: `/timeline/${item.year.toLowerCase().replace(/\s+/g, '-')}/`
+    }))
   } catch (error) {
     console.warn('Could not fetch Sanity timeline:', error.message)
     return []
