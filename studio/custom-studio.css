@@ -1,0 +1,80 @@
+/* Custom Sanity Studio Styles */
+/* Add this file to customize your Studio's appearance */
+
+/* Change the Studio's color scheme */
+:root {
+  --brand-primary: #1B5E20 !important; /* Your green color */
+  --brand-secondary: #4CAF50 !important;
+
+  /* Custom fonts */
+  --font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
+/* Customize the sidebar */
+[data-ui="Navbar"] {
+  background: linear-gradient(180deg, #1B5E20 0%, #2E7D32 100%) !important;
+}
+
+/* Custom card styling */
+[data-ui="Card"] {
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+  transition: transform 0.2s ease !important;
+}
+
+[data-ui="Card"]:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15) !important;
+}
+
+/* Customize buttons */
+[data-ui="Button"][data-tone="primary"] {
+  background: linear-gradient(135deg, #1B5E20 0%, #4CAF50 100%) !important;
+  border: none !important;
+  font-weight: 600 !important;
+}
+
+/* Custom input fields */
+[data-ui="TextInput"],
+[data-ui="TextArea"] {
+  border-radius: 8px !important;
+  border: 2px solid #e0e0e0 !important;
+  font-size: 15px !important;
+}
+
+[data-ui="TextInput"]:focus,
+[data-ui="TextArea"]:focus {
+  border-color: #1B5E20 !important;
+  box-shadow: 0 0 0 3px rgba(27, 94, 32, 0.1) !important;
+}
+
+/* Add custom badges/boxes */
+.custom-section-header {
+  background: linear-gradient(135deg, #1B5E20 0%, #4CAF50 100%);
+  color: white;
+  padding: 16px 20px;
+  border-radius: 8px;
+  margin: 20px 0;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+/* Customize document list */
+[data-ui="DocumentList"] {
+  padding: 20px !important;
+}
+
+/* Make the studio more spacious */
+[data-ui="AppLayout"] {
+  padding: 24px !important;
+}
+
+/* Custom media library styling */
+[data-ui="MediaLibrary"] img {
+  border-radius: 8px !important;
+  transition: transform 0.2s ease !important;
+}
+
+[data-ui="MediaLibrary"] img:hover {
+  transform: scale(1.05) !important;
+}

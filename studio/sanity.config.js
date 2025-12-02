@@ -4,6 +4,9 @@ import {visionTool} from '@sanity/vision'
 import {media} from 'sanity-plugin-media'
 import {schemas} from './schemas'
 
+// Import custom styling
+import './custom-studio.css'
+
 export default defineConfig({
   name: 'default',
   title: 'Kevin Franz Jr. - Content Manager',
@@ -19,5 +22,17 @@ export default defineConfig({
 
   schema: {
     types: schemas,
+  },
+
+  // Custom theme/branding
+  theme: {
+    // You can add custom theme configuration here
+  },
+
+  // Custom studio title and logo
+  studio: {
+    components: {
+      // You can add custom components here
+    },
   },
 })
