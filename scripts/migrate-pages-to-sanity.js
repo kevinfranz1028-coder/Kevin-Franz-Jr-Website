@@ -16,6 +16,20 @@ const client = createClient({
   token: process.env.SANITY_AUTH_TOKEN, // Required for write operations
 })
 
+// Helper function to retry with exponential backoff
+async function retryWithBackoff(fn, maxRetries = 4) {
+  for (let i = 0; i < maxRetries; i++) {
+    try {
+      return await fn()
+    } catch (error) {
+      if (i === maxRetries - 1) throw error
+      const delay = Math.pow(2, i) * 1000 // 1s, 2s, 4s, 8s
+      console.log(`    ⏳ Retry ${i + 1}/${maxRetries} after ${delay/1000}s...`)
+      await new Promise(resolve => setTimeout(resolve, delay))
+    }
+  }
+}
+
 // Import Pages
 async function importPages() {
   console.log('📄 Importing Website Pages...')
@@ -28,12 +42,14 @@ async function importPages() {
       const pageId = file.replace('.json', '')
       const pageData = JSON.parse(fs.readFileSync(filePath, 'utf-8'))
 
-      // Create document in Sanity
-      const result = await client.create({
-        _type: 'websitePage',
-        _id: `page-${pageId}`,
-        pageId: pageId,
-        ...pageData,
+      // Create document in Sanity with retry logic
+      const result = await retryWithBackoff(async () => {
+        return await client.create({
+          _type: 'websitePage',
+          _id: `page-${pageId}`,
+          pageId: pageId,
+          ...pageData,
+        })
       })
 
       console.log(`  ✓ Imported: ${pageId} (${pageData.title || pageId})`)
