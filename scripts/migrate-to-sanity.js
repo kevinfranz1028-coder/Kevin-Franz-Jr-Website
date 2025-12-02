@@ -18,13 +18,17 @@ const client = createClient({
 })
 
 // Helper to convert markdown frontmatter to Sanity document
+// Filters out image fields that need manual upload
 function parseMarkdownFile(filePath, type) {
   const fileContent = fs.readFileSync(filePath, 'utf-8')
   const {data, content} = matter(fileContent)
 
+  // Remove image-related fields (need to be uploaded manually)
+  const {image, images, gallery, photos, heroImage, featuredImage, ...cleanData} = data
+
   return {
     _type: type,
-    ...data,
+    ...cleanData,
     body: content,
   }
 }
