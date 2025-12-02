@@ -12,7 +12,7 @@ export async function onRequest(context) {
   const clientSecret = env.GITHUB_OAUTH_CLIENT_SECRET;
 
   if (!clientId || !clientSecret) {
-    return new Response('GitHub OAuth not configured. Please set GITHUB_OAUTH_CLIENT_ID and GITHUB_OAUTH_CLIENT_SECRET in Cloudflare Pages settings.', {
+    return new Response('GitHub OAuth not configured.  Please set GITHUB_OAUTH_CLIENT_ID and GITHUB_OAUTH_CLIENT_SECRET in Cloudflare Pages settings.', {
       status: 500,
       headers: { 'Content-Type': 'text/plain' }
     });
@@ -49,15 +49,21 @@ export async function onRequest(context) {
       throw new Error(tokenData.error_description || tokenData.error);
     }
 
+    // Format token for Decap CMS - it expects { token, provider } format
+    const formattedTokenData = {
+      token: tokenData.access_token,
+      provider: 'github'
+    };
+
     // Serialize token data for embedding in HTML
-    const tokenDataJSON = JSON.stringify(tokenData);
+    const tokenDataJSON = JSON.stringify(formattedTokenData);
 
     // Return HTML that sends the token to the parent window (Decap CMS)
     const html = `
-<!DOCTYPE html>
+<! DOCTYPE html>
 <html>
 <head>
-  <title>Authorizing...</title>
+  <title>Authorizing... </title>
   <style>
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -112,7 +118,7 @@ export async function onRequest(context) {
       window.opener.postMessage('authorizing:github', '*');
 
       setTimeout(function() {
-        window.close();
+        window. close();
       }, 1000);
     })();
   </script>
@@ -160,7 +166,7 @@ export async function onRequest(context) {
 <body>
   <div class="error">
     <h2>Authorization Failed</h2>
-    <p>${error.message}</p>
+    <p>${error. message}</p>
     <p><a href="/admin/">Return to CMS</a></p>
   </div>
 </body>
