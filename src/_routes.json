@@ -1,6 +1,1 @@
-{
-  "version": 1,
-  "description": "Route API endpoints to Functions, serve everything else as static",
-  "include": ["/auth*", "/callback*", "/claude-ai*", "/ai-site-editor*"],
-  "exclude": []
-}
+{"version": 1, "description": "Route API endpoints to Functions, serve everything else as static", "include": ["/auth*", "/callback*", "/debug-env*", "/claude-ai*", "/ai-site-editor*"], "exclude": []}
