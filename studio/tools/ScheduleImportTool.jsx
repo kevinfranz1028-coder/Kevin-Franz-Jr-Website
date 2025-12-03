@@ -81,7 +81,7 @@ export default function ScheduleImportTool() {
           const existing = await client.fetch(`*[_id == $id][0]`, {id: docId})
 
           if (existing) {
-            // Update existing game
+            // Update existing game and publish
             await client.patch(docId).set({
               opponent,
               date: date.toISOString(),
@@ -95,9 +95,9 @@ export default function ScheduleImportTool() {
               rebounds,
               assists,
               recap,
-            }).commit()
+            }).commit({autoPublish: true})
           } else {
-            // Create new game
+            // Create new game (automatically published)
             await client.create({
               _type: 'game',
               _id: docId,
@@ -199,6 +199,12 @@ export default function ScheduleImportTool() {
               </div>
               <Text size={1}>
                 Total: {results.total} | Success: {results.success} | Errors: {results.errors}
+              </Text>
+              <Text size={1} weight="semibold" style={{marginTop: '0.5rem'}}>
+                ✅ Games are published and live!
+              </Text>
+              <Text size={1} muted>
+                Go to Basketball → Games & Schedule to view and edit individual games.
               </Text>
               {results.errorDetails.length > 0 && (
                 <Box marginTop={2}>
