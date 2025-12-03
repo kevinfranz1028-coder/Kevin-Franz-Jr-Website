@@ -51,6 +51,7 @@ export default function ScheduleImportTool() {
       const games = XLSX.utils.sheet_to_json(sheet)
 
       console.log(`Found ${games.length} games to import`)
+      console.log('Sample game data:', games[0])
 
       let successCount = 0
       let errorCount = 0
@@ -116,11 +117,13 @@ export default function ScheduleImportTool() {
             })
           }
 
+          console.log(`✓ Imported: ${opponent} on ${dateStr}`)
           successCount++
         } catch (err) {
           errorCount++
-          errors.push(`${game.Opponent || 'Unknown'}: ${err.message}`)
-          console.error('Failed to import game:', err)
+          const errorMsg = `${game.Opponent || game.opponent || 'Unknown'}: ${err.message}`
+          errors.push(errorMsg)
+          console.error('Failed to import game:', game, err)
         }
       }
 
