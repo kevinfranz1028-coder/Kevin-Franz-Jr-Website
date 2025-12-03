@@ -60,18 +60,29 @@ export default function ScheduleImportTool() {
       // Process each game
       for (const game of games) {
         try {
-          const opponent = game.Opponent || game.opponent || ''
+          // Clean up opponent name (remove @ and vs prefixes)
+          let opponent = (game.Opponent || game.opponent || '').toString().trim()
+          opponent = opponent.replace(/^[@]?\s*(vs\.?|@)?\s*/i, '').trim()
+
           const date = parseDate(game.Date || game.date)
-          const time = game.Time || game.time || ''
-          const location = game.Location || game.location || ''
-          const homeAway = (game['Home/Away'] || game.homeAway || game.home_away || 'home').toLowerCase()
-          const season = game.Season || game.season || ''
-          const team = game.Team || game.team || ''
-          const result = game.Result || game.result || ''
-          const points = game.Points || game.points || ''
-          const rebounds = game.Rebounds || game.rebounds || ''
-          const assists = game.Assists || game.assists || ''
-          const recap = game.Recap || game.recap || game.Notes || game.notes || ''
+          const time = (game.Time || game.time || '').toString()
+          const location = (game.Location || game.location || '').toString()
+
+          // Normalize home/away to lowercase
+          let homeAway = (game['Home/Away'] || game.homeAway || game.home_away || 'home').toString().toLowerCase().trim()
+          if (homeAway === 'home' || homeAway.includes('home')) {
+            homeAway = 'home'
+          } else {
+            homeAway = 'away'
+          }
+
+          const season = (game.Season || game.season || '').toString()
+          const team = (game.Team || game.team || '').toString()
+          const result = (game.Result || game.result || '').toString()
+          const points = (game.Points || game.points || '').toString()
+          const rebounds = (game.Rebounds || game.rebounds || '').toString()
+          const assists = (game.Assists || game.assists || '').toString()
+          const recap = (game.Recap || game.recap || game.Notes || game.notes || '').toString()
 
           // Create document ID
           const dateStr = formatDateForFilename(date)
