@@ -1,0 +1,357 @@
+---
+layout: base.njk
+title: {{ (sanityPages.football or pages.football).title }}
+description: Complete football profile for Kevin Franz Jr. - stats, highlights, schedule, and recruiting information for Class of 2028 athlete.
+permalink: /football/
+---
+
+{# Page Header #}
+<section class="section-football-hero">
+    <div class="container">
+        <div class="page-header-centered">
+            <span class="label-eyebrow">{{ (sanityPages.football or pages.football).header.eyebrow or "Class of 2028" }}</span>
+            <h1>{{ (sanityPages.football or pages.football).header.heading or "Football" }}</h1>
+            <p class="hero-subheadline">{{ (sanityPages.football or pages.football).header.subheading or "Multi-Sport Athlete" }}</p>
+            <p class="supporting-text">{{ (sanityPages.football or pages.football).header.supportingText or "Versatile player with strong athleticism and game IQ" }}</p>
+        </div>
+    </div>
+</section>
+
+{# Player Information #}
+<section class="section-measurables">
+    <div class="container">
+        <div class="measurables-grid">
+            <div class="measurables-text">
+                <h2>Player Information</h2>
+                <div class="info-list">
+                    <div class="info-item"><strong>Name:</strong> {{ (sanityPages.football or pages.football).playerInfo.name or "Kevin Franz Jr." }}</div>
+                    <div class="info-item"><strong>Class:</strong> {{ (sanityPages.football or pages.football).playerInfo.class or "2028" }}</div>
+                    <div class="info-item"><strong>Position:</strong> {{ (sanityPages.football or pages.football).playerInfo.position or "RB / DB" }}</div>
+                    <div class="info-item"><strong>Height / Weight:</strong> {{ (sanityPages.football or pages.football).playerInfo.height or "5'9\"" }} / {{ (sanityPages.football or pages.football).playerInfo.weight or "165 lbs" }}</div>
+                    <div class="info-item"><strong>40-Yard Dash:</strong> {{ (sanityPages.football or pages.football).playerInfo.fortyTime or "TBD" }}</div>
+                    <div class="info-item"><strong>School:</strong> {{ (sanityPages.football or pages.football).playerInfo.school or "Blue Valley Southwest High School" }}</div>
+                    <div class="info-item"><strong>Jersey:</strong> #{{ (sanityPages.football or pages.football).playerInfo.jersey or "TBD" }}</div>
+                    {% if (sanityPages.football or pages.football).playerInfo.clubTeam %}
+                    <div class="info-item"><strong>7v7 / Club:</strong> {{ (sanityPages.football or pages.football).playerInfo.clubTeam }}</div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="measurables-image-wrapper">
+                <img src="{{ (sanityPages.football or pages.football).playerInfo.image or '/images/kevin-football.jpg' }}" alt="{{ (sanityPages.football or pages.football).playerInfo.name or 'Kevin Franz Jr.' }} football action shot" class="measurables-image">
+            </div>
+        </div>
+    </div>
+</section>
+
+{# Highlights #}
+<section class="section-highlights">
+    <div class="container">
+        <h2>Highlights</h2>
+        <p class="subtitle">Recent highlight clips and full game film.</p>
+        <div class="highlights-videos">
+            {% if (sanityPages.football or pages.football).highlights and (sanityPages.football or pages.football).highlights.length > 0 %}
+                {% for video in (sanityPages.football or pages.football).highlights %}
+                <div class="video-wrapper">
+                    <div class="video-embed">
+                        {% if video.embedCode %}
+                            {{ video.embedCode | safe }}
+                        {% elif video.videoUrl %}
+                            {% if 'youtube.com' in video.videoUrl or 'youtu.be' in video.videoUrl %}
+                                {% set videoId = video.videoUrl | replace('https://youtu.be/', '') | replace('https://www.youtube.com/watch?v=', '') | replace('&', '?') | split('?') | first %}
+                                <iframe width="100%" height="315" src="https://www.youtube.com/embed/{{ videoId }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            {% else %}
+                                <div class="video-placeholder">
+                                    <p><a href="{{ video.videoUrl }}" target="_blank">Watch Video</a></p>
+                                </div>
+                            {% endif %}
+                        {% else %}
+                            <div class="video-placeholder">
+                                <p>Video Coming Soon</p>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="video-caption">
+                        <h3 class="video-title">{{ video.title }}</h3>
+                        <p>{{ video.description }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <p>Highlight videos coming soon! Check back for updated footage.</p>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+{# Football Timeline - Modern Horizontal Style #}
+<section class="timeline-horizontal">
+    <link rel="stylesheet" href="/css/timeline.css">
+
+    <div class="timeline-horizontal-wrapper">
+        {# Timeline Header #}
+        <div class="timeline-header">
+            <h2>Football Journey</h2>
+            <p>Follow Kevin's football development through the years</p>
+        </div>
+
+        {# Photo Cards - Each Clickable #}
+        <div class="timeline-cards">
+            {% for item in sanityFootballTimeline %}
+            <a href="{{ item.url }}" class="timeline-photo-card">
+                <div class="timeline-card-border">
+                    {# Photo #}
+                    {% if item.gallery and item.gallery[0] and item.gallery[0].image %}
+                    <img src="{{ item.gallery[0].image }}" alt="{{ item.year }} - {{ item.grade }}" class="timeline-card-image">
+                    {% elif item.thumbnailImage %}
+                    <img src="{{ item.thumbnailImage }}" alt="{{ item.year }} - {{ item.grade }}" class="timeline-card-image">
+                    {% else %}
+                    <img src="/images/placeholder-football.jpg" alt="{{ item.year }} - {{ item.grade }}" class="timeline-card-image">
+                    {% endif %}
+
+                    {# Overlay with Info #}
+                    <div class="timeline-card-overlay">
+                        <div class="timeline-card-year-large">{{ item.year }}</div>
+                        <div class="timeline-card-title">{{ item.grade }}</div>
+                        <div class="timeline-card-description">{{ item.summary }}</div>
+
+                        {# Optional Stats #}
+                        {% if item.stats %}
+                        <div class="timeline-stats-badge">
+                            {% if item.stats.rushingYards %}
+                            <div class="timeline-stat-item">
+                                <span class="timeline-stat-value">{{ item.stats.rushingYards }}</span>
+                                <span class="timeline-stat-label">Rush YDs</span>
+                            </div>
+                            {% endif %}
+                            {% if item.stats.totalTDs %}
+                            <div class="timeline-stat-item">
+                                <span class="timeline-stat-value">{{ item.stats.totalTDs }}</span>
+                                <span class="timeline-stat-label">TDs</span>
+                            </div>
+                            {% endif %}
+                            {% if item.stats.tackles %}
+                            <div class="timeline-stat-item">
+                                <span class="timeline-stat-value">{{ item.stats.tackles }}</span>
+                                <span class="timeline-stat-label">Tackles</span>
+                            </div>
+                            {% endif %}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    {# Badge for Current Season #}
+                    {% if item.year == "2024" %}
+                    <div class="timeline-card-badge">Current</div>
+                    {% endif %}
+                </div>
+
+                {# Year Marker Circle #}
+                <div class="timeline-card-year-marker">{{ item.year }}</div>
+            </a>
+            {% endfor %}
+        </div>
+
+        {# Timeline Rail #}
+        <div class="timeline-rail"></div>
+
+        {# Year Markers Below #}
+        <div class="timeline-years">
+            {% for item in sanityFootballTimeline %}
+            <div class="timeline-year-marker">{{ item.year }}</div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{# Season Stats #}
+<section class="section-stats">
+    <div class="container">
+        <h2>Season Stats</h2>
+        {% if (sanityPages.football or pages.football).stats.intro %}
+        <p class="intro-text">{{ (sanityPages.football or pages.football).stats.intro }}</p>
+        {% endif %}
+
+        {% if (sanityPages.football or pages.football).stats.table and (sanityPages.football or pages.football).stats.table.length > 0 %}
+        <div class="table-wrapper">
+            <table class="stats-table">
+                <thead>
+                    <tr>
+                        <th>Season</th>
+                        <th>Team</th>
+                        <th>GP</th>
+                        <th>Rush YDs</th>
+                        <th>Rush TDs</th>
+                        <th>Rec</th>
+                        <th>Rec YDs</th>
+                        <th>Rec TDs</th>
+                        <th>Tackles</th>
+                        <th>INTs</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in (sanityPages.football or pages.football).stats.table %}
+                    <tr>
+                        <td>{{ row.season }}</td>
+                        <td>{{ row.team }}</td>
+                        <td>{{ row.gp }}</td>
+                        <td>{{ row.rushYds }}</td>
+                        <td>{{ row.rushTds }}</td>
+                        <td>{{ row.rec }}</td>
+                        <td>{{ row.recYds }}</td>
+                        <td>{{ row.recTds }}</td>
+                        <td>{{ row.tackles }}</td>
+                        <td>{{ row.ints }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+{# Schedule #}
+<section class="section-schedule">
+    <div class="container">
+        <h2>Current Season Schedule</h2>
+        <div class="schedule-wrapper">
+            <div class="schedule-header">
+                <div class="schedule-col">Date</div>
+                <div class="schedule-col">Opponent</div>
+                <div class="schedule-col">Location</div>
+                <div class="schedule-col">Time</div>
+                <div class="schedule-col">Result</div>
+            </div>
+            {% set currentGames = sanityFootballGames %}
+            {% for game in currentGames %}
+            <div class="schedule-row">
+                <div class="schedule-col">{{ game.date | shortDate }}</div>
+                <div class="schedule-col">{{ game.opponent }}</div>
+                <div class="schedule-col">{{ game.location }}</div>
+                <div class="schedule-col">{{ game.time }}</div>
+                <div class="schedule-col">{{ game.result or '–' }}</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{# Achievements #}
+<section class="section-achievements">
+    <div class="container">
+        <h2>Achievements & Recognition</h2>
+        <div class="achievements-grid">
+            <div class="achievements-list">
+                <h3>Honors & Awards</h3>
+                {% if (sanityPages.football or pages.football).achievements.list and (sanityPages.football or pages.football).achievements.list.length > 0 %}
+                <ul>
+                    {% for achievement in (sanityPages.football or pages.football).achievements.list %}
+                    <li>{{ achievement }}</li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p>Achievements coming soon!</p>
+                {% endif %}
+            </div>
+            <div class="quote-section">
+                {% if (sanityPages.football or pages.football).achievements.quote %}
+                <div class="quote-card">
+                    <p class="quote-text">"{{ (sanityPages.football or pages.football).achievements.quote.text }}"</p>
+                    <p class="quote-attribution">{{ (sanityPages.football or pages.football).achievements.quote.attribution }}</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{# Training & Development #}
+<section class="section-training">
+    <div class="container">
+        <h2>Training & Development</h2>
+        <div class="training-content">
+            {% if (sanityPages.football or pages.football).training.focusAreas %}
+            <h3>Off-Season Focus Areas</h3>
+            <div>{{ (sanityPages.football or pages.football).training.focusAreas | replace('\n', '<br>') | safe }}</div>
+            {% endif %}
+
+            {% if (sanityPages.football or pages.football).training.routine %}
+            <h3>Training Routine</h3>
+            <div>{{ (sanityPages.football or pages.football).training.routine | replace('\n', '<br>') | safe }}</div>
+            {% endif %}
+
+            {% if (sanityPages.football or pages.football).training.statement %}
+            <p style="margin-top: 2rem;">{{ (sanityPages.football or pages.football).training.statement }}</p>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+{# Recruiting Profiles #}
+<section style="padding: 4rem 0; background-color: var(--bg-white);">
+    <div class="container">
+        <h2>{{ (sanityPages.football or pages.football).recruitingProfiles.heading or "Recruiting Profiles" }}</h2>
+        <p class="subtitle">{{ (sanityPages.football or pages.football).recruitingProfiles.description or "View Kevin's recruiting profiles on major platforms" }}</p>
+        <div class="glance-grid" style="margin-top: 2rem;">
+            {% if (sanityPages.football or pages.football).recruitingProfiles.profiles %}
+                {% for profile in (sanityPages.football or pages.football).recruitingProfiles.profiles %}
+                <div class="card-glance">
+                    <h3 class="card-title">{{ profile.name }}</h3>
+                    <p class="card-body">{{ profile.description }}</p>
+                    <a href="{{ profile.url }}" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="margin-top: 1rem;">View Profile →</a>
+                </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+{# Social Media #}
+<section style="padding: 4rem 0; background-color: var(--bg-light);">
+    <div class="container">
+        <h2 class="text-center">{{ (sanityPages.football or pages.football).socialMedia.heading or "Follow My Journey" }}</h2>
+        <p class="subtitle text-center">{{ (sanityPages.football or pages.football).socialMedia.description or "Stay updated with the latest highlights and updates" }}</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; margin-top: 2rem;">
+            {% if (sanityPages.football or pages.football).socialMedia.links %}
+                {% for link in (sanityPages.football or pages.football).socialMedia.links %}
+                <div style="background: var(--bg-white); padding: 2rem; border-radius: 0.5rem; box-shadow: var(--shadow-sm); min-width: 250px; text-align: center;">
+                    <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">{{ link.platform }}</h3>
+                    <a href="{{ link.url }}" target="_blank" rel="noopener noreferrer" style="font-size: 1.25rem; font-weight: 600;">{{ link.handle }}</a>
+                </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+{# Contact & References #}
+<section class="section-coach-contact">
+    <div class="container">
+        <div class="contact-card">
+            <h2>Contact & References</h2>
+            <div class="contact-content">
+                {% if (sanityPages.football or pages.football).contacts and (sanityPages.football or pages.football).contacts.length > 0 %}
+                    {% for contact in (sanityPages.football or pages.football).contacts %}
+                    <div class="contact-block">
+                        <h4>{{ contact.role }}</h4>
+                        <p>{{ contact.name }}
+                        {% if contact.email %} – <a href="mailto:{{ contact.email }}">{{ contact.email }}</a>{% endif %}
+                        {% if contact.phone %} – {{ contact.phone }}{% endif %}
+                        </p>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                <div class="contact-block">
+                    <h4>Family Contact</h4>
+                    <p>For recruiting or academic questions, please reach out:</p>
+                    <p><a href="mailto:{{ player.parentEmail }}">{{ player.parentEmail }}</a>{% if player.parentPhone %} · {{ player.parentPhone }}{% endif %}</p>
+                </div>
+                {% endif %}
+
+                <div class="contact-cta">
+                    <a href="mailto:{{ player.parentEmail }}?subject=Recruiting Inquiry – {{ player.name }}" class="btn-primary">Email About Recruiting</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

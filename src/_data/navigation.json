@@ -3,6 +3,7 @@
   "links": [
     { "text": "Home", "url": "/" },
     { "text": "Basketball", "url": "/basketball/" },
+    { "text": "Football", "url": "/football/" },
     { "text": "Media & Photography", "url": "/media/" },
     { "text": "Academics", "url": "/academics/" },
     { "text": "Projects & Passions", "url": "/projects/" },

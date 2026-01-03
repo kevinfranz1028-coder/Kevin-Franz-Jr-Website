@@ -21,6 +21,10 @@ export const structure = (S: StructureBuilder) =>
                 .title('🏀 Basketball'),
               S.documentListItem()
                 .schemaType('websitePage')
+                .id('page-football')
+                .title('🏈 Football'),
+              S.documentListItem()
+                .schemaType('websitePage')
                 .id('page-academics')
                 .title('📚 Academics'),
               S.documentListItem()
@@ -67,6 +71,32 @@ export const structure = (S: StructureBuilder) =>
                 .child(
                   S.documentTypeList('game')
                     .title('Games')
+                    .defaultOrdering([{field: 'date', direction: 'desc'}])
+                ),
+            ])
+        ),
+
+      S.divider(),
+
+      // Football Section
+      S.listItem()
+        .title('🏈 Football')
+        .child(
+          S.list()
+            .title('Football Content')
+            .items([
+              S.listItem()
+                .title('📅 Timeline')
+                .child(
+                  S.documentTypeList('footballTimeline')
+                    .title('Football Timeline')
+                    .defaultOrdering([{field: 'order', direction: 'asc'}])
+                ),
+              S.listItem()
+                .title('🏈 Games & Schedule')
+                .child(
+                  S.documentTypeList('footballGame')
+                    .title('Football Games')
                     .defaultOrdering([{field: 'date', direction: 'desc'}])
                 ),
             ])

@@ -12,7 +12,7 @@ export default function ManualDeployTool() {
 
     try {
       // Trigger Cloudflare deploy hook
-      const webhookUrl = 'YOUR_CLOUDFLARE_WEBHOOK_URL_HERE'
+      const webhookUrl = 'https://api.cloudflare.com/client/v4/pages/webhooks/deploy_hooks/0cd98915-c72b-4b06-bdc3-afed6ae8f9a6'
 
       const response = await fetch(webhookUrl, {
         method: 'POST',

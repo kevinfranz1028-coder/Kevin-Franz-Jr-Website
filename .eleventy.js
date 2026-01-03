@@ -58,6 +58,12 @@ module.exports = function(eleventyConfig) {
     });
   });
 
+  eleventyConfig.addCollection("footballTimeline", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("src/football-timeline/*.md").sort((a, b) => {
+      return (a.data.order || 0) - (b.data.order || 0);
+    });
+  });
+
   return {
     dir: {
       input: "src",
