@@ -1147,85 +1147,46 @@ main {
    Tables
    =================================== */
 
-/* Player Stat Card */
-.player-stat-card {
-    max-width: 420px;
-    margin: 2rem auto 0;
-    border-radius: 0.75rem;
-    overflow: hidden;
-    box-shadow: var(--shadow-md);
-    border: 1px solid var(--border-light);
+/* Stats Table */
+.stats-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--bg-white);
 }
 
-.player-stat-card-header {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.75rem 1.25rem;
+.stats-table th,
+.stats-table td {
+    padding: 0.75rem 1rem;
+    text-align: center;
+    border-bottom: 1px solid var(--border-light);
+    white-space: nowrap;
+}
+
+.stats-table th {
     background: var(--gradient-primary);
     color: white;
-    font-size: 0.85rem;
-    font-weight: 600;
-}
-
-.player-stat-season {
-    font-weight: 800;
-}
-
-.player-stat-team {
-    opacity: 0.85;
-}
-
-.player-stat-gp {
-    margin-left: auto;
-    font-size: 0.8rem;
-    opacity: 0.85;
-}
-
-.player-stat-rows {
-    background: var(--bg-white);
-}
-
-.player-stat-row {
-    display: flex;
-    align-items: center;
-    padding: 0.5rem 1.25rem;
-    border-bottom: 1px solid var(--border-light);
-}
-
-.player-stat-row:last-child {
-    border-bottom: none;
-}
-
-.player-stat-row:nth-child(even) {
-    background: var(--bg-light);
-}
-
-.player-stat-label {
-    width: 70px;
+    font-weight: 700;
+    text-transform: uppercase;
     font-size: 0.75rem;
+    letter-spacing: 0.05em;
+}
+
+.stats-table td {
     font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
+    color: var(--text-dark);
+}
+
+.stat-val {
+    display: block;
+    font-size: 1rem;
+}
+
+.stat-rank {
+    display: block;
+    font-size: 0.6rem;
+    font-weight: 600;
     color: var(--text-gray);
-}
-
-.player-stat-value {
-    flex: 1;
-    font-size: 1.05rem;
-    font-weight: 800;
-    color: var(--primary-color);
-}
-
-.player-stat-rank {
-    font-size: 0.65rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: white;
-    background: var(--gradient-accent);
-    padding: 0.15rem 0.5rem;
-    border-radius: 1rem;
-    white-space: nowrap;
+    margin-top: 0.15rem;
 }
 
 /* Legacy table wrapper (used by schedule) */
@@ -1669,10 +1630,6 @@ main {
 
     .container {
         padding: 0 1.25rem;
-    }
-
-    .player-stat-card {
-        max-width: 100%;
     }
 
     .table-wrapper {

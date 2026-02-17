@@ -166,23 +166,34 @@ permalink: /basketball/
 
         {% if pages.basketball.stats.table and pages.basketball.stats.table.length > 0 %}
         {% for row in pages.basketball.stats.table %}
-        <div class="player-stat-card">
-            <div class="player-stat-card-header">
-                <span class="player-stat-season">{{ row.season }}</span>
-                <span class="player-stat-team">{{ row.team }}</span>
-                <span class="player-stat-gp">{{ row.gp }} GP / {{ row.gs }} GS</span>
-            </div>
-            {% if row.items and row.items.length > 0 %}
-            <div class="player-stat-rows">
-                {% for stat in row.items %}
-                <div class="player-stat-row">
-                    <span class="player-stat-label">{{ stat.label }}</span>
-                    <span class="player-stat-value">{{ stat.value }}</span>
-                    <span class="player-stat-rank">{{ stat.rank }}</span>
-                </div>
-                {% endfor %}
-            </div>
-            {% endif %}
+        <div class="table-wrapper">
+            <table class="stats-table">
+                <thead>
+                    <tr>
+                        <th>Season</th>
+                        <th>Team</th>
+                        <th>GP</th>
+                        <th>GS</th>
+                        {% for stat in row.items %}
+                        <th>{{ stat.label }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ row.season }}</td>
+                        <td>{{ row.team }}</td>
+                        <td>{{ row.gp }}</td>
+                        <td>{{ row.gs }}</td>
+                        {% for stat in row.items %}
+                        <td>
+                            <span class="stat-val">{{ stat.value }}</span>
+                            <span class="stat-rank">{{ stat.rank }}</span>
+                        </td>
+                        {% endfor %}
+                    </tr>
+                </tbody>
+            </table>
         </div>
         {% endfor %}
         {% endif %}
