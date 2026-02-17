@@ -166,34 +166,15 @@ permalink: /basketball/
 
         {% if pages.basketball.stats.table and pages.basketball.stats.table.length > 0 %}
         {% for row in pages.basketball.stats.table %}
-        <div class="table-wrapper">
-            <table class="stats-table">
-                <thead>
-                    <tr>
-                        <th>Season</th>
-                        <th>Team</th>
-                        <th>GP</th>
-                        <th>GS</th>
-                        {% for stat in row.items %}
-                        <th>{{ stat.label }}</th>
-                        {% endfor %}
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>{{ row.season }}</td>
-                        <td>{{ row.team }}</td>
-                        <td>{{ row.gp }}</td>
-                        <td>{{ row.gs }}</td>
-                        {% for stat in row.items %}
-                        <td>
-                            <span class="stat-val">{{ stat.value }}</span>
-                            <span class="stat-rank">{{ stat.rank }}</span>
-                        </td>
-                        {% endfor %}
-                    </tr>
-                </tbody>
-            </table>
+        <p class="stats-subtitle">{{ row.season }} {{ row.team }} &mdash; {{ row.gp }} GP / {{ row.gs }} GS</p>
+        <div class="stats-grid">
+            {% for stat in row.items %}
+            <div class="stat-cube">
+                <span class="stat-cube-value">{{ stat.value }}</span>
+                <span class="stat-cube-label">{{ stat.label }}</span>
+                <span class="stat-cube-rank">{{ stat.rank }}</span>
+            </div>
+            {% endfor %}
         </div>
         {% endfor %}
         {% endif %}
