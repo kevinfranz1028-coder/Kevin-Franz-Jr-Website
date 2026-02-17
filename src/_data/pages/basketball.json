@@ -77,18 +77,16 @@
         "gp": "16",
         "gs": "14",
         "items": [
-          {"label": "PPG", "value": "5.4", "rank": "6th"},
-          {"label": "RPG", "value": "4.1", "rank": "2nd"},
+          {"label": "PPG", "value": "5.4", "rank": "5th"},
+          {"label": "RPG", "value": "4.1", "rank": "1st"},
           {"label": "APG", "value": "2.6", "rank": "2nd"},
           {"label": "SPG", "value": "1.4", "rank": "T-3rd"},
-          {"label": "BPG", "value": "0.4", "rank": "T-4th"},
-          {"label": "FG%", "value": "37.5%", "rank": "9th"},
-          {"label": "3PT%", "value": "31.0%", "rank": "6th"},
+          {"label": "BPG", "value": "0.4", "rank": "T-3rd"},
+          {"label": "FG%", "value": "37.5%", "rank": "8th"},
+          {"label": "3PT%", "value": "31.0%", "rank": "5th"},
           {"label": "FT%", "value": "65.7%", "rank": "4th"},
-          {"label": "eFG%", "value": "43.8%", "rank": "8th"},
-          {"label": "TS%", "value": "49.2%", "rank": "7th"},
           {"label": "AST/TO", "value": "2.05", "rank": "2nd"},
-          {"label": "TOPG", "value": "1.25", "rank": "8th"}
+          {"label": "TOPG", "value": "1.25", "rank": "7th"}
         ]
       }
     ]
