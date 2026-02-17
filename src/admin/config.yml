@@ -254,7 +254,7 @@ collections:
               - {label: "Video Embed Code", name: "embedCode", widget: "text", required: false, hint: "Paste full YouTube/Vimeo embed code here"}
               - {label: "Video URL", name: "videoUrl", widget: "string", required: false, hint: "Or just paste the video URL"}
 
-          - label: "📊 Season Statistics Table"
+          - label: "📊 Season Statistics"
             name: "stats"
             widget: "object"
             collapsed: true
@@ -265,16 +265,18 @@ collections:
                 widget: "list"
                 summary: "{{fields.season}} - {{fields.team}}"
                 fields:
-                  - {label: "Season", name: "season", widget: "string", hint: "e.g., '2024-25'"}
+                  - {label: "Season", name: "season", widget: "string", hint: "e.g., '2025-26'"}
                   - {label: "Team", name: "team", widget: "string", hint: "e.g., 'BVSW JV'"}
-                  - {label: "GP (Games)", name: "gp", widget: "string"}
-                  - {label: "MPG (Minutes)", name: "mpg", widget: "string"}
-                  - {label: "PPG (Points)", name: "ppg", widget: "string"}
-                  - {label: "RPG (Rebounds)", name: "rpg", widget: "string"}
-                  - {label: "APG (Assists)", name: "apg", widget: "string"}
-                  - {label: "SPG (Steals)", name: "spg", widget: "string"}
-                  - {label: "3P% (3-Point %)", name: "threePct", widget: "string"}
-                  - {label: "FT% (Free Throw %)", name: "ftPct", widget: "string"}
+                  - {label: "Games Played", name: "gp", widget: "string"}
+                  - {label: "Games Started", name: "gs", widget: "string"}
+                  - label: "Individual Stats"
+                    name: "items"
+                    widget: "list"
+                    summary: "{{fields.label}}: {{fields.value}} ({{fields.rank}})"
+                    fields:
+                      - {label: "Stat Label", name: "label", widget: "string", hint: "e.g., PPG, RPG, FG%"}
+                      - {label: "Value", name: "value", widget: "string", hint: "e.g., 5.4, 37.5%"}
+                      - {label: "Team Rank", name: "rank", widget: "string", hint: "e.g., 2nd, T-3rd"}
 
           - label: "🏆 Achievements & Recognition"
             name: "achievements"

@@ -75,13 +75,21 @@
         "season": "2025-26",
         "team": "BVSW JV",
         "gp": "16",
-        "mpg": "-",
-        "ppg": "5.4",
-        "rpg": "4.1",
-        "apg": "2.6",
-        "spg": "1.4",
-        "threePct": "31.0%",
-        "ftPct": "65.7%"
+        "gs": "14",
+        "items": [
+          {"label": "PPG", "value": "5.4", "rank": "6th"},
+          {"label": "RPG", "value": "4.1", "rank": "2nd"},
+          {"label": "APG", "value": "2.6", "rank": "2nd"},
+          {"label": "SPG", "value": "1.4", "rank": "T-3rd"},
+          {"label": "BPG", "value": "0.4", "rank": "T-4th"},
+          {"label": "FG%", "value": "37.5%", "rank": "9th"},
+          {"label": "3PT%", "value": "31.0%", "rank": "6th"},
+          {"label": "FT%", "value": "65.7%", "rank": "4th"},
+          {"label": "eFG%", "value": "43.8%", "rank": "8th"},
+          {"label": "TS%", "value": "49.2%", "rank": "7th"},
+          {"label": "AST/TO", "value": "2.05", "rank": "2nd"},
+          {"label": "TOPG", "value": "1.25", "rank": "8th"}
+        ]
       }
     ]
   },
