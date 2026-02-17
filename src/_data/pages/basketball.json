@@ -69,8 +69,21 @@
     "statement": "I'm always working to become a more complete guard – someone who can run a team, guard multiple positions, and make teammates better."
   },
   "stats": {
-    "intro": "n/a",
-    "table": []
+    "intro": "Season averages for Kevin Franz Jr. (#30) — Blue Valley Southwest JV Basketball.",
+    "table": [
+      {
+        "season": "2025-26",
+        "team": "BVSW JV",
+        "gp": "16",
+        "mpg": "-",
+        "ppg": "5.4",
+        "rpg": "4.1",
+        "apg": "2.6",
+        "spg": "1.4",
+        "threePct": "31.0%",
+        "ftPct": "65.7%"
+      }
+    ]
   },
   "highlights": [
     {
