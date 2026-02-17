@@ -2,7 +2,7 @@
 opponent: Wyandotte
 date: 2024-12-09T17:30:00.000Z
 location: Wyandotte HS
-homeAway: Away
+homeAway: away
 time: 11:30 AM
 result: ""
 points: ""

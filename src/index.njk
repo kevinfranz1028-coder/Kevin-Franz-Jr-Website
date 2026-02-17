@@ -5,7 +5,7 @@ description: Kevin Franz Jr. - Class of 2028 Guard & Student-Athlete working to 
 ---
 
 {# Hero Section - Modern Design #}
-<section class="section-hero-modern">
+<section class="section-hero-modern" {% if pages.home.hero.image %}style="background-image: url('{{ pages.home.hero.image }}'); background-size: cover; background-position: center;"{% endif %}>
     <div class="container">
         <div class="hero-content-modern">
             <div class="hero-label">

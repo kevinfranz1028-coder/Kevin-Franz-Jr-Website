@@ -1,6 +1,6 @@
 ---
 layout: base.njk
-title: {{ (sanityPages.basketball or pages.basketball).title }}
+title: {{ pages.basketball.title }}
 description: Complete basketball profile for Kevin Franz Jr. - stats, highlights, schedule, and recruiting information for Class of 2028 guard.
 permalink: /basketball/
 ---
@@ -9,10 +9,10 @@ permalink: /basketball/
 <section class="section-basketball-hero">
     <div class="container">
         <div class="page-header-centered">
-            <span class="label-eyebrow">{{ (sanityPages.basketball or pages.basketball).header.eyebrow }}</span>
-            <h1>{{ (sanityPages.basketball or pages.basketball).header.heading }}</h1>
-            <p class="hero-subheadline">{{ (sanityPages.basketball or pages.basketball).header.subheading }}</p>
-            <p class="supporting-text">{{ (sanityPages.basketball or pages.basketball).header.supportingText }}</p>
+            <span class="label-eyebrow">{{ pages.basketball.header.eyebrow }}</span>
+            <h1>{{ pages.basketball.header.heading }}</h1>
+            <p class="hero-subheadline">{{ pages.basketball.header.subheading }}</p>
+            <p class="supporting-text">{{ pages.basketball.header.supportingText }}</p>
         </div>
     </div>
 </section>
@@ -24,18 +24,18 @@ permalink: /basketball/
             <div class="measurables-text">
                 <h2>Player Information</h2>
                 <div class="info-list">
-                    <div class="info-item"><strong>Name:</strong> {{ (sanityPages.basketball or pages.basketball).playerInfo.name }}</div>
-                    <div class="info-item"><strong>Class:</strong> {{ (sanityPages.basketball or pages.basketball).playerInfo.class }}</div>
-                    <div class="info-item"><strong>Position:</strong> {{ (sanityPages.basketball or pages.basketball).playerInfo.position }}</div>
-                    <div class="info-item"><strong>Height / Weight:</strong> {{ (sanityPages.basketball or pages.basketball).playerInfo.height }} / {{ (sanityPages.basketball or pages.basketball).playerInfo.weight }}</div>
-                    <div class="info-item"><strong>Dominant Hand:</strong> {{ (sanityPages.basketball or pages.basketball).playerInfo.hand }}</div>
-                    <div class="info-item"><strong>School:</strong> {{ (sanityPages.basketball or pages.basketball).playerInfo.school }}</div>
-                    <div class="info-item"><strong>Jersey:</strong> #{{ (sanityPages.basketball or pages.basketball).playerInfo.jersey }} (Varsity)</div>
-                    <div class="info-item"><strong>AAU / Club:</strong> {{ (sanityPages.basketball or pages.basketball).playerInfo.aauTeam }}</div>
+                    <div class="info-item"><strong>Name:</strong> {{ pages.basketball.playerInfo.name }}</div>
+                    <div class="info-item"><strong>Class:</strong> {{ pages.basketball.playerInfo.class }}</div>
+                    <div class="info-item"><strong>Position:</strong> {{ pages.basketball.playerInfo.position }}</div>
+                    <div class="info-item"><strong>Height / Weight:</strong> {{ pages.basketball.playerInfo.height }} / {{ pages.basketball.playerInfo.weight }}</div>
+                    <div class="info-item"><strong>Dominant Hand:</strong> {{ pages.basketball.playerInfo.hand }}</div>
+                    <div class="info-item"><strong>School:</strong> {{ pages.basketball.playerInfo.school }}</div>
+                    <div class="info-item"><strong>Jersey:</strong> #{{ pages.basketball.playerInfo.jersey }} (Varsity)</div>
+                    <div class="info-item"><strong>AAU / Club:</strong> {{ pages.basketball.playerInfo.aauTeam }}</div>
                 </div>
             </div>
             <div class="measurables-image-wrapper">
-                <img src="{{ (sanityPages.basketball or pages.basketball).playerInfo.image }}" alt="{{ (sanityPages.basketball or pages.basketball).playerInfo.name }} basketball action shot" class="measurables-image">
+                <img src="{{ pages.basketball.playerInfo.image }}" alt="{{ pages.basketball.playerInfo.name }} basketball action shot" class="measurables-image">
             </div>
         </div>
     </div>
@@ -47,8 +47,8 @@ permalink: /basketball/
         <h2>Highlights</h2>
         <p class="subtitle">Recent highlight clips and full game film.</p>
         <div class="highlights-videos">
-            {% if (sanityPages.basketball or pages.basketball).highlights and (sanityPages.basketball or pages.basketball).highlights.length > 0 %}
-                {% for video in (sanityPages.basketball or pages.basketball).highlights %}
+            {% if pages.basketball.highlights and pages.basketball.highlights.length > 0 %}
+                {% for video in pages.basketball.highlights %}
                 <div class="video-wrapper">
                     <div class="video-embed">
                         {% if video.embedCode %}
@@ -163,11 +163,11 @@ permalink: /basketball/
 <section class="section-stats">
     <div class="container">
         <h2>Season Stats</h2>
-        {% if (sanityPages.basketball or pages.basketball).stats.intro %}
-        <p class="intro-text">{{ (sanityPages.basketball or pages.basketball).stats.intro }}</p>
+        {% if pages.basketball.stats.intro %}
+        <p class="intro-text">{{ pages.basketball.stats.intro }}</p>
         {% endif %}
 
-        {% if (sanityPages.basketball or pages.basketball).stats.table and (sanityPages.basketball or pages.basketball).stats.table.length > 0 %}
+        {% if pages.basketball.stats.table and pages.basketball.stats.table.length > 0 %}
         <div class="table-wrapper">
             <table class="stats-table">
                 <thead>
@@ -185,7 +185,7 @@ permalink: /basketball/
                     </tr>
                 </thead>
                 <tbody>
-                    {% for row in (sanityPages.basketball or pages.basketball).stats.table %}
+                    {% for row in pages.basketball.stats.table %}
                     <tr>
                         <td>{{ row.season }}</td>
                         <td>{{ row.team }}</td>
@@ -218,8 +218,7 @@ permalink: /basketball/
                 <div class="schedule-col">Time</div>
                 <div class="schedule-col">Result</div>
             </div>
-            {% set currentGames = sanityGames %}
-            {% for game in currentGames %}
+            {% for game in collections.games %}
             <div class="schedule-row">
                 <div class="schedule-col">{{ game.date | shortDate }}</div>
                 <div class="schedule-col">{{ game.data.opponent }}</div>
@@ -239,9 +238,9 @@ permalink: /basketball/
         <div class="achievements-grid">
             <div class="achievements-list">
                 <h3>Honors & Awards</h3>
-                {% if (sanityPages.basketball or pages.basketball).achievements.list and (sanityPages.basketball or pages.basketball).achievements.list.length > 0 %}
+                {% if pages.basketball.achievements.list and pages.basketball.achievements.list.length > 0 %}
                 <ul>
-                    {% for achievement in (sanityPages.basketball or pages.basketball).achievements.list %}
+                    {% for achievement in pages.basketball.achievements.list %}
                     <li>{{ achievement }}</li>
                     {% endfor %}
                 </ul>
@@ -250,10 +249,10 @@ permalink: /basketball/
                 {% endif %}
             </div>
             <div class="quote-section">
-                {% if (sanityPages.basketball or pages.basketball).achievements.quote %}
+                {% if pages.basketball.achievements.quote %}
                 <div class="quote-card">
-                    <p class="quote-text">"{{ (sanityPages.basketball or pages.basketball).achievements.quote.text }}"</p>
-                    <p class="quote-attribution">{{ (sanityPages.basketball or pages.basketball).achievements.quote.attribution }}</p>
+                    <p class="quote-text">"{{ pages.basketball.achievements.quote.text }}"</p>
+                    <p class="quote-attribution">{{ pages.basketball.achievements.quote.attribution }}</p>
                 </div>
                 {% endif %}
             </div>
@@ -266,18 +265,18 @@ permalink: /basketball/
     <div class="container">
         <h2>Training & Development</h2>
         <div class="training-content">
-            {% if (sanityPages.basketball or pages.basketball).training.focusAreas %}
+            {% if pages.basketball.training.focusAreas %}
             <h3>Off-Season Focus Areas</h3>
-            <div>{{ (sanityPages.basketball or pages.basketball).training.focusAreas | replace('\n', '<br>') | safe }}</div>
+            <div>{{ pages.basketball.training.focusAreas | replace('\n', '<br>') | safe }}</div>
             {% endif %}
 
-            {% if (sanityPages.basketball or pages.basketball).training.routine %}
+            {% if pages.basketball.training.routine %}
             <h3>Training Routine</h3>
-            <div>{{ (sanityPages.basketball or pages.basketball).training.routine | replace('\n', '<br>') | safe }}</div>
+            <div>{{ pages.basketball.training.routine | replace('\n', '<br>') | safe }}</div>
             {% endif %}
 
-            {% if (sanityPages.basketball or pages.basketball).training.statement %}
-            <p style="margin-top: 2rem;">{{ (sanityPages.basketball or pages.basketball).training.statement }}</p>
+            {% if pages.basketball.training.statement %}
+            <p style="margin-top: 2rem;">{{ pages.basketball.training.statement }}</p>
             {% endif %}
         </div>
     </div>
@@ -286,10 +285,10 @@ permalink: /basketball/
 {# Recruiting Profiles #}
 <section style="padding: 4rem 0; background-color: var(--bg-white);">
     <div class="container">
-        <h2>{{ (sanityPages.basketball or pages.basketball).recruitingProfiles.heading }}</h2>
-        <p class="subtitle">{{ (sanityPages.basketball or pages.basketball).recruitingProfiles.description }}</p>
+        <h2>{{ pages.basketball.recruitingProfiles.heading }}</h2>
+        <p class="subtitle">{{ pages.basketball.recruitingProfiles.description }}</p>
         <div class="glance-grid" style="margin-top: 2rem;">
-            {% for profile in (sanityPages.basketball or pages.basketball).recruitingProfiles.profiles %}
+            {% for profile in pages.basketball.recruitingProfiles.profiles %}
             <div class="card-glance">
                 <h3 class="card-title">{{ profile.name }}</h3>
                 <p class="card-body">{{ profile.description }}</p>
@@ -303,10 +302,10 @@ permalink: /basketball/
 {# Social Media #}
 <section style="padding: 4rem 0; background-color: var(--bg-light);">
     <div class="container">
-        <h2 class="text-center">{{ (sanityPages.basketball or pages.basketball).socialMedia.heading }}</h2>
-        <p class="subtitle text-center">{{ (sanityPages.basketball or pages.basketball).socialMedia.description }}</p>
+        <h2 class="text-center">{{ pages.basketball.socialMedia.heading }}</h2>
+        <p class="subtitle text-center">{{ pages.basketball.socialMedia.description }}</p>
         <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; margin-top: 2rem;">
-            {% for link in (sanityPages.basketball or pages.basketball).socialMedia.links %}
+            {% for link in pages.basketball.socialMedia.links %}
             <div style="background: var(--bg-white); padding: 2rem; border-radius: 0.5rem; box-shadow: var(--shadow-sm); min-width: 250px; text-align: center;">
                 <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">{{ link.platform }}</h3>
                 <a href="{{ link.url }}" target="_blank" rel="noopener noreferrer" style="font-size: 1.25rem; font-weight: 600;">{{ link.handle }}</a>
@@ -322,8 +321,8 @@ permalink: /basketball/
         <div class="contact-card">
             <h2>Contact & References</h2>
             <div class="contact-content">
-                {% if (sanityPages.basketball or pages.basketball).contacts and (sanityPages.basketball or pages.basketball).contacts.length > 0 %}
-                    {% for contact in (sanityPages.basketball or pages.basketball).contacts %}
+                {% if pages.basketball.contacts and pages.basketball.contacts.length > 0 %}
+                    {% for contact in pages.basketball.contacts %}
                     <div class="contact-block">
                         <h4>{{ contact.role }}</h4>
                         <p>{{ contact.name }}

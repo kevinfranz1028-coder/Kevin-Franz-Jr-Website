@@ -4,7 +4,9 @@
   "description": "Student-athlete recruiting profile for Kevin Franz Jr.",
   "scripts": {
     "start": "eleventy --serve",
-    "build": "eleventy"
+    "build": "eleventy",
+    "cms": "node scripts/auto-deploy.js & eleventy --serve",
+    "deploy": "git add src/ && git commit -m 'Content update via CMS' && git push origin main"
   },
   "keywords": [
     "recruiting",
@@ -14,12 +16,11 @@
   "author": "Kevin Franz Jr.",
   "license": "MIT",
   "devDependencies": {
-    "@11ty/eleventy": "^2.0.1",
-    "@sanity/cli": "^4.19.0",
-    "@sanity/client": "^7.13.1"
+    "@11ty/eleventy": "^2.0.1"
   },
   "dependencies": {
     "csv-parser": "^3.0.0",
+    "dotenv": "^17.2.4",
     "gray-matter": "^4.0.3",
     "luxon": "^3.4.4",
     "xlsx": "^0.18.5"

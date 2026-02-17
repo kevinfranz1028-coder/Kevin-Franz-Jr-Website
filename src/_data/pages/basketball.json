@@ -1,5 +1,6 @@
 {
   "achievements": {
+    "list": [],
     "quote": {
       "text": "n/a",
       "attribution": "n/a"
@@ -68,7 +69,8 @@
     "statement": "I'm always working to become a more complete guard – someone who can run a team, guard multiple positions, and make teammates better."
   },
   "stats": {
-    "intro": "n/a"
+    "intro": "n/a",
+    "table": []
   },
   "highlights": [
     {
