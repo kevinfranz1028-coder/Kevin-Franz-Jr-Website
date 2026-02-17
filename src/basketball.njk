@@ -168,40 +168,28 @@ permalink: /basketball/
         {% endif %}
 
         {% if pages.basketball.stats.table and pages.basketball.stats.table.length > 0 %}
-        <div class="table-wrapper">
-            <table class="stats-table">
-                <thead>
-                    <tr>
-                        <th>Season</th>
-                        <th>Team</th>
-                        <th>GP</th>
-                        <th>MPG</th>
-                        <th>PPG</th>
-                        <th>RPG</th>
-                        <th>APG</th>
-                        <th>SPG</th>
-                        <th>3P%</th>
-                        <th>FT%</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for row in pages.basketball.stats.table %}
-                    <tr>
-                        <td>{{ row.season }}</td>
-                        <td>{{ row.team }}</td>
-                        <td>{{ row.gp }}</td>
-                        <td>{{ row.mpg }}</td>
-                        <td>{{ row.ppg }}</td>
-                        <td>{{ row.rpg }}</td>
-                        <td>{{ row.apg }}</td>
-                        <td>{{ row.spg }}</td>
-                        <td>{{ row.threePct }}</td>
-                        <td>{{ row.ftPct }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+        {% for row in pages.basketball.stats.table %}
+        <div class="stats-season-block">
+            <div class="stats-season-header">
+                <h3>{{ row.season }} — {{ row.team }}</h3>
+                <div class="stats-season-meta">
+                    <span class="stats-meta-item"><strong>GP:</strong> {{ row.gp }}</span>
+                    <span class="stats-meta-item"><strong>GS:</strong> {{ row.gs }}</span>
+                </div>
+            </div>
+            {% if row.items and row.items.length > 0 %}
+            <div class="stats-card-grid">
+                {% for stat in row.items %}
+                <div class="stat-card">
+                    <span class="stat-card-label">{{ stat.label }}</span>
+                    <span class="stat-card-value">{{ stat.value }}</span>
+                    <span class="stat-card-rank">{{ stat.rank }}</span>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
         </div>
+        {% endfor %}
         {% endif %}
     </div>
 </section>

@@ -1147,52 +1147,103 @@ main {
    Tables
    =================================== */
 
+/* Stats Season Block */
+.stats-season-block {
+    margin-top: 2.5rem;
+}
+
+.stats-season-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--gradient-primary);
+    color: white;
+    border-radius: 0.75rem;
+}
+
+.stats-season-header h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.stats-season-meta {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 1rem;
+}
+
+.stats-meta-item {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 0.35rem 0.85rem;
+    border-radius: 0.5rem;
+    font-size: 0.95rem;
+}
+
+/* Stat Card Grid */
+.stats-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1rem;
+}
+
+.stat-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1.25rem 1rem;
+    background: var(--bg-white);
+    border-radius: 0.75rem;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-light);
+    transition: all var(--transition-base);
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary-color);
+}
+
+.stat-card-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-gray);
+    margin-bottom: 0.4rem;
+}
+
+.stat-card-value {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    line-height: 1.2;
+    margin-bottom: 0.4rem;
+}
+
+.stat-card-rank {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: white;
+    background: var(--gradient-accent);
+    padding: 0.2rem 0.6rem;
+    border-radius: 1rem;
+}
+
+/* Legacy table wrapper (used by schedule) */
 .table-wrapper {
     overflow-x: auto;
     margin-top: 2.5rem;
     border-radius: 1rem;
     box-shadow: var(--shadow-md);
-}
-
-.stats-table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: var(--bg-white);
-}
-
-.stats-table th,
-.stats-table td {
-    padding: 1rem 1.5rem;
-    text-align: left;
-    border-bottom: 1px solid var(--border-light);
-}
-
-.stats-table th {
-    background: var(--gradient-primary);
-    color: white;
-    font-weight: 700;
-    text-transform: uppercase;
-    font-size: 0.875rem;
-    letter-spacing: 0.05em;
-}
-
-.stats-table tbody tr {
-    transition: all var(--transition-base);
-}
-
-.stats-table tbody tr:hover {
-    background: linear-gradient(90deg, var(--bg-light) 0%, var(--bg-white) 100%);
-    transform: scale(1.01);
-    box-shadow: var(--shadow-sm);
-}
-
-.stats-table tbody td:first-child {
-    font-weight: 700;
-    color: var(--primary-color);
-}
-
-.stats-table tbody tr:last-child td {
-    border-bottom: none;
 }
 
 /* ===================================
@@ -1628,6 +1679,24 @@ main {
 
     .container {
         padding: 0 1.25rem;
+    }
+
+    .stats-season-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .stats-card-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.75rem;
+    }
+
+    .stat-card {
+        padding: 1rem 0.5rem;
+    }
+
+    .stat-card-value {
+        font-size: 1.4rem;
     }
 
     .table-wrapper {
