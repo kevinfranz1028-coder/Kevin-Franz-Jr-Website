@@ -65,18 +65,19 @@ title: Photography & Media Production
 <section class="section-content" style="background-color: var(--bg-white); padding: 4rem 0;">
     <div class="container">
         <h2 class="text-center">{{ pages.media.gallery.heading }}</h2>
-        <div class="glance-grid" style="margin-top: 2rem;">
+        <div class="gallery-grid" style="margin-top: 2rem;">
             {% for item in pages.media.gallery.items %}
-            <div class="card-glance">
-                {% if item.image %}
-                <img src="{{ item.image }}" alt="{{ item.title }}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 0.5rem; margin-bottom: 1rem;">
+            <div class="gallery-item">
+                {% if item.instagramUrl %}
+                {% set igUrl = item.instagramUrl if item.instagramUrl.endsWith('/') else item.instagramUrl + '/' %}
+                <iframe src="{{ igUrl }}embed/" class="ig-embed" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
+                {% elif item.image %}
+                <img src="{{ item.image }}" alt="{{ item.title }}" class="gallery-img">
                 {% else %}
-                <div style="width: 100%; height: 200px; background: var(--bg-light); border-radius: 0.5rem; margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; color: var(--text-gray); font-size: 0.875rem;">
-                    [Photo Placeholder]
-                </div>
+                <div class="gallery-placeholder">[Photo]</div>
                 {% endif %}
-                <h3 class="card-title">{{ item.title }}</h3>
-                <p>{{ item.description }}</p>
+                <h3 class="gallery-title">{{ item.title }}</h3>
+                <p class="gallery-desc">{{ item.description }}</p>
             </div>
             {% endfor %}
         </div>

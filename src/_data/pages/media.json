@@ -51,17 +51,20 @@
       {
         "title": "High School Sports Coverage",
         "description": "Game action and sideline photography from BVSW athletics",
-        "image": "/images/gallery/sports-1.jpg"
+        "image": "",
+        "instagramUrl": ""
       },
       {
         "title": "College Football Experience",
         "description": "Penn State vs. Northwest Missouri State at Children's Mercy Park",
-        "image": "/images/gallery/college-game.jpg"
+        "image": "",
+        "instagramUrl": ""
       },
       {
         "title": "Behind-the-Scenes Content",
         "description": "Storytelling through candid moments and athlete features",
-        "image": "/images/gallery/bts-1.jpg"
+        "image": "",
+        "instagramUrl": ""
       }
     ]
   }

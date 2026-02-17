@@ -528,7 +528,8 @@ collections:
                 fields:
                   - {label: "Title", name: "title", widget: "string"}
                   - {label: "Description", name: "description", widget: "text"}
-                  - {label: "Photo", name: "image", widget: "image"}
+                  - {label: "Photo", name: "image", widget: "image", required: false, hint: "Upload a photo, OR use an Instagram URL below"}
+                  - {label: "Instagram Post URL", name: "instagramUrl", widget: "string", required: false, hint: "Paste an Instagram post URL (e.g. https://www.instagram.com/p/ABC123/)"}
 
           - label: "🎯 Hobbies & Activities"
             name: "hobbies"
