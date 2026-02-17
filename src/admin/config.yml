@@ -8,6 +8,7 @@ backend:
   name: github
   repo: kevinfranz1028-coder/Kevin-Franz-Jr-Website
   branch: main
+publish_mode: simple
 
 # ============================================
 # MEDIA LIBRARY - BUILT-IN FILE MANAGER
