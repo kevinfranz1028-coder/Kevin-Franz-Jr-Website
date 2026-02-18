@@ -6,23 +6,23 @@ permalink: /basketball/
 ---
 
 {# Page Header #}
-<section class="section-basketball-hero">
+<section class="section-page-header">
     <div class="container">
         <div class="page-header-centered">
             <span class="label-eyebrow">{{ pages.basketball.header.eyebrow }}</span>
-            <h1>{{ pages.basketball.header.heading }}</h1>
-            <p class="hero-subheadline">{{ pages.basketball.header.subheading }}</p>
-            <p class="supporting-text">{{ pages.basketball.header.supportingText }}</p>
+            <h1>{{ pages.basketball.title }}</h1>
+            <p class="supporting-text">{{ pages.basketball.header.subheading }}</p>
         </div>
     </div>
 </section>
 
 {# Player Information #}
-<section class="section-measurables">
+<section class="section-about">
     <div class="container">
-        <div class="measurables-grid">
-            <div class="measurables-text">
+        <div class="about-grid">
+            <div>
                 <h2>Player Information</h2>
+                <p class="body-text" style="margin-bottom: 1.5rem;">{{ pages.basketball.header.heading }}</p>
                 <div class="info-list">
                     <div class="info-item"><strong>Name:</strong> {{ pages.basketball.playerInfo.name }}</div>
                     <div class="info-item"><strong>Class:</strong> {{ pages.basketball.playerInfo.class }}</div>
@@ -33,9 +33,12 @@ permalink: /basketball/
                     <div class="info-item"><strong>Jersey:</strong> #{{ pages.basketball.playerInfo.jersey }} (Varsity)</div>
                     <div class="info-item"><strong>AAU / Club:</strong> {{ pages.basketball.playerInfo.aauTeam }}</div>
                 </div>
+                {% if pages.basketball.header.supportingText %}
+                <p class="body-text" style="margin-top: 1.5rem; font-style: italic;">{{ pages.basketball.header.supportingText }}</p>
+                {% endif %}
             </div>
-            <div class="measurables-image-wrapper">
-                <img src="{{ pages.basketball.playerInfo.image }}" alt="{{ pages.basketball.playerInfo.name }} basketball action shot" class="measurables-image">
+            <div>
+                <img src="{{ pages.basketball.playerInfo.image }}" alt="{{ pages.basketball.playerInfo.name }} basketball action shot" class="about-image">
             </div>
         </div>
     </div>
