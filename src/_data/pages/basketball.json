@@ -1,4 +1,98 @@
 {
+  "title": "Basketball ",
+  "header": {
+    "eyebrow": "Guard • Class of 2028",
+    "heading": "6'1\" combo guard focused on pace, decision-making, and on-ball defense.",
+    "subheading": "Current teams: Blue Valley Southwest • YouHoop 3SSB Gold",
+    "supportingText": "Focused on becoming the best I can be at all times"
+  },
+  "playerInfo": {
+    "name": "Kevin Franz Jr.",
+    "height": "6'1\"",
+    "weight": "185 lbs",
+    "position": "Combo Guard",
+    "jersey": "30",
+    "class": "2028",
+    "school": "Blue Valley Southwest",
+    "aauTeam": "YouHoop 3SSB",
+    "hand": "Right",
+    "image": "/images/img_1003.jpg"
+  },
+  "highlights": [
+    {
+      "title": "Highlight Reel 2024-25",
+      "description": "Season highlights featuring game action, scoring, and playmaking",
+      "videoUrl": "https://youtu.be/D99uLbwXy7s"
+    },
+    {
+      "title": "Full Game Film",
+      "description": "Complete game footage showcasing overall play and decision-making",
+      "videoUrl": "https://www.youtube.com/watch?v=rSJUcL_66c0"
+    }
+  ],
+  "stats": {
+    "intro": "Season averages for Kevin Franz Jr. (#30) — Blue Valley Southwest JV Basketball.",
+    "table": [
+      {
+        "season": "2025-26",
+        "team": "BVSW JV",
+        "gp": "16",
+        "gs": "14",
+        "items": [
+          {
+            "label": "PPG",
+            "value": "5.4",
+            "rank": "5th"
+          },
+          {
+            "label": "RPG",
+            "value": "4.1",
+            "rank": "1st"
+          },
+          {
+            "label": "APG",
+            "value": "2.6",
+            "rank": "2nd"
+          },
+          {
+            "label": "SPG",
+            "value": "1.4",
+            "rank": "T-3rd"
+          },
+          {
+            "label": "BPG",
+            "value": "0.4",
+            "rank": "T-3rd"
+          },
+          {
+            "label": "FG%",
+            "value": "37.5%",
+            "rank": "8th"
+          },
+          {
+            "label": "3PT%",
+            "value": "31.0%",
+            "rank": "5th"
+          },
+          {
+            "label": "FT%",
+            "value": "65.7%",
+            "rank": "4th"
+          },
+          {
+            "label": "AST/TO",
+            "value": "2.05",
+            "rank": "2nd"
+          },
+          {
+            "label": "TOPG",
+            "value": "1.25",
+            "rank": "7th"
+          }
+        ]
+      }
+    ]
+  },
   "achievements": {
     "list": [],
     "quote": {
@@ -6,12 +100,12 @@
       "attribution": "n/a"
     }
   },
-  "header": {
-    "eyebrow": "Guard • Class of 2028",
-    "heading": "6'1\" combo guard focused on pace, decision-making, and on-ball defense.",
-    "subheading": "Current teams: Blue Valley Southwest • YouHoop 3SSB Gold",
-    "supportingText": "Focused on becoming the best I can be at all times"
+  "training": {
+    "statement": "I'm always working to become a more complete guard – someone who can run a team, guard multiple positions, and make teammates better.",
+    "focusAreas": "Off-Season Focus Areas\nBall handling under pressure and pick-and-roll reads\nCatch-and-shoot 3s and off-the-dribble shooting\nOn-ball defense and strength",
+    "routine": "### Training Routine\n\n* Skill sessions: \\[X] days per week with \\[Trainer/Coach Name]\n* Weight room: \\[X] days per week focused on strength and mobility\n* Film study: breaking down our games and college guards I want to emulate"
   },
+  "contacts": [],
   "recruitingProfiles": {
     "heading": "Recruiting Profiles",
     "description": "View my complete recruiting profiles and stats across multiple platforms",
@@ -33,19 +127,6 @@
       }
     ]
   },
-  "playerInfo": {
-    "height": "6'1\"",
-    "position": "Combo Guard",
-    "name": "Kevin Franz Jr.",
-    "hand": "Right",
-    "jersey": "30",
-    "aauTeam": "YouHoop 3SSB",
-    "school": "Blue Valley Southwest",
-    "class": "2028",
-    "weight": "185 lbs",
-    "image": "/images/img_1003.jpg"
-  },
-  "contacts": [],
   "socialMedia": {
     "heading": "Connect",
     "description": "Follow my basketball journey on social media",
@@ -61,46 +142,5 @@
         "url": "https://instagram.com/Shots_By_Franz"
       }
     ]
-  },
-  "title": "Basketball ",
-  "training": {
-    "focusAreas": "Off-Season Focus Areas\nBall handling under pressure and pick-and-roll reads\nCatch-and-shoot 3s and off-the-dribble shooting\nOn-ball defense and strength",
-    "routine": "### Training Routine\n\n* Skill sessions: \\[X] days per week with \\[Trainer/Coach Name]\n* Weight room: \\[X] days per week focused on strength and mobility\n* Film study: breaking down our games and college guards I want to emulate",
-    "statement": "I'm always working to become a more complete guard – someone who can run a team, guard multiple positions, and make teammates better."
-  },
-  "stats": {
-    "intro": "Season averages for Kevin Franz Jr. (#30) — Blue Valley Southwest JV Basketball.",
-    "table": [
-      {
-        "season": "2025-26",
-        "team": "BVSW JV",
-        "gp": "16",
-        "gs": "14",
-        "items": [
-          {"label": "PPG", "value": "5.4", "rank": "5th"},
-          {"label": "RPG", "value": "4.1", "rank": "1st"},
-          {"label": "APG", "value": "2.6", "rank": "2nd"},
-          {"label": "SPG", "value": "1.4", "rank": "T-3rd"},
-          {"label": "BPG", "value": "0.4", "rank": "T-3rd"},
-          {"label": "FG%", "value": "37.5%", "rank": "8th"},
-          {"label": "3PT%", "value": "31.0%", "rank": "5th"},
-          {"label": "FT%", "value": "65.7%", "rank": "4th"},
-          {"label": "AST/TO", "value": "2.05", "rank": "2nd"},
-          {"label": "TOPG", "value": "1.25", "rank": "7th"}
-        ]
-      }
-    ]
-  },
-  "highlights": [
-    {
-      "title": "Highlight Reel 2024-25",
-      "description": "Season highlights featuring game action, scoring, and playmaking",
-      "videoUrl": "https://youtu.be/D99uLbwXy7s"
-    },
-    {
-      "title": "Full Game Film",
-      "description": "Complete game footage showcasing overall play and decision-making",
-      "videoUrl": "https://www.youtube.com/watch?v=rSJUcL_66c0"
-    }
-  ]
+  }
 }

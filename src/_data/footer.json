@@ -2,8 +2,17 @@
   "copyright": "© 2025 Kevin Franz Jr.",
   "email": "[Parent/Contact Email]",
   "links": [
-    { "text": "Highlight Video", "url": "#" },
-    { "text": "Hudl", "url": "#" },
-    { "text": "YouTube", "url": "#" }
+    {
+      "text": "Highlight Video",
+      "url": "#"
+    },
+    {
+      "text": "Hudl",
+      "url": "#"
+    },
+    {
+      "text": "YouTube",
+      "url": "#"
+    }
   ]
 }

@@ -3,7 +3,7 @@ layout: post.njk
 title: Holiday Tournament Recap
 type: Tournament
 date: 2024-12-20
-summary: Went 3–1 this week at the Holiday Classic Tournament. Averaged 14.5 points and 5 assists, but the biggest win for me was our fourth-quarter defense in the semifinal.
+summary: "\"Went 3–1 this week at the Holiday Classic Tournament. Averaged 14.5 points and 5 assists, but the biggest win for me was our fourth-quarter defense in the semifinal.\""
 coverImage: /images/tournament-recap.jpg
 featured: true
 ---

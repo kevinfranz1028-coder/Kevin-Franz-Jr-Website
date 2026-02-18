@@ -1,72 +1,196 @@
+---
+permalink: /admin/index.html
+eleventyExcludeFromCollections: true
+---
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kevin Franz Jr. — Content Manager</title>
   <link rel="icon" type="image/png" href="/images/favicon.png" />
-
-  <!-- Decap CMS with local proxy — saves directly to files -->
-  <script src="https://unpkg.com/decap-cms@^3.3.0/dist/decap-cms.js"></script>
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    /* Minimal branding — Sveltia has its own modern dark UI built in */
-    #cms-loading {
+    /* ========================================
+       DARK THEME OVERRIDE FOR DECAP CMS
+       ======================================== */
+    :root {
+      --cms-bg: #0a0a12;
+      --cms-surface: #12121e;
+      --cms-surface-2: #1a1a2e;
+      --cms-border: #2a2a3e;
+      --cms-text: #e0e0f0;
+      --cms-text-muted: #8888aa;
+      --cms-accent: #00E676;
+      --cms-accent-hover: #00ff85;
+      --cms-accent-dim: rgba(0, 230, 118, 0.12);
+    }
+
+    * { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important; }
+
+    body {
+      background: var(--cms-bg) !important;
+      color: var(--cms-text) !important;
+    }
+
+    /* Top app bar / header */
+    header, [class*="AppHeader"] {
+      background: var(--cms-surface) !important;
+      border-bottom: 1px solid var(--cms-border) !important;
+      box-shadow: 0 1px 12px rgba(0,0,0,0.5) !important;
+    }
+
+    /* Sidebar */
+    aside, [class*="Sidebar"], nav[class*="Nav"] {
+      background: var(--cms-surface) !important;
+      border-right: 1px solid var(--cms-border) !important;
+    }
+
+    /* Main content area */
+    main, [class*="Main"], [class*="Content"] {
+      background: var(--cms-bg) !important;
+    }
+
+    /* Cards and panels */
+    [class*="Card"], [class*="card"], [class*="ListCard"],
+    [class*="EntryListing"], [class*="ObjectWidget"],
+    section, [class*="ControlPane"], [class*="Panel"] {
+      background: var(--cms-surface) !important;
+      border-color: var(--cms-border) !important;
+      border-radius: 12px !important;
+    }
+
+    /* All text elements */
+    h1, h2, h3, h4, h5, label, span, p, div, a, li, td, th {
+      color: var(--cms-text) !important;
+    }
+
+    /* Muted text */
+    [class*="description"], [class*="hint"], small, [class*="StatusButton"] {
+      color: var(--cms-text-muted) !important;
+    }
+
+    /* Input fields */
+    input, textarea, select, [class*="input"], [contenteditable] {
+      background: var(--cms-surface-2) !important;
+      color: var(--cms-text) !important;
+      border: 1px solid var(--cms-border) !important;
+      border-radius: 8px !important;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+    }
+
+    input:focus, textarea:focus, select:focus, [contenteditable]:focus {
+      border-color: var(--cms-accent) !important;
+      box-shadow: 0 0 0 3px var(--cms-accent-dim) !important;
+      outline: none !important;
+    }
+
+    /* Primary buttons */
+    [class*="PublishButton"], button[class*="primary"],
+    a[class*="primary"], [class*="ToolbarButton"] {
+      background: var(--cms-accent) !important;
+      color: #000 !important;
+      border: none !important;
+      border-radius: 8px !important;
+      font-weight: 700 !important;
+      transition: all 0.2s ease !important;
+    }
+
+    [class*="PublishButton"]:hover, button[class*="primary"]:hover {
+      background: var(--cms-accent-hover) !important;
+      box-shadow: 0 4px 20px rgba(0, 230, 118, 0.3) !important;
+    }
+
+    /* Secondary / other buttons */
+    button, [class*="Button"] {
+      border-radius: 8px !important;
+      transition: all 0.2s ease !important;
+    }
+
+    /* Dropdown menus */
+    [class*="Dropdown"], [class*="Menu"], [class*="Popover"], ul[role="listbox"] {
+      background: var(--cms-surface-2) !important;
+      border: 1px solid var(--cms-border) !important;
+      border-radius: 10px !important;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.6) !important;
+    }
+
+    /* Table rows / list items in the entry list */
+    [class*="ListCardLink"], [class*="EntryCard"], a[href*="/collections/"] {
+      background: var(--cms-surface) !important;
+      border: 1px solid var(--cms-border) !important;
+      border-radius: 10px !important;
+      margin-bottom: 4px !important;
+      transition: all 0.15s ease !important;
+    }
+
+    [class*="ListCardLink"]:hover, [class*="EntryCard"]:hover, a[href*="/collections/"]:hover {
+      background: var(--cms-surface-2) !important;
+      border-color: var(--cms-accent) !important;
+      box-shadow: 0 2px 12px rgba(0, 230, 118, 0.08) !important;
+    }
+
+    /* Active / selected nav items */
+    [class*="active"], [class*="Active"], [aria-current="page"] {
+      color: var(--cms-accent) !important;
+      border-color: var(--cms-accent) !important;
+    }
+
+    /* Scrollbars */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: var(--cms-bg); }
+    ::-webkit-scrollbar-thumb { background: var(--cms-border); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--cms-accent); }
+
+    /* Loading / splash */
+    #cms-splash {
       position: fixed; inset: 0; z-index: 99999;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      background: #08080e;
-      transition: opacity 0.6s ease, visibility 0.6s ease;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      background: var(--cms-bg);
+      transition: opacity 0.5s ease, visibility 0.5s ease;
     }
-    #cms-loading.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
-    #cms-loading h1 {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      font-size: 28px; font-weight: 800; letter-spacing: -0.5px;
-      background: linear-gradient(135deg, #fff, #00E676);
+    #cms-splash.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+    #cms-splash h1 {
+      font-size: 32px; font-weight: 800; letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #fff, var(--cms-accent));
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text; margin-bottom: 12px;
+      background-clip: text; margin: 0 0 8px;
     }
-    #cms-loading p {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      color: #7a7a95; font-size: 14px; margin-bottom: 32px;
+    #cms-splash p { color: var(--cms-text-muted); font-size: 14px; margin: 0 0 28px; }
+    .splash-bar {
+      width: 180px; height: 2px; border-radius: 2px;
+      background: var(--cms-surface-2); overflow: hidden; position: relative;
     }
-    .loader-bar {
-      width: 200px; height: 3px; border-radius: 2px;
-      background: #16161f; overflow: hidden; position: relative;
+    .splash-bar::after {
+      content: ''; position: absolute; left: -50%; top: 0;
+      width: 50%; height: 100%;
+      background: linear-gradient(90deg, transparent, var(--cms-accent), transparent);
+      animation: barSlide 1s ease-in-out infinite;
     }
-    .loader-bar::after {
-      content: ''; position: absolute; left: -50%; top: 0; width: 50%; height: 100%;
-      background: linear-gradient(90deg, transparent, #00E676, transparent);
-      animation: loadSlide 1.2s ease-in-out infinite;
-    }
-    @keyframes loadSlide { to { left: 100%; } }
+    @keyframes barSlide { to { left: 100%; } }
   </style>
 </head>
 <body>
-  <!-- Loading screen while CMS boots -->
-  <div id="cms-loading">
+  <div id="cms-splash">
     <h1>Kevin Franz Jr.</h1>
-    <p>Loading Content Manager...</p>
-    <div class="loader-bar"></div>
+    <p>Loading Content Manager</p>
+    <div class="splash-bar"></div>
   </div>
-
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   <script>
-    // Hide loading screen once CMS renders
-    var checkReady = setInterval(function() {
-      var app = document.querySelector('[class*="app"]') ||
-                document.querySelector('[id*="sveltia"]') ||
-                document.querySelector('main');
-      if (app && app.children.length > 0) {
-        var loader = document.getElementById('cms-loading');
-        if (loader) loader.classList.add('hidden');
-        clearInterval(checkReady);
+    // Hide splash once CMS renders
+    var t = setInterval(function() {
+      if (document.getElementById('nc-root') && document.getElementById('nc-root').children.length > 0) {
+        document.getElementById('cms-splash').classList.add('hidden');
+        clearInterval(t);
       }
-    }, 300);
-    // Fallback: hide after 5 seconds no matter what
+    }, 200);
     setTimeout(function() {
-      var loader = document.getElementById('cms-loading');
-      if (loader) loader.classList.add('hidden');
-      clearInterval(checkReady);
-    }, 5000);
+      var s = document.getElementById('cms-splash');
+      if (s) s.classList.add('hidden');
+      clearInterval(t);
+    }, 6000);
   </script>
 </body>
 </html>

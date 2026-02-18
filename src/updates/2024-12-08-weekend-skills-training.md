@@ -3,8 +3,8 @@ layout: post.njk
 title: Weekend Skills Training
 type: Personal
 date: 2024-12-08
-summary: Two-hour session with Coach working on ball screens and mid-range pull-ups. Also hit the film room to break down how college guards navigate ball screens.
-coverImage: /images/training.jpg
+summary: "\"Two-hour session with Coach working on ball screens and mid-range pull-ups. Also hit the film room to break down how college guards navigate ball screens.\""
+coverImage: /images/tournament-recap.jpg
 featured: false
 ---
 

@@ -21,11 +21,11 @@ public_folder: "/images"
 # ============================================
 collections:
   # ============================================
-  # 📝 BLOG POSTS & UPDATES
+  #  BLOG POSTS & UPDATES
   # Share news, game recaps, achievements
   # ============================================
   - name: "updates"
-    label: "📝 Updates (Blog)"
+    label: "Updates (Blog)"
     label_singular: "Update Post"
     folder: "src/updates"
     create: true
@@ -40,23 +40,23 @@ collections:
         widget: "select"
         hint: "What kind of update is this?"
         options:
-          - {label: "🏀 Game Recap", value: "Game Recap"}
-          - {label: "🏆 Tournament", value: "Tournament"}
-          - {label: "📚 Academic Milestone", value: "Academic Milestone"}
-          - {label: "💻 Project Update", value: "Project Update"}
-          - {label: "👤 Personal", value: "Personal"}
+          - {label: " Game Recap", value: "Game Recap"}
+          - {label: " Tournament", value: "Tournament"}
+          - {label: " Academic Milestone", value: "Academic Milestone"}
+          - {label: " Project Update", value: "Project Update"}
+          - {label: " Personal", value: "Personal"}
       - {label: "Publish Date", name: "date", widget: "datetime", hint: "When should this appear on the site?"}
       - {label: "Short Summary", name: "summary", widget: "text", hint: "Brief description (appears in previews, ~150 characters)"}
       - {label: "Cover Image", name: "coverImage", widget: "image", required: false, hint: "Main image for this post (click to browse your media library)"}
-      - {label: "📄 Post Content", name: "body", widget: "markdown", hint: "Write your full update here (supports formatting like **bold** and *italic*)"}
-      - {label: "⭐ Feature on Homepage?", name: "featured", widget: "boolean", default: false, required: false, hint: "Turn on to show this on the homepage"}
+      - {label: " Post Content", name: "body", widget: "markdown", hint: "Write your full update here (supports formatting like **bold** and *italic*)"}
+      - {label: "Feature on Homepage?", name: "featured", widget: "boolean", default: false, required: false, hint: "Turn on to show this on the homepage"}
 
   # ============================================
-  # 📅 GAME SCHEDULE
+  #  GAME SCHEDULE
   # Manage upcoming games and past results
   # ============================================
   - name: "games"
-    label: "📅 Games & Schedule"
+    label: " Games & Schedule"
     label_singular: "Game"
     folder: "src/games"
     create: true
@@ -84,14 +84,14 @@ collections:
         widget: "select"
         options: ["Varsity", "JV", "AAU", "Youth"]
         default: "JV"
-      - {label: "📝 Internal Notes", name: "notes", widget: "text", required: false, hint: "Private notes (won't appear on website)"}
+      - {label: " Internal Notes", name: "notes", widget: "text", required: false, hint: "Private notes (won't appear on website)"}
 
   # ============================================
-  # 🏀 BASKETBALL TIMELINE
+  #  BASKETBALL TIMELINE
   # Kevin's basketball journey year by year
   # ============================================
   - name: "timeline"
-    label: "🏀 Basketball Timeline"
+    label: " Basketball Timeline"
     label_singular: "Timeline Year"
     folder: "src/timeline"
     create: true
@@ -110,7 +110,7 @@ collections:
         widget: "select"
         options: ["Elementary", "Middle School", "High School", "AAU"]
 
-      - label: "🏆 Season Highlights"
+      - label: " Season Highlights"
         name: "highlights"
         widget: "list"
         collapsed: true
@@ -118,7 +118,7 @@ collections:
         summary: "{{fields.item}}"
         field: {label: "Highlight", name: "item", widget: "string", hint: "e.g., 'Made first varsity start'"}
 
-      - label: "📊 Season Statistics"
+      - label: " Season Statistics"
         name: "stats"
         widget: "object"
         collapsed: true
@@ -130,7 +130,7 @@ collections:
           - {label: "Assists Per Game (APG)", name: "apg", widget: "string", required: false}
           - {label: "Rebounds Per Game (RPG)", name: "rpg", widget: "string", required: false}
 
-      - label: "📸 Photo Gallery"
+      - label: " Photo Gallery"
         name: "gallery"
         widget: "list"
         collapsed: true
@@ -141,25 +141,25 @@ collections:
           - {label: "Photo", name: "image", widget: "image", hint: "Select from media library or upload"}
           - {label: "Photo Caption", name: "caption", widget: "string", hint: "Describe this photo"}
 
-      - {label: "📝 Full Season Story", name: "body", widget: "markdown", required: false, hint: "Tell the full story of this season"}
+      - {label: " Full Season Story", name: "body", widget: "markdown", required: false, hint: "Tell the full story of this season"}
 
   # ============================================
-  # 📄 WEBSITE PAGES
+  #  WEBSITE PAGES
   # Edit main pages of your website
   # ============================================
   - name: "pages"
-    label: "📄 Website Pages"
+    label: " Website Pages"
     files:
       # ========================
       # HOME PAGE
       # ========================
-      - label: "🏠 Home Page"
+      - label: " Home Page"
         name: "home"
         file: "src/_data/pages/home.json"
         fields:
           - {label: "Page Title", name: "title", widget: "hidden", default: "Home"}
 
-          - label: "🎯 Hero Section (Top of Page)"
+          - label: " Hero Section (Top of Page)"
             name: "hero"
             widget: "object"
             collapsed: false
@@ -174,7 +174,7 @@ collections:
               - {label: "Secondary Button Text", name: "secondaryButtonText", widget: "string", default: "Download Resume"}
               - {label: "Secondary Button Link", name: "secondaryButtonLink", widget: "string", default: "/files/resume.pdf"}
 
-          - label: "📊 At a Glance Cards"
+          - label: " At a Glance Cards"
             name: "glanceCards"
             widget: "list"
             collapsed: false
@@ -186,7 +186,7 @@ collections:
               - {label: "Link Text", name: "linkText", widget: "string", hint: "e.g., 'Learn More →'"}
               - {label: "Link URL", name: "linkUrl", widget: "string"}
 
-          - label: "👤 About Section"
+          - label: " About Section"
             name: "about"
             widget: "object"
             collapsed: true
@@ -196,7 +196,7 @@ collections:
               - {label: "About Text", name: "body", widget: "markdown"}
               - {label: "About Image", name: "image", widget: "image"}
 
-          - label: "🗂️ Feature Tiles"
+          - label: " Feature Tiles"
             name: "tiles"
             widget: "list"
             collapsed: true
@@ -211,13 +211,13 @@ collections:
       # ========================
       # BASKETBALL PAGE
       # ========================
-      - label: "🏀 Basketball Page"
+      - label: " Basketball Page"
         name: "basketball"
         file: "src/_data/pages/basketball.json"
         fields:
           - {label: "Page Title", name: "title", widget: "hidden", default: "Basketball Profile"}
 
-          - label: "📄 Page Header"
+          - label: " Page Header"
             name: "header"
             widget: "object"
             hint: "Text at top of basketball page"
@@ -227,7 +227,7 @@ collections:
               - {label: "Subheading", name: "subheading", widget: "text"}
               - {label: "Supporting Text", name: "supportingText", widget: "text"}
 
-          - label: "👤 Player Information"
+          - label: " Player Information"
             name: "playerInfo"
             widget: "object"
             collapsed: false
@@ -244,7 +244,7 @@ collections:
               - {label: "AAU/Club Team", name: "aauTeam", widget: "string"}
               - {label: "Profile Photo", name: "image", widget: "image"}
 
-          - label: "🎥 Highlight Videos"
+          - label: " Highlight Videos"
             name: "highlights"
             widget: "list"
             collapsed: true
@@ -255,7 +255,7 @@ collections:
               - {label: "Video Embed Code", name: "embedCode", widget: "text", required: false, hint: "Paste full YouTube/Vimeo embed code here"}
               - {label: "Video URL", name: "videoUrl", widget: "string", required: false, hint: "Or just paste the video URL"}
 
-          - label: "📊 Season Statistics"
+          - label: " Season Statistics"
             name: "stats"
             widget: "object"
             collapsed: true
@@ -279,7 +279,7 @@ collections:
                       - {label: "Value", name: "value", widget: "string", hint: "e.g., 5.4, 37.5%"}
                       - {label: "Team Rank", name: "rank", widget: "string", hint: "e.g., 2nd, T-3rd"}
 
-          - label: "🏆 Achievements & Recognition"
+          - label: " Achievements & Recognition"
             name: "achievements"
             widget: "object"
             collapsed: true
@@ -296,7 +296,7 @@ collections:
                   - {label: "Quote Text", name: "text", widget: "text"}
                   - {label: "Who Said It", name: "attribution", widget: "string", hint: "e.g., '- Coach Smith, Head Coach'"}
 
-          - label: "💪 Training & Development"
+          - label: " Training & Development"
             name: "training"
             widget: "object"
             collapsed: true
@@ -305,7 +305,7 @@ collections:
               - {label: "Training Routine", name: "routine", widget: "markdown"}
               - {label: "Closing Statement", name: "statement", widget: "text"}
 
-          - label: "📞 Coach Contacts"
+          - label: " Coach Contacts"
             name: "contacts"
             widget: "list"
             collapsed: true
@@ -316,7 +316,7 @@ collections:
               - {label: "Email", name: "email", widget: "string"}
               - {label: "Phone", name: "phone", widget: "string", required: false}
 
-          - label: "🔗 Recruiting Profiles"
+          - label: " Recruiting Profiles"
             name: "recruitingProfiles"
             widget: "object"
             collapsed: true
@@ -332,7 +332,7 @@ collections:
                   - {label: "Profile URL", name: "url", widget: "string"}
                   - {label: "Platform Description", name: "description", widget: "string"}
 
-          - label: "📱 Social Media Links"
+          - label: " Social Media Links"
             name: "socialMedia"
             widget: "object"
             collapsed: true
@@ -351,7 +351,7 @@ collections:
       # ========================
       # ACADEMICS PAGE
       # ========================
-      - label: "📚 Academics Page"
+      - label: " Academics Page"
         name: "academics"
         file: "src/_data/pages/academics.json"
         fields:
@@ -359,7 +359,7 @@ collections:
           - {label: "Main Heading", name: "heading", widget: "string"}
           - {label: "Subheading", name: "subheading", widget: "text"}
 
-          - label: "📊 Academic Overview"
+          - label: " Academic Overview"
             name: "overview"
             widget: "object"
             hint: "Your current academic stats"
@@ -370,7 +370,7 @@ collections:
               - {label: "School", name: "school", widget: "string"}
               - {label: "Expected Graduation", name: "graduation", widget: "string", hint: "e.g., '2028'"}
 
-          - label: "📖 Coursework"
+          - label: " Coursework"
             name: "coursework"
             widget: "object"
             collapsed: true
@@ -386,7 +386,7 @@ collections:
 
           - {label: "Academic Interests", name: "interests", widget: "markdown", hint: "What subjects do you enjoy? What do you want to study?"}
 
-          - label: "🏆 Academic Awards"
+          - label: " Academic Awards"
             name: "awards"
             widget: "list"
             field: {label: "Award Name", name: "award", widget: "string"}
@@ -397,7 +397,7 @@ collections:
       # ========================
       # PROJECTS PAGE
       # ========================
-      - label: "💻 Projects & Passions"
+      - label: " Projects & Passions"
         name: "projects"
         file: "src/_data/pages/projects.json"
         fields:
@@ -424,7 +424,7 @@ collections:
       # ========================
       # CHARACTER & SERVICE
       # ========================
-      - label: "❤️ Character & Service"
+      - label: " Character & Service"
         name: "character"
         file: "src/_data/pages/character.json"
         fields:
@@ -432,7 +432,7 @@ collections:
           - {label: "Main Heading", name: "heading", widget: "string"}
           - {label: "Subheading", name: "subheading", widget: "text"}
 
-          - label: "🎯 Core Values"
+          - label: " Core Values"
             name: "values"
             widget: "list"
             summary: "{{fields.title}}"
@@ -440,7 +440,7 @@ collections:
               - {label: "Value Name", name: "title", widget: "string", hint: "e.g., 'Leadership', 'Integrity'"}
               - {label: "Description", name: "description", widget: "text"}
 
-          - label: "🤝 Community Service"
+          - label: " Community Service"
             name: "service"
             widget: "list"
             summary: "{{fields.title}}"
@@ -448,12 +448,12 @@ collections:
               - {label: "Activity Name", name: "title", widget: "string"}
               - {label: "Description", name: "description", widget: "text"}
 
-          - label: "👔 Leadership Roles"
+          - label: " Leadership Roles"
             name: "leadership"
             widget: "list"
             field: {label: "Role/Position", name: "role", widget: "string"}
 
-          - label: "💬 Testimonial (Optional)"
+          - label: " Testimonial (Optional)"
             name: "testimonial"
             widget: "object"
             required: false
@@ -464,13 +464,13 @@ collections:
       # ========================
       # MEDIA / PHOTOGRAPHY PAGE
       # ========================
-      - label: "📷 Media & Photography Page"
+      - label: " Media & Photography Page"
         name: "media"
         file: "src/_data/pages/media.json"
         fields:
           - {label: "Page Title", name: "title", widget: "string", default: "Photography & Media Production"}
 
-          - label: "📄 Page Header"
+          - label: " Page Header"
             name: "header"
             widget: "object"
             hint: "Text and image at top of the media page"
@@ -480,7 +480,7 @@ collections:
               - {label: "Subheading", name: "subheading", widget: "text"}
               - {label: "Hero Image", name: "image", widget: "image", hint: "Photo shown alongside the profile section"}
 
-          - label: "👤 Profile"
+          - label: " Profile"
             name: "profile"
             widget: "object"
             hint: "Kevin's media profile description"
@@ -492,7 +492,7 @@ collections:
                 hint: "Each item is a separate paragraph"
                 field: {label: "Paragraph", name: "paragraph", widget: "text"}
 
-          - label: "🎬 Media & Creative Experience"
+          - label: " Media & Creative Experience"
             name: "experience"
             widget: "object"
             collapsed: true
@@ -504,7 +504,7 @@ collections:
                 hint: "Each item appears as a bullet point"
                 field: {label: "Experience", name: "item", widget: "string"}
 
-          - label: "🛠️ Skills & Interests"
+          - label: " Skills & Interests"
             name: "skills"
             widget: "object"
             collapsed: true
@@ -516,7 +516,7 @@ collections:
                 hint: "Each item appears as a bullet point"
                 field: {label: "Skill", name: "item", widget: "string"}
 
-          - label: "🖼️ Featured Work Gallery"
+          - label: " Featured Work Gallery"
             name: "gallery"
             widget: "object"
             collapsed: true
@@ -532,7 +532,7 @@ collections:
                   - {label: "Photo", name: "image", widget: "image", required: false, hint: "Upload a photo, OR use an Instagram URL below"}
                   - {label: "Instagram Post URL", name: "instagramUrl", widget: "string", required: false, hint: "Paste an Instagram post URL (e.g. https://www.instagram.com/p/ABC123/)"}
 
-          - label: "🎯 Hobbies & Activities"
+          - label: " Hobbies & Activities"
             name: "hobbies"
             widget: "object"
             collapsed: true
@@ -540,7 +540,7 @@ collections:
               - {label: "Section Heading", name: "heading", widget: "string"}
               - {label: "Description", name: "text", widget: "text"}
 
-          - label: "📞 Media Contact Info"
+          - label: " Media Contact Info"
             name: "contact"
             widget: "object"
             collapsed: true
@@ -555,7 +555,7 @@ collections:
       # ========================
       # CONTACT PAGE
       # ========================
-      - label: "📬 Contact Page"
+      - label: " Contact Page"
         name: "contact"
         file: "src/_data/pages/contact.json"
         fields:
@@ -563,7 +563,7 @@ collections:
           - {label: "Main Heading", name: "heading", widget: "string", default: "Get in Touch"}
           - {label: "Subheading", name: "subheading", widget: "text", hint: "Text below the heading"}
 
-          - label: "🔗 Quick Links"
+          - label: " Quick Links"
             name: "quickLinks"
             widget: "list"
             hint: "Useful links shown on the contact page (highlight video, Hudl, resume, etc.)"
@@ -572,7 +572,7 @@ collections:
               - {label: "Link Text", name: "text", widget: "string", hint: "e.g., 'Highlight Video (YouTube)'"}
               - {label: "Link URL", name: "url", widget: "string", hint: "Full URL or relative path like /files/resume.pdf"}
 
-          - label: "🏀 Coach Contacts"
+          - label: " Coach Contacts"
             name: "coaches"
             widget: "list"
             hint: "Coach contact info displayed on the contact page"
@@ -583,11 +583,11 @@ collections:
               - {label: "Coach Email", name: "email", widget: "string"}
 
   # ============================================
-  # ⚙️ SITE SETTINGS
+  #  SITE SETTINGS
   # Global site configuration
   # ============================================
   - name: "settings"
-    label: "⚙️ Site Settings"
+    label: " Site Settings"
     files:
       - label: "Player Profile"
         name: "player"
