@@ -3,7 +3,7 @@ layout: post.njk
 title: First Semester Grades
 type: Academic Milestone
 date: 2024-12-15
-summary: "\"Finished the semester strong with a 4.0 GPA in all honors classes. Atmospheric Science continues to be my favorite – we built weather models and analyzed storm data.\""
+summary: Finished the semester strong with a 4.0 GPA in all honors classes. Atmospheric Science continues to be my favorite – we built weather models and analyzed storm data.
 coverImage: /images/tournament-recap.jpg
 featured: false
 ---
