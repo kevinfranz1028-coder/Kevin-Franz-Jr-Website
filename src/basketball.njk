@@ -6,19 +6,20 @@ permalink: /basketball/
 ---
 
 {# Cinematic Banner #}
+{% set photos = pages.basketball.bannerPhotos %}
 <section class="bball-banner">
     <div class="bball-banner-photos">
-        <div class="bball-banner-photo bball-bp-1"><img src="/images/img_1003.jpg" alt=""></div>
-        <div class="bball-banner-photo bball-bp-2"><img src="/images/kevin-profile.jpg" alt=""></div>
-        <div class="bball-banner-photo bball-bp-3"><img src="/images/img_1003.jpg" alt=""></div>
-        <div class="bball-banner-photo bball-bp-4"><img src="/images/kevin-profile.jpg" alt=""></div>
-        <div class="bball-banner-photo bball-bp-5"><img src="/images/img_1003.jpg" alt=""></div>
-        <div class="bball-banner-photo bball-bp-6"><img src="/images/kevin-profile.jpg" alt=""></div>
+        {% if photos and photos.length > 0 %}
+            {# Generate 6 floating slots by cycling through available photos #}
+            {% for i in range(0, 6) %}
+            <div class="bball-banner-photo bball-bp-{{ i + 1 }}"><img src="{{ photos[i % photos.length] }}" alt=""></div>
+            {% endfor %}
+        {% endif %}
     </div>
     <div class="bball-banner-overlay"></div>
     <div class="bball-banner-content">
         <span class="bball-banner-eyebrow">{{ pages.basketball.header.eyebrow }}</span>
-        <h1 class="bball-banner-title">Ball Is Life</h1>
+        <h1 class="bball-banner-title">{{ pages.basketball.bannerTitle or 'Ball Is Life' }}</h1>
         <p class="bball-banner-sub">{{ pages.basketball.header.subheading }}</p>
     </div>
 </section>
