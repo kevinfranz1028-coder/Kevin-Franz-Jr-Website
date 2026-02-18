@@ -10,35 +10,105 @@ permalink: /basketball/
     <div class="container">
         <div class="page-header-centered">
             <span class="label-eyebrow">{{ pages.basketball.header.eyebrow }}</span>
-            <h1>{{ pages.basketball.title }}</h1>
+            <h1>Ball Is Life</h1>
             <p class="supporting-text">{{ pages.basketball.header.subheading }}</p>
         </div>
     </div>
 </section>
 
-{# Player Information #}
-<section class="section-about">
+{# Player Card Section #}
+<section class="bball-card-section">
     <div class="container">
-        <div class="about-grid">
-            <div>
-                <h2>Player Information</h2>
-                <p class="body-text" style="margin-bottom: 1.5rem;">{{ pages.basketball.header.heading }}</p>
-                <div class="info-list">
-                    <div class="info-item"><strong>Name:</strong> {{ pages.basketball.playerInfo.name }}</div>
-                    <div class="info-item"><strong>Class:</strong> {{ pages.basketball.playerInfo.class }}</div>
-                    <div class="info-item"><strong>Position:</strong> {{ pages.basketball.playerInfo.position }}</div>
-                    <div class="info-item"><strong>Height / Weight:</strong> {{ pages.basketball.playerInfo.height }} / {{ pages.basketball.playerInfo.weight }}</div>
-                    <div class="info-item"><strong>Dominant Hand:</strong> {{ pages.basketball.playerInfo.hand }}</div>
-                    <div class="info-item"><strong>School:</strong> {{ pages.basketball.playerInfo.school }}</div>
-                    <div class="info-item"><strong>Jersey:</strong> #{{ pages.basketball.playerInfo.jersey }} (Varsity)</div>
-                    <div class="info-item"><strong>AAU / Club:</strong> {{ pages.basketball.playerInfo.aauTeam }}</div>
+        <div class="bball-card-wrapper">
+            {# Card Front — Player Photo #}
+            <div class="bball-card bball-card-front">
+                <div class="bball-card-border">
+                    <div class="bball-card-team-bar">
+                        <span>{{ pages.basketball.playerInfo.school }}</span>
+                        <span>#{{ pages.basketball.playerInfo.jersey }}</span>
+                    </div>
+                    <div class="bball-card-photo">
+                        <img src="{{ pages.basketball.playerInfo.image }}" alt="{{ pages.basketball.playerInfo.name }}">
+                    </div>
+                    <div class="bball-card-nameplate">
+                        <h1 class="bball-card-name">{{ pages.basketball.playerInfo.name }}</h1>
+                        <span class="bball-card-pos">{{ pages.basketball.playerInfo.position }}</span>
+                    </div>
+                    <div class="bball-card-quick-stats">
+                        <div class="bball-card-qstat">
+                            <span class="bball-card-qstat-val">{{ pages.basketball.playerInfo.height }}</span>
+                            <span class="bball-card-qstat-lbl">Height</span>
+                        </div>
+                        <div class="bball-card-qstat">
+                            <span class="bball-card-qstat-val">{{ pages.basketball.playerInfo.weight }}</span>
+                            <span class="bball-card-qstat-lbl">Weight</span>
+                        </div>
+                        <div class="bball-card-qstat">
+                            <span class="bball-card-qstat-val">{{ pages.basketball.playerInfo.class }}</span>
+                            <span class="bball-card-qstat-lbl">Class</span>
+                        </div>
+                    </div>
                 </div>
-                {% if pages.basketball.header.supportingText %}
-                <p class="body-text" style="margin-top: 1.5rem; font-style: italic;">{{ pages.basketball.header.supportingText }}</p>
-                {% endif %}
             </div>
-            <div>
-                <img src="{{ pages.basketball.playerInfo.image }}" alt="{{ pages.basketball.playerInfo.name }} basketball action shot" class="about-image">
+
+            {# Card Back — Player Info #}
+            <div class="bball-card bball-card-back">
+                <div class="bball-card-border">
+                    <div class="bball-card-team-bar">
+                        <span>Player Profile</span>
+                        <span>{{ pages.basketball.header.eyebrow }}</span>
+                    </div>
+                    <div class="bball-card-back-content">
+                        <p class="bball-card-scouting">{{ pages.basketball.header.heading }}</p>
+                        <div class="bball-card-info-grid">
+                            <div class="bball-card-info-row">
+                                <span class="bball-card-info-label">Name</span>
+                                <span class="bball-card-info-value">{{ pages.basketball.playerInfo.name }}</span>
+                            </div>
+                            <div class="bball-card-info-row">
+                                <span class="bball-card-info-label">Position</span>
+                                <span class="bball-card-info-value">{{ pages.basketball.playerInfo.position }}</span>
+                            </div>
+                            <div class="bball-card-info-row">
+                                <span class="bball-card-info-label">Height / Weight</span>
+                                <span class="bball-card-info-value">{{ pages.basketball.playerInfo.height }} / {{ pages.basketball.playerInfo.weight }}</span>
+                            </div>
+                            <div class="bball-card-info-row">
+                                <span class="bball-card-info-label">Dominant Hand</span>
+                                <span class="bball-card-info-value">{{ pages.basketball.playerInfo.hand }}</span>
+                            </div>
+                            <div class="bball-card-info-row">
+                                <span class="bball-card-info-label">School</span>
+                                <span class="bball-card-info-value">{{ pages.basketball.playerInfo.school }}</span>
+                            </div>
+                            <div class="bball-card-info-row">
+                                <span class="bball-card-info-label">Jersey</span>
+                                <span class="bball-card-info-value">#{{ pages.basketball.playerInfo.jersey }} (Varsity)</span>
+                            </div>
+                            <div class="bball-card-info-row">
+                                <span class="bball-card-info-label">AAU / Club</span>
+                                <span class="bball-card-info-value">{{ pages.basketball.playerInfo.aauTeam }}</span>
+                            </div>
+                        </div>
+                        {% if pages.basketball.stats.table and pages.basketball.stats.table.length > 0 %}
+                        {% set row = pages.basketball.stats.table[0] %}
+                        <div class="bball-card-season-line">{{ row.season }} {{ row.team }}</div>
+                        <div class="bball-card-stats-row">
+                            {% for stat in row.items %}
+                            {% if loop.index <= 5 %}
+                            <div class="bball-card-stat">
+                                <span class="bball-card-stat-val">{{ stat.value }}</span>
+                                <span class="bball-card-stat-lbl">{{ stat.label }}</span>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        {% if pages.basketball.header.supportingText %}
+                        <p class="bball-card-quote">"{{ pages.basketball.header.supportingText }}"</p>
+                        {% endif %}
+                    </div>
+                </div>
             </div>
         </div>
     </div>
