@@ -1,6 +1,6 @@
 {
   "title": "Basketball ",
-  "bannerTitle": "Ball Is Life",
+  "bannerTitle": "My Basketball Journey",
   "bannerPhotos": [
     "/images/banner/Kevin_Jr_Layup_Black_and_White_Game_be9d381555.JPG",
     "/images/banner/Copy_of_655_A7902_Enhanced_NR_742d9cd3fb.jpg",
@@ -10,8 +10,8 @@
     "/images/banner/Kevin_Jr_Blocked_Shot_Black_and_White_Game_0761755000.JPG",
     "/images/banner/Kevin_Jr_Layup_Black_and_White_Game_be9d381555.JPG"
   ],
-  "highlights_heading": "Highlights",
-  "highlights_description": "Recent highlight clips and full game film.",
+  "highlights_heading": "Video highlights",
+  "highlights_description": "Highlights, Mixtapes and more! ",
   "header": {
     "eyebrow": "Guard • Class of 2028",
     "heading": "6'1\" combo guard focused on pace, decision-making, and on-ball defense.",
@@ -120,7 +120,7 @@
   "contacts": [],
   "recruitingProfiles": {
     "heading": "Recruiting Profiles",
-    "description": "View my complete recruiting profiles and stats across multiple platforms",
+    "description": "Links to view online recruiting profiles. ",
     "profiles": [
       {
         "name": "Prephoops",
@@ -147,11 +147,6 @@
         "platform": "Instagram (Basketball)",
         "handle": "@kfranzjr2028",
         "url": "https://instagram.com/kfranzjr2028"
-      },
-      {
-        "platform": "Instagram (Media)",
-        "handle": "@Shots_By_Franz",
-        "url": "https://instagram.com/Shots_By_Franz"
       }
     ]
   }
