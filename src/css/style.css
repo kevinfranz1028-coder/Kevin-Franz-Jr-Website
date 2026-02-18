@@ -1177,6 +1177,7 @@ main {
 
 .recruit-card-full-img {
     width: 100%;
+    max-height: 500px;
     display: block;
     transition: transform 0.4s ease;
     object-fit: contain;
