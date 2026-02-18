@@ -37,30 +37,6 @@ title: Photography & Media Production
     </div>
 </section>
 
-{# Experience Section #}
-<section class="section-content" style="background-color: var(--bg-white); padding: 4rem 0;">
-    <div class="container">
-        <h2>{{ pages.media.experience.heading }}</h2>
-        <ul style="margin-top: 1.5rem; line-height: 1.8;">
-            {% for item in pages.media.experience.items %}
-            <li>{{ item }}</li>
-            {% endfor %}
-        </ul>
-    </div>
-</section>
-
-{# Skills Section #}
-<section class="section-content" style="background-color: var(--bg-light); padding: 4rem 0;">
-    <div class="container">
-        <h2>{{ pages.media.skills.heading }}</h2>
-        <ul style="margin-top: 1.5rem; line-height: 1.8;">
-            {% for item in pages.media.skills.items %}
-            <li>{{ item }}</li>
-            {% endfor %}
-        </ul>
-    </div>
-</section>
-
 {# Gallery Section #}
 <section class="section-content" style="background-color: var(--bg-white); padding: 4rem 0;">
     <div class="container">
@@ -82,6 +58,30 @@ title: Photography & Media Production
             </div>
             {% endfor %}
         </div>
+    </div>
+</section>
+
+{# Experience Section #}
+<section class="section-content" style="background-color: var(--bg-light); padding: 4rem 0;">
+    <div class="container">
+        <h2>{{ pages.media.experience.heading }}</h2>
+        <ul style="margin-top: 1.5rem; line-height: 1.8;">
+            {% for item in pages.media.experience.items %}
+            <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
+
+{# Skills Section #}
+<section class="section-content" style="background-color: var(--bg-white); padding: 4rem 0;">
+    <div class="container">
+        <h2>{{ pages.media.skills.heading }}</h2>
+        <ul style="margin-top: 1.5rem; line-height: 1.8;">
+            {% for item in pages.media.skills.items %}
+            <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
     </div>
 </section>
 
