@@ -1046,6 +1046,9 @@ main {
 
 .recruit-card-body {
     padding: 1.25rem 1.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .recruit-card-platform {
@@ -1057,25 +1060,40 @@ main {
     margin-bottom: 1rem;
 }
 
-.recruit-card-player {
+.recruit-card-photo-row {
     display: flex;
-    align-items: center;
     gap: 1rem;
+    align-items: flex-start;
     margin-bottom: 1rem;
 }
 
-.recruit-card-avatar {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
+.recruit-card-photo {
+    width: 90px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow-sm);
+    flex-shrink: 0;
+}
+
+.recruit-card-photo-placeholder {
+    width: 90px;
+    height: 110px;
+    border-radius: 0.5rem;
     background: var(--gradient-primary);
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 1.1rem;
+    font-size: 1.5rem;
     font-weight: 800;
     flex-shrink: 0;
+}
+
+.recruit-card-player-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
 }
 
 .recruit-card-name {
@@ -1085,10 +1103,46 @@ main {
     line-height: 1.2;
 }
 
-.recruit-card-meta {
-    font-size: 0.8rem;
+.recruit-card-ranking {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--accent-gold);
+    background: rgba(255, 179, 0, 0.1);
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.25rem;
+    display: inline-block;
+    width: fit-content;
+}
+
+.recruit-card-details {
+    font-size: 0.78rem;
     color: var(--text-gray);
-    margin-top: 0.15rem;
+    line-height: 1.4;
+}
+
+.recruit-card-scouting {
+    padding: 0.75rem;
+    background: var(--bg-light);
+    border-left: 3px solid var(--accent-gold);
+    border-radius: 0 0.25rem 0.25rem 0;
+    margin-bottom: 1rem;
+    flex: 1;
+}
+
+.recruit-card-scouting-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-light);
+    margin-bottom: 0.35rem;
+}
+
+.recruit-card-scouting p {
+    font-size: 0.82rem;
+    color: var(--text-dark);
+    line-height: 1.5;
+    font-style: italic;
 }
 
 .recruit-card-desc {
@@ -1096,36 +1150,7 @@ main {
     color: var(--text-gray);
     margin-bottom: 1rem;
     line-height: 1.5;
-}
-
-.recruit-card-stats {
-    display: flex;
-    justify-content: space-around;
-    padding: 0.75rem 0;
-    border-top: 1px solid var(--border-light);
-    border-bottom: 1px solid var(--border-light);
-    margin-bottom: 1rem;
-}
-
-.recruit-card-stat {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.1rem;
-}
-
-.recruit-card-stat-val {
-    font-size: 1rem;
-    font-weight: 800;
-    color: var(--primary-color);
-}
-
-.recruit-card-stat-lbl {
-    font-size: 0.6rem;
-    font-weight: 600;
-    color: var(--text-light);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
+    flex: 1;
 }
 
 .recruit-card-cta {
@@ -1133,6 +1158,9 @@ main {
     font-weight: 700;
     color: var(--primary-color);
     transition: color 0.2s ease;
+    margin-top: auto;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border-light);
 }
 
 .recruit-card:hover .recruit-card-cta {
@@ -1143,21 +1171,21 @@ main {
 .recruit-card-prephoops:hover {
     border-color: #0f3460;
 }
-.recruit-card-prephoops .recruit-card-avatar {
+.recruit-card-prephoops .recruit-card-photo-placeholder {
     background: linear-gradient(135deg, #1a1a2e, #0f3460);
 }
 
 .recruit-card-ncsa-sports:hover {
     border-color: #0066cc;
 }
-.recruit-card-ncsa-sports .recruit-card-avatar {
+.recruit-card-ncsa-sports .recruit-card-photo-placeholder {
     background: linear-gradient(135deg, #003366, #0066cc);
 }
 
 .recruit-card-sports-passports:hover {
     border-color: #e53935;
 }
-.recruit-card-sports-passports .recruit-card-avatar {
+.recruit-card-sports-passports .recruit-card-photo-placeholder {
     background: linear-gradient(135deg, #b71c1c, #e53935);
 }
 

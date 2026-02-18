@@ -348,38 +348,43 @@ permalink: /basketball/
                 <div class="recruit-card-accent"></div>
                 <div class="recruit-card-body">
                     <div class="recruit-card-platform">{{ profile.name }}</div>
-                    <div class="recruit-card-player">
-                        <div class="recruit-card-avatar">
-                            <span>{{ pages.basketball.playerInfo.jersey }}</span>
+
+                    {# Player photo from that platform #}
+                    <div class="recruit-card-photo-row">
+                        {% if profile.image %}
+                        <img src="{{ profile.image }}" alt="{{ pages.basketball.playerInfo.name }} on {{ profile.name }}" class="recruit-card-photo">
+                        {% else %}
+                        <div class="recruit-card-photo-placeholder">
+                            <span>#{{ pages.basketball.playerInfo.jersey }}</span>
                         </div>
-                        <div class="recruit-card-info">
+                        {% endif %}
+                        <div class="recruit-card-player-info">
                             <div class="recruit-card-name">{{ pages.basketball.playerInfo.name }}</div>
-                            <div class="recruit-card-meta">{{ pages.basketball.playerInfo.position }} · {{ pages.basketball.playerInfo.height }} · Class of {{ pages.basketball.playerInfo.class }}</div>
+                            {% if profile.ranking %}
+                            <div class="recruit-card-ranking">{{ profile.ranking }}</div>
+                            {% endif %}
+                            <div class="recruit-card-details">
+                                {% if profile.position %}{{ profile.position }}{% else %}{{ pages.basketball.playerInfo.position }}{% endif %}
+                                · {% if profile.heightWeight %}{{ profile.heightWeight }}{% else %}{{ pages.basketball.playerInfo.height }}{% endif %}
+                            </div>
+                            <div class="recruit-card-details">
+                                {% if profile.school %}{{ profile.school }}{% else %}{{ pages.basketball.playerInfo.school }}{% endif %}
+                                {% if profile.state %} · {{ profile.state }}{% endif %}
+                                · Class of {% if profile.classYear %}{{ profile.classYear }}{% else %}{{ pages.basketball.playerInfo.class }}{% endif %}
+                            </div>
                         </div>
                     </div>
+
+                    {# Scouting report / what the site says #}
+                    {% if profile.scoutingReport %}
+                    <div class="recruit-card-scouting">
+                        <div class="recruit-card-scouting-label">From {{ profile.name }}:</div>
+                        <p>{{ profile.scoutingReport }}</p>
+                    </div>
+                    {% elif profile.description %}
                     <div class="recruit-card-desc">{{ profile.description }}</div>
-                    <div class="recruit-card-stats">
-                        <div class="recruit-card-stat">
-                            <span class="recruit-card-stat-val">{{ pages.basketball.playerInfo.height }}</span>
-                            <span class="recruit-card-stat-lbl">HT</span>
-                        </div>
-                        <div class="recruit-card-stat">
-                            <span class="recruit-card-stat-val">{{ pages.basketball.playerInfo.weight }}</span>
-                            <span class="recruit-card-stat-lbl">WT</span>
-                        </div>
-                        {% if pages.basketball.stats.table and pages.basketball.stats.table[0].items[0] %}
-                        <div class="recruit-card-stat">
-                            <span class="recruit-card-stat-val">{{ pages.basketball.stats.table[0].items[0].value }}</span>
-                            <span class="recruit-card-stat-lbl">{{ pages.basketball.stats.table[0].items[0].label }}</span>
-                        </div>
-                        {% endif %}
-                        {% if pages.basketball.stats.table and pages.basketball.stats.table[0].items[2] %}
-                        <div class="recruit-card-stat">
-                            <span class="recruit-card-stat-val">{{ pages.basketball.stats.table[0].items[2].value }}</span>
-                            <span class="recruit-card-stat-lbl">{{ pages.basketball.stats.table[0].items[2].label }}</span>
-                        </div>
-                        {% endif %}
-                    </div>
+                    {% endif %}
+
                     <div class="recruit-card-cta">
                         View Full Profile on {{ profile.name }} →
                     </div>

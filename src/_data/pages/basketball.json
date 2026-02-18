@@ -125,17 +125,41 @@
       {
         "name": "Prephoops",
         "url": "https://prephoops.com/player/kevin-franz/",
-        "description": "Player profile and rankings"
+        "description": "Player profile and rankings",
+        "image": "/images/recruiting/downloaded_image_7551e28839.png",
+        "ranking": "",
+        "scoutingReport": "",
+        "position": "",
+        "heightWeight": "",
+        "classYear": "2028",
+        "school": "Blue Valley Southwest",
+        "state": "Kansas"
       },
       {
         "name": "NCSA Sports",
         "url": "https://www.ncsasports.org/mens-basketball-recruiting/kansas/overland-park/blue-valley-southwest-high-school/kevin-franz3",
-        "description": "Complete recruiting profile"
+        "description": "Complete recruiting profile",
+        "image": "",
+        "ranking": "",
+        "scoutingReport": "",
+        "position": "",
+        "heightWeight": "",
+        "classYear": "",
+        "school": "",
+        "state": ""
       },
       {
         "name": "Sports Passports",
         "url": "https://sportspassports.com/player/kevin-franz/",
-        "description": "Tournament history and stats"
+        "description": "Tournament history and stats",
+        "image": "",
+        "ranking": "",
+        "scoutingReport": "",
+        "position": "",
+        "heightWeight": "",
+        "classYear": "",
+        "school": "",
+        "state": ""
       }
     ]
   },
