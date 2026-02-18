@@ -49,8 +49,8 @@
     "heading": "Featured Work",
     "items": [
       {
-        "title": "High School Sports Coverage",
-        "description": "Game action and sideline photography from BVSW athletics",
+        "title": "Game of the Year #1 SMS @ #2 Olathe N",
+        "description": "Game action and sideline photography from the hypest game of the year! SMS won by 1 point! ",
         "image": "",
         "instagramUrl": "https://www.instagram.com/p/DUUnO6KFcn4/"
       },
@@ -77,6 +77,12 @@
         "description": "",
         "image": "",
         "instagramUrl": "https://www.instagram.com/p/DUcWRSfFbue/"
+      },
+      {
+        "title": "College Hoops",
+        "description": "Snapped some great pics of an MNU game this season! ",
+        "image": "",
+        "instagramUrl": "https://www.instagram.com/p/DUMv8G0keqv/"
       }
     ]
   }
