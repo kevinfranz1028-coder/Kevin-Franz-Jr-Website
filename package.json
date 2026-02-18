@@ -5,7 +5,7 @@
   "scripts": {
     "start": "eleventy --serve",
     "build": "eleventy",
-    "cms": "node scripts/auto-deploy.js & eleventy --serve",
+    "cms": "npx decap-server & node scripts/auto-deploy.js & eleventy --serve",
     "deploy": "git add src/ && git commit -m 'Content update via CMS' && git push origin main"
   },
   "keywords": [
