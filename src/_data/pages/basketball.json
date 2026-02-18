@@ -1,8 +1,6 @@
 {
   "title": "Basketball ",
   "bannerTitle": "Ball Is Life",
-  "highlights_heading": "Highlights",
-  "highlights_description": "Recent highlight clips and full game film.",
   "bannerPhotos": [
     "/images/banner/Kevin_Jr_Layup_Black_and_White_Game_be9d381555.JPG",
     "/images/banner/Copy_of_655_A7902_Enhanced_NR_742d9cd3fb.jpg",
@@ -12,6 +10,8 @@
     "/images/banner/Kevin_Jr_Blocked_Shot_Black_and_White_Game_0761755000.JPG",
     "/images/banner/Kevin_Jr_Layup_Black_and_White_Game_be9d381555.JPG"
   ],
+  "highlights_heading": "Highlights",
+  "highlights_description": "Recent highlight clips and full game film.",
   "header": {
     "eyebrow": "Guard • Class of 2028",
     "heading": "6'1\" combo guard focused on pace, decision-making, and on-ball defense.",
