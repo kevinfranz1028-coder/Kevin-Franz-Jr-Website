@@ -69,7 +69,8 @@ title: Photography & Media Production
             {% for item in pages.media.gallery.items %}
             <div class="gallery-item">
                 {% if item.instagramUrl %}
-                {% set igUrl = item.instagramUrl if item.instagramUrl.endsWith('/') else item.instagramUrl + '/' %}
+                {% set igUrl = item.instagramUrl.split('?')[0] %}
+                {% set igUrl = igUrl if igUrl.endsWith('/') else igUrl + '/' %}
                 <iframe src="{{ igUrl }}embed/" class="ig-embed" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
                 {% elif item.image %}
                 <img src="{{ item.image }}" alt="{{ item.title }}" class="gallery-img">
