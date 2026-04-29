@@ -1,41 +1,100 @@
 ---
-layout: base.njk
-title: {{ pages.projects.title }}
-description: Personal projects and interests of Kevin Franz Jr. - meteorology, leadership, and what drives him beyond basketball.
+layout: broadcast.njk
+title: Projects
+description: Personal projects and interests of Kevin Franz Jr. - storm chasing, basketball IQ, and mentorship beyond the court.
 permalink: /projects/
+active: projects
 ---
 
-<section class="section-page-header">
-    <div class="container">
-        <div class="page-header-centered">
-            <span class="label-eyebrow">{{ pages.projects.title }}</span>
-            <h1>{{ pages.projects.heading }}</h1>
-            <p class="hero-subheadline">{{ pages.projects.subheading }}</p>
-        </div>
-    </div>
+{% set storms = [
+  { date: 'May 4, 2024',  name: 'Sulphur EF-3',     wind: '165 mph', dur: '32 min', region: 'OK', notes: 'Tracked organization on radar in real time. Logged hook echo development.' },
+  { date: 'Apr 26, 2024', name: 'Lincoln EF-4',     wind: '170 mph', dur: '54 min', region: 'NE', notes: 'Followed eastward path through Omaha metro. Documented power flashes.' },
+  { date: 'Mar 14, 2024', name: 'Winchester EF-3',  wind: '155 mph', dur: '20 min', region: 'IN', notes: 'Late-season outbreak. Watched storm-relative velocity couplet form.' },
+  { date: 'Dec 10, 2024', name: 'Greenfield EF-2',  wind: '125 mph', dur: '15 min', region: 'IA', notes: 'December tornado — rare. Studied the pre-event environment.' }
+] %}
+
+{# ===== HERO ===== #}
+<section style="padding:80px 56px 60px; background:var(--b-bg); border-bottom:1px solid var(--b-line);">
+  <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin-bottom:24px;">&bull; PROJECTS &amp; PASSIONS</div>
+  <h1 style="font-family:'Archivo', sans-serif; font-weight:900; font-size:160px; line-height:0.85; letter-spacing:-0.045em; text-transform:uppercase; margin:0; color:var(--b-text); max-width:90%;">
+    What I'm<br><span style="-webkit-text-stroke:2px var(--b-green-bright); -webkit-text-fill-color:transparent;">obsessed</span> with.
+  </h1>
+  <p style="font-family:'Inter', sans-serif; font-size:18px; line-height:1.6; color:var(--b-mute); margin-top:32px; max-width:600px;">
+    Off the floor I'm chasing storms, breaking down film, and teaching the game to younger kids. Three threads that run through everything.
+  </p>
 </section>
 
-<section class="section-content">
-    <div class="container">
-        {% for category in pages.projects.categories %}
-        <h2>{{ category.title }}</h2>
-        {% if category.description %}
-        <div>{{ category.description | safe }}</div>
-        {% endif %}
-
-        {% if category.projects and category.projects.length > 0 %}
-        <div class="tiles-grid">
-            {% for project in category.projects %}
-            <div class="tile-card">
-                <h3 class="tile-title">{{ project.title }}</h3>
-                <p class="tile-body">{{ project.description }}</p>
-                {% if project.link %}
-                <a href="{{ project.link }}" class="tile-cta" target="_blank">Learn More →</a>
-                {% endif %}
-            </div>
-            {% endfor %}
+{# ===== STORM TRACKER ===== #}
+<div class="b-section-head">
+  <div class="b-section-head-left">
+    <span class="b-section-tag">/01 STORM LOG</span>
+    <h2 class="b-section-title">Tornado<br>tracker.</h2>
+  </div>
+</div>
+<section style="display:grid; grid-template-columns:1fr 1.4fr; border-bottom:1px solid var(--b-line); min-height:520px;">
+  <div style="border-right:1px solid var(--b-line); background:var(--b-bg-2);">
+    {% for s in storms %}
+      <div style="padding:20px 28px; {% if not loop.last %}border-bottom:1px solid var(--b-line);{% endif %} display:grid; grid-template-columns:80px 1fr 50px; align-items:center; gap:16px; background:{% if loop.first %}var(--b-bg){% else %}transparent{% endif %}; border-left:{% if loop.first %}3px solid var(--b-green-bright){% else %}3px solid transparent{% endif %};">
+        <div style="font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--b-mute);">{{ s.date }}</div>
+        <div>
+          <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:18px; color:var(--b-text); text-transform:uppercase; letter-spacing:-0.01em;">{{ s.name }}</div>
+          <div style="font-family:'JetBrains Mono', monospace; font-size:10px; color:{% if loop.first %}var(--b-green-bright){% else %}var(--b-mute){% endif %}; margin-top:4px; letter-spacing:0.08em;">{{ s.region }} &middot; {{ s.wind }}</div>
         </div>
-        {% endif %}
-        {% endfor %}
+        <div style="text-align:right; font-family:'JetBrains Mono', monospace; font-size:14px; color:{% if loop.first %}var(--b-green-bright){% else %}var(--b-mute){% endif %};">&rarr;</div>
+      </div>
+    {% endfor %}
+  </div>
+  {# Detail panel — show first storm by default (static port) #}
+  {% set active = storms[0] %}
+  <div style="padding:56px 56px; background:var(--b-bg); display:flex; flex-direction:column; justify-content:center; position:relative; overflow:hidden;">
+    <div style="position:absolute; top:50%; right:-100px; transform:translateY(-50%); width:500px; height:500px; opacity:0.15; pointer-events:none;">
+      <svg viewBox="0 0 500 500" style="width:100%; height:100%;">
+        <circle cx="250" cy="250" r="80"  fill="none" stroke="var(--b-green-bright)" stroke-width="1"></circle>
+        <circle cx="250" cy="250" r="160" fill="none" stroke="var(--b-green-bright)" stroke-width="1"></circle>
+        <circle cx="250" cy="250" r="240" fill="none" stroke="var(--b-green-bright)" stroke-width="1"></circle>
+        <line x1="250" y1="0" x2="250" y2="500" stroke="var(--b-green-bright)" stroke-width="1"></line>
+        <line x1="0" y1="250" x2="500" y2="250" stroke="var(--b-green-bright)" stroke-width="1"></line>
+        <path d="M 280 220 Q 320 200 340 240 Q 360 280 320 290 Q 290 295 270 270 Q 260 250 280 220" fill="var(--b-amber)" opacity="0.6"></path>
+        <circle cx="305" cy="255" r="6" fill="var(--b-red)"></circle>
+      </svg>
     </div>
+    <div style="position:relative; z-index:2;">
+      <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin-bottom:12px;">&bull; TRACKED EVENT</div>
+      <h3 style="font-family:'Archivo', sans-serif; font-weight:900; font-size:64px; line-height:0.9; letter-spacing:-0.03em; text-transform:uppercase; margin:0; color:var(--b-text);">{{ active.name }}</h3>
+      <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:1px; background:var(--b-line); border:1px solid var(--b-line); margin-top:32px; max-width:500px;">
+        {% for cell in [['DATE', active.date],['WIND', active.wind],['DURATION', active.dur],['REGION', active.region]] %}
+          <div style="padding:14px 16px; background:var(--b-bg-2);">
+            <div style="font-family:'JetBrains Mono', monospace; font-size:9px; letter-spacing:0.14em; color:var(--b-mute); text-transform:uppercase;">{{ cell[0] }}</div>
+            <div style="font-family:'Archivo', sans-serif; font-weight:800; font-size:16px; color:var(--b-text); margin-top:4px;">{{ cell[1] }}</div>
+          </div>
+        {% endfor %}
+      </div>
+      <p style="font-size:15px; line-height:1.6; color:var(--b-mute); margin-top:32px; max-width:480px;">{{ active.notes }}</p>
+    </div>
+  </div>
+</section>
+
+{# ===== THREE THREADS ===== #}
+<div class="b-section-head">
+  <div class="b-section-head-left">
+    <span class="b-section-tag">/02 PASSIONS</span>
+    <h2 class="b-section-title">Three<br>threads.</h2>
+  </div>
+</div>
+<section style="display:grid; grid-template-columns:repeat(3, 1fr); gap:1px; background:var(--b-line); border-bottom:1px solid var(--b-line);">
+  {% for p in [
+    {tag:'/ WEATHER', title:'Forecasting &amp; storm-chasing', body:'Weekly weather blog, severe-weather log, and a long-running fascination with how the atmosphere actually behaves. Spring 2026: storm-chase trip planned with my dad.', stat:'12K+', statLabel:'PAGE VIEWS · WEATHER BLOG'},
+    {tag:'/ FILM', title:'Basketball IQ', body:'Hours of film every week — our games, our opponents, and college guards I want to emulate. Building a personal playbook of reads, counters, and decision-making frameworks.', stat:'350+', statLabel:'CLIPS LOGGED · 2025'},
+    {tag:'/ MENTORSHIP', title:'Teaching the game', body:'Volunteer coach at youth camps. Helping younger players develop fundamentals, defensive rotations, and ball-handling. Teaching makes me a better player.', stat:'50+', statLabel:'KIDS COACHED'}
+  ] %}
+    <div style="background:var(--b-bg-2); padding:40px 32px; display:flex; flex-direction:column; min-height:360px;">
+      <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin-bottom:16px;">{{ p.tag }}</div>
+      <h3 style="font-family:'Archivo', sans-serif; font-weight:900; font-size:28px; line-height:1; letter-spacing:-0.02em; text-transform:uppercase; margin:0; color:var(--b-text);">{{ p.title | safe }}</h3>
+      <p style="font-size:14px; line-height:1.6; color:var(--b-mute); margin-top:16px; flex:1;">{{ p.body }}</p>
+      <div style="border-top:1px solid var(--b-line); padding-top:16px; margin-top:24px;">
+        <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:48px; line-height:1; color:var(--b-green-bright); letter-spacing:-0.03em;">{{ p.stat }}</div>
+        <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.12em; color:var(--b-mute); margin-top:6px; text-transform:uppercase;">{{ p.statLabel }}</div>
+      </div>
+    </div>
+  {% endfor %}
 </section>

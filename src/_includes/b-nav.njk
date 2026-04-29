@@ -1,0 +1,20 @@
+{% set active = active or "home" %}
+<nav class="b-nav">
+  <div style="display:flex; align-items:center;">
+    <div class="b-nav-brand">
+      <div class="b-nav-mark">{{ player.jersey or "30" }}</div>
+      <span>FRANZ JR</span>
+    </div>
+    <div class="b-nav-live">2025–26 SEASON</div>
+  </div>
+  <div class="b-nav-links">
+    <a href="/" class="{% if active == 'home' %}active{% endif %}">Home</a>
+    <a href="/basketball/" class="{% if active == 'basketball' %}active{% endif %}">Basketball</a>
+    <a href="/academics/" class="{% if active == 'academics' %}active{% endif %}">Academics</a>
+    <a href="/projects/" class="{% if active == 'projects' %}active{% endif %}">Projects</a>
+    <a href="/character/" class="{% if active == 'character' %}active{% endif %}">Character</a>
+    <a href="/media/" class="{% if active == 'media' %}active{% endif %}">Media</a>
+    <a href="/contact/" class="{% if active == 'contact' %}active{% endif %}">Contact</a>
+  </div>
+  <a href="/contact/" class="b-nav-cta">Recruiting</a>
+</nav>

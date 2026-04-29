@@ -1,0 +1,350 @@
+/* ============================================
+   PLAYER CARD — flippable trading card
+   ============================================ */
+.b-pcard-wrap {
+  perspective: 2400px;
+  width: 540px;
+  height: 760px;
+  cursor: pointer;
+  user-select: none;
+}
+.b-pcard {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 1s cubic-bezier(0.6, 0.04, 0.32, 1);
+}
+.b-pcard.is-flipped {
+  transform: rotateY(180deg);
+}
+.b-pcard-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  background: var(--b-bg-2);
+  border: 1px solid var(--b-line);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow:
+    0 30px 80px rgba(0,0,0,0.5),
+    0 8px 20px rgba(0,0,0,0.4),
+    inset 0 0 0 1px rgba(255,255,255,0.04);
+}
+.b-pcard-front {
+  background:
+    radial-gradient(ellipse at top right, rgba(34,197,94,0.18), transparent 60%),
+    linear-gradient(180deg, var(--b-bg-2) 0%, var(--b-bg) 100%);
+}
+.b-pcard-back {
+  background: var(--b-bg-2);
+  transform: rotateY(180deg);
+  padding: 32px;
+}
+
+/* Front: background jersey number */
+.b-pcard-bg-num {
+  position: absolute;
+  top: 40px;
+  right: -40px;
+  font-family: 'Archivo', sans-serif;
+  font-weight: 900;
+  font-size: 480px;
+  line-height: 0.8;
+  color: rgba(34, 197, 94, 0.07);
+  letter-spacing: -0.05em;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Holographic shimmer overlay */
+.b-pcard-shimmer {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(115deg,
+      transparent 30%,
+      rgba(34,197,94,0.08) 45%,
+      rgba(245,158,11,0.06) 50%,
+      rgba(34,197,94,0.08) 55%,
+      transparent 70%);
+  background-size: 300% 300%;
+  animation: b-pcard-shimmer 6s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 2;
+  mix-blend-mode: screen;
+}
+@keyframes b-pcard-shimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Top bar */
+.b-pcard-topbar {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 24px;
+  background: rgba(11,13,16,0.6);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--b-line);
+}
+.b-pcard-team {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--b-text);
+}
+.b-pcard-mark {
+  background: var(--b-green-bright);
+  color: var(--b-bg);
+  font-family: 'Archivo', sans-serif;
+  font-weight: 900;
+  font-size: 11px;
+  padding: 4px 8px;
+  letter-spacing: 0.06em;
+  clip-path: polygon(8% 0, 100% 0, 92% 100%, 0% 100%);
+}
+.b-pcard-jersey {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 900;
+  font-size: 28px;
+  color: var(--b-green-bright);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+/* Photo */
+.b-pcard-photo {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  background: var(--b-bg-3);
+  z-index: 1;
+}
+.b-pcard-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  filter: contrast(1.05) saturate(1.1);
+  transition: transform 1.2s ease;
+}
+.b-pcard-wrap:hover .b-pcard-photo img {
+  transform: scale(1.04);
+}
+.b-pcard-photo-grad {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(11,13,16,0.95) 100%);
+}
+
+/* Nameplate */
+.b-pcard-nameplate {
+  position: absolute;
+  bottom: 110px;
+  left: 0;
+  right: 0;
+  z-index: 4;
+  padding: 0 28px;
+}
+.b-pcard-pos-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--b-green-bright);
+  margin-bottom: 10px;
+}
+.b-pcard-name {
+  margin: 0;
+  font-family: 'Archivo', sans-serif;
+  font-weight: 900;
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+.b-pcard-name-first {
+  display: block;
+  font-size: 32px;
+  color: var(--b-text);
+  opacity: 0.85;
+}
+.b-pcard-name-last {
+  display: block;
+  font-size: 64px;
+  color: var(--b-green-bright);
+  margin-top: 4px;
+}
+
+/* Quick stats */
+.b-pcard-quickstats {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--b-line);
+  border-top: 1px solid var(--b-line);
+}
+.b-pcard-qs {
+  background: rgba(11,13,16,0.85);
+  backdrop-filter: blur(8px);
+  padding: 16px 12px 14px;
+  text-align: center;
+}
+.b-pcard-qs-l {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  color: var(--b-mute);
+  text-transform: uppercase;
+}
+.b-pcard-qs-v {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 900;
+  font-size: 22px;
+  color: var(--b-text);
+  margin-top: 4px;
+  line-height: 1;
+}
+
+/* Flip hint */
+.b-pcard-flip-hint {
+  position: absolute;
+  bottom: 14px;
+  right: 16px;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  color: var(--b-green-bright);
+  opacity: 0.75;
+  text-transform: uppercase;
+}
+.b-pcard-flip-hint span:last-child {
+  font-size: 12px;
+}
+
+/* BACK */
+.b-pcard-back-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--b-line);
+  margin-bottom: 24px;
+}
+.b-pcard-back-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--b-green-bright);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.b-pcard-back-name {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 900;
+  font-size: 28px;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  line-height: 0.9;
+  color: var(--b-text);
+}
+.b-pcard-jersey-lg {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 900;
+  font-size: 84px;
+  line-height: 0.8;
+  color: var(--b-green-bright);
+  letter-spacing: -0.04em;
+}
+
+/* Stat grid (3x3) */
+.b-pcard-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--b-line);
+  border: 1px solid var(--b-line);
+  margin-bottom: 24px;
+}
+.b-pcard-stat-cell {
+  background: var(--b-bg);
+  padding: 14px 12px;
+  position: relative;
+}
+.b-pcard-stat-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  color: var(--b-mute);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.b-pcard-stat-value {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 900;
+  font-size: 26px;
+  line-height: 1;
+  color: var(--b-text);
+  letter-spacing: -0.02em;
+}
+.b-pcard-stat-rank {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: var(--b-green-bright);
+  letter-spacing: 0.08em;
+  margin-top: 4px;
+}
+
+/* Bio */
+.b-pcard-bio {
+  border-top: 1px solid var(--b-line);
+  padding-top: 16px;
+  margin-bottom: 16px;
+}
+.b-pcard-bio-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--b-line);
+}
+.b-pcard-bio-row:last-child { border-bottom: none; }
+.b-pcard-bio-row span:first-child {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: var(--b-mute);
+  text-transform: uppercase;
+}
+.b-pcard-bio-row span:last-child {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--b-text);
+}
+
+.b-pcard-quote {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--b-green-bright);
+  text-align: center;
+  padding: 12px 0;
+  border-top: 1px dashed var(--b-line);
+  margin-top: auto;
+  text-transform: uppercase;
+}

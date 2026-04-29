@@ -1,0 +1,41 @@
+<footer class="b-footer">
+  <div class="b-footer-top">
+    <div>
+      <div class="b-footer-display">FRANZ JR<br><span style="color:var(--b-green-bright)">'{{ player.class | default('28') | replace('20','') }}.</span></div>
+      <p style="font-size:14px; line-height:1.6; color:var(--b-mute); max-width:340px; margin-top:20px;">
+        {{ player.height or "6'1\"" }} combo guard out of {{ player.highSchool or "Blue Valley Southwest" }}. Combining college basketball ambitions with a path toward atmospheric science.
+      </p>
+    </div>
+    <div>
+      <h4>Site</h4>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/basketball/">Basketball</a></li>
+        <li><a href="/academics/">Academics</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/character/">Character</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Recruiting</h4>
+      <ul>
+        <li><a href="#">Prephoops</a></li>
+        <li><a href="#">NCSA Sports</a></li>
+        <li><a href="#">Sports Passports</a></li>
+        <li><a href="#">@kfranzjr2028</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:{{ player.parentEmail }}">{{ player.parentEmail }}</a></li>
+        <li><a href="tel:{{ player.parentPhone }}">{{ player.parentPhone }}</a></li>
+        <li>{{ player.location }}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="b-footer-bottom">
+    <span>&copy; {{ "now" | date("Y") if false else 2026 }} KEVIN FRANZ JR</span>
+    <span>BVSW &middot; #{{ player.jersey or "30" }} &middot; COMBO GUARD &middot; CLASS OF {{ player.class or "2028" }}</span>
+  </div>
+</footer>

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Kevin Franz Jr — Redesign</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=Archivo:wght@400;500;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="timeline.css">
+<link rel="stylesheet" href="player-card.css">
+<link rel="stylesheet" href="interactive.css">
+<style>
+  body { margin: 0; background: #1a1a1a; font-family: 'Inter', sans-serif; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="design-canvas.jsx"></script>
+<script type="text/babel" src="data.jsx"></script>
+<script type="text/babel" src="timeline.jsx"></script>
+<script type="text/babel" src="interactive.jsx"></script>
+<script type="text/babel" src="player-card.jsx"></script>
+<script type="text/babel" src="direction-b.jsx"></script>
+<script type="text/babel" src="direction-b-pages.jsx"></script>
+<script type="text/babel" src="direction-b-pages2.jsx"></script>
+
+<script type="text/babel">
+const { DesignCanvas, DCSection, DCArtboard } = window;
+
+function App() {
+  return (
+    <DesignCanvas title="Kevin Franz Jr. — Redesign" subtitle="Direction B — Broadcast. Full site build.">
+      <DCSection id="direction-b" title="Direction B — Broadcast">
+        <DCArtboard id="b-home" label="Home" width={1440} height={3320}>
+          <BHomePage />
+        </DCArtboard>
+        <DCArtboard id="b-basketball" label="Basketball" width={1440} height={4800}>
+          <BBasketballPage />
+        </DCArtboard>
+        <DCArtboard id="b-academics" label="Academics" width={1440} height={3200}>
+          <BAcademicsPage />
+        </DCArtboard>
+        <DCArtboard id="b-projects" label="Projects" width={1440} height={2700}>
+          <BProjectsPage />
+        </DCArtboard>
+        <DCArtboard id="b-character" label="Character" width={1440} height={2400}>
+          <BCharacterPage />
+        </DCArtboard>
+        <DCArtboard id="b-media" label="Media" width={1440} height={3000}>
+          <BMediaPage />
+        </DCArtboard>
+        <DCArtboard id="b-contact" label="Contact" width={1440} height={2400}>
+          <BContactPage />
+        </DCArtboard>
+      </DCSection>
+    </DesignCanvas>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>
