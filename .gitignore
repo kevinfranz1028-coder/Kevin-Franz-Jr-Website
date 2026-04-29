@@ -2,6 +2,7 @@ node_modules/
 _site/
 .DS_Store
 package-lock.json
+*.zip
 
 # Environment files (contain secrets)
 .env
