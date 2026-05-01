@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kevin Franz Jr. — Content Questionnaire</title>
+<style>
+  :root {
+    --bg: #0b0d10;
+    --bg-2: #14171c;
+    --bg-3: #1c2127;
+    --line: #262b33;
+    --text: #e8eaed;
+    --mute: #8a8f99;
+    --green: #22c55e;
+    --green-dark: #15803d;
+    --amber: #f59e0b;
+    --red: #ef4444;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.5;
+  }
+  .topbar {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--bg-2);
+    border-bottom: 1px solid var(--line);
+    padding: 16px 24px;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    flex-wrap: wrap;
+  }
+  .topbar h1 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+  .topbar h1 span { color: var(--green); }
+  .topbar-actions { display: flex; gap: 8px; }
+  .btn {
+    background: var(--green);
+    color: var(--bg);
+    border: none;
+    padding: 10px 18px;
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .btn:hover { background: var(--green-dark); color: white; }
+  .btn-ghost {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--line);
+  }
+  .btn-ghost:hover { border-color: var(--green); color: var(--green); }
+  .container {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 32px 24px 120px;
+  }
+  .intro {
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--green);
+    padding: 24px 28px;
+    margin-bottom: 32px;
+  }
+  .intro h2 { margin: 0 0 8px; font-size: 22px; }
+  .intro p { margin: 0 0 8px; color: var(--mute); font-size: 14px; }
+  .intro ul { margin: 12px 0 0; padding-left: 20px; color: var(--mute); font-size: 14px; }
+  .intro li { margin-bottom: 4px; }
+
+  .toc {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-bottom: 32px;
+    padding: 16px;
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+  }
+  .toc a {
+    color: var(--mute);
+    text-decoration: none;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 6px 12px;
+    border: 1px solid var(--line);
+    background: var(--bg-3);
+  }
+  .toc a:hover { color: var(--green); border-color: var(--green); }
+
+  details {
+    border: 1px solid var(--line);
+    background: var(--bg-2);
+    margin-bottom: 16px;
+  }
+  details[open] { border-color: var(--green); }
+  summary {
+    padding: 18px 24px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    user-select: none;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after {
+    content: "+";
+    color: var(--green);
+    font-size: 24px;
+    font-weight: 400;
+  }
+  details[open] summary::after { content: "−"; }
+  .section-body {
+    padding: 0 24px 24px;
+    border-top: 1px solid var(--line);
+  }
+  .section-intro {
+    color: var(--mute);
+    font-size: 13px;
+    padding: 16px 0;
+    border-bottom: 1px dashed var(--line);
+    margin-bottom: 24px;
+  }
+
+  .field {
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px dashed var(--line);
+  }
+  .field:last-child { border-bottom: none; }
+  .field-label {
+    display: block;
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .field-help {
+    font-size: 12px;
+    color: var(--mute);
+    margin-bottom: 10px;
+  }
+  .current {
+    background: var(--bg-3);
+    border-left: 2px solid var(--mute);
+    padding: 10px 14px;
+    margin-bottom: 10px;
+    font-size: 13px;
+    color: var(--mute);
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+  }
+  .current::before {
+    content: "Currently shown:";
+    display: block;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--green);
+    margin-bottom: 4px;
+    font-family: inherit;
+  }
+  input[type="text"], input[type="email"], input[type="tel"], input[type="url"], input[type="number"], textarea, select {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    color: var(--text);
+    padding: 10px 12px;
+    font-size: 14px;
+    font-family: inherit;
+    border-radius: 0;
+  }
+  textarea { resize: vertical; min-height: 70px; line-height: 1.5; }
+  input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--green);
+  }
+  .row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+  }
+  .row-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .row-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 640px) {
+    .row-3, .row-4, .row-2 { grid-template-columns: 1fr; }
+  }
+  .photo-field {
+    background: var(--bg-3);
+    border: 1px dashed var(--line);
+    padding: 16px;
+    margin-top: 10px;
+  }
+  .photo-field input[type="file"] {
+    color: var(--mute);
+    font-size: 13px;
+  }
+  .photo-preview {
+    margin-top: 10px;
+    max-width: 200px;
+    max-height: 150px;
+    border: 1px solid var(--line);
+    display: none;
+  }
+  .photo-preview.shown { display: block; }
+  .group-card {
+    background: var(--bg-3);
+    border: 1px solid var(--line);
+    padding: 16px;
+    margin-bottom: 12px;
+  }
+  .group-card h4 {
+    margin: 0 0 12px;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--green);
+  }
+  .save-bar {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: var(--bg-2);
+    border-top: 1px solid var(--green);
+    padding: 14px 24px;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    z-index: 50;
+    flex-wrap: wrap;
+  }
+  .save-bar-status { font-size: 12px; color: var(--mute); }
+  .save-bar-status strong { color: var(--green); }
+  .pill {
+    display: inline-block;
+    padding: 2px 8px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--mute);
+    margin-left: 8px;
+  }
+  .pill.optional { color: var(--amber); border-color: var(--amber); }
+  .pill.required { color: var(--green); border-color: var(--green); }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <h1>Kevin Franz Jr. — <span>Content Questionnaire</span></h1>
+  <div class="topbar-actions">
+    <button class="btn btn-ghost" onclick="loadAnswers()">Load saved</button>
+    <button class="btn" onclick="downloadAnswers()">Download answers</button>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="intro">
+    <h2>How to use this</h2>
+    <p>Fill in only the fields you want to change. Anything you leave blank stays as it is right now on the site.</p>
+    <ul>
+      <li><strong>Each field shows what's currently on the site</strong> — replace it with the real info if it's wrong.</li>
+      <li><strong>For photos</strong>, you can upload a new file or just describe what kind of photo should go there.</li>
+      <li><strong>Save anytime</strong> — your answers are auto-saved in this browser as you type. Click "Download answers" when done and send the JSON file back.</li>
+      <li>Don't worry about formatting — just type plain text. I'll handle the styling.</li>
+    </ul>
+  </div>
+
+  <div class="toc">
+    <a href="#global">Global</a>
+    <a href="#home">Home</a>
+    <a href="#basketball">Basketball</a>
+    <a href="#academics">Academics</a>
+    <a href="#projects">Projects (Storms)</a>
+    <a href="#character">Character</a>
+    <a href="#media">Media</a>
+    <a href="#contact">Contact</a>
+    <a href="#photos">Photos</a>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- GLOBAL -->
+  <!-- ============================================================ -->
+  <details id="global" open>
+    <summary>Global Info <span class="pill required">used everywhere</span></summary>
+    <div class="section-body">
+      <div class="section-intro">These appear all over the site — your name, height, jersey, contact info, etc.</div>
+
+      <div class="row-2">
+        <div class="field">
+          <label class="field-label">Full name</label>
+          <div class="current">Kevin Franz Jr.</div>
+          <input type="text" data-key="player.name" placeholder="Leave blank to keep">
+        </div>
+        <div class="field">
+          <label class="field-label">Jersey number</label>
+          <div class="current">30</div>
+          <input type="text" data-key="player.jersey" placeholder="Leave blank to keep">
+        </div>
+      </div>
+
+      <div class="row-3">
+        <div class="field">
+          <label class="field-label">Height</label>
+          <div class="current">6'1"</div>
+          <input type="text" data-key="player.height">
+        </div>
+        <div class="field">
+          <label class="field-label">Weight (lbs)</label>
+          <div class="current">185</div>
+          <input type="text" data-key="player.weight">
+        </div>
+        <div class="field">
+          <label class="field-label">Position</label>
+          <div class="current">Guard</div>
+          <select data-key="player.position">
+            <option value="">— keep current —</option>
+            <option>Point Guard</option>
+            <option>Combo Guard</option>
+            <option>Shooting Guard</option>
+            <option>Wing</option>
+            <option>Guard</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row-3">
+        <div class="field">
+          <label class="field-label">Class year</label>
+          <div class="current">2028</div>
+          <input type="text" data-key="player.class">
+        </div>
+        <div class="field">
+          <label class="field-label">GPA</label>
+          <div class="current">3.85</div>
+          <input type="text" data-key="player.gpa">
+        </div>
+        <div class="field">
+          <label class="field-label">Location</label>
+          <div class="current">Overland Park, KS</div>
+          <input type="text" data-key="player.location">
+        </div>
+      </div>
+
+      <div class="row-2">
+        <div class="field">
+          <label class="field-label">High school</label>
+          <div class="current">Blue Valley Southwest</div>
+          <input type="text" data-key="player.highSchool">
+        </div>
+        <div class="field">
+          <label class="field-label">AAU team</label>
+          <div class="current">You Hoop 3SSB</div>
+          <input type="text" data-key="player.aauTeam">
+        </div>
+      </div>
+
+      <div class="row-2">
+        <div class="field">
+          <label class="field-label">Parent / contact email</label>
+          <div class="current">Kevinfranz1028@gmail.com</div>
+          <input type="email" data-key="player.parentEmail">
+        </div>
+        <div class="field">
+          <label class="field-label">Parent / contact phone</label>
+          <div class="current">913-396-3717</div>
+          <input type="tel" data-key="player.parentPhone">
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <!-- ============================================================ -->
+  <!-- HOME -->
+  <!-- ============================================================ -->
+  <details id="home">
+    <summary>Home Page</summary>
+    <div class="section-body">
+      <div class="section-intro">The landing page everyone sees first.</div>
+
+      <div class="field">
+        <label class="field-label">Hero subhead (the sentence under your name)</label>
+        <div class="current">6'1" combo guard at Blue Valley Southwest. Pace, playmaking, and full-court defense — chasing college basketball and a degree in atmospheric science.</div>
+        <textarea data-key="home.heroSub" rows="3" placeholder="One or two sentences describing you"></textarea>
+      </div>
+
+      <div class="field">
+        <label class="field-label">JV stat callouts (4 short stats shown under hero)</label>
+        <div class="field-help">Like "BVSW JV", "14 GS / 16 GP", "1ST IN RPG", "2ND IN AST/TO". Type what's actually true.</div>
+        <div class="row-4">
+          <input type="text" data-key="home.heroStat1" placeholder="• BVSW JV">
+          <input type="text" data-key="home.heroStat2" placeholder="14 GS / 16 GP">
+          <input type="text" data-key="home.heroStat3" placeholder="1ST IN RPG">
+          <input type="text" data-key="home.heroStat4" placeholder="2ND IN AST/TO">
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field-label">Pillar 1 — Basketball blurb</label>
+        <div class="current">#30 — Pace, decisions, on-ball defense. JV 2025–26: 5.4 PPG · 4.1 RPG (1st) · 2.6 APG · 2.05 AST/TO.</div>
+        <textarea data-key="home.pillar1" rows="3"></textarea>
+      </div>
+
+      <div class="field">
+        <label class="field-label">Pillar 2 — Academics blurb</label>
+        <div class="current">Heavy load in math and science at Blue Valley Southwest. Plan to study meteorology / atmospheric science.</div>
+        <textarea data-key="home.pillar2" rows="3"></textarea>
+      </div>
+
+      <div class="field">
+        <label class="field-label">Pillar 3 — Character blurb</label>
+        <div class="current">Weather nerd, film-room junkie, and mentor to younger players. Leadership, family, and showing up.</div>
+        <textarea data-key="home.pillar3" rows="3"></textarea>
+      </div>
+
+      <div class="field">
+        <label class="field-label">"About" section paragraph</label>
+        <div class="current">On the floor I'm a pace-pusher and playmaker — creating for teammates, defending full court, making the right read under pressure. Off the floor I'm just as serious about the classroom, with weather and atmospheric science driving my long-term goals.</div>
+        <textarea data-key="home.aboutPara" rows="5"></textarea>
+      </div>
+
+      <div class="field">
+        <label class="field-label">"About" section quote</label>
+        <div class="current">"Help my team win. Earn the chance to play college ball."</div>
+        <input type="text" data-key="home.aboutQuote">
+      </div>
+    </div>
+  </details>
+
+  <!-- ============================================================ -->
+  <!-- BASKETBALL -->
+  <!-- ============================================================ -->
+  <details id="basketball">
+    <summary>Basketball Page</summary>
+    <div class="section-body">
+      <div class="section-intro">Schedule, stats, and highlight reels. Most of this is fake placeholder data — fix what you can.</div>
+
+      <div class="field">
+        <label class="field-label">JV record line (under "2025–26" stats)</label>
+        <div class="current">BVSW JV · 7 GP · 5W–2L</div>
+        <input type="text" data-key="bb.recordLine">
+      </div>
+
+      <div class="field">
+        <label class="field-label">2025–26 Season stats <span class="pill optional">10 stats</span></label>
+        <div class="field-help">Type the value and your team rank. Leave blank to keep current.</div>
+        <div id="stats-container"></div>
+      </div>
+
+      <div class="field">
+        <label class="field-label">Schedule <span class="pill optional">15 games</span></label>
+        <div class="field-help">For each game: date (e.g. "Dec 5"), opponent, location (Home / Away), and result. Use "—" if not played yet.</div>
+        <div id="schedule-container"></div>
+      </div>
+
+      <div class="field">
+        <label class="field-label">Highlight Video #1</label>
+        <div class="current">"Summer 2023 Phenom Camp Mix" — Los Angeles, CA — competing on the national stage. YouTube ID: D99uLbwXy7s</div>
+        <div class="row">
+          <input type="text" data-key="bb.video1.title" placeholder="Title">
+          <input type="text" data-key="bb.video1.desc" placeholder="Description / location">
+          <input type="text" data-key="bb.video1.id" placeholder="YouTube video ID (the part after watch?v=)">
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field-label">Highlight Video #2</label>
+        <div class="current">"Summer 2022 Phenom Camp Mix" — San Diego, CA — first national circuit appearance. YouTube ID: rSJUcL_66c0</div>
+        <div class="row">
+          <input type="text" data-key="bb.video2.title" placeholder="Title">
+          <input type="text" data-key="bb.video2.desc" placeholder="Description / location">
+          <input type="text" data-key="bb.video2.id" placeholder="YouTube video ID">
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field-label">Recruiting profile links</label>
+        <div class="field-help">If you don't have one of these, just leave blank and we'll remove the link.</div>
+        <div class="group-card">
+          <h4>PrepHoops profile</h4>
+          <input type="url" data-key="bb.prephoops" placeholder="https://...">
+        </div>
+        <div class="group-card">
+          <h4>NCSA Sports profile</h4>
+          <input type="url" data-key="bb.ncsa" placeholder="https://...">
+        </div>
+        <div class="group-card">
+          <h4>Sports Passports profile</h4>
+          <input type="url" data-key="bb.sportspassports" placeholder="https://...">
+        </div>
+        <div class="group-card">
+          <h4>Instagram handle</h4>
+          <div class="current">@kfranzjr2028</div>
+          <input type="text" data-key="bb.instagram" placeholder="@yourhandle">
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <!-- ============================================================ -->
+  <!-- ACADEMICS -->
+  <!-- ============================================================ -->
+  <details id="academics">
+    <summary>Academics Page</summary>
+    <div class="section-body">
+      <div class="section-intro">GPA, courses, awards, and the meteorology section.</div>
+
+      <div class="field">
+        <label class="field-label">Hero subhead (under "Student. First.")</label>
+        <div class="current">3.85 GPA · Honor roll every semester · Targeting meteorology / atmospheric science in college.</div>
+        <textarea data-key="ac.heroSub" rows="2"></textarea>
+      </div>
+
+      <div class="field">
+        <label class="field-label">GPA by semester (oldest → newest, 6 semesters)</label>
+        <div class="current">3.6, 3.7, 3.8, 3.85, 3.85, 3.9</div>
+        <div class="row">
+          <input type="text" data-key="ac.gpa.s1" placeholder="S1">
+          <input type="text" data-key="ac.gpa.s2" placeholder="S2">
+          <input type="text" data-key="ac.gpa.s3" placeholder="S3">
+          <input type="text" data-key="ac.gpa.s4" placeholder="S4">
+          <input type="text" data-key="ac.gpa.s5" placeholder="S5">
+          <input type="text" data-key="ac.gpa.s6" placeholder="S6">
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field-label">Honor roll list (semester labels)</label>
+        <div class="current">Fall 2022 (8th), Spring 2023 (8th), Fall 2023 (Fr), Spring 2024 (Fr), Fall 2024 (So), Spring 2025 (So)</div>
+        <textarea data-key="ac.honorRoll" rows="3" placeholder="One semester per line"></textarea>
+      </div>
+
+      <div class="field">
+        <label class="field-label">Honors / AP courses list</label>
+        <div class="current">AP Environmental Science, Honors Algebra II, Honors English 10, Physics, Honors Chemistry (next yr)</div>
+        <textarea data-key="ac.honorsList" rows="4" placeholder="One course per line"></textarea>
+      </div>
+
+      <div class="field">
+        <label class="field-label">"Why meteorology" paragraph</label>
+        <div class="current">Growing up in Tornado Alley, I learned to track radar before I could drive. Reading a sounding chart, watching a supercell organize, calling a tornado warning before the sirens — that's the rush. Atmospheric science is engineering plus chaos plus consequences. I want to study it for real.</div>
+        <textarea data-key="ac.whyMet" rows="5"></textarea>
+      </div>
+
+      <div class="field">
+        <label class="field-label">Current courses <span class="pill optional">6 courses</span></label>
+        <div class="field-help">For each: course name, current grade, teacher, and 1-sentence description.</div>
+        <div id="courses-container"></div>
+      </div>
+
+      <div class="field">
+        <label class="field-label">Awards <span class="pill optional">3 awards</span></label>
+        <div id="awards-container"></div>
+      </div>
+    </div>
+  </details>
+
+  <!-- ============================================================ -->
+  <!-- PROJECTS -->
+  <!-- ============================================================ -->
+  <details id="projects">
+    <summary>Projects (Storms / Passions)</summary>
+    <div class="section-body">
+      <div class="section-intro">The "obsessed with" page — storm tracker and three passions. The storms listed are placeholders; if you don't actually track storms this way, we should rethink this page.</div>
+
+      <div class="field">
+        <label class="field-label">Hero subhead</label>
+        <div class="current">Off the floor I'm chasing storms, breaking down film, and teaching the game to younger kids. Three threads that run through everything.</div>
+        <textarea data-key="pr.heroSub" rows="3"></textarea>
+      </div>
+
+      <div class="field">
+        <label class="field-label">Tornadoes you've actually tracked <span class="pill optional">4 storms</span></label>
+        <div class="field-help">Real storms only — leave blank for any you don't have, or write "remove this" in the name field.</div>
+        <div id="storms-container"></div>
+      </div>
+
+      <div class="field">
+        <label class="field-label">Three Threads / Passions</label>
+        <div id="passions-container"></div>
+      </div>
+    </div>
+  </details>
+
+  <!-- ============================================================ -->
+  <!-- CHARACTER -->
+  <!-- ============================================================ -->
+  <details id="character">
+    <summary>Character Page</summary>
+    <div class="section-body">
+      <div class="section-intro">Quote hero, your 4 values, service work, and leadership roles.</div>
+
+      <div class="field">
+        <label class="field-label">Hero quote (the big italic quote at top)</label>
+        <div class="current">Kevin leads by example. He's the first one in the gym and the last to leave. His work ethic is contagious.</div>
+        <textarea data-key="ch.heroQuote" rows="3" placeholder="A real quote about you from a real person"></textarea>
+      </div>
+
+      <div class="field">
+        <label class="field-label">Quote attribution — name</label>
+        <div class="current">Coach RJ Palmgren</div>
+        <input type="text" data-key="ch.quoteName">
+      </div>
+
+      <div class="field">
+        <label class="field-label">Quote attribution — title</label>
+        <div class="current">BVSW Varsity Head Coach</div>
+        <input type="text" data-key="ch.quoteTitle">
+      </div>
+
+      <div class="field">
+        <label class="field-label">Your 4 values</label>
+        <div class="field-help">Each one needs a short title, one-line description, and a longer personal story.</div>
+        <div id="values-container"></div>
+      </div>
+
+      <div class="field">
+        <label class="field-label">Service work <span class="pill optional">3 items</span></label>
+        <div class="field-help">Real volunteer work or community involvement.</div>
+        <div id="service-container"></div>
+      </div>
+
+      <div class="field">
+        <label class="field-label">Leadership roles <span class="pill optional">4 items</span></label>
+        <div class="field-help">Year + role (e.g. "2025" + "AAU TEAM LEADER").</div>
+        <div id="leadership-container"></div>
+      </div>
+    </div>
+  </details>
+
+  <!-- ============================================================ -->
+  <!-- MEDIA -->
+  <!-- ============================================================ -->
+  <details id="media">
+    <summary>Media Page (Photography)</summary>
+    <div class="section-body">
+      <div class="section-intro">Your @Shots_By_Franz photography work.</div>
+
+      <div class="field">
+        <label class="field-label">Hero subhead</label>
+        <div class="current">Credentialed for Sporting KC. Sidelines for BVSW. @Shots_By_Franz on Instagram.</div>
+        <textarea data-key="md.heroSub" rows="2"></textarea>
+      </div>
+
+      <div class="field">
+        <label class="field-label">Coverage reels <span class="pill optional">4 reels</span></label>
+        <div class="field-help">Tag/category, # of shots, # of videos, and a short location/description.</div>
+        <div id="reels-container"></div>
+      </div>
+
+      <div class="field">
+        <label class="field-label">Featured gallery items <span class="pill optional">6 items</span></label>
+        <div class="field-help">For each photo: title, description, and the Instagram post URL.</div>
+        <div id="gallery-container"></div>
+      </div>
+
+      <div class="field">
+        <label class="field-label">Instagram handle for booking</label>
+        <div class="current">@Shots_By_Franz</div>
+        <input type="text" data-key="md.bookHandle">
+      </div>
+    </div>
+  </details>
+
+  <!-- ============================================================ -->
+  <!-- CONTACT -->
+  <!-- ============================================================ -->
+  <details id="contact">
+    <summary>Contact Page</summary>
+    <div class="section-body">
+      <div class="section-intro">Coaching references and recruiting links.</div>
+
+      <div class="field">
+        <label class="field-label">Hero subhead</label>
+        <div class="current">Coaches, scouts, and media — reach the family directly. Recruiting profiles and highlights live on the Basketball page.</div>
+        <textarea data-key="ct.heroSub" rows="3"></textarea>
+      </div>
+
+      <div class="field">
+        <label class="field-label">Coaching references <span class="pill optional">2 coaches</span></label>
+        <div id="refs-container"></div>
+      </div>
+
+      <div class="field">
+        <label class="field-label">Quick links <span class="pill optional">6 links</span></label>
+        <div class="field-help">Add real URLs where you have them — leave blank to remove the link.</div>
+        <div id="links-container"></div>
+      </div>
+    </div>
+  </details>
+
+  <!-- ============================================================ -->
+  <!-- PHOTOS -->
+  <!-- ============================================================ -->
+  <details id="photos">
+    <summary>Photos</summary>
+    <div class="section-body">
+      <div class="section-intro">Upload new photos for each spot, or describe what kind of photo should go there. If you leave a slot blank, the current photo stays.</div>
+
+      <div class="field">
+        <label class="field-label">Home — Hero photo (right side, your portrait/action shot)</label>
+        <div class="field-help">Currently using a basketball action photo. Best fit: a strong portrait or game-action shot, vertical orientation.</div>
+        <div class="photo-field">
+          <input type="file" accept="image/*" data-photo-key="photo.homeHero">
+          <img class="photo-preview" alt="">
+          <textarea data-key="photo.homeHero.notes" rows="2" placeholder="Or describe the photo you want here..." style="margin-top:10px;"></textarea>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field-label">Home — "About" band photo (full-bleed background)</label>
+        <div class="field-help">A wide action shot — best in landscape orientation.</div>
+        <div class="photo-field">
+          <input type="file" accept="image/*" data-photo-key="photo.homeAbout">
+          <img class="photo-preview" alt="">
+          <textarea data-key="photo.homeAbout.notes" rows="2" placeholder="Or describe..." style="margin-top:10px;"></textarea>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field-label">Basketball — Hero background photo</label>
+        <div class="photo-field">
+          <input type="file" accept="image/*" data-photo-key="photo.bbHero">
+          <img class="photo-preview" alt="">
+          <textarea data-key="photo.bbHero.notes" rows="2" placeholder="Or describe..." style="margin-top:10px;"></textarea>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field-label">Academics — Hero background photo</label>
+        <div class="photo-field">
+          <input type="file" accept="image/*" data-photo-key="photo.acHero">
+          <img class="photo-preview" alt="">
+          <textarea data-key="photo.acHero.notes" rows="2" placeholder="Or describe..." style="margin-top:10px;"></textarea>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field-label">Media — Hero background photo (the viewfinder shot)</label>
+        <div class="photo-field">
+          <input type="file" accept="image/*" data-photo-key="photo.mdHero">
+          <img class="photo-preview" alt="">
+          <textarea data-key="photo.mdHero.notes" rows="2" placeholder="Or describe..." style="margin-top:10px;"></textarea>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field-label">Media — Gallery photos (6 spots)</label>
+        <div class="field-help">These are your photography work samples. Upload up to 6 photos you want featured.</div>
+        <div id="gallery-photos-container"></div>
+      </div>
+
+      <div class="field">
+        <label class="field-label">Anything else?</label>
+        <textarea data-key="notes" rows="6" placeholder="Anything else you want me to know — pages to add, sections to remove, things you want to change about the design..."></textarea>
+      </div>
+    </div>
+  </details>
+
+</div>
+
+<div class="save-bar">
+  <div class="save-bar-status">
+    <strong id="save-status">Auto-saved</strong> &middot; Your answers are stored in this browser. Click "Download" when ready.
+  </div>
+  <div class="topbar-actions">
+    <button class="btn btn-ghost" onclick="if(confirm('Clear all answers?')) clearAll()">Clear all</button>
+    <button class="btn" onclick="downloadAnswers()">Download answers</button>
+  </div>
+</div>
+
+<script>
+const STORAGE_KEY = 'kfjr-questionnaire-v1';
+
+// =================== DYNAMIC FIELD GENERATORS ===================
+
+const STATS = [
+  ['PPG','5.4','5th'], ['RPG','4.1','1st'], ['APG','2.6','2nd'],
+  ['SPG','1.4','T-3rd'], ['BPG','0.4','T-3rd'], ['FG%','37.5','8th'],
+  ['3PT%','31.0','5th'], ['FT%','65.7','4th'], ['AST/TO','2.05','2nd'],
+  ['TOPG','1.25','7th']
+];
+
+function buildStats() {
+  const c = document.getElementById('stats-container');
+  STATS.forEach((s, i) => {
+    const card = document.createElement('div');
+    card.className = 'group-card';
+    card.innerHTML = `
+      <h4>${s[0]}</h4>
+      <div class="current">Current: ${s[1]} · ${s[2]}</div>
+      <div class="row-2">
+        <input type="text" data-key="bb.stat${i}.value" placeholder="Value (e.g. 5.4)">
+        <input type="text" data-key="bb.stat${i}.rank" placeholder="Rank on team (e.g. 1st)">
+      </div>
+    `;
+    c.appendChild(card);
+  });
+}
+
+const SCHEDULE = [
+  ['Dec 5','Washburn Rural','Away','L 38-52'],
+  ['Dec 9','Wyandotte','Home','W 64-31'],
+  ['Dec 16','Gardner-Edgerton','Home','W 51-44'],
+  ['Jan 6','Shawnee Mission North','Away','W 58-46'],
+  ['Jan 8','Basehor-Linwood','Home','L 42-49'],
+  ['Jan 13','Louisburg','Away','W 55-40'],
+  ['Jan 16','Blue Valley West','Home','W 60-52'],
+  ['Jan 21','Olathe Northwest','Home','—'],
+  ['Jan 27','Olathe East','Away','—'],
+  ['Jan 30','Shawnee Mission West','Home','—'],
+  ['Feb 3','Saint Thomas Aquinas','Away','—'],
+  ['Feb 6','Blue Valley Northwest','Home','—'],
+  ['Feb 13','Blue Valley','Away','—'],
+  ['Feb 17','Bishop Miege','Home','—'],
+  ['Feb 20','St. James Academy','Away','—']
+];
+
+function buildSchedule() {
+  const c = document.getElementById('schedule-container');
+  SCHEDULE.forEach((g, i) => {
+    const card = document.createElement('div');
+    card.className = 'group-card';
+    card.innerHTML = `
+      <h4>Game ${i+1} — ${g[0]} vs ${g[1]}</h4>
+      <div class="current">Currently: ${g[0]} · ${g[1]} · ${g[2]} · ${g[3]}</div>
+      <div class="row-4">
+        <input type="text" data-key="bb.game${i}.date" placeholder="Date">
+        <input type="text" data-key="bb.game${i}.opp" placeholder="Opponent">
+        <select data-key="bb.game${i}.loc">
+          <option value="">— keep —</option>
+          <option>Home</option><option>Away</option><option>Neutral</option>
+        </select>
+        <input type="text" data-key="bb.game${i}.result" placeholder="Result (W/L score or —)">
+      </div>
+    `;
+    c.appendChild(card);
+  });
+}
+
+const COURSES = [
+  ['AP Environmental Science','A','Mr. Davies','Atmospheric systems, climate dynamics, severe-weather case studies. Independent research project on Plains tornado outbreaks.'],
+  ['Honors Algebra II','A','Mrs. Liu','Trigonometry, complex numbers, conic sections. Strong foundation for college-level calculus.'],
+  ['Honors English 10','A−','Ms. Patel','Rhetorical analysis, argumentative writing, American literature. Capstone essay on athlete-scholar narratives.'],
+  ['Physics','A','Mr. Reeves','Mechanics, waves, thermodynamics. Lab partner for tornado-pressure simulation project.'],
+  ['Spanish III','B+','Sra. Martínez','Conversational fluency, cultural literature. Working toward AP Spanish next year.'],
+  ['World History','A','Mr. Gallagher','Comparative history, geopolitics, primary-source analysis.']
+];
+
+function buildCourses() {
+  const c = document.getElementById('courses-container');
+  COURSES.forEach((co, i) => {
+    const card = document.createElement('div');
+    card.className = 'group-card';
+    card.innerHTML = `
+      <h4>Course ${i+1}</h4>
+      <div class="current">${co[0]} · Grade ${co[1]} · ${co[2]}</div>
+      <div class="row-3">
+        <input type="text" data-key="ac.course${i}.name" placeholder="Course name">
+        <input type="text" data-key="ac.course${i}.grade" placeholder="Grade (A, B+, etc.)">
+        <input type="text" data-key="ac.course${i}.teacher" placeholder="Teacher">
+      </div>
+      <textarea data-key="ac.course${i}.notes" rows="2" placeholder="What you've learned / what you like about it" style="margin-top:8px;"></textarea>
+    `;
+    c.appendChild(card);
+  });
+}
+
+const AWARDS = [
+  ['HONOR ROLL','All semesters since 6th grade'],
+  ['ACADEMIC EXCELLENCE','BVSW · 2024–25'],
+  ['NATIONAL HONOR SOCIETY','Inducted 2025 (sophomore)']
+];
+
+function buildAwards() {
+  const c = document.getElementById('awards-container');
+  AWARDS.forEach((a, i) => {
+    const card = document.createElement('div');
+    card.className = 'group-card';
+    card.innerHTML = `
+      <h4>Award ${i+1}</h4>
+      <div class="current">${a[0]} — ${a[1]}</div>
+      <div class="row-2">
+        <input type="text" data-key="ac.award${i}.name" placeholder="Award name">
+        <input type="text" data-key="ac.award${i}.detail" placeholder="When / details">
+      </div>
+    `;
+    c.appendChild(card);
+  });
+}
+
+const STORMS = [
+  ['May 4, 2024','Sulphur EF-3','165 mph','32 min','OK','Tracked organization on radar in real time. Logged hook echo development.'],
+  ['Apr 26, 2024','Lincoln EF-4','170 mph','54 min','NE','Followed eastward path through Omaha metro. Documented power flashes.'],
+  ['Mar 14, 2024','Winchester EF-3','155 mph','20 min','IN','Late-season outbreak. Watched storm-relative velocity couplet form.'],
+  ['Dec 10, 2024','Greenfield EF-2','125 mph','15 min','IA','December tornado — rare. Studied the pre-event environment.']
+];
+
+function buildStorms() {
+  const c = document.getElementById('storms-container');
+  STORMS.forEach((s, i) => {
+    const card = document.createElement('div');
+    card.className = 'group-card';
+    card.innerHTML = `
+      <h4>Storm ${i+1}</h4>
+      <div class="current">${s[0]} — ${s[1]} (${s[2]}, ${s[3]}, ${s[4]})</div>
+      <div class="row-3">
+        <input type="text" data-key="pr.storm${i}.date" placeholder="Date (May 4, 2024)">
+        <input type="text" data-key="pr.storm${i}.name" placeholder="Storm name (or 'remove this')">
+        <input type="text" data-key="pr.storm${i}.region" placeholder="State (OK)">
+      </div>
+      <div class="row-3" style="margin-top:8px;">
+        <input type="text" data-key="pr.storm${i}.wind" placeholder="Wind (165 mph)">
+        <input type="text" data-key="pr.storm${i}.dur" placeholder="Duration (32 min)">
+        <input type="text" data-key="pr.storm${i}.notes" placeholder="What you observed/logged">
+      </div>
+    `;
+    c.appendChild(card);
+  });
+}
+
+const PASSIONS = [
+  ['/ WEATHER','Forecasting & storm-chasing','Weekly weather blog, severe-weather log, and a long-running fascination with how the atmosphere actually behaves. Spring 2026: storm-chase trip planned with my dad.','12K+','PAGE VIEWS · WEATHER BLOG'],
+  ['/ FILM','Basketball IQ','Hours of film every week — our games, our opponents, and college guards I want to emulate. Building a personal playbook of reads, counters, and decision-making frameworks.','350+','CLIPS LOGGED · 2025'],
+  ['/ MENTORSHIP','Teaching the game','Volunteer coach at youth camps. Helping younger players develop fundamentals, defensive rotations, and ball-handling. Teaching makes me a better player.','50+','KIDS COACHED']
+];
+
+function buildPassions() {
+  const c = document.getElementById('passions-container');
+  PASSIONS.forEach((p, i) => {
+    const card = document.createElement('div');
+    card.className = 'group-card';
+    card.innerHTML = `
+      <h4>Passion ${i+1} — ${p[1]}</h4>
+      <div class="current">"${p[1]}" → "${p[2]}" → Stat: ${p[3]} ${p[4]}</div>
+      <input type="text" data-key="pr.passion${i}.title" placeholder="Title (e.g. 'Forecasting & storm-chasing')">
+      <textarea data-key="pr.passion${i}.body" rows="3" placeholder="Description" style="margin-top:8px;"></textarea>
+      <div class="row-2" style="margin-top:8px;">
+        <input type="text" data-key="pr.passion${i}.stat" placeholder="Stat (12K+)">
+        <input type="text" data-key="pr.passion${i}.statLabel" placeholder="Stat label (PAGE VIEWS · WEATHER BLOG)">
+      </div>
+    `;
+    c.appendChild(card);
+  });
+}
+
+const VALUES = [
+  ['Team First','Success is measured by what we achieve together — every screen, every sprint back, every box-out.',`I'd rather have an assist that wins us the game than a 30-burger that loses it. The best teammates I've had taught me that the simple, unselfish play is almost always the right one. That's the standard I try to hold myself to.`],
+  ['Accountability','Hold myself to high standards on and off the court — first one in, last one out.',`My dad taught me to be the hardest worker in any room. If I miss a shot, that's on me. If I miss a class, that's on me. The only way to get better is to own every rep, every grade, every interaction.`],
+  ['Curiosity','Always learning, always asking questions — film, books, weather charts, you name it.',`I've probably watched 1000+ hours of NBA film. I read about supercells and meteorology textbooks for fun. I think the people who get really good at things are the ones who stay curious about how things actually work.`],
+  ['Family','Everything starts with the people who support me — parents, coaches, teammates.',`My family drives me to practice, fills the bleachers, and tells me the truth when I'm playing badly. None of this is possible without them. Every game is for the people who show up for me.`]
+];
+
+function buildValues() {
+  const c = document.getElementById('values-container');
+  VALUES.forEach((v, i) => {
+    const card = document.createElement('div');
+    card.className = 'group-card';
+    card.innerHTML = `
+      <h4>Value ${i+1} — ${v[0]}</h4>
+      <input type="text" data-key="ch.value${i}.title" placeholder="Title (e.g. 'Team First')">
+      <div class="current" style="margin-top:8px;">Short: ${v[1]}</div>
+      <textarea data-key="ch.value${i}.short" rows="2" placeholder="One-line description"></textarea>
+      <div class="current" style="margin-top:8px;">Long: ${v[2]}</div>
+      <textarea data-key="ch.value${i}.long" rows="4" placeholder="Personal story (3-4 sentences)" style="margin-top:8px;"></textarea>
+    `;
+    c.appendChild(card);
+  });
+}
+
+const SERVICE = [
+  ['YOUTH BASKETBALL CAMPS','Volunteer coach for elementary players, teaching fundamentals and helping young athletes develop a love for the game.'],
+  ['FOOD DRIVE','Organized collection for local shelter, working with teammates to give back to our community.'],
+  ['PEER TUTORING','Tutor freshmen in math and science. Believe strongly in athletes being students first.']
+];
+
+function buildService() {
+  const c = document.getElementById('service-container');
+  SERVICE.forEach((s, i) => {
+    const card = document.createElement('div');
+    card.className = 'group-card';
+    card.innerHTML = `
+      <h4>Service ${i+1}</h4>
+      <div class="current">${s[0]} — ${s[1]}</div>
+      <input type="text" data-key="ch.service${i}.title" placeholder="Title (e.g. 'YOUTH BASKETBALL CAMPS')">
+      <textarea data-key="ch.service${i}.desc" rows="2" placeholder="What you actually do" style="margin-top:8px;"></textarea>
+    `;
+    c.appendChild(card);
+  });
+}
+
+const LEADERSHIP = [
+  ['2023','JV TEAM CAPTAIN'],
+  ['2024','FRESHMAN A CAPTAIN'],
+  ['2025','AAU TEAM LEADER'],
+  ['2025','NHS INDUCTEE']
+];
+
+function buildLeadership() {
+  const c = document.getElementById('leadership-container');
+  LEADERSHIP.forEach((l, i) => {
+    const card = document.createElement('div');
+    card.className = 'group-card';
+    card.innerHTML = `
+      <h4>Role ${i+1}</h4>
+      <div class="current">${l[0]} — ${l[1]}</div>
+      <div class="row-2">
+        <input type="text" data-key="ch.lead${i}.year" placeholder="Year">
+        <input type="text" data-key="ch.lead${i}.role" placeholder="Role">
+      </div>
+    `;
+    c.appendChild(card);
+  });
+}
+
+const REELS = [
+  ['BVSW BASKETBALL', 142, 4, 'Sidelines · Game action · Locker room'],
+  ['COLLEGE FOOTBALL', 87, 2, "Children's Mercy Park — Pitt State vs NWMSU"],
+  ['YOUTH HOOPS', 64, 1, "Morse's Lady Sharpshooters"],
+  ['RECRUITING SHOOTS', 38, 0, 'BVSW kicker Rhys Poggio']
+];
+
+function buildReels() {
+  const c = document.getElementById('reels-container');
+  REELS.forEach((r, i) => {
+    const card = document.createElement('div');
+    card.className = 'group-card';
+    card.innerHTML = `
+      <h4>Reel ${i+1} — ${r[0]}</h4>
+      <div class="current">${r[0]} · ${r[1]} shots · ${r[2]} videos · ${r[3]}</div>
+      <input type="text" data-key="md.reel${i}.tag" placeholder="Category (e.g. 'BVSW BASKETBALL')">
+      <div class="row-2" style="margin-top:8px;">
+        <input type="number" data-key="md.reel${i}.shots" placeholder="# of shots">
+        <input type="number" data-key="md.reel${i}.vid" placeholder="# of videos">
+      </div>
+      <input type="text" data-key="md.reel${i}.where" placeholder="Description / location" style="margin-top:8px;">
+    `;
+    c.appendChild(card);
+  });
+}
+
+const GALLERY = [
+  ['Game of the Year #1','SMS @ #2 Olathe N — won by 1 point. Sideline + game-action. Hypest game of the year.','https://www.instagram.com/p/DUUnO6KFcn4/'],
+  ['College Football Experience',"Pitt State vs Northwest Missouri State at Children's Mercy Park",'https://www.instagram.com/p/DRGhD85kX-D/'],
+  ['Recruiting Photos','BVSW standout kicker Rhys Poggio','https://www.instagram.com/p/DT1OV26kX_X/'],
+  ['Local Youth Basketball',"Morse's Lady Sharpshooters — future BVSW hoopers in action",'https://www.instagram.com/p/DUOySXPEbC7/'],
+  ['Rivalry Post BVSW vs BVNW','January 2026 — full rivalry coverage','https://www.instagram.com/p/DUcWRSfFbue/'],
+  ['College Hoops · MNU','Snapped some great pics of an MNU game this season','https://www.instagram.com/p/DUMv8G0keqv/']
+];
+
+function buildGallery() {
+  const c = document.getElementById('gallery-container');
+  GALLERY.forEach((g, i) => {
+    const card = document.createElement('div');
+    card.className = 'group-card';
+    card.innerHTML = `
+      <h4>Gallery ${i+1}</h4>
+      <div class="current">${g[0]} — ${g[1]}</div>
+      <input type="text" data-key="md.gallery${i}.title" placeholder="Title">
+      <textarea data-key="md.gallery${i}.desc" rows="2" placeholder="Description" style="margin-top:8px;"></textarea>
+      <input type="url" data-key="md.gallery${i}.link" placeholder="Instagram post URL" style="margin-top:8px;">
+    `;
+    c.appendChild(card);
+  });
+}
+
+function buildGalleryPhotos() {
+  const c = document.getElementById('gallery-photos-container');
+  for (let i = 0; i < 6; i++) {
+    const card = document.createElement('div');
+    card.className = 'group-card';
+    card.innerHTML = `
+      <h4>Photo ${i+1}</h4>
+      <input type="file" accept="image/*" data-photo-key="photo.gallery${i}">
+      <img class="photo-preview" alt="">
+      <textarea data-key="photo.gallery${i}.notes" rows="2" placeholder="Caption or description" style="margin-top:8px;"></textarea>
+    `;
+    c.appendChild(card);
+  }
+}
+
+const REFS = [
+  ['BVSW VARSITY HEAD COACH','RJ Palmgren','rpalmgren@bluevalleyk12.org','2023'],
+  ['YOUHOOP 3SSB · AAU COACH','Aaron Henson','a.henson@youhoop.com','2024']
+];
+
+function buildRefs() {
+  const c = document.getElementById('refs-container');
+  REFS.forEach((r, i) => {
+    const card = document.createElement('div');
+    card.className = 'group-card';
+    card.innerHTML = `
+      <h4>Reference ${i+1}</h4>
+      <div class="current">${r[1]} — ${r[0]} (${r[2]}, since ${r[3]})</div>
+      <div class="row-2">
+        <input type="text" data-key="ct.ref${i}.name" placeholder="Name">
+        <input type="text" data-key="ct.ref${i}.role" placeholder="Role/title">
+      </div>
+      <div class="row-2" style="margin-top:8px;">
+        <input type="email" data-key="ct.ref${i}.email" placeholder="Email">
+        <input type="text" data-key="ct.ref${i}.since" placeholder="Working with you since (year)">
+      </div>
+    `;
+    c.appendChild(card);
+  });
+}
+
+const LINKS = [
+  ['HIGHLIGHT REEL','Summer 2023 Phenom Camp Mix','https://youtu.be/D99uLbwXy7s'],
+  ['HUDL PROFILE','Game film + tagged plays',''],
+  ['ACADEMIC RESUME','GPA, courses, awards (PDF)',''],
+  ['INSTAGRAM','@kfranzjr2028','https://instagram.com/kfranzjr2028'],
+  ['PREPHOOPS','Player profile and rankings',''],
+  ['NCSA SPORTS','Complete recruiting profile','']
+];
+
+function buildLinks() {
+  const c = document.getElementById('links-container');
+  LINKS.forEach((l, i) => {
+    const card = document.createElement('div');
+    card.className = 'group-card';
+    card.innerHTML = `
+      <h4>Link ${i+1} — ${l[0]}</h4>
+      <div class="current">${l[1]} ${l[2] ? '→ ' + l[2] : '(no URL set)'}</div>
+      <div class="row-2">
+        <input type="text" data-key="ct.link${i}.label" placeholder="Label (e.g. 'HUDL PROFILE')">
+        <input type="text" data-key="ct.link${i}.desc" placeholder="Description">
+      </div>
+      <input type="url" data-key="ct.link${i}.url" placeholder="URL (or leave blank to remove)" style="margin-top:8px;">
+    `;
+    c.appendChild(card);
+  });
+}
+
+// =================== STATE / SAVE ===================
+
+function getAnswers() {
+  const data = {};
+  document.querySelectorAll('[data-key]').forEach(el => {
+    const key = el.dataset.key;
+    const v = el.value.trim();
+    if (v) data[key] = v;
+  });
+  return data;
+}
+
+function getPhotos() {
+  const photos = {};
+  document.querySelectorAll('[data-photo-key]').forEach(el => {
+    if (el._fileData) photos[el.dataset.photoKey] = el._fileData;
+  });
+  return photos;
+}
+
+function saveLocal() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(getAnswers()));
+    document.getElementById('save-status').textContent = 'Auto-saved ✓';
+  } catch(e) {
+    document.getElementById('save-status').textContent = 'Save failed (storage full?)';
+  }
+}
+
+function loadAnswers() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) { alert('No saved answers found.'); return; }
+    const data = JSON.parse(raw);
+    document.querySelectorAll('[data-key]').forEach(el => {
+      if (data[el.dataset.key]) el.value = data[el.dataset.key];
+    });
+    alert('Loaded saved answers.');
+  } catch(e) { alert('Load failed: ' + e.message); }
+}
+
+function clearAll() {
+  document.querySelectorAll('[data-key]').forEach(el => el.value = '');
+  document.querySelectorAll('[data-photo-key]').forEach(el => {
+    el.value = '';
+    el._fileData = null;
+    const preview = el.parentElement.querySelector('.photo-preview');
+    if (preview) preview.classList.remove('shown');
+  });
+  localStorage.removeItem(STORAGE_KEY);
+  document.getElementById('save-status').textContent = 'Cleared';
+}
+
+function downloadAnswers() {
+  const data = {
+    _meta: {
+      generated: new Date().toISOString(),
+      site: 'Kevin Franz Jr. Website',
+      version: 1
+    },
+    answers: getAnswers(),
+    photos: getPhotos()
+  };
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'kfjr-content-answers.json';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+// =================== INIT ===================
+
+buildStats();
+buildSchedule();
+buildCourses();
+buildAwards();
+buildStorms();
+buildPassions();
+buildValues();
+buildService();
+buildLeadership();
+buildReels();
+buildGallery();
+buildGalleryPhotos();
+buildRefs();
+buildLinks();
+
+// Restore from localStorage on load
+try {
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if (raw) {
+    const data = JSON.parse(raw);
+    document.querySelectorAll('[data-key]').forEach(el => {
+      if (data[el.dataset.key]) el.value = data[el.dataset.key];
+    });
+  }
+} catch(e) {}
+
+// Auto-save on input
+let saveTimeout;
+document.addEventListener('input', () => {
+  clearTimeout(saveTimeout);
+  document.getElementById('save-status').textContent = 'Saving...';
+  saveTimeout = setTimeout(saveLocal, 600);
+});
+
+// File upload handling
+document.querySelectorAll('[data-photo-key]').forEach(input => {
+  input.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      input._fileData = {
+        name: file.name,
+        type: file.type,
+        size: file.size,
+        dataUrl: ev.target.result
+      };
+      const preview = input.parentElement.querySelector('.photo-preview');
+      if (preview) {
+        preview.src = ev.target.result;
+        preview.classList.add('shown');
+      }
+    };
+    reader.readAsDataURL(file);
+  });
+});
+</script>
+
+</body>
+</html>
