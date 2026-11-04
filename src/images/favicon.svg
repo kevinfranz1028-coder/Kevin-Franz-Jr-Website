@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Kevin Franz Jr. 28">
+  <rect width="64" height="64" fill="#0B0D10"/>
+  <path d="M6 8 H58 L50 56 H6 Z" fill="#16A34A"/>
+  <text x="30" y="45" font-family="Archivo, Arial Black, sans-serif" font-weight="900"
+        font-size="32" fill="#FFFFFF" text-anchor="middle" letter-spacing="-1">28</text>
+</svg>

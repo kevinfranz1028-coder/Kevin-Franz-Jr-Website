@@ -1,91 +1,124 @@
 ---
 layout: broadcast.njk
 title: Contact
-description: Contact Kevin Franz Jr. for recruiting, scouting, or media inquiries.
+description: Contact Kevin Franz Jr. — Class of 2028 SG/SF at Shawnee Mission West. Recruiting, scouting, and media inquiries go to the family directly.
 permalink: /contact/
 active: contact
 ---
 
+{%- set liveProfiles = player.recruitingProfiles | hasValue("url") -%}
+
 {# ===== HERO ===== #}
 <section style="padding:80px 56px; background:var(--b-bg); border-bottom:1px solid var(--b-line);">
   <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin-bottom:24px;">&bull; CONTACT &amp; RECRUITING</div>
-  <h1 style="font-family:'Archivo', sans-serif; font-weight:900; font-size:200px; line-height:0.82; letter-spacing:-0.05em; text-transform:uppercase; margin:0; color:var(--b-text);">
+  <h1 class="b-contact-h1" style="font-family:'Archivo', sans-serif; font-weight:900; font-size:180px; line-height:0.82; letter-spacing:-0.05em; text-transform:uppercase; margin:0; color:var(--b-text);">
     Get in<br><span style="-webkit-text-stroke:2px var(--b-green-bright); -webkit-text-fill-color:transparent;">touch.</span>
   </h1>
-  <p style="font-family:'Inter', sans-serif; font-size:20px; line-height:1.5; color:var(--b-mute); margin-top:40px; max-width:600px;">
-    Coaches, scouts, and media &mdash; reach the family directly. Recruiting profiles and highlights live on the Basketball page.
+  <p style="font-family:'Inter', sans-serif; font-size:20px; line-height:1.5; color:var(--b-mute); margin-top:40px; max-width:620px;">
+    Coaches, scouts, and media &mdash; reach {{ player.parentName }} directly. Stats, film, and recruiting profiles live on the <a href="/basketball/" style="color:var(--b-green-bright);">Basketball page</a>.
   </p>
 </section>
 
 {# ===== EMAIL + PHONE CARDS ===== #}
-<section style="display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--b-line); border-bottom:1px solid var(--b-line);">
-  <a href="mailto:{{ player.parentEmail }}" style="background:var(--b-bg-2); padding:56px 48px; text-decoration:none; color:var(--b-text); display:flex; flex-direction:column; justify-content:space-between; min-height:280px; border-left:3px solid var(--b-green-bright);">
+<section class="b-grid b-grid-2 b-grid-bordered">
+  <a href="mailto:{{ player.parentEmail }}" style="background:var(--b-bg-2); padding:48px; text-decoration:none; color:var(--b-text); display:flex; flex-direction:column; justify-content:space-between; min-height:260px; border-left:3px solid var(--b-green-bright);">
     <div>
       <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin-bottom:14px;">&bull; EMAIL &middot; PRIMARY</div>
-      <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:36px; line-height:1; color:var(--b-text); letter-spacing:-0.02em; word-break:break-all;">{{ player.parentEmail }}</div>
+      <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:30px; line-height:1.1; color:var(--b-text); letter-spacing:-0.02em; word-break:break-word;">{{ player.parentEmail }}</div>
     </div>
-    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:32px;">
-      <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.12em; color:var(--b-mute); text-transform:uppercase;">RECRUITING / GENERAL</div>
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:32px; gap:12px;">
+      <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.12em; color:var(--b-mute); text-transform:uppercase;">{{ player.parentName }} &middot; PARENT</div>
       <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:24px; color:var(--b-green-bright);">&rarr;</div>
     </div>
   </a>
-  <a href="tel:{{ player.parentPhone }}" style="background:var(--b-bg); padding:56px 48px; text-decoration:none; color:var(--b-text); display:flex; flex-direction:column; justify-content:space-between; min-height:280px;">
+  <a href="tel:{{ player.parentPhone | replace('-','') }}" style="background:var(--b-bg); padding:48px; text-decoration:none; color:var(--b-text); display:flex; flex-direction:column; justify-content:space-between; min-height:260px;">
     <div>
       <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin-bottom:14px;">&bull; PHONE</div>
-      <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:48px; line-height:1; color:var(--b-text); letter-spacing:-0.03em;">{{ player.parentPhone }}</div>
+      <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:44px; line-height:1; color:var(--b-text); letter-spacing:-0.03em;">{{ player.parentPhone }}</div>
     </div>
-    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:32px;">
-      <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.12em; color:var(--b-mute); text-transform:uppercase;">FAMILY &middot; TEXT FRIENDLY</div>
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:32px; gap:12px;">
+      <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.12em; color:var(--b-mute); text-transform:uppercase;">CALL OR TEXT</div>
       <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:24px; color:var(--b-green-bright);">&rarr;</div>
     </div>
   </a>
 </section>
 
-{# ===== COACHING REFERENCES ===== #}
+{# ===== QUICK FACTS FOR COACHES ===== #}
 <div class="b-section-head">
   <div class="b-section-head-left">
-    <span class="b-section-tag">/01 COACHING REFERENCES</span>
-    <h2 class="b-section-title">Talk to<br>my coaches.</h2>
+    <span class="b-section-tag">/01 QUICK FACTS</span>
+    <h2 class="b-section-title">The<br>basics.</h2>
   </div>
 </div>
-<section style="display:grid; grid-template-columns:repeat(2, 1fr); gap:1px; background:var(--b-line); border-bottom:1px solid var(--b-line);">
-  {% for c in [
-    { role: 'BVSW VARSITY HEAD COACH', name: 'RJ Palmgren',  email: 'rpalmgren@bluevalleyk12.org', since: '2023' },
-    { role: 'YOUHOOP 3SSB · AAU COACH', name: 'Aaron Henson', email: 'a.henson@youhoop.com',       since: '2024' }
+<section class="b-grid b-grid-4 b-grid-bordered">
+  {% for row in [
+    ['CLASS', player.class],
+    ['POSITION', player.position],
+    ['HEIGHT / WEIGHT', player.height + ' / ' + player.weight + ' lb'],
+    ['SHOOTS', player.hand],
+    ['HIGH SCHOOL', player.highSchool],
+    ['CLUB', player.club + ' · #' + player.clubJersey],
+    ['GPA', player.gpa + ' ' + player.gpaLabel],
+    ['HOMETOWN', player.location]
   ] %}
-    <div style="background:var(--b-bg); padding:40px 36px;">
-      <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin-bottom:8px;">{{ c.role }}</div>
-      <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:32px; color:var(--b-text); letter-spacing:-0.02em; text-transform:uppercase; margin-bottom:14px;">{{ c.name }}</div>
-      <a href="mailto:{{ c.email }}" style="display:block; font-family:'Inter', sans-serif; font-size:15px; color:var(--b-text); text-decoration:none; border-bottom:1px solid var(--b-line); padding-bottom:10px; margin-bottom:10px;">{{ c.email }}</a>
-      <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.1em; color:var(--b-mute); text-transform:uppercase;">WORKING WITH KEVIN SINCE {{ c.since }}</div>
+    <div style="background:var(--b-bg); padding:26px 24px;">
+      <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; color:var(--b-mute); text-transform:uppercase;">{{ row[0] }}</div>
+      <div style="font-family:'Archivo', sans-serif; font-weight:800; font-size:19px; color:var(--b-text); margin-top:6px; line-height:1.2;">{{ row[1] }}</div>
     </div>
   {% endfor %}
 </section>
 
-{# ===== QUICK LINKS ===== #}
+{# ===== RECRUITING PROFILES ===== #}
 <div class="b-section-head">
   <div class="b-section-head-left">
-    <span class="b-section-tag">/02 QUICK LINKS</span>
-    <h2 class="b-section-title">Send me<br>everywhere.</h2>
+    <span class="b-section-tag">/02 PROFILES</span>
+    <h2 class="b-section-title">Find me<br>online.</h2>
   </div>
 </div>
-<section style="display:grid; grid-template-columns:repeat(2, 1fr); gap:1px; background:var(--b-line); border-bottom:1px solid var(--b-line);">
-  {% for l in [
-    ['HIGHLIGHT REEL',   'Summer 2023 Phenom Camp Mix', 'YouTube',  'https://youtu.be/D99uLbwXy7s'],
-    ['HUDL PROFILE',     'Game film + tagged plays',    'Hudl',     '#'],
-    ['ACADEMIC RESUME',  'GPA, courses, awards (PDF)',  'Download', '/files/academic-resume.pdf'],
-    ['INSTAGRAM',        '@kfranzjr2028',                'Follow',   'https://instagram.com/kfranzjr2028'],
-    ['PREPHOOPS',        'Player profile and rankings', 'View',     '#'],
-    ['NCSA SPORTS',      'Complete recruiting profile', 'View',     '#']
-  ] %}
-    <a href="{{ l[3] }}" {% if l[3] != '#' and not l[3].startsWith('/') %}target="_blank" rel="noopener"{% endif %} style="background:var(--b-bg); padding:28px 32px; text-decoration:none; color:var(--b-text); display:grid; grid-template-columns:1fr auto; align-items:center; gap:24px;">
+<section class="b-grid b-grid-2 b-grid-bordered">
+  {% for p in liveProfiles %}
+    <a href="{{ p.url }}" target="_blank" rel="noopener" style="background:var(--b-bg); padding:28px 32px; text-decoration:none; color:var(--b-text); display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:24px;">
       <div>
-        <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:20px; color:var(--b-text); text-transform:uppercase; letter-spacing:-0.01em;">{{ l[0] }}</div>
-        <div style="font-size:13px; color:var(--b-mute); margin-top:6px;">{{ l[1] }}</div>
+        <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:20px; color:var(--b-text); text-transform:uppercase; letter-spacing:-0.01em;">{{ p.name }}</div>
+        <div style="font-size:13px; color:var(--b-mute); margin-top:6px;">{{ p.description }}</div>
       </div>
-      <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.12em; color:var(--b-green-bright); text-transform:uppercase; display:flex; align-items:center; gap:6px;">
-        {{ l[2] }} &rarr;
-      </div>
+      <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.12em; color:var(--b-green-bright); text-transform:uppercase; white-space:nowrap;">VIEW &rarr;</div>
     </a>
   {% endfor %}
+  <a href="/files/academic-resume.pdf" style="background:var(--b-bg); padding:28px 32px; text-decoration:none; color:var(--b-text); display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:24px;">
+    <div>
+      <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:20px; color:var(--b-text); text-transform:uppercase; letter-spacing:-0.01em;">Academic Summary</div>
+      <div style="font-size:13px; color:var(--b-mute); margin-top:6px;">One-page PDF &mdash; measurables, GPA, coursework</div>
+    </div>
+    <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.12em; color:var(--b-green-bright); text-transform:uppercase; white-space:nowrap;">PDF &rarr;</div>
+  </a>
+</section>
+
+{# ===== WHAT I CAN SEND ===== #}
+<section style="padding:72px 56px; background:var(--b-bg-2); border-bottom:1px solid var(--b-line);">
+  <div class="b-split" style="gap:56px; align-items:start;">
+    <div>
+      <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin-bottom:16px;">/03 ON REQUEST</div>
+      <h2 style="font-family:'Archivo', sans-serif; font-weight:900; font-size:56px; line-height:0.95; text-transform:uppercase; letter-spacing:-0.03em; margin:0; color:var(--b-text);">
+        Ask and<br>it's sent.
+      </h2>
+      <p style="font-size:16px; color:var(--b-mute); margin-top:24px; max-width:420px;">
+        Email or text and we will get it to you the same week. Coach references at {{ player.highSchool }} and {{ player.club }} can be provided on request.
+      </p>
+    </div>
+    <div style="display:grid; gap:1px; background:var(--b-line); border:1px solid var(--b-line);">
+      {% for item in [
+        ['OFFICIAL TRANSCRIPT', 'Through the school registrar'],
+        ['CURRENT GAME FILM', 'Unlisted links to recent games'],
+        ['COACH REFERENCES', 'High school and club contacts'],
+        ['PRACTICE / WORKOUT', 'Schedule a visit or a live viewing'],
+        ['SCHEDULE', 'Upcoming high school and club games']
+      ] %}
+        <div style="background:var(--b-bg); padding:22px 26px;">
+          <div style="font-family:'Archivo', sans-serif; font-weight:800; font-size:16px; color:var(--b-text); text-transform:uppercase; letter-spacing:0.02em;">{{ item[0] }}</div>
+          <div style="font-size:13px; color:var(--b-mute); margin-top:5px;">{{ item[1] }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
 </section>

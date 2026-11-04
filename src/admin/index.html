@@ -8,7 +8,7 @@ eleventyExcludeFromCollections: true
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kevin Franz Jr. — Content Manager</title>
-  <link rel="icon" type="image/png" href="/images/favicon.png" />
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -42,14 +42,16 @@ eleventyExcludeFromCollections: true
 <body>
   <div class="card">
     <h1>Kevin Franz Jr.</h1>
-    <p>Content is managed through Strapi CMS, which runs locally on your computer.</p>
-    <p>To start the CMS, open Terminal and run:</p>
+    <p>Content is managed with <strong>Decap CMS</strong>, configured in <code>src/admin/config.yml</code>.</p>
+    <p>To edit content on your own computer, open Terminal in the project folder and run:</p>
     <code>npm run cms</code>
     <ol class="steps">
-      <li>Strapi admin panel opens at <strong>localhost:1337/admin</strong></li>
-      <li>Website preview at <strong>localhost:8080</strong></li>
-      <li>Edits auto-save and deploy to the live site</li>
+      <li>Local CMS backend starts via <strong>decap-server</strong></li>
+      <li>Site preview at <strong>localhost:8080</strong></li>
+      <li>Saving writes Markdown and JSON straight into <strong>src/</strong>; commit and push to publish</li>
     </ol>
+    <p style="font-size:0.8rem; margin-bottom:0;">Editing live from this page needs the GitHub backend to be
+    switched on in <code>config.yml</code>. Until then, use the local workflow above.</p>
   </div>
 </body>
 </html>

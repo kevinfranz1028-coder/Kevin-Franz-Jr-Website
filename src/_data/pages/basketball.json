@@ -13,20 +13,20 @@
   "highlights_heading": "Video highlights",
   "highlights_description": "Highlights, Mixtapes and more! ",
   "header": {
-    "eyebrow": "Guard • Class of 2028",
-    "heading": "6'1\" combo guard focused on pace, decision-making, and on-ball defense.",
+    "eyebrow": "SG/SF • Class of 2028",
+    "heading": "6'1\" / 190 lb guard-forward focused on pace, decision-making and on-ball defense.",
     "subheading": "High Energy - High Impact - High IQ",
     "supportingText": "Focused on becoming the best I can be at all times"
   },
   "playerInfo": {
     "name": "Kevin Franz Jr.",
     "height": "6'1\"",
-    "weight": "185 lbs",
-    "position": "Combo Guard",
-    "jersey": "30",
+    "weight": "190 lbs",
+    "position": "SG/SF",
+    "jersey": "28",
     "class": "2028",
-    "school": "Blue Valley Southwest",
-    "aauTeam": "YouHoop 3SSB",
+    "school": "Shawnee Mission West",
+    "aauTeam": "JC Hoops 16U",
     "hand": "Right",
     "image": "/images/player/medium_Copy_of_618_A3075_2_Enhanced_NR_0a0a68195a.jpg"
   },
@@ -43,63 +43,111 @@
     }
   ],
   "stats": {
-    "intro": "Season averages for Kevin Franz Jr. (#30) — Blue Valley Southwest JV Basketball.",
+    "intro": "Season averages for Kevin Franz Jr. Current club season: JC Hoops 16U (#28). Final high school season shown below: Blue Valley Southwest JV, 2025-26 (#30).",
     "table": [
       {
-        "season": "2025-26",
-        "team": "BVSW JV",
-        "gp": "16",
-        "gs": "14",
+        "season": "Fall 2026",
+        "team": "JC Hoops 16U",
+        "gp": "13",
+        "gs": "11",
         "items": [
           {
             "label": "PPG",
-            "value": "5.4",
-            "rank": "5th"
+            "value": "8.2",
+            "rank": ""
           },
           {
             "label": "RPG",
-            "value": "4.1",
-            "rank": "1st"
+            "value": "5.5",
+            "rank": ""
           },
           {
             "label": "APG",
-            "value": "2.6",
-            "rank": "2nd"
+            "value": "2.8",
+            "rank": ""
           },
           {
             "label": "SPG",
-            "value": "1.4",
-            "rank": "T-3rd"
+            "value": "0.9",
+            "rank": ""
           },
           {
             "label": "BPG",
-            "value": "0.4",
-            "rank": "T-3rd"
+            "value": "0.3",
+            "rank": ""
           },
           {
             "label": "FG%",
-            "value": "37.5%",
-            "rank": "8th"
+            "value": "46%",
+            "rank": ""
           },
           {
             "label": "3PT%",
-            "value": "31.0%",
-            "rank": "5th"
+            "value": "38%",
+            "rank": ""
           },
           {
             "label": "FT%",
-            "value": "65.7%",
-            "rank": "4th"
+            "value": "50%",
+            "rank": ""
+          }
+        ]
+      },
+      {
+        "season": "2025-26",
+        "team": "BVSW JV",
+        "gp": "19",
+        "gs": "17",
+        "items": [
+          {
+            "label": "PPG",
+            "value": "5.6",
+            "rank": ""
+          },
+          {
+            "label": "RPG",
+            "value": "4.0",
+            "rank": ""
+          },
+          {
+            "label": "APG",
+            "value": "2.5",
+            "rank": ""
+          },
+          {
+            "label": "SPG",
+            "value": "1.5",
+            "rank": ""
+          },
+          {
+            "label": "BPG",
+            "value": "0.3",
+            "rank": ""
+          },
+          {
+            "label": "FG%",
+            "value": "39%",
+            "rank": ""
+          },
+          {
+            "label": "3PT%",
+            "value": "32%",
+            "rank": ""
+          },
+          {
+            "label": "FT%",
+            "value": "68%",
+            "rank": ""
           },
           {
             "label": "AST/TO",
-            "value": "2.05",
-            "rank": "2nd"
+            "value": "2.18",
+            "rank": ""
           },
           {
             "label": "TOPG",
-            "value": "1.25",
-            "rank": "7th"
+            "value": "1.2",
+            "rank": ""
           }
         ]
       }
@@ -115,7 +163,7 @@
   "training": {
     "statement": "I'm always working to become a more complete guard – someone who can run a team, guard multiple positions, and make teammates better.",
     "focusAreas": "Off-Season Focus Areas\nBall handling under pressure and pick-and-roll reads\nCatch-and-shoot 3s and off-the-dribble shooting\nOn-ball defense and strength",
-    "routine": "### Training Routine\n\n* Skill sessions: \\[X] days per week with \\[Trainer/Coach Name]\n* Weight room: \\[X] days per week focused on strength and mobility\n* Film study: breaking down our games and college guards I want to emulate"
+    "routine": "### Training Routine\n\n* Skill sessions and weight room work through the week, built around the club schedule\n* Film study: breaking down our games and college wings I want to emulate"
   },
   "contacts": [],
   "recruitingProfiles": {
@@ -123,46 +171,46 @@
     "description": "Links to view online recruiting profiles. ",
     "profiles": [
       {
-        "name": "Prephoops",
-        "url": "https://prephoops.com/player/kevin-franz/",
-        "description": "Player profile and rankings",
-        "cardImage": "/images/recruiting/medium_downloaded_image_7551e28839.png",
-        "logo": "",
-        "ranking": "",
-        "scoutingReport": "",
-        "position": "",
-        "heightWeight": "",
-        "classYear": "2028",
-        "school": "Blue Valley Southwest",
-        "state": "Kansas"
-      },
-      {
         "name": "NCSA Sports",
-        "url": "https://www.ncsasports.org/mens-basketball-recruiting/kansas/overland-park/blue-valley-southwest-high-school/kevin-franz3",
-        "description": "Complete recruiting profile",
+        "url": "https://recruit-match.ncsasports.org/clientrms/athlete_profiles/11606795",
+        "description": "Full recruiting profile",
         "cardImage": "",
         "logo": "/images/recruiting/ncsa_logo_blue_b53bf95f5b.svg",
         "ranking": "",
         "scoutingReport": "",
-        "position": "",
-        "heightWeight": "",
-        "classYear": "",
-        "school": "",
-        "state": ""
+        "position": "SG/SF",
+        "heightWeight": "6'1\" / 190 lbs",
+        "classYear": "2028",
+        "school": "Shawnee Mission West",
+        "state": "Kansas"
       },
       {
-        "name": "Sports Passports",
-        "url": "https://sportspassports.com/player/kevin-franz/",
-        "description": "Tournament history and stats",
+        "name": "RecruitLook",
+        "url": "https://recruitlook.com/profile/20035511-74e5-481c-b21a-0e259f3a772e",
+        "description": "Verified athlete profile",
         "cardImage": "",
-        "logo": "/images/recruiting/small_Passport_2023_b5e17b4bda.png",
+        "logo": "",
         "ranking": "",
         "scoutingReport": "",
-        "position": "",
-        "heightWeight": "",
-        "classYear": "",
-        "school": "",
-        "state": ""
+        "position": "SG/SF",
+        "heightWeight": "6'1\" / 190 lbs",
+        "classYear": "2028",
+        "school": "Shawnee Mission West",
+        "state": "Kansas"
+      },
+      {
+        "name": "FieldLevel",
+        "url": "https://www.fieldlevel.com/app/profile/kevin.franzjr/basketballmen",
+        "description": "Coach-to-coach recruiting network",
+        "cardImage": "",
+        "logo": "",
+        "ranking": "",
+        "scoutingReport": "",
+        "position": "SG/SF",
+        "heightWeight": "6'1\" / 190 lbs",
+        "classYear": "2028",
+        "school": "Shawnee Mission West",
+        "state": "Kansas"
       }
     ]
   },

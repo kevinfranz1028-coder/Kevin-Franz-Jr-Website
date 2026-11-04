@@ -1,19 +1,75 @@
 {
   "name": "Kevin Franz Jr.",
-  "height": "6'1\"",
-  "weight": "185",
-  "position": "Guard",
-  "jersey": "30",
   "class": "2028",
+  "height": "6'1\"",
+  "weight": "190",
+  "position": "SG/SF",
+  "positionLong": "Guard / Small Forward",
+  "hand": "Right",
+  "jersey": "28",
   "gpa": "3.85",
-  "highSchool": "Blue Valley Southwest",
-  "aauTeam": "You Hoop 3SSB",
+  "gpaLabel": "unweighted",
+  "highSchool": "Shawnee Mission West",
+  "highSchoolShort": "SM West",
+  "formerHighSchool": "Blue Valley Southwest",
+  "formerHighSchoolShort": "BVSW",
+  "formerHighSchoolYears": "2024-26",
+  "club": "JC Hoops 16U",
+  "clubJersey": "28",
   "location": "Overland Park, KS",
-  "parentEmail": "Kevinfranz1028@gmail.com",
+  "parentName": "Kevin Franz",
+  "parentEmail": "kevinfranz1028@gmail.com",
   "parentPhone": "913-396-3717",
-  "highlightVideo": "https://youtu.be/D99uLbwXy7s",
-  "youtubeUrl": "",
-  "hudlUrl": "",
-  "ppg": "8",
-  "apg": "3"
+  "instagramHandle": "@kfranzjr2028",
+  "recruitingProfiles": [
+    {
+      "name": "NCSA Sports",
+      "description": "Full recruiting profile",
+      "url": "https://recruit-match.ncsasports.org/clientrms/athlete_profiles/11606795"
+    },
+    {
+      "name": "RecruitLook",
+      "description": "Verified athlete profile",
+      "url": "https://recruitlook.com/profile/20035511-74e5-481c-b21a-0e259f3a772e"
+    },
+    {
+      "name": "FieldLevel",
+      "description": "Coach-to-coach recruiting network",
+      "url": "https://www.fieldlevel.com/app/profile/kevin.franzjr/basketballmen"
+    },
+    {
+      "name": "Instagram",
+      "description": "@kfranzjr2028",
+      "url": "https://instagram.com/kfranzjr2028"
+    },
+    {
+      "name": "Prep Hoops",
+      "description": "Player profile",
+      "url": ""
+    },
+    {
+      "name": "Scorability",
+      "description": "Recruiting profile",
+      "url": ""
+    },
+    {
+      "name": "Hudl",
+      "description": "Game film and tagged plays",
+      "url": ""
+    }
+  ],
+  "campFilm": [
+    {
+      "title": "Summer 2023 Phenom Camp Mix",
+      "description": "Los Angeles, CA — national camp circuit",
+      "videoId": "D99uLbwXy7s",
+      "year": "2023"
+    },
+    {
+      "title": "Summer 2022 Phenom Camp Mix",
+      "description": "San Diego, CA — first national camp appearance",
+      "videoId": "rSJUcL_66c0",
+      "year": "2022"
+    }
+  ]
 }

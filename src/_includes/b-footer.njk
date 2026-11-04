@@ -1,9 +1,10 @@
+{%- set liveProfiles = player.recruitingProfiles | hasValue("url") -%}
 <footer class="b-footer">
   <div class="b-footer-top">
     <div>
-      <div class="b-footer-display">FRANZ JR<br><span style="color:var(--b-green-bright)">'{{ player.class | default('28') | replace('20','') }}.</span></div>
-      <p style="font-size:14px; line-height:1.6; color:var(--b-mute); max-width:340px; margin-top:20px;">
-        {{ player.height or "6'1\"" }} combo guard out of {{ player.highSchool or "Blue Valley Southwest" }}. Combining college basketball ambitions with a path toward atmospheric science.
+      <div class="b-footer-display">FRANZ JR<br><span style="color:var(--b-green-bright)">'{{ player.class | replace('20','') }}.</span></div>
+      <p class="b-footer-bio">
+        {{ player.height }} / {{ player.weight }} lbs {{ player.positionLong | lower }} at {{ player.highSchool }}, club ball with {{ player.club }} (#{{ player.clubJersey }}). Combining college basketball ambitions with a path toward atmospheric science.
       </p>
     </div>
     <div>
@@ -11,31 +12,34 @@
       <ul>
         <li><a href="/">Home</a></li>
         <li><a href="/basketball/">Basketball</a></li>
+        <li><a href="/timeline/">Timeline</a></li>
         <li><a href="/academics/">Academics</a></li>
         <li><a href="/projects/">Projects</a></li>
         <li><a href="/character/">Character</a></li>
+        <li><a href="/media/">Media</a></li>
+        <li><a href="/updates/">Updates</a></li>
+        <li><a href="/contact/">Contact</a></li>
       </ul>
     </div>
     <div>
       <h4>Recruiting</h4>
       <ul>
-        <li><a href="#">Prephoops</a></li>
-        <li><a href="#">NCSA Sports</a></li>
-        <li><a href="#">Sports Passports</a></li>
-        <li><a href="#">@kfranzjr2028</a></li>
+        {% for p in liveProfiles %}
+        <li><a href="{{ p.url }}" target="_blank" rel="noopener">{% if p.name == 'Instagram' %}{{ player.instagramHandle }}{% else %}{{ p.name }}{% endif %}</a></li>
+        {% endfor %}
       </ul>
     </div>
     <div>
       <h4>Contact</h4>
       <ul>
         <li><a href="mailto:{{ player.parentEmail }}">{{ player.parentEmail }}</a></li>
-        <li><a href="tel:{{ player.parentPhone }}">{{ player.parentPhone }}</a></li>
+        <li><a href="tel:{{ player.parentPhone | replace('-','') }}">{{ player.parentPhone }}</a></li>
         <li>{{ player.location }}</li>
       </ul>
     </div>
   </div>
   <div class="b-footer-bottom">
-    <span>&copy; {{ "now" | date("Y") if false else 2026 }} KEVIN FRANZ JR</span>
-    <span>BVSW &middot; #{{ player.jersey or "30" }} &middot; COMBO GUARD &middot; CLASS OF {{ player.class or "2028" }}</span>
+    <span>&copy; 2026 KEVIN FRANZ JR</span>
+    <span>{{ player.highSchoolShort | upper }} &middot; #{{ player.jersey }} &middot; {{ player.position }} &middot; CLASS OF {{ player.class }}</span>
   </div>
 </footer>

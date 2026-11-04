@@ -1,137 +1,113 @@
 ---
-layout: base.njk
+layout: broadcast.njk
+active: timeline
 ---
 
-{# Page Header #}
-<section class="section-page-header">
-    <div class="container">
-        <div class="page-header-centered">
-            <span class="label-eyebrow">{{ season }} • {{ grade }}</span>
-            <h1>{{ year }}</h1>
-            {% if team %}
-            <p class="supporting-text">{{ team }}</p>
-            {% endif %}
-        </div>
-    </div>
+<section style="padding:72px 56px 48px; background:var(--b-bg); border-bottom:1px solid var(--b-line);">
+  <a href="/timeline/" style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.12em; color:var(--b-green-bright); text-transform:uppercase; text-decoration:none;">&larr; FULL TIMELINE</a>
+  <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin:28px 0 20px;">
+    &bull; {{ season }}{% if grade %} &middot; {{ grade }}{% endif %}
+  </div>
+  <h1 class="b-post-h1" style="font-family:'Archivo', sans-serif; font-weight:900; font-size:88px; line-height:0.9; letter-spacing:-0.04em; text-transform:uppercase; margin:0; color:var(--b-text);">{{ year }}</h1>
+  {% if team %}
+  <p style="font-family:'Archivo', sans-serif; font-weight:800; font-size:22px; color:var(--b-mute); margin:20px 0 0; text-transform:uppercase; letter-spacing:-0.01em;">{{ team }}</p>
+  {% endif %}
+  {% if summary %}
+  <p style="font-family:'Inter', sans-serif; font-size:17px; line-height:1.6; color:var(--b-mute); margin-top:20px; max-width:720px;">{{ summary }}</p>
+  {% endif %}
 </section>
 
-{# Stats Overview #}
+{# Season statistics — only rendered for fields that are actually filled in #}
 {% if stats %}
-<section style="padding: 3rem 0; background-color: var(--bg-light);">
-    <div class="container">
-        <h2>Season Statistics</h2>
-        <div class="glance-grid" style="margin-top: 2rem;">
-            {% if stats.games %}
-            <div class="card-glance">
-                <h3 class="card-title">Games Played</h3>
-                <div style="font-size: 2.5rem; font-weight: 700; color: var(--primary-color); margin: 1rem 0;">{{ stats.games }}</div>
-            </div>
-            {% endif %}
-            {% if stats.ppg %}
-            <div class="card-glance">
-                <h3 class="card-title">Points Per Game</h3>
-                <div style="font-size: 2.5rem; font-weight: 700; color: var(--primary-color); margin: 1rem 0;">{{ stats.ppg }}</div>
-            </div>
-            {% endif %}
-            {% if stats.apg %}
-            <div class="card-glance">
-                <h3 class="card-title">Assists Per Game</h3>
-                <div style="font-size: 2.5rem; font-weight: 700; color: var(--primary-color); margin: 1rem 0;">{{ stats.apg }}</div>
-            </div>
-            {% endif %}
-            {% if stats.rpg %}
-            <div class="card-glance">
-                <h3 class="card-title">Rebounds Per Game</h3>
-                <div style="font-size: 2.5rem; font-weight: 700; color: var(--primary-color); margin: 1rem 0;">{{ stats.rpg }}</div>
-            </div>
-            {% endif %}
-        </div>
-    </div>
+<section class="b-statgrid">
+  {% if stats.games %}
+  <div class="b-statgrid-cell"><div class="b-statgrid-label">GAMES</div><div><div class="b-statgrid-value">{{ stats.games }}</div></div></div>
+  {% endif %}
+  {% if stats.ppg %}
+  <div class="b-statgrid-cell"><div class="b-statgrid-label">PPG</div><div><div class="b-statgrid-value">{{ stats.ppg }}</div></div></div>
+  {% endif %}
+  {% if stats.rpg %}
+  <div class="b-statgrid-cell"><div class="b-statgrid-label">RPG</div><div><div class="b-statgrid-value">{{ stats.rpg }}</div></div></div>
+  {% endif %}
+  {% if stats.apg %}
+  <div class="b-statgrid-cell"><div class="b-statgrid-label">APG</div><div><div class="b-statgrid-value">{{ stats.apg }}</div></div></div>
+  {% endif %}
+  {% if stats.record %}
+  <div class="b-statgrid-cell"><div class="b-statgrid-label">RECORD</div><div><div class="b-statgrid-value">{{ stats.record }}</div></div></div>
+  {% endif %}
 </section>
 {% endif %}
 
-{# Highlights (text list) #}
 {% if highlights %}
-<section style="padding: 3rem 0; background-color: var(--bg-white);">
-    <div class="container">
-        <h2>Season Highlights</h2>
-        <ul style="margin-top: 1.5rem; line-height: 1.8;">
-            {% for highlight in highlights %}
-            <li>{{ highlight }}</li>
-            {% endfor %}
-        </ul>
-    </div>
+<div class="b-section-head">
+  <div class="b-section-head-left">
+    <span class="b-section-tag">/ SEASON HIGHLIGHTS</span>
+  </div>
+</div>
+<section style="padding:36px 56px; background:var(--b-bg); border-bottom:1px solid var(--b-line);">
+  <ul style="list-style:none; padding:0; margin:0; max-width:760px;">
+    {% for highlight in highlights %}
+      <li style="padding:14px 0 14px 20px; border-left:2px solid var(--b-green-bright); border-bottom:1px solid var(--b-line); font-size:15px; color:var(--b-text); line-height:1.6;">{{ highlight }}</li>
+    {% endfor %}
+  </ul>
 </section>
 {% endif %}
 
-{# Highlight Videos #}
 {% if videos and videos.length > 0 %}
-<section class="section-highlights" style="background-color: var(--bg-light);">
-    <div class="container">
-        <h2>Game Film & Highlights</h2>
-        <div class="highlights-videos">
-            {% for video in videos %}
-            <div class="video-wrapper">
-                <div class="video-embed">
-                    {% if video.videoUrl %}
-                        {% if 'youtube.com' in video.videoUrl or 'youtu.be' in video.videoUrl %}
-                            {% set videoId = video.videoUrl | replace('https://youtu.be/', '') | replace('https://www.youtube.com/watch?v=', '') | replace('&', '?') | split('?') | first %}
-                            <iframe width="100%" height="315" src="https://www.youtube.com/embed/{{ videoId }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        {% else %}
-                            <div class="video-placeholder">
-                                <p><a href="{{ video.videoUrl }}" target="_blank">Watch Video</a></p>
-                            </div>
-                        {% endif %}
-                    {% endif %}
-                </div>
-                <div class="video-caption">
-                    <h3 class="video-title">{{ video.title }}</h3>
-                    <p>{{ video.description }}</p>
-                </div>
-            </div>
-            {% endfor %}
+<div class="b-section-head">
+  <div class="b-section-head-left">
+    <span class="b-section-tag">/ FILM</span>
+  </div>
+</div>
+<section class="b-split" style="gap:24px; padding:36px 56px; border-bottom:1px solid var(--b-line);">
+  {% for video in videos %}
+    {% if video.videoUrl %}
+    <div>
+      {% if 'youtube.com' in video.videoUrl or 'youtu.be' in video.videoUrl %}
+        {% set videoId = video.videoUrl | replace('https://youtu.be/', '') | replace('https://www.youtube.com/watch?v=', '') | replace('&', '?') | split('?') | first %}
+        <div style="aspect-ratio:16/9; background:var(--b-bg-3);">
+          <iframe width="100%" height="100%" src="https://www.youtube.com/embed/{{ videoId }}" title="{{ video.title }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
         </div>
+      {% else %}
+        <a href="{{ video.videoUrl }}" target="_blank" rel="noopener" style="color:var(--b-green-bright);">Watch video &rarr;</a>
+      {% endif %}
+      <h3 style="font-family:'Archivo', sans-serif; font-weight:900; font-size:20px; text-transform:uppercase; margin:16px 0 6px; color:var(--b-text);">{{ video.title }}</h3>
+      <p style="font-size:14px; color:var(--b-mute); margin:0;">{{ video.description }}</p>
     </div>
+    {% endif %}
+  {% endfor %}
 </section>
 {% endif %}
 
-{# Main Content #}
-<section style="padding: 3rem 0; background-color: var(--bg-light);">
-    <div class="container-narrow">
-        <div class="post-content">
-            {{ content | safe }}
-        </div>
-    </div>
+{% if content | trim | length %}
+<section class="b-prose" style="padding:48px 56px; background:var(--b-bg); border-bottom:1px solid var(--b-line);">
+  <div style="max-width:760px;">
+    {{ content | safe }}
+  </div>
 </section>
+{% endif %}
 
-{# Gallery #}
 {% if gallery and gallery.length > 0 %}
-<section style="padding: 3rem 0; background-color: var(--bg-white);">
-    <div class="container">
-        <h2>Gallery</h2>
-        <div class="highlights-videos" style="margin-top: 2rem; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
-            {% for item in gallery %}
-            <div>
-                {% if item.image %}
-                <img src="{{ item.image }}" alt="{{ item.caption }}" style="width: 100%; height: 300px; object-fit: cover; border-radius: 0.5rem; box-shadow: var(--shadow-md);">
-                {% else %}
-                <div style="width: 100%; height: 300px; background: var(--bg-light); border-radius: 0.5rem; display: flex; align-items: center; justify-content: center; color: var(--text-gray);">
-                    [Photo Placeholder]
-                </div>
-                {% endif %}
-                {% if item.caption %}
-                <p style="margin-top: 0.75rem; text-align: center; color: var(--text-gray);">{{ item.caption }}</p>
-                {% endif %}
-            </div>
-            {% endfor %}
-        </div>
-    </div>
+<div class="b-section-head">
+  <div class="b-section-head-left">
+    <span class="b-section-tag">/ GALLERY</span>
+  </div>
+</div>
+<section class="b-grid b-grid-3 b-grid-bordered">
+  {% for item in gallery %}
+    {% if item.image %}
+    <figure style="margin:0; background:var(--b-bg);">
+      <img src="{{ item.image }}" alt="{{ item.caption }}" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover; display:block;">
+      {% if item.caption %}
+      <figcaption style="padding:14px 18px; font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--b-mute); letter-spacing:0.06em;">{{ item.caption }}</figcaption>
+      {% endif %}
+    </figure>
+    {% endif %}
+  {% endfor %}
 </section>
 {% endif %}
 
-{# Back Link #}
-<section style="padding: 2rem 0;">
-    <div class="container">
-        <a href="/basketball/" class="back-link">← Back to Basketball Profile</a>
-    </div>
+<section style="padding:40px 56px; background:var(--b-bg-2); display:flex; flex-wrap:wrap; gap:24px;">
+  <a href="/timeline/" style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.12em; color:var(--b-green-bright); text-transform:uppercase; text-decoration:none;">&larr; FULL TIMELINE</a>
+  <a href="/basketball/" style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.12em; color:var(--b-mute); text-transform:uppercase; text-decoration:none;">BASKETBALL PROFILE &rarr;</a>
 </section>

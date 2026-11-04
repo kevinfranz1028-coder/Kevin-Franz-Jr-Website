@@ -1,182 +1,297 @@
 ---
 layout: broadcast.njk
 title: Basketball
-description: Stats, schedule, highlights, and recruiting for Kevin Franz Jr. - Class of 2028 combo guard.
+description: Basketball profile for Kevin Franz Jr. — Class of 2028 SG/SF, 6'1" / 190 lb. Game-by-game 2025-26 JV stats, every tracked season, film, and recruiting profiles.
 permalink: /basketball/
 active: basketball
 ---
 
-{% set schedule = [
-  { date: 'Dec 5',  opp: 'Washburn Rural',         loc: 'Away', result: 'L 38-52' },
-  { date: 'Dec 9',  opp: 'Wyandotte',              loc: 'Home', result: 'W 64-31' },
-  { date: 'Dec 16', opp: 'Gardner-Edgerton',       loc: 'Home', result: 'W 51-44' },
-  { date: 'Jan 6',  opp: 'Shawnee Mission North',  loc: 'Away', result: 'W 58-46' },
-  { date: 'Jan 8',  opp: 'Basehor-Linwood',        loc: 'Home', result: 'L 42-49' },
-  { date: 'Jan 13', opp: 'Louisburg',              loc: 'Away', result: 'W 55-40' },
-  { date: 'Jan 16', opp: 'Blue Valley West',       loc: 'Home', result: 'W 60-52' },
-  { date: 'Jan 21', opp: 'Olathe Northwest',       loc: 'Home', result: '—', upcoming: true },
-  { date: 'Jan 27', opp: 'Olathe East',            loc: 'Away', result: '—', upcoming: true },
-  { date: 'Jan 30', opp: 'Shawnee Mission West',   loc: 'Home', result: '—', upcoming: true },
-  { date: 'Feb 3',  opp: 'Saint Thomas Aquinas',   loc: 'Away', result: '—', upcoming: true },
-  { date: 'Feb 6',  opp: 'Blue Valley Northwest',  loc: 'Home', result: '—', upcoming: true },
-  { date: 'Feb 13', opp: 'Blue Valley',            loc: 'Away', result: '—', upcoming: true },
-  { date: 'Feb 17', opp: 'Bishop Miege',           loc: 'Home', result: '—', upcoming: true },
-  { date: 'Feb 20', opp: 'St. James Academy',      loc: 'Away', result: '—', upcoming: true }
-] %}
-{% set stats2526 = [
-  { label: 'PPG',    value: '5.4',  rank: '5th' },
-  { label: 'RPG',    value: '4.1',  rank: '1st' },
-  { label: 'APG',    value: '2.6',  rank: '2nd' },
-  { label: 'SPG',    value: '1.4',  rank: 'T-3rd' },
-  { label: 'BPG',    value: '0.4',  rank: 'T-3rd' },
-  { label: 'FG%',    value: '37.5', rank: '8th' },
-  { label: '3PT%',   value: '31.0', rank: '5th' },
-  { label: 'FT%',    value: '65.7', rank: '4th' },
-  { label: 'AST/TO', value: '2.05', rank: '2nd' },
-  { label: 'TOPG',   value: '1.25', rank: '7th' }
-] %}
-{% set highlights = [
-  { title: 'Summer 2023 Phenom Camp Mix', description: 'Los Angeles, CA — competing on the national stage', videoId: 'D99uLbwXy7s' },
-  { title: 'Summer 2022 Phenom Camp Mix', description: 'San Diego, CA — first national circuit appearance',  videoId: 'rSJUcL_66c0' }
-] %}
+{%- set jv = jvSeason -%}
+{%- set current = (seasons.seasons | hasValue("isCurrent")) | first -%}
+{%- set liveProfiles = player.recruitingProfiles | hasValue("url") -%}
+{%- set pastSeasons = seasons.seasons | limit(6) -%}
 
 {# ===== HERO ===== #}
 <section style="position:relative; min-height:520px; background:var(--b-bg); overflow:hidden; border-bottom:1px solid var(--b-line);">
-  <img src="/images/banner/large_Copy_of_618_A3075_2_Enhanced_NR_0a0a68195a.jpg" alt="" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.55;">
+  <img src="/images/banner/large_Copy_of_618_A3075_2_Enhanced_NR_0a0a68195a.jpg" alt=""
+       style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.55;">
   <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(11,13,16,0.4) 0%, rgba(11,13,16,0.85) 70%, var(--b-bg) 100%);"></div>
-  <div style="position:relative; z-index:2; padding:80px 56px; display:grid; grid-template-columns:1.4fr 1fr; gap:48px; align-items:end; min-height:520px;">
+  <div class="b-bball-hero" style="position:relative; z-index:2; padding:80px 56px; display:grid; grid-template-columns:1.4fr 1fr; gap:48px; align-items:end; min-height:520px;">
     <div>
       <div style="display:flex; align-items:center; gap:10px; font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin-bottom:24px;">
-        <span>&bull;</span> BASKETBALL &middot; 2025–26
+        <span>&bull;</span> BASKETBALL &middot; CLASS OF {{ player.class }}
       </div>
-      <h1 style="font-family:'Archivo', sans-serif; font-weight:900; font-size:160px; line-height:0.85; letter-spacing:-0.045em; text-transform:uppercase; margin:0; color:var(--b-text);">
+      <h1 class="b-bball-h1" style="font-family:'Archivo', sans-serif; font-weight:900; font-size:160px; line-height:0.85; letter-spacing:-0.045em; text-transform:uppercase; margin:0; color:var(--b-text);">
         The<br><span style="-webkit-text-stroke:2px var(--b-green-bright); -webkit-text-fill-color:transparent;">Game.</span>
       </h1>
       <p style="font-family:'Inter', sans-serif; font-size:18px; line-height:1.6; color:var(--b-mute); margin-top:32px; max-width:560px;">
-        Stats, schedule, film, and recruiting profiles.
+        Every tracked season, the full {{ jv.season }} game log, film, and recruiting profiles.
       </p>
     </div>
     <div style="background:var(--b-bg-2); border:1px solid var(--b-line); padding:28px;">
-      <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:20px;">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:20px; gap:16px;">
         <div>
           <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:22px; color:var(--b-text); text-transform:uppercase; letter-spacing:-0.01em;">{{ player.name }}</div>
-          <div style="font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--b-mute); letter-spacing:0.1em; margin-top:4px;">#{{ player.jersey }} &middot; COMBO GUARD</div>
+          <div style="font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--b-mute); letter-spacing:0.1em; margin-top:4px;">#{{ player.jersey }} &middot; {{ player.position }}</div>
         </div>
         <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:48px; color:var(--b-green-bright); line-height:1;">{{ player.jersey }}</div>
       </div>
       <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--b-line); border:1px solid var(--b-line);">
-        {% for cell in [['HT', player.height], ['WT', player.weight], ['CLASS', player.class], ['HS', 'BVSW'], ['AAU', '3SSB'], ['GPA', player.gpa]] %}
+        {% for cell in [
+          ['HT', player.height],
+          ['WT', player.weight + ' lb'],
+          ['POS', player.position],
+          ['SHOOTS', player.hand],
+          ['CLASS', player.class],
+          ['GPA', player.gpa]
+        ] %}
           <div style="background:var(--b-bg); padding:14px;">
             <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; color:var(--b-mute); text-transform:uppercase;">{{ cell[0] }}</div>
             <div style="font-family:'Archivo', sans-serif; font-weight:800; font-size:18px; color:var(--b-text); margin-top:4px;">{{ cell[1] }}</div>
           </div>
         {% endfor %}
       </div>
+      <div style="display:grid; gap:1px; background:var(--b-line); border:1px solid var(--b-line); border-top:none;">
+        <div style="background:var(--b-bg); padding:14px;">
+          <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; color:var(--b-mute); text-transform:uppercase;">HIGH SCHOOL</div>
+          <div style="font-family:'Archivo', sans-serif; font-weight:800; font-size:18px; color:var(--b-text); margin-top:4px;">{{ player.highSchool }}</div>
+        </div>
+        <div style="background:var(--b-bg); padding:14px;">
+          <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; color:var(--b-mute); text-transform:uppercase;">CLUB</div>
+          <div style="font-family:'Archivo', sans-serif; font-weight:800; font-size:18px; color:var(--b-text); margin-top:4px;">{{ player.club }} &middot; #{{ player.clubJersey }}</div>
+        </div>
+      </div>
+      <p style="font-family:'JetBrains Mono', monospace; font-size:10px; line-height:1.6; color:var(--b-mute); margin:14px 0 0; letter-spacing:0.04em;">
+        PREVIOUSLY {{ player.formerHighSchoolShort | upper }} ({{ player.formerHighSchoolYears }})
+      </p>
     </div>
   </div>
 </section>
 
-{# ===== STATS ===== #}
+{# ===== CURRENT SEASON ===== #}
+{% if current %}
 <div class="b-section-head">
   <div class="b-section-head-left">
-    <span class="b-section-tag">/01 NUMBERS</span>
-    <h2 class="b-section-title">2025–26.</h2>
+    <span class="b-section-tag">/01 CURRENT SEASON</span>
+    <h2 class="b-section-title">{{ current.season }}.</h2>
   </div>
-  <span style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.1em; color:var(--b-mute); text-transform:uppercase;">
-    BVSW JV &middot; 7 GP &middot; <span style="color:var(--b-green-bright);">5W</span>–2L
+  <a href="{{ current.statsUrl }}" target="_blank" rel="noopener" class="b-section-cta">GAMECHANGER &rarr;</a>
+</div>
+<section class="b-statgrid">
+  {% set currentStats = [
+    ['PPG', current.ppg, ''],
+    ['RPG', current.rpg, ''],
+    ['APG', current.apg, ''],
+    ['FG%', current.fgPct, ''],
+    ['3PT%', current.tpPct, '']
+  ] %}
+  {% for s in currentStats %}
+    <div class="b-statgrid-cell">
+      <div class="b-statgrid-label">{{ s[0] }}</div>
+      <div>
+        <div class="b-statgrid-value">{{ s[1] }}</div>
+      </div>
+    </div>
+  {% endfor %}
+</section>
+<section class="b-season-band">
+  <div>
+    <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:22px; text-transform:uppercase; letter-spacing:-0.01em; color:var(--b-text);">
+      {{ current.team }} &middot; #{{ current.jersey }}
+      <span style="font-family:'JetBrains Mono', monospace; font-size:11px; font-weight:400; letter-spacing:0.12em; color:var(--b-green-bright); margin-left:10px;">IN PROGRESS</span>
+    </div>
+    <div class="b-season-band-line">
+      <span>TEAM <strong>{{ current.record }}</strong></span>
+      <span><strong>{{ current.gp }}</strong> GP / <strong>{{ current.gs }}</strong> GS</span>
+      <span><strong>{{ current.spg }}</strong> SPG</span>
+      <span><strong>{{ current.bpg }}</strong> BPG</span>
+      <span>FT <strong>{{ current.ftPct }}</strong></span>
+    </div>
+    <p style="font-size:13px; color:var(--b-mute); margin:14px 0 0; max-width:640px;">
+      Club season with {{ current.team }}. The {{ player.highSchool }} 2026&ndash;27 high school schedule is not published here yet.
+    </p>
+  </div>
+</section>
+{% endif %}
+
+{# ===== 2025-26 JV — primary stats view ===== #}
+<div class="b-section-head">
+  <div class="b-section-head-left">
+    <span class="b-section-tag">/02 {{ jv.season }} &middot; {{ jv.teamShort | upper }}</span>
+    <h2 class="b-section-title">Final<br>season.</h2>
+  </div>
+  <span style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.1em; color:var(--b-mute); text-transform:uppercase; text-align:right;">
+    #{{ jv.jersey }} &middot; TEAM {{ jv.record }} ({{ jv.gamesTotal }} G)<br>
+    {{ jv.totals.gp }} GP / {{ jv.totals.gs }} GS WITH STATS
   </span>
 </div>
-<section style="display:grid; grid-template-columns:repeat(5, 1fr); gap:1px; background:var(--b-line); border-bottom:1px solid var(--b-line);">
-  {% for s in stats2526 %}
-    <div style="padding:28px; background:var(--b-bg); min-height:160px; display:flex; flex-direction:column; justify-content:space-between; position:relative;">
-      <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-        <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--b-mute);">{{ s.label }}</div>
-        <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.1em; color:var(--b-green-bright); background:rgba(34,197,94,0.1); padding:2px 8px;">{{ s.rank }}</div>
+<section class="b-statgrid">
+  {% set jvStats = [
+    ['PPG', jv.averages.ppg | oneDp, jv.totals.pts + ' PTS'],
+    ['RPG', jv.averages.rpg | oneDp, jv.totals.reb + ' REB'],
+    ['APG', jv.averages.apg | oneDp, jv.totals.ast + ' AST'],
+    ['SPG', jv.averages.spg | oneDp, jv.totals.stl + ' STL'],
+    ['BPG', jv.averages.bpg | oneDp, jv.totals.blk + ' BLK'],
+    ['FG%', jv.averages.fgPct + '%', jv.totals.fgm + '-' + jv.totals.fga],
+    ['3PT%', jv.averages.tpPct + '%', jv.totals.tpm + '-' + jv.totals.tpa],
+    ['FT%', jv.averages.ftPct + '%', jv.totals.ftm + '-' + jv.totals.fta],
+    ['AST/TO', jv.averages.astTo, jv.totals.ast + '/' + jv.totals.to],
+    ['TOPG', jv.averages.topg | oneDp, jv.totals.to + ' TO']
+  ] %}
+  {% for s in jvStats %}
+    <div class="b-statgrid-cell">
+      <div class="b-statgrid-label">{{ s[0] }}</div>
+      <div>
+        <div class="b-statgrid-value">{{ s[1] }}</div>
+        <div class="b-statgrid-sub">{{ s[2] }}</div>
       </div>
-      <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:56px; line-height:1; letter-spacing:-0.04em; color:var(--b-text);">{{ s.value }}</div>
     </div>
   {% endfor %}
 </section>
 
-{# ===== SCHEDULE ===== #}
+{# ===== GAME LOG ===== #}
 <div class="b-section-head">
   <div class="b-section-head-left">
-    <span class="b-section-tag">/02 SCHEDULE</span>
-    <h2 class="b-section-title">Season.</h2>
+    <span class="b-section-tag">/03 GAME LOG</span>
+    <h2 class="b-section-title">Every<br>game.</h2>
   </div>
+  <a href="{{ jv.statsUrl }}" target="_blank" rel="noopener" class="b-section-cta">GAMECHANGER &rarr;</a>
 </div>
-<section style="border-bottom:1px solid var(--b-line);">
-  <div style="display:grid; grid-template-columns:90px 1fr 90px 110px 130px; padding:14px 48px; border-bottom:1px solid var(--b-line); font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--b-mute); background:var(--b-bg-2);">
-    <div>DATE</div><div>OPPONENT</div><div>LOC</div><div>STATUS</div><div>RESULT</div>
+<section class="b-gamelog">
+  <div class="b-gamelog-head">
+    <div>DATE</div><div>OPPONENT</div><div>LOC</div><div>STATUS</div><div>TEAM</div><div>KEVIN P/R/A</div>
   </div>
-  {% for g in schedule %}
-    <div style="display:grid; grid-template-columns:90px 1fr 90px 110px 130px; padding:18px 48px; {% if not loop.last %}border-bottom:1px solid var(--b-line);{% endif %} align-items:center; background:{% if g.upcoming %}transparent{% else %}var(--b-bg){% endif %};">
-      <div style="font-family:'JetBrains Mono', monospace; font-size:13px; color:var(--b-mute); letter-spacing:0.04em;">{{ g.date }}</div>
-      <div style="font-family:'Archivo', sans-serif; font-weight:700; font-size:16px; color:var(--b-text);">{{ g.opp }}</div>
-      <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.1em; color:var(--b-mute); text-transform:uppercase;">{{ g.loc }}</div>
-      <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:{% if g.upcoming %}var(--b-amber){% else %}var(--b-green-bright){% endif %};">{% if g.upcoming %}&#9675; UPCOMING{% else %}&bull; FINAL{% endif %}</div>
-      <div style="font-family:'Archivo', sans-serif; font-weight:800; font-size:15px; letter-spacing:0.04em; color:{% if g.result.startsWith('W') %}var(--b-green-bright){% elif g.result.startsWith('L') %}var(--b-red){% else %}var(--b-mute){% endif %};">{{ g.result }}</div>
+  {% for g in jv.games %}
+    <div class="b-gamelog-row{% if not g.hasStats %} is-dnp{% endif %}">
+      <div class="b-gamelog-date">{{ g.dateShort }}</div>
+      <div class="b-gamelog-opp">
+        {{ g.opponent }}
+        {% if g.note %}<div class="b-gamelog-note">{{ g.note }}</div>{% endif %}
+      </div>
+      <div class="b-gamelog-loc">
+        {%- if g.homeAwayConfirmed -%}
+          <span class="b-gamelog-cell-label">LOC </span>{{ g.homeAway }}
+        {%- else -%}
+          <span title="Home/away not confirmed between the two GameChanger team listings">&mdash;<span class="b-gamelog-cell-label"> HOME/AWAY UNCONFIRMED</span></span>
+        {%- endif -%}
+      </div>
+      <div class="b-gamelog-loc b-gamelog-status">&bull; FINAL</div>
+      <div class="b-gamelog-result {% if g.result == 'W' %}is-w{% else %}is-l{% endif %}">
+        {{ g.result }} {{ g.score }}
+      </div>
+      <div class="b-gamelog-line">
+        {% if g.hasStats %}
+          <span class="b-gamelog-cell-label">KEVIN </span>{{ g.pts }} / {{ g.reb }} / {{ g.ast }}
+        {% else %}
+          <span style="color:var(--b-amber);">DNP &mdash; no stats recorded</span>
+        {% endif %}
+      </div>
     </div>
   {% endfor %}
+  <div class="b-gamelog-foot">
+    TEAM RECORD {{ jv.record }} ACROSS {{ jv.gamesTotal }} GAMES &middot; KEVIN HAS INDIVIDUAL STATS IN {{ jv.totals.gp }} OF THEM.<br>
+    {{ jv.venueNoteFootnote | upper }}
+  </div>
 </section>
 
-{# ===== HIGHLIGHTS ===== #}
+{# ===== SEASON HISTORY ===== #}
 <div class="b-section-head">
   <div class="b-section-head-left">
-    <span class="b-section-tag">/03 FILM</span>
-    <h2 class="b-section-title">Highlights.</h2>
+    <span class="b-section-tag">/04 SEASON HISTORY</span>
+    <h2 class="b-section-title">Tracked<br>seasons.</h2>
   </div>
+  <a href="/timeline/" class="b-section-cta">FULL TIMELINE &rarr;</a>
 </div>
-<section style="padding:40px 48px; border-bottom:1px solid var(--b-line); display:grid; grid-template-columns:1fr 1fr; gap:24px;">
-  {% for h in highlights %}
-    <a href="https://www.youtube.com/watch?v={{ h.videoId }}" target="_blank" rel="noopener" style="background:var(--b-bg-2); border:1px solid var(--b-line); text-decoration:none; color:inherit; display:block;">
-      <div style="aspect-ratio:16/9; background:var(--b-bg-3); position:relative; overflow:hidden;">
-        <img src="https://i.ytimg.com/vi/{{ h.videoId }}/hqdefault.jpg" alt="{{ h.title }}" style="width:100%; height:100%; object-fit:cover;">
-        <div style="position:absolute; inset:0; background:linear-gradient(0deg, rgba(11,13,16,0.6), transparent 60%);"></div>
-        <div style="position:absolute; inset:0; display:grid; place-items:center;">
-          <div style="width:80px; height:80px; background:var(--b-green-bright); display:grid; place-items:center; clip-path:polygon(8% 0, 100% 0, 92% 100%, 0% 100%);">
-            <div style="width:0; height:0; border-top:14px solid transparent; border-bottom:14px solid transparent; border-left:20px solid var(--b-bg); margin-left:6px;"></div>
-          </div>
+<section class="b-grid b-grid-3 b-grid-bordered">
+  {% for s in pastSeasons %}
+    <div style="background:var(--b-bg); padding:28px;">
+      <div style="display:flex; justify-content:space-between; align-items:baseline; gap:12px;">
+        <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase;">
+          {{ s.season }}{% if s.isCurrent %} &middot; CURRENT{% endif %}
         </div>
-        <div style="position:absolute; top:14px; left:14px; font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; background:rgba(11,13,16,0.7); color:var(--b-text); padding:6px 10px; border-left:2px solid var(--b-green-bright);">HIGHLIGHT REEL</div>
+        {% if s.jersey %}<div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:20px; color:var(--b-mute);">#{{ s.jersey }}</div>{% endif %}
       </div>
-      <div style="padding:24px 28px;">
-        <h3 style="font-family:'Archivo', sans-serif; font-weight:900; font-size:22px; margin:0 0 8px; text-transform:uppercase; letter-spacing:-0.02em;">{{ h.title }}</h3>
-        <p style="font-size:14px; color:var(--b-mute); margin:0;">{{ h.description }}</p>
+      <h3 style="font-family:'Archivo', sans-serif; font-weight:900; font-size:20px; text-transform:uppercase; letter-spacing:-0.01em; margin:10px 0 4px; color:var(--b-text);">{{ s.team }}</h3>
+      <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.08em; color:var(--b-mute); text-transform:uppercase;">
+        {{ s.level }}{% if s.record != 'n/a' %} &middot; {{ s.record }}{% endif %} &middot; {{ s.gp }} GP / {{ s.gs }} GS
       </div>
-    </a>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--b-line); border:1px solid var(--b-line); margin-top:18px;">
+        {% for cell in [['PPG', s.ppg], ['RPG', s.rpg], ['APG', s.apg]] %}
+          <div style="background:var(--b-bg-2); padding:12px;">
+            <div style="font-family:'JetBrains Mono', monospace; font-size:9px; letter-spacing:0.14em; color:var(--b-mute);">{{ cell[0] }}</div>
+            <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:22px; color:var(--b-text); margin-top:2px;">{{ cell[1] }}</div>
+          </div>
+        {% endfor %}
+      </div>
+      <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.08em; color:var(--b-mute); margin-top:12px;">
+        FG {{ s.fgPct }} &middot; 3PT {{ s.tpPct }} &middot; FT {{ s.ftPct }}
+      </div>
+      <a href="{{ s.statsUrl }}" target="_blank" rel="noopener" style="display:inline-block; margin-top:14px; font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.12em; color:var(--b-green-bright); text-transform:uppercase; text-decoration:none;">BOX SCORES &rarr;</a>
+    </div>
   {% endfor %}
+</section>
+
+{# ===== FILM ===== #}
+<div class="b-section-head">
+  <div class="b-section-head-left">
+    <span class="b-section-tag">/05 FILM</span>
+    <h2 class="b-section-title">Camp<br>film.</h2>
+  </div>
+  <span style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.1em; color:var(--b-amber); text-transform:uppercase;">
+    ARCHIVE &middot; CURRENT REEL IN PROGRESS
+  </span>
+</div>
+<section style="padding:40px 48px; border-bottom:1px solid var(--b-line);">
+  <p style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.08em; line-height:1.7; color:var(--b-mute); text-transform:uppercase; margin:0 0 24px; max-width:720px;">
+    The clips below are national camp mixes from 2022 and 2023 &mdash; they are older film, not current-season highlights. An up-to-date high school / club reel and full-game film are being put together; contact the family for unlisted current film.
+  </p>
+  <div class="b-split" style="gap:24px;">
+    {% for h in player.campFilm %}
+      <a href="https://www.youtube.com/watch?v={{ h.videoId }}" target="_blank" rel="noopener" style="background:var(--b-bg-2); border:1px solid var(--b-line); text-decoration:none; color:inherit; display:block;">
+        <div style="aspect-ratio:16/9; background:var(--b-bg-3); position:relative; overflow:hidden;">
+          <img src="https://i.ytimg.com/vi/{{ h.videoId }}/hqdefault.jpg" alt="{{ h.title }} thumbnail"
+               loading="lazy" style="width:100%; height:100%; object-fit:cover;">
+          <div style="position:absolute; inset:0; background:linear-gradient(0deg, rgba(11,13,16,0.6), transparent 60%);"></div>
+          <div style="position:absolute; inset:0; display:grid; place-items:center;">
+            <div style="width:80px; height:80px; background:var(--b-green-bright); display:grid; place-items:center; clip-path:polygon(8% 0, 100% 0, 92% 100%, 0% 100%);">
+              <div style="width:0; height:0; border-top:14px solid transparent; border-bottom:14px solid transparent; border-left:20px solid var(--b-bg); margin-left:6px;"></div>
+            </div>
+          </div>
+          <div style="position:absolute; top:14px; left:14px; font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; background:rgba(11,13,16,0.7); color:var(--b-amber); padding:6px 10px; border-left:2px solid var(--b-amber);">{{ h.year }} CAMP FILM</div>
+        </div>
+        <div style="padding:24px 28px;">
+          <h3 style="font-family:'Archivo', sans-serif; font-weight:900; font-size:22px; margin:0 0 8px; text-transform:uppercase; letter-spacing:-0.02em;">{{ h.title }}</h3>
+          <p style="font-size:14px; color:var(--b-mute); margin:0;">{{ h.description }}</p>
+        </div>
+      </a>
+    {% endfor %}
+  </div>
 </section>
 
 {# ===== RECRUITING ===== #}
 <section style="padding:80px 48px; background:var(--b-bg-2);">
-  <div style="display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start;">
+  <div class="b-split" style="gap:64px; align-items:start;">
     <div>
-      <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin-bottom:16px;">/04 RECRUITING</div>
+      <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin-bottom:16px;">/06 RECRUITING</div>
       <h2 style="font-family:'Archivo', sans-serif; font-weight:900; font-size:64px; line-height:0.95; text-transform:uppercase; letter-spacing:-0.03em; margin:0;">
         For coaches<br>&amp; <span style="-webkit-text-stroke:2px var(--b-green-bright); -webkit-text-fill-color:transparent;">scouts.</span>
       </h2>
       <p style="font-size:16px; color:var(--b-mute); margin-top:24px; max-width:420px;">
-        Find Kevin's profile across major recruiting platforms. For direct inquiries, contact the family.
+        Verified profiles below. For transcripts, current film, or a workout, contact {{ player.parentName }} directly.
       </p>
       <div style="display:flex; flex-direction:column; gap:8px; margin-top:32px;">
-        <a href="mailto:{{ player.parentEmail }}" style="color:var(--b-text); font-family:'Archivo', sans-serif; font-weight:800; font-size:20px; text-decoration:none; border-bottom:1px solid var(--b-line); padding-bottom:10px;">{{ player.parentEmail }}</a>
-        <a href="tel:{{ player.parentPhone }}" style="color:var(--b-text); font-family:'Archivo', sans-serif; font-weight:800; font-size:20px; text-decoration:none; border-bottom:1px solid var(--b-line); padding-bottom:10px;">{{ player.parentPhone }}</a>
+        <a href="mailto:{{ player.parentEmail }}" style="color:var(--b-text); font-family:'Archivo', sans-serif; font-weight:800; font-size:18px; text-decoration:none; border-bottom:1px solid var(--b-line); padding-bottom:10px; word-break:break-word;">{{ player.parentEmail }}</a>
+        <a href="tel:{{ player.parentPhone | replace('-','') }}" style="color:var(--b-text); font-family:'Archivo', sans-serif; font-weight:800; font-size:20px; text-decoration:none; border-bottom:1px solid var(--b-line); padding-bottom:10px;">{{ player.parentPhone }}</a>
       </div>
     </div>
     <div style="display:grid; gap:1px; background:var(--b-line); border:1px solid var(--b-line);">
-      {% for link in [
-        ['PREPHOOPS', 'Player profile and rankings', '#'],
-        ['NCSA SPORTS', 'Complete recruiting profile', '#'],
-        ['SPORTS PASSPORTS', 'Tournament history and stats', '#'],
-        ['INSTAGRAM', '@kfranzjr2028', 'https://instagram.com/kfranzjr2028']
-      ] %}
-        <a href="{{ link[2] }}" {% if link[2] != '#' %}target="_blank" rel="noopener"{% endif %} style="display:flex; justify-content:space-between; align-items:center; padding:24px 28px; background:var(--b-bg); color:var(--b-text); text-decoration:none;">
+      {% for p in liveProfiles %}
+        <a href="{{ p.url }}" target="_blank" rel="noopener" style="display:flex; justify-content:space-between; align-items:center; gap:16px; padding:24px 28px; background:var(--b-bg); color:var(--b-text); text-decoration:none;">
           <div>
-            <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:18px; text-transform:uppercase; letter-spacing:0.02em;">{{ link[0] }}</div>
-            <div style="font-size:13px; color:var(--b-mute); margin-top:4px;">{{ link[1] }}</div>
+            <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:18px; text-transform:uppercase; letter-spacing:0.02em;">{{ p.name }}</div>
+            <div style="font-size:13px; color:var(--b-mute); margin-top:4px;">{{ p.description }}</div>
           </div>
-          <span style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.12em; color:var(--b-green-bright);">VIEW &rarr;</span>
+          <span style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.12em; color:var(--b-green-bright); white-space:nowrap;">VIEW &rarr;</span>
         </a>
       {% endfor %}
     </div>

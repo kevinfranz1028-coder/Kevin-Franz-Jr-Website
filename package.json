@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "description": "Student-athlete recruiting profile for Kevin Franz Jr.",
   "scripts": {
-    "start": "eleventy --serve",
+    "start": "node scripts/verify-jv-stats.js && eleventy --serve",
     "build": "eleventy",
     "cms": "npx decap-server & node scripts/auto-deploy.js & eleventy --serve",
-    "deploy": "git add src/ && git commit -m 'Content update via CMS' && git push origin main"
+    "deploy": "git add src/ && git commit -m 'Content update via CMS' && git push origin main",
+    "prebuild": "node scripts/verify-jv-stats.js",
+    "verify-stats": "node scripts/verify-jv-stats.js"
   },
   "keywords": [
     "recruiting",

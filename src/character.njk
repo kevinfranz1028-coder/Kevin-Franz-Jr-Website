@@ -1,7 +1,7 @@
 ---
 layout: broadcast.njk
 title: Character
-description: Community involvement, leadership, and core values of Kevin Franz Jr., Class of 2028 student-athlete.
+description: Community involvement, leadership, and core values of Kevin Franz Jr., Class of 2028 student-athlete at Shawnee Mission West.
 permalink: /character/
 active: character
 ---
@@ -9,23 +9,23 @@ active: character
 {% set values = [
   { num: '/01', title: 'Team First',    description: 'Success is measured by what we achieve together — every screen, every sprint back, every box-out.', detail: "I'd rather have an assist that wins us the game than a 30-burger that loses it. The best teammates I've had taught me that the simple, unselfish play is almost always the right one. That's the standard I try to hold myself to." },
   { num: '/02', title: 'Accountability', description: 'Hold myself to high standards on and off the court — first one in, last one out.', detail: "My dad taught me to be the hardest worker in any room. If I miss a shot, that's on me. If I miss a class, that's on me. The only way to get better is to own every rep, every grade, every interaction." },
-  { num: '/03', title: 'Curiosity',     description: 'Always learning, always asking questions — film, books, weather charts, you name it.', detail: "I've probably watched 1000+ hours of NBA film. I read about supercells and meteorology textbooks for fun. I think the people who get really good at things are the ones who stay curious about how things actually work." },
+  { num: '/03', title: 'Curiosity',     description: 'Always learning, always asking questions — film, books, weather charts, you name it.', detail: "I watch a lot of film, and I read about supercells and meteorology for fun. I think the people who get really good at things are the ones who stay curious about how things actually work." },
   { num: '/04', title: 'Family',        description: 'Everything starts with the people who support me — parents, coaches, teammates.', detail: "My family drives me to practice, fills the bleachers, and tells me the truth when I'm playing badly. None of this is possible without them. Every game is for the people who show up for me." }
 ] %}
 
 {# ===== HERO — quote-led ===== #}
-<section style="padding:120px 56px; background:var(--b-bg); border-bottom:1px solid var(--b-line); position:relative; overflow:hidden;">
-  <div style="position:absolute; top:40px; right:56px; font-family:'Archivo', sans-serif; font-size:600px; font-weight:900; color:var(--b-bg-2); line-height:0.7; pointer-events:none; user-select:none; letter-spacing:-0.05em;">"</div>
+<section style="padding:104px 56px; background:var(--b-bg); border-bottom:1px solid var(--b-line); position:relative; overflow:hidden;">
+  <div aria-hidden="true" style="position:absolute; top:40px; right:56px; font-family:'Archivo', sans-serif; font-size:600px; font-weight:900; color:var(--b-bg-2); line-height:0.7; pointer-events:none; user-select:none; letter-spacing:-0.05em;">&rdquo;</div>
   <div style="position:relative; z-index:2; max-width:1100px;">
     <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin-bottom:32px;">&bull; CHARACTER &amp; SERVICE</div>
-    <h1 style="font-family:'Fraunces', serif; font-weight:500; font-style:italic; font-size:96px; line-height:1.05; letter-spacing:-0.03em; margin:0; color:var(--b-text);">
+    <blockquote class="b-char-quote" style="font-family:'Fraunces', serif; font-weight:500; font-style:italic; font-size:84px; line-height:1.05; letter-spacing:-0.03em; margin:0; color:var(--b-text);">
       Kevin leads by example. He's the first one in the gym and the last to leave. His work ethic is contagious.
-    </h1>
+    </blockquote>
     <div style="margin-top:40px; display:flex; align-items:center; gap:20px;">
-      <div style="width:60px; height:1px; background:var(--b-green-bright);"></div>
+      <div style="width:60px; height:1px; background:var(--b-green-bright); flex-shrink:0;"></div>
       <div>
         <div style="font-family:'Archivo', sans-serif; font-weight:800; font-size:18px; color:var(--b-text); text-transform:uppercase; letter-spacing:0.02em;">Coach RJ Palmgren</div>
-        <div style="font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--b-mute); letter-spacing:0.08em; margin-top:4px;">BVSW VARSITY HEAD COACH</div>
+        <div style="font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--b-mute); letter-spacing:0.08em; margin-top:4px;">FORMER HEAD COACH &middot; BLUE VALLEY SOUTHWEST VARSITY</div>
       </div>
     </div>
   </div>
@@ -38,11 +38,11 @@ active: character
     <h2 class="b-section-title">What I<br>stand for.</h2>
   </div>
 </div>
-<section style="display:grid; grid-template-columns:repeat(4, 1fr); gap:1px; padding:1px; background:var(--b-line); border-bottom:1px solid var(--b-line);">
+<section class="b-grid b-grid-4 b-grid-bordered" style="padding:1px;">
   {% for v in values %}
-    <div style="background:var(--b-bg-2); padding:36px 28px; min-height:340px; display:flex; flex-direction:column;">
+    <div style="background:var(--b-bg-2); padding:36px 28px; min-height:320px; display:flex; flex-direction:column;">
       <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin-bottom:20px;">{{ v.num }}</div>
-      <h3 style="font-family:'Archivo', sans-serif; font-weight:900; font-size:32px; line-height:0.95; letter-spacing:-0.02em; text-transform:uppercase; margin:0 0 16px; color:var(--b-text);">{{ v.title }}</h3>
+      <h3 style="font-family:'Archivo', sans-serif; font-weight:900; font-size:30px; line-height:0.95; letter-spacing:-0.02em; text-transform:uppercase; margin:0 0 16px; color:var(--b-text);">{{ v.title }}</h3>
       <p style="font-size:14px; line-height:1.6; color:var(--b-mute); margin:0 0 16px;">{{ v.description }}</p>
       <p style="font-size:13px; line-height:1.65; color:var(--b-text); margin:auto 0 0; padding-top:16px; border-top:1px solid var(--b-line); opacity:0.85;">{{ v.detail }}</p>
     </div>
@@ -50,42 +50,44 @@ active: character
 </section>
 
 {# ===== SERVICE / LEADERSHIP ===== #}
-<section style="display:grid; grid-template-columns:1fr 1fr; border-bottom:1px solid var(--b-line);">
-  <div style="padding:72px 56px; border-right:1px solid var(--b-line); background:var(--b-bg-2);">
+<section class="b-split" style="border-bottom:1px solid var(--b-line);">
+  <div style="padding:64px 56px; border-right:1px solid var(--b-line); background:var(--b-bg-2);">
     <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin-bottom:24px;">/02 SERVICE</div>
-    <h2 style="font-family:'Archivo', sans-serif; font-weight:900; font-size:56px; line-height:0.95; letter-spacing:-0.03em; text-transform:uppercase; margin:0 0 32px; color:var(--b-text);">
+    <h2 style="font-family:'Archivo', sans-serif; font-weight:900; font-size:52px; line-height:0.95; letter-spacing:-0.03em; text-transform:uppercase; margin:0 0 32px; color:var(--b-text);">
       Giving<br>back.
     </h2>
     <div style="display:flex; flex-direction:column; gap:24px;">
       {% for s in [
         ['YOUTH BASKETBALL CAMPS', 'Volunteer coach for elementary players, teaching fundamentals and helping young athletes develop a love for the game.'],
-        ['FOOD DRIVE', 'Organized collection for local shelter, working with teammates to give back to our community.'],
-        ['PEER TUTORING', 'Tutor freshmen in math and science. Believe strongly in athletes being students first.']
+        ['FOOD DRIVE', 'Organized a collection for a local shelter, working with teammates to give back to our community.'],
+        ['PEER TUTORING', 'Tutor younger students in math and science. I believe strongly in athletes being students first.']
       ] %}
         <div style="border-left:2px solid var(--b-green-bright); padding-left:20px;">
-          <div style="font-family:'Archivo', sans-serif; font-weight:800; font-size:18px; color:var(--b-text); text-transform:uppercase; letter-spacing:-0.01em;">{{ s[0] }}</div>
+          <div style="font-family:'Archivo', sans-serif; font-weight:800; font-size:17px; color:var(--b-text); text-transform:uppercase; letter-spacing:-0.01em;">{{ s[0] }}</div>
           <p style="font-size:14px; line-height:1.6; color:var(--b-mute); margin:8px 0 0;">{{ s[1] }}</p>
         </div>
       {% endfor %}
     </div>
   </div>
-  <div style="padding:72px 56px; background:var(--b-bg);">
+  <div style="padding:64px 56px; background:var(--b-bg);">
     <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin-bottom:24px;">/03 LEADERSHIP</div>
-    <h2 style="font-family:'Archivo', sans-serif; font-weight:900; font-size:56px; line-height:0.95; letter-spacing:-0.03em; text-transform:uppercase; margin:0 0 32px; color:var(--b-text);">
+    <h2 style="font-family:'Archivo', sans-serif; font-weight:900; font-size:52px; line-height:0.95; letter-spacing:-0.03em; text-transform:uppercase; margin:0 0 32px; color:var(--b-text);">
       Captain<br>energy.
     </h2>
-    <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:1px; background:var(--b-line); border:1px solid var(--b-line);">
+    <div class="b-grid b-grid-2" style="border:1px solid var(--b-line);">
       {% for l in [
-        ['2023', 'JV TEAM CAPTAIN'],
-        ['2024', 'FRESHMAN A CAPTAIN'],
-        ['2025', 'AAU TEAM LEADER'],
-        ['2025', 'NHS INDUCTEE']
+        ['2024–25', 'FRESHMAN A TEAM CAPTAIN', 'Blue Valley Southwest'],
+        ['2025', 'NATIONAL HONOR SOCIETY', 'Inducted']
       ] %}
         <div style="background:var(--b-bg-2); padding:24px 20px;">
-          <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:32px; color:var(--b-green-bright); line-height:1; letter-spacing:-0.02em;">{{ l[0] }}</div>
-          <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.1em; color:var(--b-text); margin-top:6px; text-transform:uppercase;">{{ l[1] }}</div>
+          <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:26px; color:var(--b-green-bright); line-height:1; letter-spacing:-0.02em;">{{ l[0] }}</div>
+          <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.1em; color:var(--b-text); margin-top:8px; text-transform:uppercase; line-height:1.5;">{{ l[1] }}</div>
+          <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.08em; color:var(--b-mute); margin-top:4px; text-transform:uppercase;">{{ l[2] }}</div>
         </div>
       {% endfor %}
     </div>
+    <p style="font-size:14px; line-height:1.65; color:var(--b-mute); margin-top:28px;">
+      Now at {{ player.highSchool }} and playing club ball with {{ player.club }}. Coach references available on request &mdash; see the <a href="/contact/" style="color:var(--b-green-bright);">Contact page</a>.
+    </p>
   </div>
 </section>

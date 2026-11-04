@@ -6,10 +6,18 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/js");
   eleventyConfig.addPassthroughCopy("src/images");
   eleventyConfig.addPassthroughCopy("src/admin");
+  eleventyConfig.addPassthroughCopy("src/files");
+  eleventyConfig.addPassthroughCopy("src/robots.txt");
 
   // Cloudflare Pages configuration
   eleventyConfig.addPassthroughCopy("src/_routes.json");
   eleventyConfig.addPassthroughCopy("src/_headers");
+
+  // The 2025-26 JV season file is named with dashes (jv-2025-26.json), which is
+  // not a usable identifier in Nunjucks — expose it under a clean alias.
+  eleventyConfig.addGlobalData("jvSeason", () =>
+    require("./src/_data/jv-2025-26.json")
+  );
 
   // Date filters
   eleventyConfig.addFilter("readableDate", dateObj => {
@@ -39,6 +47,33 @@ module.exports = function(eleventyConfig) {
     return value.split(separator);
   });
 
+  // Always show one decimal place (4 -> "4.0") for per-game averages
+  eleventyConfig.addFilter("oneDp", function(value) {
+    const n = parseFloat(value);
+    return isNaN(n) ? value : n.toFixed(1);
+  });
+
+  // Drop empty/falsy entries from an array (used to hide profile links with no URL yet)
+  eleventyConfig.addFilter("compact", function(array) {
+    if (!Array.isArray(array)) return array;
+    return array.filter(Boolean);
+  });
+
+  // Keep only list entries whose given key has a truthy value
+  eleventyConfig.addFilter("hasValue", function(array, key) {
+    if (!Array.isArray(array)) return array;
+    return array.filter((item) => item && item[key]);
+  });
+
+  // Absolute URL for canonical / OG tags
+  eleventyConfig.addFilter("absoluteUrl", function(url, base) {
+    try {
+      return new URL(url, base || "https://kevinfranzjr.com").href;
+    } catch (e) {
+      return url;
+    }
+  });
+
   // Collections
   eleventyConfig.addCollection("updates", function(collectionApi) {
     return collectionApi.getFilteredByGlob("src/updates/*.md").sort((a, b) => {
@@ -54,13 +89,7 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addCollection("timeline", function(collectionApi) {
     return collectionApi.getFilteredByGlob("src/timeline/*.md").sort((a, b) => {
-      return (a.data.order || 0) - (b.data.order || 0);
-    });
-  });
-
-  eleventyConfig.addCollection("footballTimeline", function(collectionApi) {
-    return collectionApi.getFilteredByGlob("src/football-timeline/*.md").sort((a, b) => {
-      return (a.data.order || 0) - (b.data.order || 0);
+      return (b.data.order || 0) - (a.data.order || 0);
     });
   });
 

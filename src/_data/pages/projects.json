@@ -8,18 +8,13 @@
       "description": "",
       "projects": [
         {
-          "title": "Weather Blog",
-          "description": "Weekly forecasts and storm breakdowns analyzing atmospheric patterns and severe weather events.",
-          "link": ""
+          "title": "Severe Weather Log",
+          "description": "Tracking tornado events and analysing the pre-event environment, radar presentation and damage surveys.",
+          "link": "/projects/"
         },
         {
-          "title": "Severe Weather Tracking",
-          "description": "Following tornado outbreaks and analyzing data to understand storm formation and behavior.",
-          "link": ""
-        },
-        {
-          "title": "Science Fair Project",
-          "description": "[Project topic]",
+          "title": "Radar & Forecasting Study",
+          "description": "Reading soundings, velocity couplets and hodographs to understand how storms organise.",
           "link": ""
         }
       ]

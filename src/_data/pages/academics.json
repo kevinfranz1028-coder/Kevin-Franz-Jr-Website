@@ -3,10 +3,9 @@
   "heading": "Student-Athlete, Future Meteorologist",
   "subheading": "Committed to excellence in the classroom and on the court.",
   "overview": {
-    "gpa": "3.85",
+    "gpa": "3.85 unweighted",
     "gpaWeighted": "",
-    "rank": "[Rank] of [Total]",
-    "school": "Blue Valley Southwest",
+    "school": "Shawnee Mission West",
     "graduation": "Spring 2028"
   },
   "coursework": {
@@ -16,16 +15,16 @@
       "Honors English 10"
     ],
     "stem": [
-      "Atmospheric Science elective",
       "Physics",
-      "Chemistry"
+      "Spanish III",
+      "World History"
     ]
   },
   "interests": "I'm especially drawn to atmospheric science and meteorology. I love analyzing weather patterns, understanding storm systems, and the challenge of turning data into forecasts. In college, I plan to study meteorology or atmospheric science while playing basketball.",
   "awards": [
-    "Honor Roll (all semesters)",
-    "Blue Valley Southwest Academic Excellence Award"
+    "Honor Roll (every semester reported)",
+    "Academic Excellence Award — Blue Valley Southwest, 2024–25",
+    "National Honor Society — inducted 2025"
   ],
-  "resumePdf": "/files/academic-resume.pdf",
-  "image": "/images/academic-photo.jpg"
+  "resumePdf": "/files/academic-resume.pdf"
 }
