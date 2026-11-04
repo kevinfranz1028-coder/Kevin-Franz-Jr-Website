@@ -75,19 +75,10 @@ collections:
           - {label: "Neutral", value: "neutral"}
       - {label: "Game Time", name: "time", widget: "string", required: false, hint: "e.g., '7:00 PM'"}
       - {label: "Final Score", name: "result", widget: "string", required: false, hint: "e.g., 'W 62-58' or 'L 55-60' (leave blank for future games)"}
-      - {label: "Kevin Has Stats For This Game?", name: "hasStats", widget: "boolean", default: true, required: false, hint: "Turn OFF if Kevin was not in the box score, and leave his stat fields blank. Never enter zeros for a game he did not play."}
       - {label: "Kevin's Points", name: "points", widget: "string", required: false}
       - {label: "Kevin's Rebounds", name: "rebounds", widget: "string", required: false}
       - {label: "Kevin's Assists", name: "assists", widget: "string", required: false}
-      - {label: "Kevin's Steals", name: "steals", widget: "string", required: false}
-      - {label: "Kevin's Blocks", name: "blocks", widget: "string", required: false}
-      - {label: "Kevin's Turnovers", name: "turnovers", widget: "string", required: false}
-      - {label: "Field Goals (made-attempted)", name: "fg", widget: "string", required: false, hint: "e.g., 5-7"}
-      - {label: "3-Pointers (made-attempted)", name: "threePt", widget: "string", required: false, hint: "e.g., 3-4"}
-      - {label: "Free Throws (made-attempted)", name: "ft", widget: "string", required: false, hint: "e.g., 1-1"}
-      - {label: "Fouls", name: "fouls", widget: "string", required: false}
-      - {label: "Jersey Worn", name: "jersey", widget: "string", required: false, hint: "The number Kevin wore for this team"}
-      - {label: "Season", name: "season", widget: "string", default: "2026-2027", hint: "e.g., '2026-2027'"}
+      - {label: "Season", name: "season", widget: "string", default: "2024-2025", hint: "e.g., '2024-2025'"}
       - label: "Team Level"
         name: "team"
         widget: "select"
@@ -138,7 +129,6 @@ collections:
           - {label: "Points Per Game (PPG)", name: "ppg", widget: "string", required: false}
           - {label: "Assists Per Game (APG)", name: "apg", widget: "string", required: false}
           - {label: "Rebounds Per Game (RPG)", name: "rpg", widget: "string", required: false}
-          - {label: "Team Record", name: "record", widget: "string", required: false, hint: "e.g., 7-14"}
 
       - label: " Photo Gallery"
         name: "gallery"
@@ -605,77 +595,22 @@ collections:
         hint: "Core information used throughout the site"
         fields:
           - {label: "Full Name", name: "name", widget: "string", default: "Kevin Franz Jr."}
-          - {label: "Class Year", name: "class", widget: "string", default: "2028"}
-          - {label: "Position (short)", name: "position", widget: "string", default: "SG/SF", hint: "Shown in stat strips"}
-          - {label: "Position (long)", name: "positionLong", widget: "string", default: "Guard / Small Forward", hint: "Shown in sentences"}
+          - {label: "Position", name: "position", widget: "string", default: "Guard"}
           - {label: "Height", name: "height", widget: "string"}
-          - {label: "Weight (number only)", name: "weight", widget: "string", hint: "Just the number - the site adds 'lb'"}
-          - {label: "Shooting Hand", name: "hand", widget: "string", default: "Right"}
-          - {label: "Current Jersey Number", name: "jersey", widget: "string", hint: "Used in the nav mark, hero number and footer"}
-          - {label: "Current GPA", name: "gpa", widget: "string", default: "3.85"}
-          - {label: "GPA Type", name: "gpaLabel", widget: "string", default: "unweighted", hint: "unweighted or weighted"}
-          - {label: "Current High School", name: "highSchool", widget: "string", default: "Shawnee Mission West"}
-          - {label: "High School (short)", name: "highSchoolShort", widget: "string", default: "SM West"}
-          - {label: "Former High School", name: "formerHighSchool", widget: "string", required: false, default: "Blue Valley Southwest"}
-          - {label: "Former High School (short)", name: "formerHighSchoolShort", widget: "string", required: false, default: "BVSW"}
-          - {label: "Former High School Years", name: "formerHighSchoolYears", widget: "string", required: false, default: "2024-26"}
-          - {label: "Current Club Team", name: "club", widget: "string", default: "JC Hoops 16U"}
-          - {label: "Club Jersey Number", name: "clubJersey", widget: "string", default: "28"}
+          - {label: "Weight", name: "weight", widget: "string"}
+          - {label: "Class Year", name: "class", widget: "string", default: "2028"}
+          - {label: "Jersey Number", name: "jersey", widget: "string"}
+          - {label: "High School", name: "highSchool", widget: "string"}
           - {label: "City, State", name: "location", widget: "string"}
-          - {label: "Parent/Guardian Name", name: "parentName", widget: "string", default: "Kevin Franz"}
+          - {label: "AAU/Club Team", name: "aauTeam", widget: "string"}
+          - {label: "Current GPA", name: "gpa", widget: "string"}
+          - {label: "Current PPG", name: "ppg", widget: "string"}
+          - {label: "Current APG", name: "apg", widget: "string"}
           - {label: "Parent Email", name: "parentEmail", widget: "string"}
           - {label: "Parent Phone", name: "parentPhone", widget: "string", required: false}
-          - {label: "Instagram Handle", name: "instagramHandle", widget: "string", required: false, default: "@kfranzjr2028"}
-          - {label: "Short Bio", name: "bio", widget: "text", hint: "Third-person paragraph shown in the Profile panel on the home page."}
-          - {label: "Highlight/Camp Video URL", name: "highlightVideo", widget: "string", required: false, hint: "Shown in the sidebar on the Football page and as the Camp Film link on Contact."}
-          - {label: "YouTube Channel URL", name: "youtubeUrl", widget: "string", required: false, hint: "Blank = hidden."}
-          - {label: "Hudl Profile URL", name: "hudlUrl", widget: "string", required: false, hint: "Blank = hidden."}
-          - {label: "Current PPG", name: "ppg", widget: "string", required: false}
-          - {label: "Current APG", name: "apg", widget: "string", required: false}
-
-          - label: "Recruiting Profiles"
-            name: "recruitingProfiles"
-            widget: "list"
-            hint: "Leave a URL blank to hide that profile everywhere. The site never renders a dead link."
-            summary: "{{fields.name}}"
-            fields:
-              - {label: "Profile Name", name: "name", widget: "string", hint: "e.g., NCSA Sports, Prep Hoops, Hudl"}
-              - {label: "Short Description", name: "description", widget: "string"}
-              - {label: "Profile URL", name: "url", widget: "string", required: false, hint: "Blank = hidden. Add the real URL when you have it."}
-
-          - label: "Camp / Archive Film"
-            name: "campFilm"
-            widget: "list"
-            required: false
-            hint: "Older camp mixes, labelled as archive film on the Basketball page - not current highlights."
-            summary: "{{fields.title}}"
-            fields:
-              - {label: "Title", name: "title", widget: "string"}
-              - {label: "Description", name: "description", widget: "string"}
-              - {label: "YouTube Video ID", name: "videoId", widget: "string", hint: "Just the ID, e.g., D99uLbwXy7s"}
-              - {label: "Year", name: "year", widget: "string"}
-
-      - label: "Dual Enrollment / Early College"
-        name: "dualEnrollment"
-        file: "src/_data/dualEnrollment.json"
-        hint: "Shown on the Academics page and in the homepage highlights strip. Do not add grades here - only enrolment facts."
-        fields:
-          - {label: "College Name", name: "college", widget: "string", default: "Johnson County Community College"}
-          - {label: "College Short Name", name: "collegeShort", widget: "string", default: "JCCC"}
-          - {label: "Program Name", name: "program", widget: "string", default: "Real World Learning"}
-          - {label: "School District", name: "district", widget: "string", default: "SMSD"}
-          - {label: "Status Line", name: "status", widget: "string", default: "Full-time college student while finishing high school"}
-          - {label: "Current Term", name: "fallTerm", widget: "string", default: "Fall 2026"}
-          - {label: "Classes This Term", name: "fallClassCount", widget: "string", default: "4"}
-          - {label: "Next Term", name: "springTerm", widget: "string", default: "Spring 2027"}
-          - {label: "Next Term Credit Hours", name: "springCredits", widget: "string", default: "15"}
-          - label: "Next Term Courses"
-            name: "springCourses"
-            widget: "list"
-            summary: "{{fields.code}} - {{fields.name}}"
-            fields:
-              - {label: "Course Code", name: "code", widget: "string", hint: "e.g., MATH 171"}
-              - {label: "Course Title", name: "name", widget: "string", hint: "e.g., College Algebra"}
+          - {label: "Highlight Video URL", name: "highlightVideo", widget: "string", required: false, hint: "YouTube link to highlight reel (shown in sidebar)"}
+          - {label: "YouTube Channel URL", name: "youtubeUrl", widget: "string", required: false, hint: "YouTube channel link (shown in sidebar)"}
+          - {label: "Hudl Profile URL", name: "hudlUrl", widget: "string", required: false, hint: "Hudl profile link (shown in sidebar)"}
 
       - label: "Navigation Menu"
         name: "navigation"
@@ -693,15 +628,13 @@ collections:
       - label: "Footer"
         name: "footer"
         file: "src/_data/footer.json"
-        hint: "The broadcast footer's Recruiting column comes from Recruiting Profiles in the Player Profile above. The links below appear in the older footer used by the Football page."
         fields:
           - {label: "Copyright Text", name: "copyright", widget: "string"}
           - {label: "Contact Email", name: "email", widget: "string"}
           - label: "Footer Links"
             name: "links"
             widget: "list"
-            hint: "Leave a URL blank to hide that link rather than render a dead one."
             summary: "{{fields.text}}"
             fields:
               - {label: "Link Text", name: "text", widget: "string"}
-              - {label: "Link URL", name: "url", widget: "string", required: false}
+              - {label: "Link URL", name: "url", widget: "string"}

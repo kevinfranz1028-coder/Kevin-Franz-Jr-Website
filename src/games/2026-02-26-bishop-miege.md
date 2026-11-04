@@ -1,13 +1,13 @@
 ---
 opponent: Bishop Miege
 date: "2026-02-26T16:00:00.000Z"
+location: BVSW HS (Main Gym)
 homeAway: home
-result: "L 67-70"
-teamScore: "67"
-opponentScore: "70"
-hasStats: false
-jersey: "30"
+time: "4:00 PM"
+result: L 67-70
+points: ""
+rebounds: ""
+assists: ""
 season: 2025-2026
 team: JV
-teamName: "BVSW JV Timberwolves"
 ---

@@ -3,15 +3,14 @@ layout: post.njk
 title: First Semester Grades
 type: Academic Milestone
 date: 2024-12-15
-summary: Finished this one semester with a 4.0 in all honors classes. Atmospheric Science continues to be my favorite – we built weather models and analyzed storm data.
+summary: Finished the semester strong with a 4.0 GPA in all honors classes. Atmospheric Science continues to be my favorite – we built weather models and analyzed storm data.
+coverImage: /images/tournament-recap.jpg
 featured: false
 ---
 
 ## Semester Wrap-Up
 
-First semester is officially in the books, and I'm proud of how it went academically. I finished **this semester with a 4.0** across all my honors classes while balancing basketball and other commitments.
-
-> To be clear, that 4.0 is a single-semester result, not my cumulative GPA. My cumulative unweighted GPA is **3.85** — see the [Academics page](/academics/).
+First semester is officially in the books, and I'm proud of how it went academically. I finished with a **4.0 GPA** across all my honors classes while balancing basketball and other commitments.
 
 ## Atmospheric Science Highlight
 

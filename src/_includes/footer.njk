@@ -7,9 +7,8 @@
             <div class="footer-right">
                 <p>Email: <a href="mailto:{{ footer.email }}">{{ footer.email }}</a></p>
                 <div class="footer-links">
-                    {% set liveLinks = footer.links | hasValue("url") %}
-                    {% for link in liveLinks %}
-                    <a href="{{ link.url }}" target="_blank" rel="noopener">{{ link.text }}</a>
+                    {% for link in footer.links %}
+                    <a href="{{ link.url }}" target="_blank">{{ link.text }}</a>
                     {% if not loop.last %}<span>•</span>{% endif %}
                     {% endfor %}
                 </div>

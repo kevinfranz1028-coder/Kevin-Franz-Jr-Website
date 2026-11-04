@@ -3,13 +3,14 @@ layout: post.njk
 title: Weekend Skills Training
 type: Personal
 date: 2024-12-08
-summary: Two-hour skills session working on ball screens and mid-range pull-ups, then film study on how college guards navigate ball screens.
+summary: Two-hour session with Coach working on ball screens and mid-range pull-ups. Also hit the film room to break down how college guards navigate ball screens.
+coverImage: /images/tournament-recap.jpg
 featured: false
 ---
 
 ## Saturday Skills Session
 
-This weekend I had a two-hour skills session with my trainer. We focused on two main areas:
+This weekend I had a two-hour skills session with my trainer, Coach [Name]. We focused on two main areas:
 
 ### 1. Ball Screen Reads
 

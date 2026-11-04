@@ -1,23 +1,19 @@
 ---
 layout: broadcast.njk
 title: Home
-description: Kevin Franz Jr. — 6'1" / 190 lb SG/SF, Class of 2028 at Shawnee Mission West, club ball with JC Hoops 16U. 3.85 GPA and a full-time college course load at JCCC. Stats, film, academics, and recruiting contact.
+description: Kevin Franz Jr. - 6'1" SG/SF at Shawnee Mission West. Class of 2028. College basketball + atmospheric science.
 active: home
 ---
 
-{%- set current = (seasons.seasons | hasValue("isCurrent")) | first -%}
-{%- set jv = jvSeason -%}
-{%- set recentSeasons = seasons.seasons | limit(5) -%}
-
 {# ===== HERO ===== #}
 <section class="b-hero">
-  <div class="b-hero-jersey-num">{{ player.jersey }}</div>
+  <div class="b-hero-jersey-num">{{ player.jersey or "30" }}</div>
   <div class="b-hero-grid">
     <div class="b-hero-left">
       <div>
         <div class="b-hero-eyebrow">
-          <span>CLASS OF {{ player.class }}</span>
-          <span>{{ player.position }}</span>
+          <span>CLASS OF {{ player.class or "2028" }}</span>
+          <span>SG/SF</span>
           <span>{{ player.location | upper }}</span>
         </div>
         <h1>
@@ -25,38 +21,31 @@ active: home
           <span class="b-stroke">Junior.</span>
         </h1>
         <p class="b-hero-sub">
-          {{ player.height }} / {{ player.weight }} lb {{ player.positionLong | lower }} at {{ player.highSchool }}. Pace, playmaking, and full-court defense &mdash; chasing college basketball and a degree in atmospheric science.
+          {{ player.height }} / {{ player.weight }} lb guard-forward at {{ player.highSchool }}. Pace, playmaking, and full-court defense &mdash; chasing college basketball and a degree in atmospheric science.
         </p>
         <div class="b-hero-cta-row">
           <a href="/basketball/" class="b-btn-primary">View Profile &rarr;</a>
           <a href="/contact/" class="b-btn-ghost">Contact</a>
         </div>
       </div>
-      {% if current %}
-      <div class="b-highlights">
-        <span class="b-highlights-lead">&bull; {{ current.season | upper }}</span>
-        <span><strong>{{ current.ppg }}</strong> PPG</span>
-        <span><strong>{{ current.rpg }}</strong> RPG</span>
-        <span><strong>{{ current.apg }}</strong> APG</span>
-        <span><strong>{{ current.tpPct }}</strong> 3PT</span>
-        <span>{{ current.team }} <strong>{{ current.record }}</strong></span>
-        <span><strong>{{ player.gpa }}</strong> GPA</span>
-        <span>Full-time college student at {{ dualEnrollment.collegeShort }}</span>
+      <div style="display:flex; align-items:center; gap:16px; margin-top:32px; font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.1em; color:var(--b-mute); text-transform:uppercase;">
+        <span style="color:var(--b-green-bright);">&bull; JC HOOPS 16U</span>
+        <span>10-3</span>
+        <span>8.2 PPG</span>
+        <span>5.5 RPG</span>
+        <span>2.8 APG</span>
       </div>
-      {% endif %}
     </div>
     <div class="b-hero-image">
-      <img src="/images/player/medium_Copy_of_618_A3075_2_Enhanced_NR_0a0a68195a.jpg"
-           alt="{{ player.name }} in a game jersey" width="800" height="1000">
+      <img src="/images/player/medium_Copy_of_618_A3075_2_Enhanced_NR_0a0a68195a.jpg" alt="{{ player.name }}">
     </div>
   </div>
-  <div class="b-hero-stat-strip b-hero-stat-strip--7">
+  <div class="b-hero-stat-strip">
     {% set heroStats = [
       ['HT', player.height],
-      ['WT', player.weight + ' lb'],
+      ['WT', player.weight],
       ['POS', player.position],
       ['#', player.jersey],
-      ['SHOOTS', player.hand],
       ['GPA', player.gpa],
       ['CLASS', "'" + (player.class | replace('20','')) ]
     ] %}
@@ -75,19 +64,19 @@ active: home
     <span class="b-section-tag">/01 PILLARS</span>
     <h2 class="b-section-title">Three<br>at once.</h2>
   </div>
-  <a href="/basketball/" class="b-section-cta">VIEW ALL &rarr;</a>
+  <a href="#about" class="b-section-cta">VIEW ALL &rarr;</a>
 </div>
 <section class="b-pillars">
   <div class="b-pillar">
     <div class="b-pillar-tag">/ BASKETBALL</div>
-    <h3>Wing<br>scorer.</h3>
-    <p>#{{ player.jersey }} &mdash; {{ player.positionLong }}. Pace, decisions, on-ball defense.{% if current %} {{ current.season }} with {{ current.team }}: {{ current.ppg }} PPG &middot; {{ current.rpg }} RPG &middot; {{ current.apg }} APG over {{ current.gp }} games.{% endif %}</p>
+    <h3>Guard /<br>forward.</h3>
+    <p>#{{ player.jersey or "28" }} &mdash; Pace, decisions, on-ball defense. JV 2025&ndash;26: 5.6 PPG &middot; 4.0 RPG (1st) &middot; 2.5 APG &middot; 2.18 AST/TO.</p>
     <a href="/basketball/" class="b-pillar-link">Full profile</a>
   </div>
   <div class="b-pillar">
     <div class="b-pillar-tag">/ ACADEMICS</div>
-    <h3>{{ player.gpa }} GPA.</h3>
-    <p>{{ player.gpa }} {{ player.gpaLabel }} GPA with a heavy math and science load at {{ player.highSchool }}. Plan to study meteorology / atmospheric science.</p>
+    <h3>{{ player.gpa or "3.85" }} GPA.</h3>
+    <p>Heavy load in math and science at {{ player.highSchool }}. Plan to study meteorology / atmospheric science.</p>
     <a href="/academics/" class="b-pillar-link">Coursework</a>
   </div>
   <div class="b-pillar">
@@ -98,95 +87,54 @@ active: home
   </div>
 </section>
 
-{# ===== LAST FULL HIGH SCHOOL SEASON (primary stats view) ===== #}
-<div class="b-section-head">
-  <div class="b-section-head-left">
-    <span class="b-section-tag">/02 LAST FULL HS SEASON</span>
-    <h2 class="b-section-title">{{ jv.season }}.</h2>
-  </div>
-  <a href="/basketball/" class="b-section-cta">GAME-BY-GAME &rarr;</a>
-</div>
-<section class="b-season-band">
-  <div>
-    <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:24px; text-transform:uppercase; letter-spacing:-0.01em; color:var(--b-text);">
-      {{ jv.team }} &middot; #{{ jv.jersey }}
-      <span style="font-family:'JetBrains Mono', monospace; font-size:11px; font-weight:400; letter-spacing:0.12em; color:var(--b-mute); margin-left:10px;">FINAL &middot; TEAM {{ jv.record }}</span>
-    </div>
-    <div class="b-season-band-line">
-      <span><strong>{{ jv.totals.gp }}</strong> GP / <strong>{{ jv.totals.gs }}</strong> GS</span>
-      <span><strong>{{ jv.averages.ppg | oneDp }}</strong> PPG</span>
-      <span><strong>{{ jv.averages.rpg | oneDp }}</strong> RPG</span>
-      <span><strong>{{ jv.averages.apg | oneDp }}</strong> APG</span>
-      <span><strong>{{ jv.averages.spg | oneDp }}</strong> SPG</span>
-      <span>FG <strong>{{ jv.averages.fgPct }}%</strong></span>
-      <span>3PT <strong>{{ jv.averages.tpPct }}%</strong></span>
-      <span>FT <strong>{{ jv.averages.ftPct }}%</strong></span>
-    </div>
-    <p style="font-size:13px; color:var(--b-mute); margin:14px 0 0; max-width:620px;">
-      Final season at {{ player.formerHighSchool }} before transferring to {{ player.highSchool }}. Kevin has individual stats in {{ jv.totals.gp }} of the team's {{ jv.gamesTotal }} games.
-    </p>
-  </div>
-  <a href="/basketball/" class="b-btn-primary" style="white-space:nowrap;">Full season &rarr;</a>
-</section>
-
 {# ===== ABOUT — full-bleed image w/ overlay panel ===== #}
-<section id="about" class="b-about" style="position:relative; min-height:660px; overflow:hidden; border-bottom:1px solid var(--b-line);">
-  <img src="/images/banner/large_Copy_of_618_A3237_2_Enhanced_NR_8707ac32b4.jpg"
-       alt="Kevin Franz Jr. driving to the basket during a game"
-       loading="lazy" style="width:100%; height:660px; object-fit:cover;">
+<section id="about" style="position:relative; height:600px; overflow:hidden; border-bottom:1px solid var(--b-line);">
+  <img src="/images/banner/large_Copy_of_618_A3237_2_Enhanced_NR_8707ac32b4.jpg" alt="Kevin in action" style="width:100%; height:100%; object-fit:cover;">
   <div style="position:absolute; inset:0; background:linear-gradient(90deg, var(--b-bg) 0%, rgba(11,13,16,0.7) 40%, transparent 70%);"></div>
-  <div class="b-about-panel" style="position:absolute; top:0; left:0; bottom:0; width:600px; max-width:94%; padding:64px 48px; display:flex; flex-direction:column; justify-content:center;">
-    <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin-bottom:16px;">/03 PROFILE</div>
+  <div style="position:absolute; top:0; left:0; bottom:0; width:560px; max-width:92%; padding:72px 48px; display:flex; flex-direction:column; justify-content:center;">
+    <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin-bottom:16px;">/02 PROFILE</div>
     <h2 style="font-family:'Archivo', sans-serif; font-weight:900; font-size:56px; line-height:0.95; letter-spacing:-0.03em; text-transform:uppercase; margin:0; color:var(--b-text);">
-      A wing who<br>plays the<br>
+      A guard who<br>plays the<br>
       <span style="-webkit-text-stroke:2px var(--b-green-bright); -webkit-text-fill-color:transparent;">right way.</span>
     </h2>
-    <p style="font-size:16px; line-height:1.7; color:var(--b-mute); margin-top:24px; max-width:470px;">
-      {{ player.bio }}
-    </p>
-    <p style="font-size:15px; line-height:1.65; color:var(--b-mute); margin-top:14px; max-width:470px;">
+    <p style="font-size:15px; line-height:1.65; color:var(--b-mute); margin-top:24px; max-width:440px;">
       On the floor I'm a pace-pusher and playmaker &mdash; creating for teammates, defending full court, making the right read under pressure. Off the floor I'm just as serious about the classroom, with weather and atmospheric science driving my long-term goals.
     </p>
-    <div style="border-top:1px solid var(--b-line); padding-top:20px; margin-top:28px; font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:var(--b-text);">
+    <div style="border-top:1px solid var(--b-line); padding-top:20px; margin-top:32px; font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:var(--b-text);">
       &ldquo;Help my team win. Earn the chance to play college ball.&rdquo;
-      <span style="display:block; color:var(--b-mute); font-size:10px; margin-top:8px;">&mdash; KEVIN</span>
     </div>
   </div>
 </section>
 
-{# ===== JOURNEY — most recent tracked seasons ===== #}
+{# ===== TIMELINE PREVIEW (static — full interactive timeline lives at /timeline/) ===== #}
 <div class="b-section-head">
   <div class="b-section-head-left">
-    <span class="b-section-tag">/04 JOURNEY</span>
-    <h2 class="b-section-title">{{ seasons.seasons | length }} tracked<br>seasons.</h2>
+    <span class="b-section-tag">/03 JOURNEY</span>
+    <h2 class="b-section-title">Six years<br>on the floor.</h2>
   </div>
   <a href="/timeline/" class="b-section-cta">FULL TIMELINE &rarr;</a>
 </div>
-<section class="b-pillars b-grid-5" style="padding:1px 0;">
-  {% for s in recentSeasons %}
-    <div class="b-pillar" style="min-height:220px;">
-      <div class="b-pillar-tag">{{ s.season }}{% if s.isCurrent %} &middot; CURRENT{% endif %}</div>
-      <h3 style="font-size:18px;">{{ s.teamShort }}</h3>
-      <p style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.06em; line-height:1.9; color:var(--b-mute);">
-        {% if s.jersey %}#{{ s.jersey }} &middot; {% endif %}{% if s.record != 'n/a' %}{{ s.record }} &middot; {% endif %}{{ s.gp }} GP<br>
-        {{ s.ppg }} PPG &middot; {{ s.rpg }} RPG &middot; {{ s.apg }} APG
-      </p>
-      <a href="/timeline/" class="b-pillar-link">Timeline</a>
+<section class="b-pillars" style="grid-template-columns: repeat(5, 1fr);">
+  {% set timelineItems = collections.timeline | default([]) %}
+  {% for item in timelineItems %}
+    <div class="b-pillar" style="min-height:200px;">
+      <div class="b-pillar-tag">{{ item.data.year }}</div>
+      <h3 style="font-size:18px;">{{ item.data.team or item.data.grade }}</h3>
+      <p>{{ item.data.summary | default('') | truncate(110) }}</p>
     </div>
   {% endfor %}
 </section>
 
 {# ===== RECENT UPDATES ===== #}
-{% set recentUpdates = collections.updates | limit(3) %}
-{% if recentUpdates | length %}
 <div class="b-section-head">
   <div class="b-section-head-left">
-    <span class="b-section-tag">/05 LATEST</span>
+    <span class="b-section-tag">/04 LATEST</span>
     <h2 class="b-section-title">Recent<br>updates.</h2>
   </div>
   <a href="/updates/" class="b-section-cta">ALL UPDATES &rarr;</a>
 </div>
 <section class="b-pillars">
+  {% set recentUpdates = collections.updates | reverse | limit(3) %}
   {% for post in recentUpdates %}
     <div class="b-pillar">
       <div class="b-pillar-tag">{{ post.data.type or 'UPDATE' }}</div>
@@ -199,28 +147,27 @@ active: home
     </div>
   {% endfor %}
 </section>
-{% endif %}
 
 {# ===== CTA / CONTACT ===== #}
 <section style="padding:80px 48px; background:var(--b-bg); border-bottom:1px solid var(--b-line);">
-  <div class="b-split" style="gap:64px; align-items:center;">
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;">
     <div>
-      <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin-bottom:16px;">/06 CONTACT</div>
+      <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin-bottom:16px;">/05 CONTACT</div>
       <h2 style="font-family:'Archivo', sans-serif; font-weight:900; font-size:64px; line-height:0.95; text-transform:uppercase; letter-spacing:-0.03em; margin:0;">
         For<br>coaches.
       </h2>
       <p style="font-size:16px; color:var(--b-mute); margin-top:24px; max-width:440px;">
-        Stats, film, and recruiting profiles live on the Basketball page. For direct inquiries, reach {{ player.parentName }} below.
+        Highlights, stats, and full recruiting profiles live on the Basketball page. For direct inquiries, reach the family below.
       </p>
     </div>
     <div style="display:flex; flex-direction:column; gap:12px;">
       <a href="mailto:{{ player.parentEmail }}" style="display:flex; justify-content:space-between; padding:24px 28px; background:var(--b-green); color:white; text-decoration:none; align-items:center; clip-path:polygon(2% 0, 100% 0, 98% 100%, 0% 100%);">
         <div>
-          <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; opacity:0.75; margin-bottom:6px;">EMAIL &rarr;</div>
-          <div style="font-family:'Archivo', sans-serif; font-weight:800; font-size:20px; word-break:break-word;">{{ player.parentEmail }}</div>
+          <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; opacity:0.7; margin-bottom:6px;">EMAIL &rarr;</div>
+          <div style="font-family:'Archivo', sans-serif; font-weight:800; font-size:22px;">{{ player.parentEmail }}</div>
         </div>
       </a>
-      <a href="tel:{{ player.parentPhone | replace('-','') }}" style="display:flex; justify-content:space-between; padding:24px 28px; background:var(--b-bg-2); border:1px solid var(--b-line); color:var(--b-text); text-decoration:none; align-items:center;">
+      <a href="tel:{{ player.parentPhone }}" style="display:flex; justify-content:space-between; padding:24px 28px; background:var(--b-bg-2); border:1px solid var(--b-line); color:var(--b-text); text-decoration:none; align-items:center;">
         <div>
           <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--b-mute); margin-bottom:6px;">PHONE &rarr;</div>
           <div style="font-family:'Archivo', sans-serif; font-weight:800; font-size:22px;">{{ player.parentPhone }}</div>

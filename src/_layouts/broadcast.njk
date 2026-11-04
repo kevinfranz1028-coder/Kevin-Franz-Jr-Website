@@ -3,72 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  {%- set siteUrl = "https://kevinfranzjr.com" -%}
-  {%- set defaultDesc = "Kevin Franz Jr. — Class of 2028 " + player.position + ", " + player.height + " / " + player.weight + " lbs, " + player.highSchool + " and " + player.club + ". " + player.gpa + " GPA and full-time college credit at " + dualEnrollment.collegeShort + ". Stats, film, academics, and recruiting contact." -%}
-  {%- set metaDesc = description or defaultDesc -%}
-  {%- set pageTitle = (title + " — " if title) + "Kevin Franz Jr. | " + player.class + " " + player.position -%}
-  {%- set canonical = siteUrl + (canonicalPath or page.url) -%}
-  {%- set ogImage = siteUrl + (socialImage or "/images/banner/large_Copy_of_618_A3075_2_Enhanced_NR_0a0a68195a.jpg") -%}
-
-  <title>{{ pageTitle }}</title>
-  <meta name="description" content="{{ metaDesc }}">
-  <link rel="canonical" href="{{ canonical }}">
-
-  {# Open Graph #}
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Kevin Franz Jr.">
-  <meta property="og:title" content="{{ pageTitle }}">
-  <meta property="og:description" content="{{ metaDesc }}">
-  <meta property="og:url" content="{{ canonical }}">
-  <meta property="og:image" content="{{ ogImage }}">
-  <meta property="og:image:alt" content="Kevin Franz Jr., class of {{ player.class }} {{ player.position }}">
-
-  {# Twitter / X #}
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{{ pageTitle }}">
-  <meta name="twitter:description" content="{{ metaDesc }}">
-  <meta name="twitter:image" content="{{ ogImage }}">
-
-  <meta name="theme-color" content="#0B0D10">
-  <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="/images/player/medium_Copy_of_618_A3075_2_Enhanced_NR_0a0a68195a.jpg">
-
+  <title>{% if title %}{{ title }} &mdash; {% endif %}Kevin Franz Jr.</title>
+  <meta name="description" content="{{ description or 'Kevin Franz Jr. - Class of 2028 Guard & Student-Athlete. Basketball profile, academics, and recruiting information.' }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=Archivo:wght@400;500;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/broadcast.css">
-
-  {# Person structured data — only links that actually exist #}
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "{{ player.name }}",
-    "url": "{{ siteUrl }}/",
-    "image": "{{ ogImage }}",
-    "description": "Class of {{ player.class }} {{ player.positionLong }} at {{ player.highSchool }}; club basketball with {{ player.club }}.",
-    "height": "{{ player.height }}",
-    "homeLocation": { "@type": "Place", "name": "{{ player.location }}" },
-    "affiliation": [
-      { "@type": "HighSchool", "name": "{{ player.highSchool }}" },
-      { "@type": "SportsTeam", "name": "{{ player.club }}" }
-    ],
-    "sameAs": [
-      {%- set liveProfiles = player.recruitingProfiles | hasValue("url") -%}
-      {%- for p in liveProfiles %}"{{ p.url }}"{% if not loop.last %},{% endif %}{% endfor %}
-    ]
-  }
-  </script>
 </head>
 <body>
   <div class="b-root">
     {% include "b-nav.njk" %}
-    <main id="main">
-      {{ content | safe }}
-    </main>
+    {{ content | safe }}
     {% include "b-footer.njk" %}
   </div>
-  <script src="/js/b-nav.js" defer></script>
 </body>
 </html>

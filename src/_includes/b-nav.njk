@@ -1,32 +1,20 @@
 {% set active = active or "home" %}
-<a class="b-skip-link" href="#main">Skip to content</a>
-<nav class="b-nav" aria-label="Main">
-  <div class="b-nav-left">
-    <a href="/" class="b-nav-brand" aria-label="Kevin Franz Jr. — home">
-      <div class="b-nav-mark">{{ player.jersey }}</div>
+<nav class="b-nav">
+  <div style="display:flex; align-items:center;">
+    <div class="b-nav-brand">
+      <div class="b-nav-mark">{{ player.jersey or "28" }}</div>
       <span>FRANZ JR</span>
-    </a>
-    <div class="b-nav-live">CLASS OF {{ player.class }} &middot; {{ player.club | upper }}</div>
+    </div>
+    <div class="b-nav-live">2025–26 SEASON</div>
   </div>
-
-  <button class="b-nav-toggle" type="button" aria-expanded="false" aria-controls="b-nav-links" aria-label="Open menu">
-    <span class="b-nav-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
-    <span class="b-nav-toggle-text">Menu</span>
-  </button>
-
-  <div class="b-nav-links" id="b-nav-links">
-    <a href="/" class="{% if active == 'home' %}active{% endif %}"{% if active == 'home' %} aria-current="page"{% endif %}>Home</a>
-    <a href="/basketball/" class="{% if active == 'basketball' %}active{% endif %}"{% if active == 'basketball' %} aria-current="page"{% endif %}>Basketball</a>
-    <a href="/football/" class="{% if active == 'football' %}active{% endif %}"{% if active == 'football' %} aria-current="page"{% endif %}>Football</a>
-    <a href="/timeline/" class="{% if active == 'timeline' %}active{% endif %}"{% if active == 'timeline' %} aria-current="page"{% endif %}>Timeline</a>
-    <a href="/academics/" class="{% if active == 'academics' %}active{% endif %}"{% if active == 'academics' %} aria-current="page"{% endif %}>Academics</a>
-    <a href="/projects/" class="{% if active == 'projects' %}active{% endif %}"{% if active == 'projects' %} aria-current="page"{% endif %}>Projects</a>
-    <a href="/character/" class="{% if active == 'character' %}active{% endif %}"{% if active == 'character' %} aria-current="page"{% endif %}>Character</a>
-    <a href="/media/" class="{% if active == 'media' %}active{% endif %}"{% if active == 'media' %} aria-current="page"{% endif %}>Media</a>
-    <a href="/updates/" class="{% if active == 'updates' %}active{% endif %}"{% if active == 'updates' %} aria-current="page"{% endif %}>Updates</a>
-    <a href="/contact/" class="{% if active == 'contact' %}active{% endif %}"{% if active == 'contact' %} aria-current="page"{% endif %}>Contact</a>
-    <a href="/contact/" class="b-nav-cta b-nav-cta-inline">Recruiting</a>
+  <div class="b-nav-links">
+    <a href="/" class="{% if active == 'home' %}active{% endif %}">Home</a>
+    <a href="/basketball/" class="{% if active == 'basketball' %}active{% endif %}">Basketball</a>
+    <a href="/academics/" class="{% if active == 'academics' %}active{% endif %}">Academics</a>
+    <a href="/projects/" class="{% if active == 'projects' %}active{% endif %}">Projects</a>
+    <a href="/character/" class="{% if active == 'character' %}active{% endif %}">Character</a>
+    <a href="/media/" class="{% if active == 'media' %}active{% endif %}">Media</a>
+    <a href="/contact/" class="{% if active == 'contact' %}active{% endif %}">Contact</a>
   </div>
-
   <a href="/contact/" class="b-nav-cta">Recruiting</a>
 </nav>

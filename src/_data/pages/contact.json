@@ -4,23 +4,15 @@
   "subheading": "Questions about recruiting, academics, or scheduling a call? Reach out below.",
   "quickLinks": [
     {
-      "text": "NCSA Sports profile",
-      "url": "https://recruit-match.ncsasports.org/clientrms/athlete_profiles/11606795"
+      "text": "Highlight Video (YouTube)",
+      "url": "https://youtu.be/D99uLbwXy7s"
     },
     {
-      "text": "RecruitLook profile",
-      "url": "https://recruitlook.com/profile/20035511-74e5-481c-b21a-0e259f3a772e"
+      "text": "Hudl Profile",
+      "url": "#"
     },
     {
-      "text": "FieldLevel profile",
-      "url": "https://www.fieldlevel.com/app/profile/kevin.franzjr/basketballmen"
-    },
-    {
-      "text": "Instagram @kfranzjr2028",
-      "url": "https://instagram.com/kfranzjr2028"
-    },
-    {
-      "text": "Academic summary (PDF)",
+      "text": "Download Academic Resume",
       "url": "/files/academic-resume.pdf"
     },
     {
@@ -28,6 +20,16 @@
       "url": "mailto:kevinfranz1028@gmail.com"
     }
   ],
-  "coaches": [],
-  "coachesNote": "Coach references at Shawnee Mission West and JC Hoops are available on request — email or text the family and we will put you in touch."
+  "coaches": [
+    {
+      "title": "Blue Valley Southwest Varsity Coach",
+      "name": "RJ Palmgren",
+      "email": "[coach@email.com]"
+    },
+    {
+      "title": "AAU Coach",
+      "name": "[Coach Name]",
+      "email": "[coach@email.com]"
+    }
+  ]
 }

@@ -1,86 +1,19 @@
 {
   "name": "Kevin Franz Jr.",
-  "class": "2028",
   "height": "6'1\"",
   "weight": "190",
   "position": "SG/SF",
-  "positionLong": "Guard / Small Forward",
-  "hand": "Right",
   "jersey": "28",
+  "class": "2028",
   "gpa": "3.85",
-  "gpaLabel": "unweighted",
   "highSchool": "Shawnee Mission West",
-  "highSchoolShort": "SM West",
-  "formerHighSchool": "Blue Valley Southwest",
-  "formerHighSchoolShort": "BVSW",
-  "formerHighSchoolYears": "2024-26",
-  "club": "JC Hoops 16U",
-  "clubJersey": "28",
+  "aauTeam": "JC Hoops 16U",
   "location": "Overland Park, KS",
-  "parentName": "Kevin Franz",
   "parentEmail": "kevinfranz1028@gmail.com",
   "parentPhone": "913-396-3717",
-  "instagramHandle": "@kfranzjr2028",
-  "bio": "Kevin Franz Jr. is a 6'1\", 190 lb guard/small forward in the Class of 2028 at Shawnee Mission West (Overland Park, KS) and plays club ball for JC Hoops 16U. He carries a 3.85 GPA while taking a full-time college course load at Johnson County Community College (JCCC) through SMSD's Real World Learning program, earning college credit while he finishes high school.",
   "highlightVideo": "https://youtu.be/D99uLbwXy7s",
   "youtubeUrl": "",
   "hudlUrl": "",
   "ppg": "8.2",
-  "apg": "2.8",
-  "recruitingProfiles": [
-    {
-      "name": "NCSA Sports",
-      "description": "Full recruiting profile",
-      "url": "https://recruit-match.ncsasports.org/clientrms/athlete_profiles/11606795"
-    },
-    {
-      "name": "RecruitLook",
-      "description": "Verified athlete profile",
-      "url": "https://recruitlook.com/profile/20035511-74e5-481c-b21a-0e259f3a772e"
-    },
-    {
-      "name": "FieldLevel",
-      "description": "Coach-to-coach recruiting network",
-      "url": "https://www.fieldlevel.com/app/profile/kevin.franzjr/basketballmen"
-    },
-    {
-      "name": "Instagram",
-      "description": "@kfranzjr2028",
-      "url": "https://instagram.com/kfranzjr2028"
-    },
-    {
-      "name": "Prep Hoops",
-      "description": "Player profile",
-      "url": ""
-    },
-    {
-      "name": "Scorability",
-      "description": "Recruiting profile",
-      "url": ""
-    },
-    {
-      "name": "Sports Passports",
-      "description": "Tournament history and stats",
-      "url": ""
-    },
-    {
-      "name": "Hudl",
-      "description": "Game film and tagged plays",
-      "url": ""
-    }
-  ],
-  "campFilm": [
-    {
-      "title": "Summer 2023 Phenom Camp Mix",
-      "description": "Los Angeles, CA — national camp circuit",
-      "videoId": "D99uLbwXy7s",
-      "year": "2023"
-    },
-    {
-      "title": "Summer 2022 Phenom Camp Mix",
-      "description": "San Diego, CA — first national camp appearance",
-      "videoId": "rSJUcL_66c0",
-      "year": "2022"
-    }
-  ]
+  "apg": "2.8"
 }
