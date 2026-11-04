@@ -6,15 +6,16 @@ permalink: /media/
 active: media
 ---
 
-{# Featured work links to the actual Instagram posts rather than pairing a
-   client-work caption with an unrelated photo. Site images of Kevin are
-   decorative here and are not presented as his own photography. #}
+{# Gallery tiles link to the real Instagram posts. The tile images are photos
+   from the site's own library, used as artwork for each link — the posted work
+   itself lives behind the link, which is what the caption describes. #}
 {% set work = [
-  { title: 'Game of the Year',          description: 'SMS @ #2 Olathe North — won by one point. Sideline and game action.', link: 'https://www.instagram.com/p/DUUnO6KFcn4/' },
-  { title: 'College Football',          description: "Pitt State vs. Northwest Missouri State at Children's Mercy Park.", link: 'https://www.instagram.com/p/DRGhD85kX-D/' },
-  { title: 'Recruiting Shoot',          description: 'Portrait and action session with BVSW kicker Rhys Poggio.',        link: 'https://www.instagram.com/p/DT1OV26kX_X/' },
-  { title: 'Rivalry Coverage',          description: 'BVSW vs. BVNW, January 2026 — full rivalry coverage.',              link: 'https://www.instagram.com/p/DUcWRSfFbue/' },
-  { title: 'College Hoops · MNU',       description: 'MidAmerica Nazarene University game coverage.',                     link: 'https://www.instagram.com/p/DUMv8G0keqv/' }
+  { title: 'Game of the Year',          description: 'SMS @ #2 Olathe North — won by one point. Sideline and game action.', img: '/images/banner/large_Copy_of_618_A3237_2_Enhanced_NR_8707ac32b4.jpg', link: 'https://www.instagram.com/p/DUUnO6KFcn4/' },
+  { title: 'College Football',          description: "Pitt State vs. Northwest Missouri State at Children's Mercy Park.", img: '/images/banner/large_Copy_of_655_A7902_Enhanced_NR_742d9cd3fb.jpg', link: 'https://www.instagram.com/p/DRGhD85kX-D/' },
+  { title: 'Recruiting Shoot',          description: 'Portrait and action session with BVSW kicker Rhys Poggio.',        img: '/images/banner/large_Kevin_Jr_Layup_Black_and_White_Game_be9d381555.JPG', link: 'https://www.instagram.com/p/DT1OV26kX_X/' },
+  { title: 'Local Youth Basketball',    description: "Morse's Lady Sharpshooters — youth hoops coverage.",                img: '/images/banner/large_Copy_of_655_A7945_Enhanced_NR_38a7db1e08.jpg', link: 'https://www.instagram.com/p/DUOySXPEbC7/' },
+  { title: 'Rivalry Coverage',          description: 'BVSW vs. BVNW, January 2026 — full rivalry coverage.',              img: '/images/banner/large_Copy_of_618_A3075_2_Enhanced_NR_0a0a68195a.jpg', link: 'https://www.instagram.com/p/DUcWRSfFbue/' },
+  { title: 'College Hoops · MNU',       description: 'MidAmerica Nazarene University game coverage.',                     img: '/images/banner/large_Kevin_Jr_Blocked_Shot_Black_and_White_Game_0761755000.JPG', link: 'https://www.instagram.com/p/DUMv8G0keqv/' }
 ] %}
 
 {# ===== HERO — viewfinder ===== #}
@@ -78,15 +79,22 @@ active: media
   </div>
   <a href="https://instagram.com/shots_by_franz" target="_blank" rel="noopener" class="b-section-cta">FULL FEED &rarr;</a>
 </div>
-<section class="b-grid b-grid-2 b-grid-bordered">
+<section style="padding:0 48px 8px; background:var(--b-bg);">
+  <p style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.08em; line-height:1.7; color:var(--b-mute); text-transform:uppercase; margin:0 0 20px; max-width:760px;">
+    Tile images are photographs from this site's library. Each tile links to the Instagram post containing the actual work described.
+  </p>
+</section>
+<section class="b-grid b-grid-3 b-grid-bordered">
   {% for g in work %}
-    <a href="{{ g.link }}" target="_blank" rel="noopener" style="background:var(--b-bg); padding:30px 32px; text-decoration:none; color:var(--b-text); display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:24px;">
-      <div>
-        <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin-bottom:10px;">FRAME / {% if loop.index < 10 %}0{% endif %}{{ loop.index }}</div>
-        <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:22px; color:var(--b-text); text-transform:uppercase; letter-spacing:-0.01em;">{{ g.title }}</div>
-        <div style="font-size:13px; color:var(--b-mute); margin-top:6px; line-height:1.55;">{{ g.description }}</div>
+    <a href="{{ g.link }}" target="_blank" rel="noopener" style="background:var(--b-bg); text-decoration:none; color:inherit; display:block; position:relative; overflow:hidden; aspect-ratio:4/5;">
+      <img src="{{ g.img }}" alt="" loading="lazy" style="width:100%; height:100%; object-fit:cover;">
+      <div style="position:absolute; inset:0; background:linear-gradient(180deg, transparent 35%, rgba(11,13,16,0.94) 100%);"></div>
+      <div style="position:absolute; left:22px; right:22px; bottom:22px;">
+        <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin-bottom:8px;">FRAME / {% if loop.index < 10 %}0{% endif %}{{ loop.index }}</div>
+        <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:21px; color:var(--b-text); text-transform:uppercase; letter-spacing:-0.01em; line-height:1.1;">{{ g.title }}</div>
+        <div style="font-size:13px; color:var(--b-mute); margin-top:6px; line-height:1.5;">{{ g.description }}</div>
+        <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.12em; color:var(--b-green-bright); text-transform:uppercase; margin-top:10px;">VIEW POST &rarr;</div>
       </div>
-      <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.12em; color:var(--b-green-bright); text-transform:uppercase; white-space:nowrap;">VIEW POST &rarr;</div>
     </a>
   {% endfor %}
 </section>

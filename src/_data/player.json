@@ -22,6 +22,11 @@
   "parentPhone": "913-396-3717",
   "instagramHandle": "@kfranzjr2028",
   "bio": "Kevin Franz Jr. is a 6'1\", 190 lb guard/small forward in the Class of 2028 at Shawnee Mission West (Overland Park, KS) and plays club ball for JC Hoops 16U. He carries a 3.85 GPA while taking a full-time college course load at Johnson County Community College (JCCC) through SMSD's Real World Learning program, earning college credit while he finishes high school.",
+  "highlightVideo": "https://youtu.be/D99uLbwXy7s",
+  "youtubeUrl": "",
+  "hudlUrl": "",
+  "ppg": "8.2",
+  "apg": "2.8",
   "recruitingProfiles": [
     {
       "name": "NCSA Sports",
@@ -51,6 +56,11 @@
     {
       "name": "Scorability",
       "description": "Recruiting profile",
+      "url": ""
+    },
+    {
+      "name": "Sports Passports",
+      "description": "Tournament history and stats",
       "url": ""
     },
     {

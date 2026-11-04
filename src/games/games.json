@@ -1,4 +1,4 @@
 {
-  "permalink": false,
+  "layout": "game.njk",
   "eleventyExcludeFromCollections": false
 }

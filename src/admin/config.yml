@@ -627,6 +627,11 @@ collections:
           - {label: "Parent Phone", name: "parentPhone", widget: "string", required: false}
           - {label: "Instagram Handle", name: "instagramHandle", widget: "string", required: false, default: "@kfranzjr2028"}
           - {label: "Short Bio", name: "bio", widget: "text", hint: "Third-person paragraph shown in the Profile panel on the home page."}
+          - {label: "Highlight/Camp Video URL", name: "highlightVideo", widget: "string", required: false, hint: "Shown in the sidebar on the Football page and as the Camp Film link on Contact."}
+          - {label: "YouTube Channel URL", name: "youtubeUrl", widget: "string", required: false, hint: "Blank = hidden."}
+          - {label: "Hudl Profile URL", name: "hudlUrl", widget: "string", required: false, hint: "Blank = hidden."}
+          - {label: "Current PPG", name: "ppg", widget: "string", required: false}
+          - {label: "Current APG", name: "apg", widget: "string", required: false}
 
           - label: "Recruiting Profiles"
             name: "recruitingProfiles"
@@ -688,7 +693,15 @@ collections:
       - label: "Footer"
         name: "footer"
         file: "src/_data/footer.json"
-        hint: "The footer's Recruiting column is generated from Recruiting Profiles in the Player Profile above."
+        hint: "The broadcast footer's Recruiting column comes from Recruiting Profiles in the Player Profile above. The links below appear in the older footer used by the Football page."
         fields:
           - {label: "Copyright Text", name: "copyright", widget: "string"}
           - {label: "Contact Email", name: "email", widget: "string"}
+          - label: "Footer Links"
+            name: "links"
+            widget: "list"
+            hint: "Leave a URL blank to hide that link rather than render a dead one."
+            summary: "{{fields.text}}"
+            fields:
+              - {label: "Link Text", name: "text", widget: "string"}
+              - {label: "Link URL", name: "url", widget: "string", required: false}

@@ -85,6 +85,16 @@ active: contact
       <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.12em; color:var(--b-green-bright); text-transform:uppercase; white-space:nowrap;">VIEW &rarr;</div>
     </a>
   {% endfor %}
+  {% if player.campFilm | length %}
+  {% set film = player.campFilm | first %}
+  <a href="https://www.youtube.com/watch?v={{ film.videoId }}" target="_blank" rel="noopener" style="background:var(--b-bg); padding:28px 32px; text-decoration:none; color:var(--b-text); display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:24px;">
+    <div>
+      <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:20px; color:var(--b-text); text-transform:uppercase; letter-spacing:-0.01em;">Camp Film</div>
+      <div style="font-size:13px; color:var(--b-mute); margin-top:6px;">{{ film.title }} &mdash; archive, not current highlights</div>
+    </div>
+    <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.12em; color:var(--b-green-bright); text-transform:uppercase; white-space:nowrap;">YOUTUBE &rarr;</div>
+  </a>
+  {% endif %}
   <a href="/files/academic-resume.pdf" style="background:var(--b-bg); padding:28px 32px; text-decoration:none; color:var(--b-text); display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:24px;">
     <div>
       <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:20px; color:var(--b-text); text-transform:uppercase; letter-spacing:-0.01em;">Academic Summary</div>
