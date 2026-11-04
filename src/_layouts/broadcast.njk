@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   {%- set siteUrl = "https://kevinfranzjr.com" -%}
-  {%- set defaultDesc = "Kevin Franz Jr. — Class of 2028 " + player.position + ", " + player.height + " / " + player.weight + " lbs, " + player.highSchool + " and " + player.club + ". Stats, film, academics, and recruiting contact." -%}
+  {%- set defaultDesc = "Kevin Franz Jr. — Class of 2028 " + player.position + ", " + player.height + " / " + player.weight + " lbs, " + player.highSchool + " and " + player.club + ". " + player.gpa + " GPA and full-time college credit at " + dualEnrollment.collegeShort + ". Stats, film, academics, and recruiting contact." -%}
   {%- set metaDesc = description or defaultDesc -%}
   {%- set pageTitle = (title + " — " if title) + "Kevin Franz Jr. | " + player.class + " " + player.position -%}
   {%- set canonical = siteUrl + (canonicalPath or page.url) -%}

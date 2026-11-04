@@ -24,7 +24,7 @@ JC Hoops 16U is **10-3** through 13 games. My line so far:
 - **2.8 assists** per game
 - **46%** from the field, **38%** from three
 
-Those are my best shooting numbers in a tracked season, and the rebounding is up a lot from last winter. Playing more on the wing has given me cleaner looks and better angles to the glass.
+Shooting 46/38 is a big jump from the 39/32 I shot in the BVSW JV season last winter, and the rebounding is up a lot too. Playing more on the wing has given me cleaner looks and better angles to the glass.
 
 ## Last winter, for the record
 

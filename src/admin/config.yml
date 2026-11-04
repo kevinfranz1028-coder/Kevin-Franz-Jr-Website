@@ -626,6 +626,7 @@ collections:
           - {label: "Parent Email", name: "parentEmail", widget: "string"}
           - {label: "Parent Phone", name: "parentPhone", widget: "string", required: false}
           - {label: "Instagram Handle", name: "instagramHandle", widget: "string", required: false, default: "@kfranzjr2028"}
+          - {label: "Short Bio", name: "bio", widget: "text", hint: "Third-person paragraph shown in the Profile panel on the home page."}
 
           - label: "Recruiting Profiles"
             name: "recruitingProfiles"
@@ -648,6 +649,28 @@ collections:
               - {label: "Description", name: "description", widget: "string"}
               - {label: "YouTube Video ID", name: "videoId", widget: "string", hint: "Just the ID, e.g., D99uLbwXy7s"}
               - {label: "Year", name: "year", widget: "string"}
+
+      - label: "Dual Enrollment / Early College"
+        name: "dualEnrollment"
+        file: "src/_data/dualEnrollment.json"
+        hint: "Shown on the Academics page and in the homepage highlights strip. Do not add grades here - only enrolment facts."
+        fields:
+          - {label: "College Name", name: "college", widget: "string", default: "Johnson County Community College"}
+          - {label: "College Short Name", name: "collegeShort", widget: "string", default: "JCCC"}
+          - {label: "Program Name", name: "program", widget: "string", default: "Real World Learning"}
+          - {label: "School District", name: "district", widget: "string", default: "SMSD"}
+          - {label: "Status Line", name: "status", widget: "string", default: "Full-time college student while finishing high school"}
+          - {label: "Current Term", name: "fallTerm", widget: "string", default: "Fall 2026"}
+          - {label: "Classes This Term", name: "fallClassCount", widget: "string", default: "4"}
+          - {label: "Next Term", name: "springTerm", widget: "string", default: "Spring 2027"}
+          - {label: "Next Term Credit Hours", name: "springCredits", widget: "string", default: "15"}
+          - label: "Next Term Courses"
+            name: "springCourses"
+            widget: "list"
+            summary: "{{fields.code}} - {{fields.name}}"
+            fields:
+              - {label: "Course Code", name: "code", widget: "string", hint: "e.g., MATH 171"}
+              - {label: "Course Title", name: "name", widget: "string", hint: "e.g., College Algebra"}
 
       - label: "Navigation Menu"
         name: "navigation"

@@ -1,0 +1,18 @@
+{
+  "college": "Johnson County Community College",
+  "collegeShort": "JCCC",
+  "program": "Real World Learning",
+  "district": "SMSD",
+  "status": "Full-time college student while finishing high school",
+  "fallTerm": "Fall 2026",
+  "fallClassCount": "4",
+  "springTerm": "Spring 2027",
+  "springCredits": "15",
+  "springCourses": [
+    { "code": "MATH 171", "name": "College Algebra" },
+    { "code": "ENGL 122", "name": "Composition II" },
+    { "code": "JOUR 120", "name": "Mass Media & Society" },
+    { "code": "BUS 123",  "name": "Personal Finance" },
+    { "code": "COMS 121", "name": "Public Speaking" }
+  ]
+}

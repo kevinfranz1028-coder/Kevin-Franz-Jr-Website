@@ -1,7 +1,7 @@
 ---
 layout: broadcast.njk
 title: Home
-description: Kevin Franz Jr. — 6'1" / 190 lb SG/SF, Class of 2028 at Shawnee Mission West, club ball with JC Hoops 16U. Stats, film, academics, and recruiting contact.
+description: Kevin Franz Jr. — 6'1" / 190 lb SG/SF, Class of 2028 at Shawnee Mission West, club ball with JC Hoops 16U. 3.85 GPA and a full-time college course load at JCCC. Stats, film, academics, and recruiting contact.
 active: home
 ---
 
@@ -33,13 +33,15 @@ active: home
         </div>
       </div>
       {% if current %}
-      <div style="display:flex; flex-wrap:wrap; align-items:center; gap:10px 16px; margin-top:32px; font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.1em; color:var(--b-mute); text-transform:uppercase;">
-        <span style="color:var(--b-green-bright);">&bull; {{ current.team }} &middot; {{ current.season }}</span>
-        <span>{{ current.record }}</span>
-        <span>{{ current.gp }} GP / {{ current.gs }} GS</span>
-        <span>{{ current.ppg }} PPG</span>
-        <span>{{ current.rpg }} RPG</span>
-        <span>{{ current.apg }} APG</span>
+      <div class="b-highlights">
+        <span class="b-highlights-lead">&bull; {{ current.season | upper }}</span>
+        <span><strong>{{ current.ppg }}</strong> PPG</span>
+        <span><strong>{{ current.rpg }}</strong> RPG</span>
+        <span><strong>{{ current.apg }}</strong> APG</span>
+        <span><strong>{{ current.tpPct }}</strong> 3PT</span>
+        <span>{{ current.team }} <strong>{{ current.record }}</strong></span>
+        <span><strong>{{ player.gpa }}</strong> GPA</span>
+        <span>Full-time college student at {{ dualEnrollment.collegeShort }}</span>
       </div>
       {% endif %}
     </div>
@@ -128,22 +130,23 @@ active: home
 </section>
 
 {# ===== ABOUT — full-bleed image w/ overlay panel ===== #}
-<section id="about" style="position:relative; min-height:600px; overflow:hidden; border-bottom:1px solid var(--b-line);">
+<section id="about" class="b-about" style="position:relative; min-height:660px; overflow:hidden; border-bottom:1px solid var(--b-line);">
   <img src="/images/banner/large_Copy_of_618_A3237_2_Enhanced_NR_8707ac32b4.jpg"
        alt="Kevin Franz Jr. driving to the basket during a game"
-       loading="lazy" style="width:100%; height:600px; object-fit:cover;">
+       loading="lazy" style="width:100%; height:660px; object-fit:cover;">
   <div style="position:absolute; inset:0; background:linear-gradient(90deg, var(--b-bg) 0%, rgba(11,13,16,0.7) 40%, transparent 70%);"></div>
-  <div style="position:absolute; top:0; left:0; bottom:0; width:560px; max-width:92%; padding:72px 48px; display:flex; flex-direction:column; justify-content:center;">
+  <div class="b-about-panel" style="position:absolute; top:0; left:0; bottom:0; width:600px; max-width:94%; padding:64px 48px; display:flex; flex-direction:column; justify-content:center;">
     <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin-bottom:16px;">/03 PROFILE</div>
     <h2 style="font-family:'Archivo', sans-serif; font-weight:900; font-size:56px; line-height:0.95; letter-spacing:-0.03em; text-transform:uppercase; margin:0; color:var(--b-text);">
       A wing who<br>plays the<br>
       <span style="-webkit-text-stroke:2px var(--b-green-bright); -webkit-text-fill-color:transparent;">right way.</span>
     </h2>
-    <p style="font-size:15px; line-height:1.65; color:var(--b-mute); margin-top:24px; max-width:440px;">
-      On the floor I'm a pace-pusher and playmaker &mdash; creating for teammates, defending full court, making the right read under pressure. Off the floor I'm just as serious about the classroom, with weather and atmospheric science driving my long-term goals.
+    <p style="font-size:16px; line-height:1.7; color:var(--b-mute); margin-top:24px; max-width:470px;">
+      {{ player.bio }}
     </p>
-    <div style="border-top:1px solid var(--b-line); padding-top:20px; margin-top:32px; font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:var(--b-text);">
+    <div style="border-top:1px solid var(--b-line); padding-top:20px; margin-top:28px; font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:var(--b-text);">
       &ldquo;Help my team win. Earn the chance to play college ball.&rdquo;
+      <span style="display:block; color:var(--b-mute); font-size:10px; margin-top:8px;">&mdash; KEVIN</span>
     </div>
   </div>
 </section>

@@ -1,7 +1,7 @@
 ---
 layout: broadcast.njk
 title: Academics
-description: Academic profile for Kevin Franz Jr. — 3.85 unweighted GPA, honors and AP coursework, and a meteorology / atmospheric science track for the Class of 2028.
+description: Academic profile for Kevin Franz Jr. — 3.85 unweighted GPA, a full-time college course load at Johnson County Community College through SMSD Real World Learning, honors and AP coursework, and a meteorology track for the Class of 2028.
 permalink: /academics/
 active: academics
 ---
@@ -34,8 +34,8 @@ active: academics
         Student.<br>
         <span style="-webkit-text-stroke:2px var(--b-green-bright); -webkit-text-fill-color:transparent;">First.</span>
       </h1>
-      <p style="font-family:'JetBrains Mono', monospace; font-size:13px; letter-spacing:0.06em; color:var(--b-mute); margin-top:32px; max-width:460px; line-height:1.7; text-transform:uppercase;">
-        {{ player.gpa }} {{ player.gpaLabel }} GPA &middot; {{ player.highSchool }} &middot; Graduating spring {{ player.class }} &middot; Targeting meteorology / atmospheric science in college.
+      <p style="font-family:'JetBrains Mono', monospace; font-size:13px; letter-spacing:0.06em; color:var(--b-mute); margin-top:32px; max-width:480px; line-height:1.7; text-transform:uppercase;">
+        {{ player.gpa }} {{ player.gpaLabel }} GPA &middot; {{ player.highSchool }} &middot; Full-time {{ dualEnrollment.collegeShort }} student &middot; Graduating spring {{ player.class }} &middot; Targeting meteorology / atmospheric science in college.
       </p>
     </div>
     <div style="position:relative; width:280px; height:280px; flex-shrink:0;">
@@ -103,20 +103,68 @@ active: academics
 
   <div style="background:var(--b-bg); padding:32px 28px; min-height:260px; display:flex; flex-direction:column;">
     <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:12px;">
-      <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-mute); text-transform:uppercase;">TARGET MAJOR</div>
-      <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:30px; line-height:1; color:var(--b-green-bright); letter-spacing:-0.03em;">MET</div>
+      <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-mute); text-transform:uppercase;">COLLEGE CREDIT</div>
+      <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:40px; line-height:1; color:var(--b-green-bright); letter-spacing:-0.03em;">{{ dualEnrollment.collegeShort }}</div>
     </div>
-    <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin:24px 0 12px;">METEOROLOGY</div>
+    <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin:24px 0 12px;">FULL-TIME, WHILE IN HIGH SCHOOL</div>
     <p style="font-size:13px; color:var(--b-text); line-height:1.6; margin:0;">
-      Atmospheric science &mdash; weather analysis, forecasting, and storm research. Open to any program, at any level, where I can study it and compete.
+      {{ dualEnrollment.fallClassCount }} classes at {{ dualEnrollment.college }} this fall and {{ dualEnrollment.springCredits }} credit hours registered for {{ dualEnrollment.springTerm }}, through {{ dualEnrollment.district }}'s {{ dualEnrollment.program }} program.
     </p>
+  </div>
+</section>
+
+{# ===== DUAL ENROLLMENT / EARLY COLLEGE ===== #}
+<div class="b-section-head">
+  <div class="b-section-head-left">
+    <span class="b-section-tag">/02 EARLY COLLEGE</span>
+    <h2 class="b-section-title">College<br>already.</h2>
+  </div>
+  <span style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.1em; color:var(--b-mute); text-transform:uppercase; text-align:right;">
+    {{ dualEnrollment.district }} {{ dualEnrollment.program | upper }}
+  </span>
+</div>
+<section class="b-split" style="border-bottom:1px solid var(--b-line); background:var(--b-bg-2);">
+  <div style="padding:56px;">
+    <h3 style="font-family:'Archivo', sans-serif; font-weight:900; font-size:34px; line-height:1.05; letter-spacing:-0.02em; text-transform:uppercase; margin:0 0 20px; color:var(--b-text);">
+      {{ dualEnrollment.college }}
+    </h3>
+    <p style="font-size:16px; line-height:1.7; color:var(--b-mute); margin:0 0 24px; max-width:460px;">
+      I'm a {{ dualEnrollment.status | lower }} &mdash; carrying a full-time course load at {{ dualEnrollment.collegeShort }} through {{ dualEnrollment.district }}'s {{ dualEnrollment.program }} program while enrolled at {{ player.highSchool }}, earning college credit before I graduate.
+    </p>
+    <div style="display:grid; gap:1px; background:var(--b-line); border:1px solid var(--b-line); max-width:460px;">
+      {% for row in [
+        ['STATUS', 'Full-time ' + dualEnrollment.collegeShort + ' student'],
+        [dualEnrollment.fallTerm | upper, dualEnrollment.fallClassCount + ' classes'],
+        [dualEnrollment.springTerm | upper, dualEnrollment.springCredits + ' credit hours registered'],
+        ['HIGH SCHOOL', player.highSchool]
+      ] %}
+        <div style="background:var(--b-bg); padding:16px 20px; display:flex; justify-content:space-between; align-items:baseline; gap:16px;">
+          <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; color:var(--b-mute); text-transform:uppercase;">{{ row[0] }}</div>
+          <div style="font-family:'Archivo', sans-serif; font-weight:800; font-size:15px; color:var(--b-text); text-align:right;">{{ row[1] }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div style="padding:56px; background:var(--b-bg);">
+    <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin-bottom:8px;">
+      {{ dualEnrollment.springTerm | upper }} &middot; {{ dualEnrollment.springCredits }} CREDIT HOURS
+    </div>
+    <p style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.08em; color:var(--b-mute); text-transform:uppercase; margin:0 0 20px;">REGISTERED COURSES</p>
+    <div style="display:grid; gap:1px; background:var(--b-line); border:1px solid var(--b-line);">
+      {% for c in dualEnrollment.springCourses %}
+        <div style="background:var(--b-bg-2); padding:16px 20px; display:grid; grid-template-columns:96px minmax(0,1fr); gap:16px; align-items:baseline;">
+          <div style="font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.06em; color:var(--b-green-bright);">{{ c.code }}</div>
+          <div style="font-family:'Archivo', sans-serif; font-weight:800; font-size:16px; color:var(--b-text);">{{ c.name }}</div>
+        </div>
+      {% endfor %}
+    </div>
   </div>
 </section>
 
 {# ===== COURSEWORK ===== #}
 <div class="b-section-head">
   <div class="b-section-head-left">
-    <span class="b-section-tag">/02 COURSEWORK</span>
+    <span class="b-section-tag">/03 HIGH SCHOOL COURSEWORK</span>
     <h2 class="b-section-title">Sophomore<br>year.</h2>
   </div>
   <span style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.1em; color:var(--b-mute); text-transform:uppercase; text-align:right;">
@@ -139,7 +187,7 @@ active: academics
 {# ===== WHY METEOROLOGY ===== #}
 <section class="b-split" style="border-bottom:1px solid var(--b-line); background:var(--b-bg-2);">
   <div style="padding:72px 56px;">
-    <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin-bottom:16px;">/03 WHY METEOROLOGY</div>
+    <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin-bottom:16px;">/04 WHY METEOROLOGY</div>
     <h2 style="font-family:'Archivo', sans-serif; font-weight:900; font-size:72px; line-height:0.9; letter-spacing:-0.04em; text-transform:uppercase; margin:0; color:var(--b-text);">
       Storms<br>are <span style="-webkit-text-stroke:2px var(--b-green-bright); -webkit-text-fill-color:transparent;">real-time</span><br>data.
     </h2>
@@ -152,6 +200,7 @@ active: academics
     <div style="display:grid; gap:1px; background:var(--b-line); border:1px solid var(--b-line);">
       {% for row in [
         ['MAJOR', 'Meteorology / atmospheric science'],
+        ['COLLEGE CREDIT', 'Full-time at ' + dualEnrollment.collegeShort + ' now'],
         ['LEVEL', 'Open to D1, D2, D3, NAIA and JUCO programs'],
         ['GRADUATES', 'Spring ' + player.class],
         ['TRANSCRIPT', 'Available on request']
@@ -168,7 +217,7 @@ active: academics
 
 {# ===== AWARDS ===== #}
 <section style="padding:56px 56px 80px; background:var(--b-bg);">
-  <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin-bottom:24px;">/04 AWARDS &amp; RECOGNITION</div>
+  <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin-bottom:24px;">/05 AWARDS &amp; RECOGNITION</div>
   <div class="b-grid b-grid-3" style="border:1px solid var(--b-line);">
     {% for a in [
       ['HONOR ROLL', 'Every semester reported'],
