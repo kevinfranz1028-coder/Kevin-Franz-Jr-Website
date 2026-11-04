@@ -1,0 +1,40 @@
+---
+layout: base.njk
+title: Timeline
+description: Season-by-season basketball timeline for Kevin Franz Jr., Class of 2028 student-athlete.
+permalink: /timeline/
+---
+
+<section class="section-page-header">
+    <div class="container">
+        <div class="page-header-centered">
+            <span class="label-eyebrow">Timeline</span>
+            <h1>Season by Season</h1>
+            <p class="hero-subheadline">Every season on the floor, newest first.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section-content">
+    <div class="container">
+        <div class="updates-list">
+            {% for item in collections.timeline | reverse %}
+            <div class="update-card">
+                <div class="update-card-content">
+                    <span class="update-card-type">{{ item.data.season }}</span>
+                    <h2 class="update-card-title">{{ item.data.year }}</h2>
+                    <time class="update-card-date">{{ item.data.grade }}{% if item.data.team %} &middot; {{ item.data.team }}{% endif %}</time>
+                    <p class="update-card-summary">{{ item.data.summary }}</p>
+                    <a href="{{ item.url }}" class="update-card-link">View season</a>
+                </div>
+            </div>
+            {% else %}
+            <p class="text-center">No timeline entries yet – check back soon!</p>
+            {% endfor %}
+        </div>
+
+        <p style="margin-top: 2rem;">
+            <a href="/basketball/" class="back-link">← Back to Basketball Profile</a>
+        </p>
+    </div>
+</section>

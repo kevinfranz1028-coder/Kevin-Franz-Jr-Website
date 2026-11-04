@@ -110,14 +110,14 @@ active: home
 <div class="b-section-head">
   <div class="b-section-head-left">
     <span class="b-section-tag">/03 JOURNEY</span>
-    <h2 class="b-section-title">Six years<br>on the floor.</h2>
+    <h2 class="b-section-title">Seven years<br>on the floor.</h2>
   </div>
   <a href="/timeline/" class="b-section-cta">FULL TIMELINE &rarr;</a>
 </div>
-<section class="b-pillars" style="grid-template-columns: repeat(5, 1fr);">
+<section class="b-pillars" style="display:flex; flex-wrap:wrap;">
   {% set timelineItems = collections.timeline | default([]) %}
   {% for item in timelineItems %}
-    <div class="b-pillar" style="min-height:200px;">
+    <div class="b-pillar" style="min-height:200px; flex:1 1 280px;">
       <div class="b-pillar-tag">{{ item.data.year }}</div>
       <h3 style="font-size:18px;">{{ item.data.team or item.data.grade }}</h3>
       <p>{{ item.data.summary | default('') | truncate(110) }}</p>
