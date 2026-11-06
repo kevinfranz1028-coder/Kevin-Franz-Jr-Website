@@ -114,16 +114,61 @@ active: home
   </div>
   <a href="/timeline/" class="b-section-cta">FULL TIMELINE &rarr;</a>
 </div>
-<section class="b-pillars" style="display:flex; flex-wrap:wrap;">
-  {% set timelineItems = collections.timeline | default([]) %}
-  {% for item in timelineItems %}
-    <div class="b-pillar" style="min-height:200px; flex:1 1 280px;">
-      <div class="b-pillar-tag">{{ item.data.year }}</div>
-      <h3 style="font-size:18px;">{{ item.data.team or item.data.grade }}</h3>
-      <p>{{ item.data.summary | default('') | truncate(110) }}</p>
-    </div>
+{# Stages come from each entry's existing "season" field. The trailing
+   "Other" group is a safety net so no entry can ever be dropped. #}
+{% set journeyStages = [
+  { label: 'Elementary',                 match: 'Elementary' },
+  { label: 'Middle School &middot; School Ball', match: 'Middle School' },
+  { label: 'Middle School &middot; AAU',         match: '__unassigned__' },
+  { label: 'High School &middot; School Ball',   match: 'High School' },
+  { label: 'High School &middot; AAU',           match: 'AAU' }
+] %}
+{% set journeyShown = [] %}
+{% for stage in journeyStages %}
+  {% set stageItems = [] %}
+  {% for item in collections.timeline %}
+    {% if item.data.season == stage.match %}
+      {% set _ = stageItems.push(item) %}
+      {% set _ = journeyShown.push(item.url) %}
+    {% endif %}
   {% endfor %}
-</section>
+  <div style="padding:14px 48px; background:var(--b-bg-2); border-top:1px solid var(--b-line); border-bottom:1px solid var(--b-line); font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--b-green-bright);">
+    {{ stage.label | safe }}
+  </div>
+  <section class="b-pillars" style="display:flex; flex-wrap:wrap;">
+    {% for item in stageItems %}
+      <div class="b-pillar" style="min-height:0; flex:1 1 280px;">
+        <div class="b-pillar-tag">{{ item.data.year }}</div>
+        <h3 style="font-size:18px;">{{ item.data.team or item.data.grade }}</h3>
+        <p>{{ item.data.summary | default('') | truncate(110) }}</p>
+      </div>
+    {% else %}
+      <div class="b-pillar" style="min-height:0; flex:1 1 280px;">
+        <div class="b-pillar-tag">&mdash;</div>
+        <h3 style="font-size:18px;">Details coming soon</h3>
+        <p>Nothing recorded here yet.</p>
+      </div>
+    {% endfor %}
+  </section>
+{% endfor %}
+{% set journeyOther = [] %}
+{% for item in collections.timeline %}
+  {% if item.url not in journeyShown %}{% set _ = journeyOther.push(item) %}{% endif %}
+{% endfor %}
+{% if journeyOther | length %}
+  <div style="padding:14px 48px; background:var(--b-bg-2); border-top:1px solid var(--b-line); border-bottom:1px solid var(--b-line); font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--b-green-bright);">
+    Other
+  </div>
+  <section class="b-pillars" style="display:flex; flex-wrap:wrap;">
+    {% for item in journeyOther %}
+      <div class="b-pillar" style="min-height:0; flex:1 1 280px;">
+        <div class="b-pillar-tag">{{ item.data.year }}</div>
+        <h3 style="font-size:18px;">{{ item.data.team or item.data.grade }}</h3>
+        <p>{{ item.data.summary | default('') | truncate(110) }}</p>
+      </div>
+    {% endfor %}
+  </section>
+{% endif %}
 
 {# ===== RECENT UPDATES ===== #}
 <div class="b-section-head">
