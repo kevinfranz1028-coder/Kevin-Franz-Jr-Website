@@ -13,20 +13,20 @@
   "highlights_heading": "Video highlights",
   "highlights_description": "Highlights, Mixtapes and more! ",
   "header": {
-    "eyebrow": "Guard • Class of 2028",
-    "heading": "6'1\" combo guard focused on pace, decision-making, and on-ball defense.",
+    "eyebrow": "SG/SF • Class of 2028",
+    "heading": "6'1\" guard-forward focused on pace, decision-making, and on-ball defense.",
     "subheading": "High Energy - High Impact - High IQ",
     "supportingText": "Focused on becoming the best I can be at all times"
   },
   "playerInfo": {
     "name": "Kevin Franz Jr.",
     "height": "6'1\"",
-    "weight": "185 lbs",
-    "position": "Combo Guard",
-    "jersey": "30",
+    "weight": "190 lbs",
+    "position": "SG/SF",
+    "jersey": "28",
     "class": "2028",
-    "school": "Blue Valley Southwest",
-    "aauTeam": "YouHoop 3SSB",
+    "school": "Shawnee Mission West",
+    "aauTeam": "JC Hoops 16U",
     "hand": "Right",
     "image": "/images/player/medium_Copy_of_618_A3075_2_Enhanced_NR_0a0a68195a.jpg"
   },
@@ -43,62 +43,62 @@
     }
   ],
   "stats": {
-    "intro": "Season averages for Kevin Franz Jr. (#30) — Blue Valley Southwest JV Basketball.",
+    "intro": "Season averages for Kevin Franz Jr. (#30) — Blue Valley Southwest JV Basketball, 2025-26.",
     "table": [
       {
         "season": "2025-26",
         "team": "BVSW JV",
-        "gp": "16",
-        "gs": "14",
+        "gp": "19",
+        "gs": "17",
         "items": [
           {
             "label": "PPG",
-            "value": "5.4",
+            "value": "5.6",
             "rank": "5th"
           },
           {
             "label": "RPG",
-            "value": "4.1",
+            "value": "4.0",
             "rank": "1st"
           },
           {
             "label": "APG",
-            "value": "2.6",
+            "value": "2.5",
             "rank": "2nd"
           },
           {
             "label": "SPG",
-            "value": "1.4",
+            "value": "1.5",
             "rank": "T-3rd"
           },
           {
             "label": "BPG",
-            "value": "0.4",
+            "value": "0.3",
             "rank": "T-3rd"
           },
           {
             "label": "FG%",
-            "value": "37.5%",
+            "value": "39.3%",
             "rank": "8th"
           },
           {
             "label": "3PT%",
-            "value": "31.0%",
+            "value": "31.6%",
             "rank": "5th"
           },
           {
             "label": "FT%",
-            "value": "65.7%",
+            "value": "67.6%",
             "rank": "4th"
           },
           {
             "label": "AST/TO",
-            "value": "2.05",
+            "value": "2.18",
             "rank": "2nd"
           },
           {
             "label": "TOPG",
-            "value": "1.25",
+            "value": "1.16",
             "rank": "7th"
           }
         ]
@@ -163,6 +163,48 @@
         "classYear": "",
         "school": "",
         "state": ""
+      },
+      {
+        "name": "Scorability",
+        "url": "",
+        "description": "Recruiting profile",
+        "cardImage": "",
+        "logo": "",
+        "ranking": "",
+        "scoutingReport": "",
+        "position": "",
+        "heightWeight": "",
+        "classYear": "2028",
+        "school": "Shawnee Mission West",
+        "state": "Kansas"
+      },
+      {
+        "name": "FieldLevel",
+        "url": "https://www.fieldlevel.com/app/profile/kevin.franzjr/basketballmen?m=3",
+        "description": "Coach-to-coach recruiting network",
+        "cardImage": "",
+        "logo": "",
+        "ranking": "",
+        "scoutingReport": "",
+        "position": "",
+        "heightWeight": "",
+        "classYear": "2028",
+        "school": "Shawnee Mission West",
+        "state": "Kansas"
+      },
+      {
+        "name": "RecruitLook",
+        "url": "https://recruitlook.com/profile/20035511-74e5-481c-b21a-0e259f3a772e",
+        "description": "Verified athlete profile",
+        "cardImage": "",
+        "logo": "",
+        "ranking": "",
+        "scoutingReport": "",
+        "position": "",
+        "heightWeight": "",
+        "classYear": "2028",
+        "school": "Shawnee Mission West",
+        "state": "Kansas"
       }
     ]
   },

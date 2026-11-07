@@ -6,6 +6,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/js");
   eleventyConfig.addPassthroughCopy("src/images");
   eleventyConfig.addPassthroughCopy("src/admin");
+  eleventyConfig.addPassthroughCopy("src/files");
 
   // Cloudflare Pages configuration
   eleventyConfig.addPassthroughCopy("src/_routes.json");

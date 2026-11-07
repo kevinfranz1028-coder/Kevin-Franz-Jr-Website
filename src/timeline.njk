@@ -1,0 +1,87 @@
+---
+layout: base.njk
+title: Timeline
+description: Season-by-season basketball timeline for Kevin Franz Jr., Class of 2028 student-athlete.
+permalink: /timeline/
+---
+
+<section class="section-page-header">
+    <div class="container">
+        <div class="page-header-centered">
+            <span class="label-eyebrow">Timeline</span>
+            <h1>Season by Season</h1>
+            <p class="hero-subheadline">Elementary through high school, with school ball and AAU listed separately.</p>
+        </div>
+    </div>
+</section>
+
+{# Stages come from each entry's existing "season" field, matching the Journey
+   strip on the home page. The trailing "Other" group is a safety net so no
+   entry can ever be dropped. #}
+{% set stages = [
+  { label: 'Elementary',                   match: 'Elementary' },
+  { label: 'Middle School &middot; School Ball', match: 'Middle School' },
+  { label: 'Middle School &middot; AAU',         match: '__unassigned__' },
+  { label: 'High School &middot; School Ball',   match: 'High School' },
+  { label: 'High School &middot; AAU',           match: 'AAU' }
+] %}
+{% set shown = [] %}
+
+<section class="section-content">
+    <div class="container">
+        {% for stage in stages %}
+            {% set stageItems = [] %}
+            {% for item in collections.timeline %}
+                {% if item.data.season == stage.match %}
+                    {% set _ = stageItems.push(item) %}
+                    {% set _ = shown.push(item.url) %}
+                {% endif %}
+            {% endfor %}
+
+            <h2>{{ stage.label | safe }}</h2>
+            <div class="updates-list" style="margin-bottom: 3rem;">
+                {% for item in stageItems | reverse %}
+                <div class="update-card">
+                    <div class="update-card-content">
+                        <h3 class="update-card-title">{{ item.data.year }}</h3>
+                        <time class="update-card-date">{{ item.data.grade }}{% if item.data.team %} &middot; {{ item.data.team }}{% endif %}</time>
+                        <p class="update-card-summary">{{ item.data.summary }}</p>
+                        <a href="{{ item.url }}" class="update-card-link">View season</a>
+                    </div>
+                </div>
+                {% else %}
+                <div class="update-card">
+                    <div class="update-card-content">
+                        <h3 class="update-card-title">Details coming soon</h3>
+                        <p class="update-card-summary">Nothing recorded here yet.</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+
+        {% set other = [] %}
+        {% for item in collections.timeline %}
+            {% if item.url not in shown %}{% set _ = other.push(item) %}{% endif %}
+        {% endfor %}
+        {% if other | length %}
+            <h2>Other</h2>
+            <div class="updates-list" style="margin-bottom: 3rem;">
+                {% for item in other | reverse %}
+                <div class="update-card">
+                    <div class="update-card-content">
+                        <h3 class="update-card-title">{{ item.data.year }}</h3>
+                        <time class="update-card-date">{{ item.data.grade }}{% if item.data.team %} &middot; {{ item.data.team }}{% endif %}</time>
+                        <p class="update-card-summary">{{ item.data.summary }}</p>
+                        <a href="{{ item.url }}" class="update-card-link">View season</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <p>
+            <a href="/basketball/" class="back-link">← Back to Basketball Profile</a>
+        </p>
+    </div>
+</section>
