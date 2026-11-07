@@ -171,19 +171,27 @@ active: basketball
       </div>
     </div>
     <div style="display:grid; gap:1px; background:var(--b-line); border:1px solid var(--b-line);">
+      {# Entries with an empty URL are TODO slots: skipped when rendering, so
+         nothing broken shows. Paste the public URL in to publish the card. #}
       {% for link in [
-        ['PREPHOOPS', 'Player profile and rankings', '#'],
-        ['NCSA SPORTS', 'Complete recruiting profile', '#'],
-        ['SPORTS PASSPORTS', 'Tournament history and stats', '#'],
-        ['INSTAGRAM', '@kfranzjr2028', 'https://instagram.com/kfranzjr2028']
+        ['PREPHOOPS', 'Player profile and rankings', 'https://prephoops.com/player/kevin-franz/'],
+        ['PREP HOOPS RANKINGS', 'Featured in the updated 2028 Kansas rankings, Oct 9 2026', 'https://prephoops.com/2026/10/updated-2028-kansas-rankings/'],
+        ['NCSA SPORTS', 'Complete recruiting profile', 'https://www.ncsasports.org/mens-basketball-recruiting/kansas/overland-park/blue-valley-southwest-high-school/kevin-franz3'],
+        ['INSTAGRAM', '@kfranzjr2028', 'https://instagram.com/kfranzjr2028'],
+        ['SCORABILITY', 'Recruiting profile', ''],
+        ['FIELDLEVEL', 'Coach-to-coach recruiting network', ''],
+        ['RECRUITLOOK', 'Verified athlete profile', ''],
+        ['SPORTS PASSPORTS', 'Tournament history and stats', '']
       ] %}
-        <a href="{{ link[2] }}" {% if link[2] != '#' %}target="_blank" rel="noopener"{% endif %} style="display:flex; justify-content:space-between; align-items:center; padding:24px 28px; background:var(--b-bg); color:var(--b-text); text-decoration:none;">
+        {% if link[2] %}
+        <a href="{{ link[2] }}" target="_blank" rel="noopener noreferrer" style="display:flex; justify-content:space-between; align-items:center; padding:24px 28px; background:var(--b-bg); color:var(--b-text); text-decoration:none;">
           <div>
             <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:18px; text-transform:uppercase; letter-spacing:0.02em;">{{ link[0] }}</div>
             <div style="font-size:13px; color:var(--b-mute); margin-top:4px;">{{ link[1] }}</div>
           </div>
           <span style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.12em; color:var(--b-green-bright);">VIEW &rarr;</span>
         </a>
+        {% endif %}
       {% endfor %}
     </div>
   </div>
