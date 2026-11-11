@@ -29,7 +29,7 @@ The AI widget now operates in two distinct modes:
 ```
 - "Create a game recap for last night's game vs Lincoln High where I scored 18 points"
 - "Write a timeline entry for my freshman year season"
-- "Generate an academic update about making honor roll"
+- "Generate an academic update about the semester"
 ```
 
 #### 🛠️ Site Editor Mode

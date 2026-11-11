@@ -117,7 +117,7 @@ function BHomePage() {
           </div>
         </div>
         <div className="b-hero-stat-strip">
-          {[['HT','6\'1"'],['WT','185'],['POS','G'],['#','30'],['GPA','3.85'],['CLASS','\'28']].map(([l, v]) => (
+          {[['HT','6\'1"'],['WT','185'],['POS','G'],['#','30'],['GPA','3.75'],['CLASS','\'28']].map(([l, v]) => (
             <div key={l} className="b-stat-cell">
               <div className="b-stat-cell-label">{l}</div>
               <div className="b-stat-cell-value">{v}</div>
@@ -143,8 +143,8 @@ function BHomePage() {
         </div>
         <div className="b-pillar">
           <div className="b-pillar-tag">/ ACADEMICS</div>
-          <h3>3.85 GPA.</h3>
-          <p>Heavy load in math and science at Blue Valley Southwest. Plan to study meteorology / atmospheric science.</p>
+          <h3>3.75 GPA.</h3>
+          <p>3.75 GPA (3.82 weighted). Heavy load in math and science at Blue Valley Southwest. Plan to study meteorology / atmospheric science.</p>
           <a href="#academics" className="b-pillar-link">Coursework</a>
         </div>
         <div className="b-pillar">
