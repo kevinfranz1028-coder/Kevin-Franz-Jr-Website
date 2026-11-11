@@ -1,0 +1,317 @@
+/* ============================================================
+   MOBILE + LANDSCAPE
+   Added Nov 2026. Everything that changes layout lives inside a
+   media query capped at 980px, so desktop renders exactly as before.
+   ============================================================ */
+
+/* ---------- Media never overflows its container ----------
+   No !important here on purpose: inline width/height on hero images
+   (width:100%; height:100%; object-fit:cover) must keep winning. */
+img, video, iframe, svg, canvas { max-width: 100%; }
+.post-content img, .b-prose img, .update-card img, .post-cover-image { height: auto; }
+
+/* ---------- Tables and box scores scroll inside their own box, so the
+   page itself never scrolls sideways. Scoped to small screens so desktop
+   table rendering is untouched. ---------- */
+@media (max-width: 980px) {
+  .b-scroll-x,
+  .post-content table,
+  .b-prose table,
+  .container table,
+  .container-narrow table {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-collapse: collapse;
+  }
+}
+
+/* ============================================================
+   <= 980px
+   ============================================================ */
+@media (max-width: 980px) {
+
+  /* ---- 1. Stop hiding the overflow; the causes are fixed below.
+       While it was hidden, content past the edge was unreachable:
+       you could not scroll or pan to it, which is what made zoom
+       feel broken. ---- */
+  html, body { overflow-x: visible; }
+  .b-root { overflow-x: visible; max-width: 100%; }
+
+  /* Long unbroken strings (emails, URLs) wrap instead of pushing out */
+  .b-root, .main-content, .post-content { overflow-wrap: break-word; word-wrap: break-word; }
+
+  /* ---- 2. Headline type scales with the screen.
+       Beats the inline font-size:140-200px on the page templates. ---- */
+  .b-root h1 {
+    font-size: clamp(32px, 10vw, 56px) !important;
+    line-height: 1.02 !important;
+    letter-spacing: -0.02em !important;
+  }
+  .b-root h2 {
+    font-size: clamp(24px, 7.5vw, 40px) !important;
+    line-height: 1.06 !important;
+    letter-spacing: -0.02em !important;
+  }
+  .b-root h3 { font-size: clamp(17px, 4.6vw, 22px) !important; line-height: 1.15 !important; }
+  .b-section-title { font-size: clamp(24px, 7.5vw, 38px) !important; }
+
+  /* Decorative oversized numerals and glyphs stay inside the screen */
+  .b-hero-jersey-num { font-size: 34vw !important; right: -4vw !important; top: 0 !important; }
+
+  /* ---- 3. Every fixed multi-column grid becomes fluid.
+       The page templates set grid-template-columns inline, so this
+       attribute selector reaches them without editing the markup. ---- */
+  .b-root [style*="grid-template-columns"] {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr)) !important;
+  }
+  /* Content columns (text beside text) go to a single column */
+  .b-root section[style*="1fr 1fr"],
+  .b-root section[style*="1.4fr 1fr"],
+  .b-root section[style*="1fr 1.4fr"],
+  .b-root section[style*="1fr 1.5fr"],
+  .b-root section[style*="1fr auto"],
+  .b-root div[style*="1fr 1fr"],
+  .b-root div[style*="1fr 1.5fr"] {
+    grid-template-columns: 1fr !important;
+  }
+  .b-pillars { grid-template-columns: 1fr !important; }
+
+  /* ---- 4. Horizontal padding: 48-56px each side eats a third of a
+       375px screen. 16px keeps a comfortable gutter. ---- */
+  .b-root section[style*="padding"],
+  .b-root div[style*="padding:72px"],
+  .b-root div[style*="padding:80px"],
+  .b-root div[style*="padding:56px"],
+  .b-root div[style*="padding:64px"] {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  .b-section-head { padding: 36px 16px 18px !important; }
+  .b-footer { padding: 32px 16px 20px !important; }
+  .b-hero-left { padding: 32px 16px 44px !important; }
+
+  /* ---- 5. Fixed-size decoration (the GPA dial, radar rings) ---- */
+  .b-root svg { max-width: 100%; height: auto; }
+  .b-root div[style*="width:280px"] { width: 100% !important; max-width: 280px; height: auto !important; }
+
+  /* ---- 6. Body copy at 16px minimum. Only lifts sizes that are
+       below it; the mono eyebrow labels are left alone. ---- */
+  .b-root p[style*="font-size:13px"],
+  .b-root p[style*="font-size:14px"],
+  .b-root p[style*="font-size:15px"],
+  .b-root div[style*="font-size:13px"],
+  .b-root div[style*="font-size:14px"],
+  .b-root div[style*="font-size:15px"],
+  .b-root li { font-size: 16px !important; line-height: 1.6 !important; }
+  .b-pillar p, .b-hero-sub { font-size: 16px !important; line-height: 1.6 !important; }
+
+  /* ---- 7. Tap targets ---- */
+  .b-footer ul li a,
+  .b-pillar-link,
+  .b-section-cta { display: inline-block; padding: 11px 0; min-height: 44px; }
+  .b-nav-cta { padding: 13px 18px; min-height: 44px; display: inline-flex; align-items: center; }
+
+  /* ---- 8. Legacy (base.njk) pages: football, updates, timeline ---- */
+  .footer-wrapper { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .footer-left, .footer-right { width: 100%; max-width: 100%; }
+  .footer-links { display: flex; flex-wrap: wrap; gap: 4px 10px; }
+  .footer-links a { padding: 10px 0; min-height: 44px; display: inline-flex; align-items: center; }
+  .container, .container-narrow { padding-left: 16px !important; padding-right: 16px !important; max-width: 100% !important; }
+  .main-content { width: 100%; max-width: 100%; overflow-x: visible; }
+  .post-content p, .post-content li { font-size: 16px; line-height: 1.65; }
+}
+
+/* ============================================================
+   <= 560px — tighter still
+   ============================================================ */
+@media (max-width: 560px) {
+  .b-root [style*="grid-template-columns"] {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 130px), 1fr)) !important;
+  }
+  .b-hero-stat-strip { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+/* ============================================================
+   LANDSCAPE PHONES — short viewports.
+   Heroes must not swallow the screen and nothing may be pinned
+   over the content.
+   ============================================================ */
+@media (max-width: 980px) and (orientation: landscape), (max-height: 480px) {
+  .b-hero,
+  .b-root section[style*="min-height:520px"],
+  .b-root section[style*="min-height:600px"],
+  .b-root section[style*="min-height:640px"],
+  .b-root div[style*="min-height:520px"] {
+    min-height: 0 !important;
+  }
+  /* The home "about" band is a fixed 600px tall image on main */
+  #about { height: auto !important; min-height: 0 !important; }
+  #about > img { height: 42vh !important; min-height: 220px; object-fit: cover; }
+  #about > div:last-child { position: static !important; width: 100% !important; max-width: 100% !important; padding: 28px 16px !important; }
+
+  .b-hero-image { min-height: 200px !important; }
+  .b-hero h1 { font-size: clamp(28px, 7vw, 44px) !important; }
+  .b-root h1 { font-size: clamp(28px, 7vw, 44px) !important; }
+
+  /* Nothing fixed may cover the page on a short screen */
+  .b-nav { position: static !important; }
+  .sidebar-nav { position: static !important; width: 100% !important; height: auto !important; }
+}
+
+/* ============================================================
+   MOBILE NAV
+   broadcast.css hides .b-nav-links below 980px and main has no
+   control to reopen them, so the nav is unreachable on a phone.
+   ============================================================ */
+.b-nav-toggle { display: none; }
+.b-nav-cta-inline { display: none; }
+
+@media (max-width: 980px) {
+  .b-nav { position: relative; flex-wrap: wrap; row-gap: 10px; padding: 12px 16px; }
+
+  .b-nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    padding: 10px 14px;
+    background: var(--b-bg-3);
+    border: 1px solid var(--b-line);
+    color: var(--b-text);
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  .b-nav-toggle:focus-visible { outline: 2px solid var(--b-green-bright); outline-offset: 2px; }
+  .b-nav-toggle-bars { display: inline-grid; gap: 4px; width: 18px; }
+  .b-nav-toggle-bars span { display: block; height: 2px; width: 100%; background: var(--b-green-bright); }
+  .b-nav-toggle[aria-expanded="true"] { background: var(--b-green); border-color: var(--b-green); }
+  .b-nav-toggle[aria-expanded="true"] .b-nav-toggle-bars span { background: #fff; }
+
+  /* The desktop pill is replaced by a full-width one inside the panel */
+  .b-nav > .b-nav-cta { display: none; }
+
+  .b-nav-links {
+    display: none;
+    order: 3;
+    width: 100%;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 10px;
+    background: var(--b-bg-2);
+    border-top: 1px solid var(--b-line);
+  }
+  .b-nav-links.is-open { display: flex; }
+  .b-nav-links a {
+    opacity: 1;
+    font-size: 16px;
+    padding: 14px 4px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--b-line);
+  }
+  .b-nav-links a:last-child { border-bottom: none; }
+  .b-nav-cta-inline {
+    display: flex;
+    justify-content: center;
+    margin-top: 12px;
+    clip-path: none;
+    padding: 14px 18px;
+  }
+  .b-nav-live { font-size: 10px; }
+}
+
+/* ============================================================
+   GRID / FLEX SHRINK
+   A "1fr" track is minmax(auto, 1fr), and auto means min-content,
+   so a wide child (a fixed-size SVG, a long unbroken string) forces
+   the track — and the page — wider than the screen. These rules let
+   tracks and items shrink, which is what actually stops the
+   horizontal scroll.
+   ============================================================ */
+@media (max-width: 980px) {
+  .b-root [style*="grid-template-columns"] > *,
+  .b-root [style*="display:grid"] > *,
+  .b-root [style*="display:flex"] > *,
+  .b-root .b-pillars > * { min-width: 0; }
+
+  .b-root [style*="grid-template-columns"] {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr)) !important;
+  }
+  .b-root section[style*="1fr 1fr"],
+  .b-root section[style*="1.4fr 1fr"],
+  .b-root section[style*="1fr 1.4fr"],
+  .b-root section[style*="1fr 1.5fr"],
+  .b-root section[style*="1fr auto"],
+  .b-root section[style*="1fr 1.2fr"],
+  .b-root div[style*="1fr 1fr"],
+  .b-root div[style*="1fr 1.5fr"],
+  .b-root div[style*="1fr auto"] {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  /* Absolutely positioned overlay bars inset by 48-56px */
+  .b-root [style*="left:56px"], .b-root [style*="left:48px"] { left: 16px !important; }
+  .b-root [style*="right:56px"], .b-root [style*="right:48px"] { right: 16px !important; }
+
+  /* Decorative oversized glyphs must not create width */
+  .b-root [style*="font-size:600px"] { font-size: 40vw !important; right: 0 !important; }
+  .b-hero { overflow: hidden; }
+  .b-hero-jersey-num { right: 0 !important; }
+
+  /* Nothing in the flow may exceed the screen */
+  .b-root section, .b-root .b-footer, .b-root .b-nav { max-width: 100%; }
+}
+
+/* ============================================================
+   TAP TARGETS AND SMALL TEXT
+   Inline links inside a sentence are deliberately left alone:
+   WCAG 2.5.8 exempts them, and padding them to 44px would break
+   the line box of the paragraph they sit in.
+   ============================================================ */
+@media (max-width: 980px) {
+  .update-card-link,
+  .back-link,
+  .social-link,
+  .b-btn-primary,
+  .b-btn-ghost,
+  .b-pillar-link,
+  .b-section-cta,
+  .footer-links a,
+  .b-footer ul li a,
+  .sidebar-links a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+  .b-btn-primary, .b-btn-ghost { padding-top: 13px; padding-bottom: 13px; }
+  .social-link { min-width: 44px; justify-content: center; }
+
+  /* Block-level links (the mailto/tel pair on Basketball sit at 33px).
+     min-height is ignored on non-replaced inline elements, so inline
+     links inside a sentence are untouched by this. */
+  .b-root a { min-height: 44px; }
+
+  /* legacy footer copyright sat at 15.2px */
+  .footer p, .footer-left p, .footer-right p { font-size: 16px; }
+}
+
+/* ============================================================
+   LANDSCAPE: keep the home hero compact so it does not take
+   five screens of scrolling on a 375px-tall viewport.
+   ============================================================ */
+@media (max-width: 980px) and (orientation: landscape) {
+  .b-hero-grid { grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr) !important; }
+  .b-hero-image { min-height: 0 !important; height: 100%; }
+  .b-hero-image img { height: 100%; object-fit: cover; }
+  .b-hero-left { padding: 24px 16px 32px !important; }
+  .b-hero-stat-strip { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; }
+  .b-hero-jersey-num { font-size: 22vw !important; }
+}
