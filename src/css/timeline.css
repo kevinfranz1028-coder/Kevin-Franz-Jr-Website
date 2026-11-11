@@ -45,7 +45,7 @@
     var(--primary-color) 50%,
     var(--secondary-color) 100%);
   border-radius: 2px;
-  box-shadow: 0 2px 8px rgba(27, 94, 32, 0.2);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .timeline-rail::before,
@@ -149,7 +149,7 @@
   position: absolute;
   inset: 0;
   background: linear-gradient(180deg,
-    rgba(27, 94, 32, 0.85) 0%,
+    rgba(0, 0, 0, 0.85) 0%,
     rgba(13, 61, 17, 0.95) 100%);
   display: flex;
   flex-direction: column;
