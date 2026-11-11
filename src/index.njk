@@ -5,219 +5,139 @@ description: Kevin Franz Jr. - 6'1" SG/SF at Shawnee Mission West. Class of 2028
 active: home
 ---
 
-{# ===== HERO ===== #}
-<section class="b-hero">
-  <div class="b-hero-jersey-num">{{ player.jersey or "30" }}</div>
-  <div class="b-hero-grid">
-    <div class="b-hero-left">
-      <div>
-        <div class="b-hero-eyebrow">
-          <span>CLASS OF {{ player.class or "2028" }}</span>
-          <span>SG/SF</span>
-          <span>{{ player.location | upper }}</span>
-        </div>
-        <h1>
-          <span>Kevin Franz</span>
-          <span class="b-stroke">Junior.</span>
-        </h1>
-        <p class="b-hero-sub">
-          {{ player.height }} / {{ player.weight }} lb guard-forward at {{ player.highSchool }}. Pace, playmaking, and full-court defense &mdash; chasing college basketball and a degree in atmospheric science.
-        </p>
-        <div class="b-hero-cta-row">
-          <a href="/basketball/" class="b-btn-primary">View Profile &rarr;</a>
-          <a href="/contact/" class="b-btn-ghost">Contact</a>
-        </div>
-      </div>
-      <div style="display:flex; align-items:center; gap:16px; margin-top:32px; font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.1em; color:var(--b-mute); text-transform:uppercase;">
-        <span style="color:var(--b-green-bright);">&bull; JC HOOPS 16U</span>
-        <span>10-3</span>
-        <span>8.2 PPG</span>
-        <span>5.5 RPG</span>
-        <span>2.8 APG</span>
-      </div>
-    </div>
-    <div class="b-hero-image">
-      <img src="/images/player/medium_Copy_of_618_A3075_2_Enhanced_NR_0a0a68195a.jpg" alt="{{ player.name }}">
-    </div>
-  </div>
-  <div class="b-hero-stat-strip">
-    {% set heroStats = [
-      ['HT', player.height],
-      ['WT', player.weight],
-      ['POS', player.position],
-      ['#', player.jersey],
-      ['GPA', player.gpa],
-      ['CLASS', "'" + (player.class | replace('20','')) ]
-    ] %}
-    {% for cell in heroStats %}
-      <div class="b-stat-cell">
-        <div class="b-stat-cell-label">{{ cell[0] }}</div>
-        <div class="b-stat-cell-value">{{ cell[1] }}</div>
-      </div>
-    {% endfor %}
-  </div>
-</section>
-
-{# ===== PILLARS ===== #}
-<div class="b-section-head">
-  <div class="b-section-head-left">
-    <span class="b-section-tag">/01 PILLARS</span>
-    <h2 class="b-section-title">Three<br>at once.</h2>
-  </div>
-  <a href="#about" class="b-section-cta">VIEW ALL &rarr;</a>
-</div>
-<section class="b-pillars">
-  <div class="b-pillar">
-    <div class="b-pillar-tag">/ BASKETBALL</div>
-    <h3>Guard /<br>forward.</h3>
-    <p>#{{ player.jersey or "28" }} &mdash; Pace, decisions, on-ball defense. JV 2025&ndash;26: 5.6 PPG &middot; 4.0 RPG (1st) &middot; 2.5 APG &middot; 2.18 AST/TO.</p>
-    <a href="/basketball/" class="b-pillar-link">Full profile</a>
-  </div>
-  <div class="b-pillar">
-    <div class="b-pillar-tag">/ ACADEMICS</div>
-    <h3>{{ player.gpa or "3.75" }} GPA.</h3>
-    <p>3.75 GPA (3.82 weighted). Heavy load in math and science at {{ player.highSchool }}. Plan to study meteorology / atmospheric science.</p>
-    <a href="/academics/" class="b-pillar-link">Coursework</a>
-  </div>
-  <div class="b-pillar">
-    <div class="b-pillar-tag">/ CHARACTER</div>
-    <h3>Off the<br>floor.</h3>
-    <p>Weather nerd, film-room junkie, and mentor to younger players. Leadership, family, and showing up.</p>
-    <a href="/character/" class="b-pillar-link">More</a>
-  </div>
-</section>
-
-{# ===== ABOUT — full-bleed image w/ overlay panel ===== #}
-<section id="about" style="position:relative; height:600px; overflow:hidden; border-bottom:1px solid var(--b-line);">
-  <img src="/images/banner/large_Copy_of_618_A3237_2_Enhanced_NR_8707ac32b4.jpg" alt="Kevin in action" style="width:100%; height:100%; object-fit:cover;">
-  <div style="position:absolute; inset:0; background:linear-gradient(90deg, var(--b-bg) 0%, rgba(11,13,16,0.7) 40%, transparent 70%);"></div>
-  <div style="position:absolute; top:0; left:0; bottom:0; width:560px; max-width:92%; padding:72px 48px; display:flex; flex-direction:column; justify-content:center;">
-    <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin-bottom:16px;">/02 PROFILE</div>
-    <h2 style="font-family:'Archivo', sans-serif; font-weight:900; font-size:56px; line-height:0.95; letter-spacing:-0.03em; text-transform:uppercase; margin:0; color:var(--b-text);">
-      A guard who<br>plays the<br>
-      <span style="-webkit-text-stroke:2px var(--b-green-bright); -webkit-text-fill-color:transparent;">right way.</span>
-    </h2>
-    <p style="font-size:15px; line-height:1.65; color:var(--b-mute); margin-top:24px; max-width:440px;">
-      On the floor I'm a pace-pusher and playmaker &mdash; creating for teammates, defending full court, making the right read under pressure. Off the floor I'm just as serious about the classroom, with weather and atmospheric science driving my long-term goals.
-    </p>
-    <div style="border-top:1px solid var(--b-line); padding-top:20px; margin-top:32px; font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:var(--b-text);">
-      &ldquo;Help my team win. Earn the chance to play college ball.&rdquo;
-    </div>
-  </div>
-</section>
-
-{# ===== TIMELINE PREVIEW (static — full interactive timeline lives at /timeline/) ===== #}
-<div class="b-section-head">
-  <div class="b-section-head-left">
-    <span class="b-section-tag">/03 JOURNEY</span>
-    <h2 class="b-section-title">Seven years<br>on the floor.</h2>
-  </div>
-  <a href="/timeline/" class="b-section-cta">FULL TIMELINE &rarr;</a>
-</div>
-{# Stages come from each entry's existing "season" field. The trailing
-   "Other" group is a safety net so no entry can ever be dropped. #}
-{% set journeyStages = [
-  { label: 'Elementary',                 match: 'Elementary' },
-  { label: 'Middle School &middot; School Ball', match: 'Middle School' },
-  { label: 'Middle School &middot; AAU',         match: '__unassigned__' },
-  { label: 'High School &middot; School Ball',   match: 'High School' },
-  { label: 'High School &middot; AAU',           match: 'AAU' }
-] %}
-{% set journeyShown = [] %}
-{% for stage in journeyStages %}
-  {% set stageItems = [] %}
-  {% for item in collections.timeline %}
-    {% if item.data.season == stage.match %}
-      {% set _ = stageItems.push(item) %}
-      {% set _ = journeyShown.push(item.url) %}
-    {% endif %}
-  {% endfor %}
-  <div style="padding:14px 48px; background:var(--b-bg-2); border-top:1px solid var(--b-line); border-bottom:1px solid var(--b-line); font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--b-green-bright);">
-    {{ stage.label | safe }}
-  </div>
-  <section class="b-pillars" style="display:flex; flex-wrap:wrap;">
-    {% for item in stageItems %}
-      <div class="b-pillar" style="min-height:0; flex:1 1 280px;">
-        <div class="b-pillar-tag">{{ item.data.year }}</div>
-        <h3 style="font-size:18px;">{{ item.data.team or item.data.grade }}</h3>
-        <p>{{ item.data.summary | default('') | truncate(110) }}</p>
-      </div>
-    {% else %}
-      <div class="b-pillar" style="min-height:0; flex:1 1 280px;">
-        <div class="b-pillar-tag">&mdash;</div>
-        <h3 style="font-size:18px;">Details coming soon</h3>
-        <p>Nothing recorded here yet.</p>
-      </div>
-    {% endfor %}
-  </section>
-{% endfor %}
-{% set journeyOther = [] %}
-{% for item in collections.timeline %}
-  {% if item.url not in journeyShown %}{% set _ = journeyOther.push(item) %}{% endif %}
-{% endfor %}
-{% if journeyOther | length %}
-  <div style="padding:14px 48px; background:var(--b-bg-2); border-top:1px solid var(--b-line); border-bottom:1px solid var(--b-line); font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--b-green-bright);">
-    Other
-  </div>
-  <section class="b-pillars" style="display:flex; flex-wrap:wrap;">
-    {% for item in journeyOther %}
-      <div class="b-pillar" style="min-height:0; flex:1 1 280px;">
-        <div class="b-pillar-tag">{{ item.data.year }}</div>
-        <h3 style="font-size:18px;">{{ item.data.team or item.data.grade }}</h3>
-        <p>{{ item.data.summary | default('') | truncate(110) }}</p>
-      </div>
-    {% endfor %}
-  </section>
-{% endif %}
-
-{# ===== RECENT UPDATES ===== #}
-<div class="b-section-head">
-  <div class="b-section-head-left">
-    <span class="b-section-tag">/04 LATEST</span>
-    <h2 class="b-section-title">Recent<br>updates.</h2>
-  </div>
-  <a href="/updates/" class="b-section-cta">ALL UPDATES &rarr;</a>
-</div>
-<section class="b-pillars">
-  {% set recentUpdates = collections.updates | reverse | limit(3) %}
-  {% for post in recentUpdates %}
-    <div class="b-pillar">
-      <div class="b-pillar-tag">{{ post.data.type or 'UPDATE' }}</div>
-      <h3 style="font-size:22px;">{{ post.data.title }}</h3>
-      <p>
-        <time datetime="{{ post.date | htmlDateString }}" style="display:block; color:var(--b-green-bright); font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:8px;">{{ post.date | readableDate }}</time>
-        {{ post.data.summary }}
-      </p>
-      <a href="{{ post.url }}" class="b-pillar-link">Read more</a>
-    </div>
-  {% endfor %}
-</section>
-
-{# ===== CTA / CONTACT ===== #}
-<section style="padding:80px 48px; background:var(--b-bg); border-bottom:1px solid var(--b-line);">
-  <div style="display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;">
+<section class="cg-cover">
+  <div class="cg-cover-grid">
     <div>
-      <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin-bottom:16px;">/05 CONTACT</div>
-      <h2 style="font-family:'Archivo', sans-serif; font-weight:900; font-size:64px; line-height:0.95; text-transform:uppercase; letter-spacing:-0.03em; margin:0;">
-        For<br>coaches.
-      </h2>
-      <p style="font-size:16px; color:var(--b-mute); margin-top:24px; max-width:440px;">
-        Highlights, stats, and full recruiting profiles live on the Basketball page. For direct inquiries, reach the family below.
+      <p class="cg-kicker">Cover story &middot; Class of {{ player.class or "2028" }} &middot; {{ player.position or "SG/SF" }} &middot; {{ player.location }}</p>
+      <h1>
+        <span>Kevin</span>
+        <span>Franz</span>
+        <span class="cg-stroke">Junior</span>
+      </h1>
+      <p class="cg-dek">
+        {{ player.height }} / {{ player.weight }} lb guard-forward at {{ player.highSchool }}. Pace, playmaking, and full-court defense &mdash; chasing college basketball and a degree in atmospheric science.
       </p>
+      <div class="cg-cta-row">
+        <a href="/basketball/" class="cg-btn">View Profile &rarr;</a>
+        <a href="/contact/" class="cg-btn cg-btn-ghost">Contact</a>
+      </div>
     </div>
-    <div style="display:flex; flex-direction:column; gap:12px;">
-      <a href="mailto:{{ player.parentEmail }}" style="display:flex; justify-content:space-between; padding:24px 28px; background:var(--b-green); color:white; text-decoration:none; align-items:center; clip-path:polygon(2% 0, 100% 0, 98% 100%, 0% 100%);">
-        <div>
-          <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; opacity:0.7; margin-bottom:6px;">EMAIL &rarr;</div>
-          <div style="font-family:'Archivo', sans-serif; font-weight:800; font-size:22px;">{{ player.parentEmail }}</div>
-        </div>
-      </a>
-      <a href="tel:{{ player.parentPhone }}" style="display:flex; justify-content:space-between; padding:24px 28px; background:var(--b-bg-2); border:1px solid var(--b-line); color:var(--b-text); text-decoration:none; align-items:center;">
-        <div>
-          <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--b-mute); margin-bottom:6px;">PHONE &rarr;</div>
-          <div style="font-family:'Archivo', sans-serif; font-weight:800; font-size:22px;">{{ player.parentPhone }}</div>
-        </div>
-      </a>
+    <figure class="cg-cover-photo">
+      <img src="/images/player/medium_Copy_of_618_A3075_2_Enhanced_NR_0a0a68195a.jpg" alt="{{ player.name }}">
+    </figure>
+  </div>
+</section>
+
+<div class="cg-ticker">
+  <div class="cg-ticker-track">
+    {% set tape = "Class of " + (player.class or "2028") + "  ·  " + (player.position or "SG/SF") + "  ·  " + player.highSchool + "  ·  " + player.location + "  ·  " + player.aauTeam + "  ·  10-3  ·  8.2 PPG  ·  5.5 RPG  ·  2.8 APG  ·  GPA " + player.gpa + "  ·  " + player.gpaWeighted + " weighted  ·  JV 2025–26  5.6 PPG  ·  4.0 RPG  ·  2.5 APG  ·  2.18 AST/TO  ·  #" + player.jersey %}
+    <p><span>{{ tape }}</span><span aria-hidden="true">{{ tape }}</span></p>
+    <p aria-hidden="true"><span>{{ tape }}</span><span>{{ tape }}</span></p>
+  </div>
+</div>
+
+<section class="cg-facts" aria-label="Facts">
+  <div class="cg-stack">
+    <article class="cg-fact">
+      <p class="cg-fact-label">Measurables</p>
+      <dl class="cg-metrics">
+        <div><dt>HT</dt><dd>{{ player.height }}</dd></div>
+        <div><dt>WT</dt><dd>{{ player.weight }}</dd></div>
+        <div><dt>POS</dt><dd>{{ player.position }}</dd></div>
+        <div><dt>#</dt><dd>{{ player.jersey }}</dd></div>
+        <div><dt>GPA</dt><dd>{{ player.gpa }}</dd></div>
+        <div><dt>Class</dt><dd>'{{ player.class | replace('20','') }}</dd></div>
+      </dl>
+    </article>
+    <article class="cg-fact">
+      <p class="cg-fact-label">Basketball</p>
+      <h2>Guard / forward.</h2>
+      <p>#{{ player.jersey or "28" }} &mdash; Pace, decisions, on-ball defense. JV 2025&ndash;26: 5.6 PPG &middot; 4.0 RPG (1st) &middot; 2.5 APG &middot; 2.18 AST/TO.</p>
+      <p>{{ player.aauTeam }} &middot; 10-3 &middot; 8.2 PPG &middot; 5.5 RPG &middot; 2.8 APG.</p>
+    </article>
+    <article class="cg-fact">
+      <p class="cg-fact-label">Academics</p>
+      <h2>{{ player.gpa or "3.75" }} GPA.</h2>
+      <p>{{ player.gpa or "3.75" }} GPA ({{ player.gpaWeighted or "3.82" }} weighted). Heavy load in math and science at {{ player.highSchool }}. Plan to study meteorology / atmospheric science.</p>
+    </article>
+    <article class="cg-fact">
+      <p class="cg-fact-label">Profile</p>
+      <h2>The right way.</h2>
+      <p>On the floor I'm a pace-pusher and playmaker &mdash; creating for teammates, defending full court, making the right read under pressure. Off the floor I'm just as serious about the classroom, with weather and atmospheric science driving my long-term goals.</p>
+      <p class="cg-quote-line">&ldquo;Help my team win. Earn the chance to play college ball.&rdquo;</p>
+    </article>
+    <article class="cg-fact">
+      <p class="cg-fact-label">Character</p>
+      <h2>Off the floor.</h2>
+      <p>Weather nerd, film-room junkie, and mentor to younger players. Leadership, family, and showing up.</p>
+    </article>
+  </div>
+  <figure class="cg-slot">
+    <img src="/images/banner/large_Copy_of_618_A3237_2_Enhanced_NR_8707ac32b4.jpg" alt="Kevin in action">
+  </figure>
+</section>
+
+<section class="cg-issue" aria-label="In this issue">
+  <header class="cg-band">
+    <div>
+      <p class="cg-kicker">Contents</p>
+      <h2>In this issue</h2>
     </div>
+  </header>
+  <div class="cg-toc">
+    {% set issue = [
+      { num: "01", title: "Basketball", href: "/basketball/", dek: "Stats, schedule, film, and recruiting profiles." },
+      { num: "02", title: "Football", href: "/football/", dek: "Multi-sport athlete. Versatile player with strong athleticism and game IQ." },
+      { num: "03", title: "Academics", href: "/academics/", dek: "3.75 GPA (3.82 weighted). Coursework, JCCC, and a meteorology track." },
+      { num: "04", title: "Projects & Passions", href: "/projects/", dek: "Off the floor: storms, film, and teaching the game." },
+      { num: "05", title: "Character & Service", href: "/character/", dek: "Leadership, family, and showing up." },
+      { num: "06", title: "Media & Photography", href: "/media/", dek: "Credentialed for Sporting KC. Sidelines for BVSW. @Shots_By_Franz." },
+      { num: "07", title: "Updates", href: "/updates/", dek: "Game recaps, academic milestones, and what's on my mind." },
+      { num: "08", title: "Timeline", href: "/timeline/", dek: "Seven years on the floor. School ball and AAU, season by season." },
+      { num: "09", title: "Contact", href: "/contact/", dek: "Coaches, scouts, and media — reach the family directly." }
+    ] %}
+    {% for item in issue %}
+      <a href="{{ item.href }}">
+        <span class="cg-toc-num">{{ item.num }}</span>
+        <span>
+          <strong>{{ item.title }}</strong>
+          <em>{{ item.dek }}</em>
+        </span>
+        <span class="cg-toc-go" aria-hidden="true">&rarr;</span>
+      </a>
+    {% endfor %}
+  </div>
+  <div class="cg-latest">
+    <h3>Recent updates</h3>
+    {% set recentUpdates = collections.updates | limit(3) %}
+    {% for post in recentUpdates %}
+      <a href="{{ post.url }}">
+        <span class="cg-toc-num">{{ post.data.type or "Update" }}</span>
+        <span>
+          <time datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
+          <strong>{{ post.data.title }}</strong>
+          <span class="dek">{{ post.data.summary }}</span>
+        </span>
+        <span class="cg-toc-go" aria-hidden="true">&rarr;</span>
+      </a>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="cg-coaches" aria-label="For coaches">
+  <div>
+    <p class="cg-kicker">/ Contact</p>
+    <h2>For<br>coaches.</h2>
+    <p>Highlights, stats, and full recruiting profiles live on the Basketball page. For direct inquiries, reach the family below.</p>
+  </div>
+  <div class="cg-coach-links">
+    <a href="mailto:{{ player.parentEmail }}">
+      <small>Email</small>
+      <strong>{{ player.parentEmail }}</strong>
+    </a>
+    <a href="tel:{{ player.parentPhone }}">
+      <small>Phone</small>
+      <strong>{{ player.parentPhone }}</strong>
+    </a>
   </div>
 </section>

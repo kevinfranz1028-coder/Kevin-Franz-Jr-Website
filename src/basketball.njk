@@ -42,9 +42,9 @@ active: basketball
   { label: 'TOPG',   value: '1.16', rank: '7th' }
 ] %}
 {# ===== HERO ===== #}
-<section style="position:relative; min-height:520px; background:var(--b-bg); overflow:hidden; border-bottom:1px solid var(--b-line);">
+<section class="cg-pagehead" style="position:relative; min-height:520px; background:#000; overflow:hidden; border-bottom:8px solid #F5C400;">
   <img src="/images/banner/large_Copy_of_618_A3075_2_Enhanced_NR_0a0a68195a.jpg" alt="" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.55;">
-  <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(11,13,16,0.4) 0%, rgba(11,13,16,0.85) 70%, var(--b-bg) 100%);"></div>
+  <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.82) 72%, #000 100%);"></div>
   <div style="position:relative; z-index:2; padding:80px 56px; display:grid; grid-template-columns:1.4fr 1fr; gap:48px; align-items:end; min-height:520px;">
     <div>
       <div style="display:flex; align-items:center; gap:10px; font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin-bottom:24px;">
@@ -57,7 +57,7 @@ active: basketball
         Stats, schedule, film, and recruiting profiles.
       </p>
     </div>
-    <div style="background:var(--b-bg-2); border:1px solid var(--b-line); padding:28px;">
+    <div class="cg-paper" style="background:#fff; border:1px solid #000; padding:28px;">
       <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:20px;">
         <div>
           <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:22px; color:var(--b-text); text-transform:uppercase; letter-spacing:-0.01em;">{{ player.name }}</div>
@@ -92,7 +92,7 @@ active: basketball
     <div style="padding:28px; background:var(--b-bg); min-height:160px; display:flex; flex-direction:column; justify-content:space-between; position:relative;">
       <div style="display:flex; justify-content:space-between; align-items:flex-start;">
         <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--b-mute);">{{ s.label }}</div>
-        <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.1em; color:var(--b-green-bright); background:rgba(34,197,94,0.1); padding:2px 8px;">{{ s.rank }}</div>
+        <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.1em; color:#000; background:#F5C400; padding:2px 8px;">{{ s.rank }}</div>
       </div>
       <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:56px; line-height:1; letter-spacing:-0.04em; color:var(--b-text);">{{ s.value }}</div>
     </div>
@@ -106,7 +106,7 @@ active: basketball
     <h2 class="b-section-title">Season.</h2>
   </div>
 </div>
-<section style="border-bottom:1px solid var(--b-line);">
+<section class="cg-rows" style="border-bottom:1px solid var(--b-line);">
   <div style="display:grid; grid-template-columns:90px 1fr 90px 110px 130px; padding:14px 48px; border-bottom:1px solid var(--b-line); font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--b-mute); background:var(--b-bg-2);">
     <div>DATE</div><div>OPPONENT</div><div>LOC</div><div>STATUS</div><div>RESULT</div>
   </div>

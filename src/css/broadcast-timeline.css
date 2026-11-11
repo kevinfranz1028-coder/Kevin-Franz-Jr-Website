@@ -92,7 +92,7 @@
   width: 20px; height: 20px;
   margin-top: -3px;
   margin-bottom: 11px;
-  box-shadow: 0 0 0 4px rgba(15,77,47,0.18);
+  box-shadow: 0 0 0 4px rgba(245,196,0,0.18);
 }
 .tl-a .tl-dot-year {
   font-family: 'JetBrains Mono', monospace;
@@ -310,7 +310,7 @@
   top: 5px; left: 0;
   height: 4px;
   background: linear-gradient(90deg, var(--b-green) 0%, var(--b-green-bright) 100%);
-  box-shadow: 0 0 12px rgba(34,197,94,0.5);
+  box-shadow: 0 0 12px rgba(245,196,0,0.5);
   transition: width 0.5s cubic-bezier(.6,.2,.2,1);
 }
 .tl-b .tl-dots {
@@ -344,7 +344,7 @@
   width: 18px; height: 18px;
   margin-top: -2px;
   margin-bottom: 14px;
-  box-shadow: 0 0 0 6px rgba(34,197,94,0.18);
+  box-shadow: 0 0 0 6px rgba(245,196,0,0.18);
 }
 .tl-b .tl-dot-year {
   font-family: 'Archivo', sans-serif;

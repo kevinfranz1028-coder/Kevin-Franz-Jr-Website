@@ -443,7 +443,7 @@ class FormValidator {
         successMessage.className = 'form-success-message';
         successMessage.textContent = 'Thank you! Your message has been sent successfully.';
         successMessage.style.cssText = `
-            background: linear-gradient(135deg, #1B5E20 0%, #2E7D32 100%);
+            background: linear-gradient(135deg, #000000 0%, #1A1A1A 100%);
             color: white;
             padding: 1rem 2rem;
             border-radius: 0.5rem;

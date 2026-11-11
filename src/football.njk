@@ -36,8 +36,8 @@ permalink: /football/
                     {% endif %}
                 </div>
             </div>
-            <div class="measurables-image-wrapper">
-                <img src="{{ (sanityPages.football or pages.football).playerInfo.image or '/images/kevin-football.jpg' }}" alt="{{ (sanityPages.football or pages.football).playerInfo.name or 'Kevin Franz Jr.' }} football action shot" class="measurables-image">
+            <div class="measurables-image-wrapper cg-slot">
+                <img src="{{ (sanityPages.football or pages.football).playerInfo.image or '/images/kevin-football.jpg' }}" alt="{{ (sanityPages.football or pages.football).playerInfo.name or 'Kevin Franz Jr.' }} football action shot" class="measurables-image" onerror="this.remove()">
             </div>
         </div>
     </div>
@@ -105,7 +105,7 @@ permalink: /football/
                     {% elif item.thumbnailImage %}
                     <img src="{{ item.thumbnailImage }}" alt="{{ item.year }} - {{ item.grade }}" class="timeline-card-image">
                     {% else %}
-                    <img src="/images/placeholder-football.jpg" alt="{{ item.year }} - {{ item.grade }}" class="timeline-card-image">
+                    <img src="/images/placeholder-football.jpg" alt="{{ item.year }} - {{ item.grade }}" class="timeline-card-image" onerror="this.remove()">
                     {% endif %}
 
                     {# Overlay with Info #}
