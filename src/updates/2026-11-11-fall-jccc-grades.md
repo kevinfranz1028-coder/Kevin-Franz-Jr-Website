@@ -3,7 +3,7 @@ layout: post.njk
 title: Fall Semester at JCCC
 type: Academic Milestone
 date: 2026-11-11
-summary: Four college classes at JCCC this fall alongside SM West — Composition I, History of Rock and Roll Music, Introduction to Meteorology, and Principles of Macroeconomics — in progress with no missing work, and 15 credit hours registered for spring.
+summary: Four college classes at JCCC this fall alongside SM West — Composition I A, History of Rock and Roll Music A, Introduction to Meteorology B, and Principles of Macroeconomics B, all in progress — with no missing work, and 15 credit hours registered for spring.
 featured: false
 ---
 
@@ -11,12 +11,12 @@ featured: false
 
 I am four classes into my first full-time semester at Johnson County Community College, taken through SMSD's Real World Learning program while I am still a high school student at Shawnee Mission West.
 
-The four classes are in progress, with no missing work. The semester is not over, and final letter grades are not posted yet:
+The four classes are in progress, with no missing work. These are current letter grades, not final grades:
 
-- Composition I
-- History of Rock and Roll Music
-- Introduction to Meteorology
-- Principles of Macroeconomics
+- Composition I — A (in progress)
+- History of Rock and Roll Music — A (in progress)
+- Introduction to Meteorology — B (in progress)
+- Principles of Macroeconomics — B (in progress)
 
 ## The one I care most about
 
