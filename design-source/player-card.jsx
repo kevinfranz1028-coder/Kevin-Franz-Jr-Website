@@ -98,7 +98,7 @@ function PlayerCard() {
               <span>HOMETOWN</span><span>Overland Park, KS</span>
             </div>
             <div className="b-pcard-bio-row">
-              <span>GPA</span><span>3.85</span>
+              <span>GPA</span><span>3.75</span>
             </div>
           </div>
 

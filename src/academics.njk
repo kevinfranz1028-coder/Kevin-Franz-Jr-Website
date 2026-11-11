@@ -1,19 +1,10 @@
 ---
 layout: broadcast.njk
 title: Academics
-description: Academic profile for Kevin Franz Jr. - 3.85 GPA, honors coursework, awards, and meteorology track for Class of 2028 student-athlete.
+description: Academic profile for Kevin Franz Jr. - 3.75 GPA (3.82 weighted), JCCC dual enrollment, and meteorology track for Class of 2028 student-athlete.
 permalink: /academics/
 active: academics
 ---
-
-{% set courses = [
-  { course: 'AP Environmental Science', grade: 'A',  teacher: 'Mr. Davies',     notes: 'Atmospheric systems, climate dynamics, severe-weather case studies. Independent research project on Plains tornado outbreaks.' },
-  { course: 'Honors Algebra II',         grade: 'A',  teacher: 'Mrs. Liu',       notes: 'Trigonometry, complex numbers, conic sections. Strong foundation for college-level calculus.' },
-  { course: 'Honors English 10',         grade: 'A−', teacher: 'Ms. Patel',      notes: 'Rhetorical analysis, argumentative writing, American literature. Capstone essay on athlete-scholar narratives.' },
-  { course: 'Physics',                   grade: 'A',  teacher: 'Mr. Reeves',     notes: 'Mechanics, waves, thermodynamics. Lab partner for tornado-pressure simulation project.' },
-  { course: 'Spanish III',               grade: 'B+', teacher: 'Sra. Martínez',  notes: 'Conversational fluency, cultural literature. Working toward AP Spanish next year.' },
-  { course: 'World History',             grade: 'A',  teacher: 'Mr. Gallagher',  notes: 'Comparative history, geopolitics, primary-source analysis.' }
-] %}
 
 {# ===== HERO with GPA dial ===== #}
 <section style="position:relative; min-height:600px; background:var(--b-bg); overflow:hidden; border-bottom:1px solid var(--b-line);">
@@ -24,27 +15,27 @@ active: academics
   <div style="position:relative; z-index:2; padding:80px 56px; display:grid; grid-template-columns:1fr auto; gap:64px; align-items:center;">
     <div>
       <div style="display:flex; align-items:center; gap:10px; font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin-bottom:24px;">
-        <span>&bull;</span> ACADEMICS &middot; 2025–26
+        <span>&bull;</span> ACADEMICS &middot; THROUGH 10TH GRADE
       </div>
       <h1 style="font-family:'Archivo', sans-serif; font-weight:900; font-size:140px; line-height:0.85; letter-spacing:-0.045em; text-transform:uppercase; margin:0; color:var(--b-text);">
         Student.<br>
         <span style="-webkit-text-stroke:2px var(--b-green-bright); -webkit-text-fill-color:transparent;">First.</span>
       </h1>
-      <p style="font-family:'JetBrains Mono', monospace; font-size:13px; letter-spacing:0.06em; color:var(--b-mute); margin-top:32px; max-width:420px; line-height:1.6; text-transform:uppercase;">
-        {{ player.gpa or "3.85" }} GPA &middot; Honor roll every semester &middot; Targeting meteorology / atmospheric science in college.
+      <p style="font-family:'JetBrains Mono', monospace; font-size:13px; letter-spacing:0.06em; color:var(--b-mute); margin-top:32px; max-width:460px; line-height:1.6; text-transform:uppercase;">
+        {{ player.gpa or "3.75" }} GPA (3.82 weighted) &middot; Targeting meteorology / atmospheric science in college.
       </p>
     </div>
     <div style="position:relative; width:280px; height:280px;">
       <svg width="280" height="280" viewBox="0 0 240 240">
         <circle cx="120" cy="120" r="90" fill="none" stroke="var(--b-line)" stroke-width="14"></circle>
         <circle cx="120" cy="120" r="90" fill="none" stroke="var(--b-green-bright)" stroke-width="14"
-          stroke-dasharray="565.49" stroke-dashoffset="84.82"
+          stroke-dasharray="565.49" stroke-dashoffset="35.34"
           transform="rotate(-90 120 120)" stroke-linecap="square"></circle>
       </svg>
       <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center;">
         <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase;">GPA</div>
-        <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:80px; line-height:1; color:var(--b-text); letter-spacing:-0.04em; margin-top:4px;">{{ player.gpa or "3.85" }}</div>
-        <div style="font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--b-mute); margin-top:4px;">/ 4.0</div>
+        <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:80px; line-height:1; color:var(--b-text); letter-spacing:-0.04em; margin-top:4px;">{{ player.gpa or "3.75" }}</div>
+        <div style="font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--b-mute); margin-top:4px;">3.82 WEIGHTED</div>
       </div>
     </div>
   </div>
@@ -61,48 +52,42 @@ active: academics
   <div style="padding:32px 28px; background:var(--b-bg); min-height:280px; display:flex; flex-direction:column;">
     <div style="display:flex; justify-content:space-between; align-items:flex-start;">
       <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-mute); text-transform:uppercase;">GPA</div>
-      <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:48px; line-height:1; color:var(--b-text); letter-spacing:-0.03em;">3.85</div>
+      <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:48px; line-height:1; color:var(--b-text); letter-spacing:-0.03em;">{{ player.gpa or "3.75" }}</div>
     </div>
-    <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin:24px 0 14px;">BY SEMESTER</div>
-    <div style="display:flex; align-items:flex-end; gap:8px; height:120px;">
-      {% for g in [3.6, 3.7, 3.8, 3.85, 3.85, 3.9] %}
-        <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px;">
-          <div style="height:{{ ((g - 3.4) * 180) | round }}px; width:100%; background:{% if loop.last %}var(--b-green-bright){% else %}var(--b-bg-3){% endif %}; min-height:8px;"></div>
-          <div style="font-family:'JetBrains Mono', monospace; font-size:9px; color:var(--b-mute);">S{{ loop.index }}</div>
-        </div>
-      {% endfor %}
-    </div>
-  </div>
-
-  <div style="padding:32px 28px; background:var(--b-bg); min-height:280px; display:flex; flex-direction:column;">
-    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-      <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-mute); text-transform:uppercase;">HONOR ROLL</div>
-      <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:48px; line-height:1; color:var(--b-text); letter-spacing:-0.03em;">6/6</div>
-    </div>
-    <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin:24px 0 12px;">EVERY SEMESTER</div>
+    <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin:24px 0 14px;">3.82 WEIGHTED &middot; BY SEMESTER</div>
     <ul style="list-style:none; padding:0; margin:0; font-size:13px; color:var(--b-text); line-height:2;">
-      <li>&bull; Fall 2022 (8th)</li>
-      <li>&bull; Spring 2023 (8th)</li>
-      <li>&bull; Fall 2023 (Fr)</li>
-      <li>&bull; Spring 2024 (Fr)</li>
-      <li>&bull; Fall 2024 (So)</li>
-      <li>&bull; Spring 2025 (So)</li>
+      {% for row in [
+        ['9th S1', '3.86'],
+        ['9th S2', '3.86'],
+        ['10th S1', '3.71'],
+        ['10th S2', '3.57']
+      ] %}
+        <li style="display:flex; justify-content:space-between; gap:12px; border-bottom:1px solid var(--b-line);"><span>{{ row[0] }}</span><span>{{ row[1] }}</span></li>
+      {% endfor %}
     </ul>
   </div>
 
   <div style="padding:32px 28px; background:var(--b-bg); min-height:280px; display:flex; flex-direction:column;">
     <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-      <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-mute); text-transform:uppercase;">HONORS / AP</div>
-      <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:48px; line-height:1; color:var(--b-text); letter-spacing:-0.03em;">5</div>
+      <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-mute); text-transform:uppercase;">ALGEBRA II</div>
+      <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:48px; line-height:1; color:var(--b-text); letter-spacing:-0.03em;">A</div>
     </div>
-    <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin:24px 0 12px;">ADVANCED COURSEWORK</div>
+    <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin:24px 0 12px;">BOTH SEMESTERS</div>
     <ul style="list-style:none; padding:0; margin:0; font-size:13px; color:var(--b-text); line-height:1.9;">
-      <li>AP Environmental Science</li>
-      <li>Honors Algebra II</li>
-      <li>Honors English 10</li>
-      <li>Physics</li>
-      <li>Honors Chemistry (next yr)</li>
+      <li>A in semester 1</li>
+      <li>A in semester 2</li>
     </ul>
+  </div>
+
+  <div style="padding:32px 28px; background:var(--b-bg); min-height:280px; display:flex; flex-direction:column;">
+    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+      <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-mute); text-transform:uppercase;">AP WORLD</div>
+      <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:32px; line-height:1; color:var(--b-text); letter-spacing:-0.03em;">DONE</div>
+    </div>
+    <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin:24px 0 12px;">COMPLETED</div>
+    <p style="font-size:13px; color:var(--b-text); line-height:1.6; margin:0;">
+      AP World History completed.
+    </p>
   </div>
 
   <div style="padding:32px 28px; background:var(--b-bg); min-height:280px; display:flex; flex-direction:column;">
@@ -117,30 +102,10 @@ active: academics
   </div>
 </section>
 
-{# ===== COURSEWORK ===== #}
-<div class="b-section-head">
-  <div class="b-section-head-left">
-    <span class="b-section-tag">/02 COURSEWORK</span>
-    <h2 class="b-section-title">2025–26.</h2>
-  </div>
-</div>
-<section style="border-bottom:1px solid var(--b-line);">
-  {% for c in courses %}
-    <div style="display:grid; grid-template-columns:60px 1fr 180px; padding:28px 48px; {% if not loop.last %}border-bottom:1px solid var(--b-line);{% endif %} align-items:start; gap:24px;">
-      <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:32px; color:var(--b-green-bright); line-height:1; letter-spacing:-0.02em;">{{ c.grade }}</div>
-      <div>
-        <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:22px; color:var(--b-text); text-transform:uppercase; letter-spacing:-0.01em;">{{ c.course }}</div>
-        <p style="font-size:14px; color:var(--b-mute); margin:8px 0 0; line-height:1.6; max-width:780px;">{{ c.notes }}</p>
-      </div>
-      <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.1em; color:var(--b-mute); text-transform:uppercase; text-align:right;">{{ c.teacher }}</div>
-    </div>
-  {% endfor %}
-</section>
-
 {# ===== EARLY COLLEGE / JCCC DUAL ENROLLMENT ===== #}
 <div class="b-section-head">
   <div class="b-section-head-left">
-    <span class="b-section-tag">/03 EARLY COLLEGE</span>
+    <span class="b-section-tag">/02 EARLY COLLEGE</span>
     <h2 class="b-section-title">JCCC.</h2>
   </div>
   <span style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.1em; color:var(--b-mute); text-transform:uppercase;">
@@ -153,11 +118,13 @@ active: academics
       Johnson County<br>Community College
     </h3>
     <p style="font-size:16px; line-height:1.7; color:var(--b-mute); margin:0 0 28px; max-width:440px;">
-      Full-time college course load at JCCC through SMSD's Real World Learning program, alongside {{ player.highSchool }} &mdash; earning college credit before graduation.
+      Full-time college course load at JCCC through SMSD's Real World Learning program, alongside {{ player.highSchool }} &mdash; earning college credit before graduation. Admitted to the JCCC dual-degree program, with an ENGL 121 placement waiver.
     </p>
     <div style="display:grid; gap:1px; background:var(--b-line); border:1px solid var(--b-line); max-width:440px;">
       {% for row in [
         ['STATUS', 'Full-time JCCC student'],
+        ['PROGRAM', 'Dual-degree, admitted'],
+        ['ENGL 121', 'Placement waiver'],
         ['FALL 2026', '4 classes'],
         ['SPRING 2027', '15 credit hours registered'],
         ['MISSING WORK', 'None']
@@ -209,49 +176,14 @@ active: academics
 </section>
 
 {# ===== WHY METEOROLOGY ===== #}
-<section style="display:grid; grid-template-columns:1fr 1fr; border-bottom:1px solid var(--b-line); background:var(--b-bg-2);">
-  <div style="padding:80px 56px;">
-    <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin-bottom:16px;">/04 WHY METEOROLOGY</div>
+<section style="border-bottom:1px solid var(--b-line); background:var(--b-bg-2);">
+  <div style="padding:80px 56px; max-width:820px;">
+    <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin-bottom:16px;">/03 WHY METEOROLOGY</div>
     <h2 style="font-family:'Archivo', sans-serif; font-weight:900; font-size:80px; line-height:0.9; letter-spacing:-0.04em; text-transform:uppercase; margin:0; color:var(--b-text);">
       Storms<br>are <span style="-webkit-text-stroke:2px var(--b-green-bright); -webkit-text-fill-color:transparent;">real-time</span><br>data.
     </h2>
     <p style="font-size:16px; line-height:1.7; color:var(--b-mute); margin-top:32px; max-width:440px;">
       Growing up in Tornado Alley, I learned to track radar before I could drive. Reading a sounding chart, watching a supercell organize, calling a tornado warning before the sirens &mdash; that's the rush. Atmospheric science is engineering plus chaos plus consequences. I want to study it for real.
     </p>
-  </div>
-  <div style="padding:80px 56px; display:flex; flex-direction:column; justify-content:center; gap:24px; background:var(--b-bg);">
-    <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase;">CURRENT CONDITIONS &middot; OVERLAND PARK, KS</div>
-    <div style="display:flex; align-items:baseline; gap:24px;">
-      <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:120px; line-height:1; letter-spacing:-0.04em; color:var(--b-text);">42&deg;</div>
-      <div>
-        <div style="font-family:'Archivo', sans-serif; font-weight:800; font-size:24px; color:var(--b-green-bright); text-transform:uppercase;">Partly cloudy</div>
-        <div style="font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--b-mute); letter-spacing:0.1em; margin-top:6px;">WIND SSW 9 MPH &middot; HUM 58%</div>
-      </div>
-    </div>
-    <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:1px; background:var(--b-line); border:1px solid var(--b-line);">
-      {% for f in [['MON','45°'],['TUE','51°'],['WED','38°'],['THU','40°']] %}
-        <div style="background:var(--b-bg-2); padding:14px;">
-          <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; color:var(--b-mute); text-transform:uppercase;">{{ f[0] }}</div>
-          <div style="font-family:'Archivo', sans-serif; font-weight:800; font-size:20px; color:var(--b-text); margin-top:6px;">{{ f[1] }}</div>
-        </div>
-      {% endfor %}
-    </div>
-  </div>
-</section>
-
-{# ===== AWARDS ===== #}
-<section style="padding:56px 56px 80px; background:var(--b-bg);">
-  <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin-bottom:24px;">/05 AWARDS &amp; RECOGNITION</div>
-  <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:1px; background:var(--b-line); border:1px solid var(--b-line);">
-    {% for a in [
-      ['HONOR ROLL', 'All semesters since 6th grade'],
-      ['ACADEMIC EXCELLENCE', 'BVSW · 2024–25'],
-      ['NATIONAL HONOR SOCIETY', 'Inducted 2025 (sophomore)']
-    ] %}
-      <div style="background:var(--b-bg-2); padding:32px 28px;">
-        <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:24px; color:var(--b-text); text-transform:uppercase; letter-spacing:-0.02em; line-height:1.1;">{{ a[0] }}</div>
-        <div style="font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--b-mute); letter-spacing:0.06em; margin-top:8px;">{{ a[1] }}</div>
-      </div>
-    {% endfor %}
   </div>
 </section>

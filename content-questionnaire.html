@@ -348,7 +348,7 @@
         </div>
         <div class="field">
           <label class="field-label">GPA</label>
-          <div class="current">3.85</div>
+          <div class="current">3.75 (3.82 weighted)</div>
           <input type="text" data-key="player.gpa">
         </div>
         <div class="field">
@@ -523,32 +523,24 @@
 
       <div class="field">
         <label class="field-label">Hero subhead (under "Student. First.")</label>
-        <div class="current">3.85 GPA · Honor roll every semester · Targeting meteorology / atmospheric science in college.</div>
+        <div class="current">3.75 GPA (3.82 weighted) · Targeting meteorology / atmospheric science in college.</div>
         <textarea data-key="ac.heroSub" rows="2"></textarea>
       </div>
 
       <div class="field">
-        <label class="field-label">GPA by semester (oldest → newest, 6 semesters)</label>
-        <div class="current">3.6, 3.7, 3.8, 3.85, 3.85, 3.9</div>
+        <label class="field-label">GPA by semester</label>
+        <div class="current">9th S1 3.86, 9th S2 3.86, 10th S1 3.71, 10th S2 3.57</div>
         <div class="row">
-          <input type="text" data-key="ac.gpa.s1" placeholder="S1">
-          <input type="text" data-key="ac.gpa.s2" placeholder="S2">
-          <input type="text" data-key="ac.gpa.s3" placeholder="S3">
-          <input type="text" data-key="ac.gpa.s4" placeholder="S4">
-          <input type="text" data-key="ac.gpa.s5" placeholder="S5">
-          <input type="text" data-key="ac.gpa.s6" placeholder="S6">
+          <input type="text" data-key="ac.gpa.s1" placeholder="9th S1">
+          <input type="text" data-key="ac.gpa.s2" placeholder="9th S2">
+          <input type="text" data-key="ac.gpa.s3" placeholder="10th S1">
+          <input type="text" data-key="ac.gpa.s4" placeholder="10th S2">
         </div>
       </div>
 
       <div class="field">
-        <label class="field-label">Honor roll list (semester labels)</label>
-        <div class="current">Fall 2022 (8th), Spring 2023 (8th), Fall 2023 (Fr), Spring 2024 (Fr), Fall 2024 (So), Spring 2025 (So)</div>
-        <textarea data-key="ac.honorRoll" rows="3" placeholder="One semester per line"></textarea>
-      </div>
-
-      <div class="field">
         <label class="field-label">Honors / AP courses list</label>
-        <div class="current">AP Environmental Science, Honors Algebra II, Honors English 10, Physics, Honors Chemistry (next yr)</div>
+        <div class="current">AP World History (completed). Algebra II — A both semesters.</div>
         <textarea data-key="ac.honorsList" rows="4" placeholder="One course per line"></textarea>
       </div>
 
@@ -565,7 +557,7 @@
       </div>
 
       <div class="field">
-        <label class="field-label">Awards <span class="pill optional">3 awards</span></label>
+        <label class="field-label">Awards</label>
         <div id="awards-container"></div>
       </div>
     </div>
@@ -855,12 +847,8 @@ function buildSchedule() {
 }
 
 const COURSES = [
-  ['AP Environmental Science','A','Mr. Davies','Atmospheric systems, climate dynamics, severe-weather case studies. Independent research project on Plains tornado outbreaks.'],
-  ['Honors Algebra II','A','Mrs. Liu','Trigonometry, complex numbers, conic sections. Strong foundation for college-level calculus.'],
-  ['Honors English 10','A−','Ms. Patel','Rhetorical analysis, argumentative writing, American literature. Capstone essay on athlete-scholar narratives.'],
-  ['Physics','A','Mr. Reeves','Mechanics, waves, thermodynamics. Lab partner for tornado-pressure simulation project.'],
-  ['Spanish III','B+','Sra. Martínez','Conversational fluency, cultural literature. Working toward AP Spanish next year.'],
-  ['World History','A','Mr. Gallagher','Comparative history, geopolitics, primary-source analysis.']
+  ['AP World History','Completed','','Completed.'],
+  ['Algebra II','A','','A both semesters.']
 ];
 
 function buildCourses() {
@@ -870,7 +858,7 @@ function buildCourses() {
     card.className = 'group-card';
     card.innerHTML = `
       <h4>Course ${i+1}</h4>
-      <div class="current">${co[0]} · Grade ${co[1]} · ${co[2]}</div>
+      <div class="current">${co[0]} · ${co[1]}${co[2] ? ' · ' + co[2] : ''}</div>
       <div class="row-3">
         <input type="text" data-key="ac.course${i}.name" placeholder="Course name">
         <input type="text" data-key="ac.course${i}.grade" placeholder="Grade (A, B+, etc.)">
@@ -882,11 +870,7 @@ function buildCourses() {
   });
 }
 
-const AWARDS = [
-  ['HONOR ROLL','All semesters since 6th grade'],
-  ['ACADEMIC EXCELLENCE','BVSW · 2024–25'],
-  ['NATIONAL HONOR SOCIETY','Inducted 2025 (sophomore)']
-];
+const AWARDS = [];
 
 function buildAwards() {
   const c = document.getElementById('awards-container');
@@ -1008,8 +992,7 @@ function buildService() {
 const LEADERSHIP = [
   ['2023','JV TEAM CAPTAIN'],
   ['2024','FRESHMAN A CAPTAIN'],
-  ['2025','AAU TEAM LEADER'],
-  ['2025','NHS INDUCTEE']
+  ['2025','AAU TEAM LEADER']
 ];
 
 function buildLeadership() {

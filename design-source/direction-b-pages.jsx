@@ -8,15 +8,6 @@ const { useState: useStateBPages } = React;
 
 /* ---------------- ACADEMICS ---------------- */
 function BAcademicsPage() {
-  const courses = [
-    { course: 'AP Environmental Science', grade: 'A', teacher: 'Mr. Davies', notes: 'Atmospheric systems, climate dynamics, severe-weather case studies. Independent research project on Plains tornado outbreaks.' },
-    { course: 'Honors Algebra II', grade: 'A', teacher: 'Mrs. Liu', notes: 'Trigonometry, complex numbers, conic sections. Strong foundation for college-level calculus.' },
-    { course: 'Honors English 10', grade: 'A−', teacher: 'Ms. Patel', notes: 'Rhetorical analysis, argumentative writing, American literature. Capstone essay on athlete-scholar narratives.' },
-    { course: 'Physics', grade: 'A', teacher: 'Mr. Reeves', notes: 'Mechanics, waves, thermodynamics. Lab partner for tornado-pressure simulation project.' },
-    { course: 'Spanish III', grade: 'B+', teacher: 'Sra. Martínez', notes: 'Conversational fluency, cultural literature. Working toward AP Spanish next year.' },
-    { course: 'World History', grade: 'A', teacher: 'Mr. Gallagher', notes: 'Comparative history, geopolitics, primary-source analysis.' },
-  ];
-
   return (
     <div className="b-root">
       <BNav active="academics" />
@@ -37,11 +28,11 @@ function BAcademicsPage() {
               <span style={{WebkitTextStroke:'2px var(--b-green-bright)', WebkitTextFillColor:'transparent'}}>First.</span>
             </h1>
             <p style={{fontFamily:'JetBrains Mono, monospace', fontSize:13, letterSpacing:'0.06em', color:'var(--b-mute)', marginTop:32, maxWidth:420, lineHeight:1.6, textTransform:'uppercase'}}>
-              3.85 GPA · Honor roll every semester · Targeting meteorology / atmospheric science in college.
+              3.75 GPA (3.82 weighted) · Targeting meteorology / atmospheric science in college.
             </p>
           </div>
           {/* GPA dial */}
-          <GPADial gpa={3.85} max={4.0} />
+          <GPADial gpa={3.75} max={4.0} />
         </div>
       </section>
 
@@ -53,37 +44,24 @@ function BAcademicsPage() {
         </div>
       </div>
       <section style={{display:'grid', gridTemplateColumns:'repeat(4, 1fr)', gap:1, background:'var(--b-line)', borderBottom:'1px solid var(--b-line)'}}>
-        <RevealPanel label="GPA" value="3.85" hint="See trajectory">
+        <RevealPanel label="GPA" value="3.75" hint="3.82 weighted">
           <div style={{fontFamily:'JetBrains Mono, monospace', fontSize:10, letterSpacing:'0.14em', color:'var(--b-green-bright)', textTransform:'uppercase', marginBottom:14}}>BY SEMESTER</div>
-          <div style={{display:'flex', alignItems:'flex-end', gap:8, height:120, marginBottom:14}}>
-            {[3.6, 3.7, 3.8, 3.85, 3.85, 3.9].map((g, i) => (
-              <div key={i} style={{flex:1, display:'flex', flexDirection:'column', alignItems:'center', gap:4}}>
-                <div style={{height:`${(g-3.4)*180}px`, width:'100%', background: i === 5 ? 'var(--b-green-bright)' : 'var(--b-bg-3)', minHeight:8}} />
-                <div style={{fontFamily:'JetBrains Mono, monospace', fontSize:9, color:'var(--b-mute)'}}>S{i+1}</div>
-              </div>
-            ))}
-          </div>
-        </RevealPanel>
-        <RevealPanel label="HONOR ROLL" value="6/6" hint="See semesters">
-          <div style={{fontFamily:'JetBrains Mono, monospace', fontSize:10, letterSpacing:'0.14em', color:'var(--b-green-bright)', textTransform:'uppercase', marginBottom:12}}>EVERY SEMESTER</div>
           <ul style={{listStyle:'none', padding:0, margin:0, fontSize:13, color:'var(--b-text)', lineHeight:2}}>
-            <li>● Fall 2022 (8th)</li>
-            <li>● Spring 2023 (8th)</li>
-            <li>● Fall 2023 (Fr)</li>
-            <li>● Spring 2024 (Fr)</li>
-            <li>● Fall 2024 (So)</li>
-            <li>● Spring 2025 (So)</li>
+            {[['9th S1','3.86'],['9th S2','3.86'],['10th S1','3.71'],['10th S2','3.57']].map(([label, gpa]) => (
+              <li key={label} style={{display:'flex', justifyContent:'space-between'}}><span>{label}</span><span>{gpa}</span></li>
+            ))}
           </ul>
         </RevealPanel>
-        <RevealPanel label="HONORS / AP" value="5" hint="See list">
-          <div style={{fontFamily:'JetBrains Mono, monospace', fontSize:10, letterSpacing:'0.14em', color:'var(--b-green-bright)', textTransform:'uppercase', marginBottom:12}}>ADVANCED COURSEWORK</div>
+        <RevealPanel label="ALGEBRA II" value="A" hint="Both semesters">
+          <div style={{fontFamily:'JetBrains Mono, monospace', fontSize:10, letterSpacing:'0.14em', color:'var(--b-green-bright)', textTransform:'uppercase', marginBottom:12}}>BOTH SEMESTERS</div>
           <ul style={{listStyle:'none', padding:0, margin:0, fontSize:13, color:'var(--b-text)', lineHeight:1.9}}>
-            <li>AP Environmental Science</li>
-            <li>Honors Algebra II</li>
-            <li>Honors English 10</li>
-            <li>Physics</li>
-            <li>Honors Chemistry (next yr)</li>
+            <li>A in semester 1</li>
+            <li>A in semester 2</li>
           </ul>
+        </RevealPanel>
+        <RevealPanel label="AP WORLD" value="DONE" hint="Completed">
+          <div style={{fontFamily:'JetBrains Mono, monospace', fontSize:10, letterSpacing:'0.14em', color:'var(--b-green-bright)', textTransform:'uppercase', marginBottom:12}}>COMPLETED</div>
+          <p style={{fontSize:13, color:'var(--b-text)', lineHeight:1.6, margin:0}}>AP World History completed.</p>
         </RevealPanel>
         <RevealPanel label="TARGET" value="MET" hint="See plan">
           <div style={{fontFamily:'JetBrains Mono, monospace', fontSize:10, letterSpacing:'0.14em', color:'var(--b-green-bright)', textTransform:'uppercase', marginBottom:12}}>METEOROLOGY MAJOR</div>
@@ -93,48 +71,16 @@ function BAcademicsPage() {
         </RevealPanel>
       </section>
 
-      {/* Coursework — click to expand */}
-      <div className="b-section-head">
-        <div className="b-section-head-left">
-          <span className="b-section-tag">/02 COURSEWORK</span>
-          <h2 className="b-section-title">2025–26.</h2>
-        </div>
-        <span style={{fontFamily:'JetBrains Mono, monospace', fontSize:11, letterSpacing:'0.1em', color:'var(--b-mute)', textTransform:'uppercase'}}>
-          CLICK COURSE TO EXPAND
-        </span>
-      </div>
-      <section style={{borderBottom:'1px solid var(--b-line)'}}>
-        {courses.map(c => <CourseRow key={c.course} {...c} />)}
-      </section>
-
-      {/* Why Meteorology — full bleed split */}
-      <section style={{display:'grid', gridTemplateColumns:'1fr 1fr', borderBottom:'1px solid var(--b-line)', background:'var(--b-bg-2)'}}>
-        <div style={{padding:'80px 56px'}}>
-          <div style={{fontFamily:'JetBrains Mono, monospace', fontSize:11, letterSpacing:'0.14em', color:'var(--b-green-bright)', textTransform:'uppercase', marginBottom:16}}>/03 WHY METEOROLOGY</div>
+      {/* Why Meteorology */}
+      <section style={{borderBottom:'1px solid var(--b-line)', background:'var(--b-bg-2)'}}>
+        <div style={{padding:'80px 56px', maxWidth:820}}>
+          <div style={{fontFamily:'JetBrains Mono, monospace', fontSize:11, letterSpacing:'0.14em', color:'var(--b-green-bright)', textTransform:'uppercase', marginBottom:16}}>/02 WHY METEOROLOGY</div>
           <h2 style={{fontFamily:'Archivo, sans-serif', fontWeight:900, fontSize:80, lineHeight:0.9, letterSpacing:'-0.04em', textTransform:'uppercase', margin:0, color:'var(--b-text)'}}>
             Storms<br/>are <span style={{WebkitTextStroke:'2px var(--b-green-bright)', WebkitTextFillColor:'transparent'}}>real-time</span><br/>data.
           </h2>
           <p style={{fontSize:16, lineHeight:1.7, color:'var(--b-mute)', marginTop:32, maxWidth:440}}>
             Growing up in Tornado Alley, I learned to track radar before I could drive. Reading a sounding chart, watching a supercell organize, calling a tornado warning before the sirens — that's the rush. Atmospheric science is engineering plus chaos plus consequences. I want to study it for real.
           </p>
-        </div>
-        <WeatherWidget />
-      </section>
-
-      {/* Awards strip */}
-      <section style={{padding:'56px 56px 80px', background:'var(--b-bg)'}}>
-        <div style={{fontFamily:'JetBrains Mono, monospace', fontSize:11, letterSpacing:'0.14em', color:'var(--b-green-bright)', textTransform:'uppercase', marginBottom:24}}>/04 AWARDS & RECOGNITION</div>
-        <div style={{display:'grid', gridTemplateColumns:'repeat(3, 1fr)', gap:1, background:'var(--b-line)', border:'1px solid var(--b-line)'}}>
-          {[
-            ['HONOR ROLL', 'All semesters since 6th grade'],
-            ['ACADEMIC EXCELLENCE', 'BVSW · 2024–25'],
-            ['NATIONAL HONOR SOCIETY', 'Inducted 2025 (sophomore)'],
-          ].map(([t, d]) => (
-            <div key={t} style={{background:'var(--b-bg-2)', padding:'32px 28px'}}>
-              <div style={{fontFamily:'Archivo, sans-serif', fontWeight:900, fontSize:24, color:'var(--b-text)', textTransform:'uppercase', letterSpacing:'-0.02em', lineHeight:1.1}}>{t}</div>
-              <div style={{fontFamily:'JetBrains Mono, monospace', fontSize:12, color:'var(--b-mute)', letterSpacing:'0.06em', marginTop:8}}>{d}</div>
-            </div>
-          ))}
         </div>
       </section>
 
@@ -354,7 +300,6 @@ function BCharacterPage() {
               ['2023', 'JV TEAM CAPTAIN'],
               ['2024', 'FRESHMAN A CAPTAIN'],
               ['2025', 'AAU TEAM LEADER'],
-              ['2025', 'NHS INDUCTEE'],
             ].map(([y, t], i) => (
               <div key={i} style={{background:'var(--b-bg-2)', padding:'24px 20px'}}>
                 <div style={{fontFamily:'Archivo, sans-serif', fontWeight:900, fontSize:32, color:'var(--b-green-bright)', lineHeight:1, letterSpacing:'-0.02em'}}>{y}</div>
