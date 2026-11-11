@@ -3,7 +3,7 @@
     <div>
       <div class="b-footer-display">FRANZ JR<br><span style="color:var(--b-green-bright)">'{{ player.class | default('28') | replace('20','') }}.</span></div>
       <p style="font-size:14px; line-height:1.6; color:var(--b-mute); max-width:340px; margin-top:20px;">
-        {{ player.height or "6'1\"" }} combo guard out of {{ player.highSchool or "Blue Valley Southwest" }}. Combining college basketball ambitions with a path toward atmospheric science.
+        {{ player.height or "6'1\"" }} / {{ player.weight or "190" }} lb guard-forward out of {{ player.highSchool or "Shawnee Mission West" }}. Combining college basketball ambitions with a path toward atmospheric science.
       </p>
     </div>
     <div>
@@ -19,10 +19,17 @@
     <div>
       <h4>Recruiting</h4>
       <ul>
-        <li><a href="#">Prephoops</a></li>
-        <li><a href="#">NCSA Sports</a></li>
-        <li><a href="#">Sports Passports</a></li>
-        <li><a href="#">@kfranzjr2028</a></li>
+        <li><a href="https://prephoops.com/player/kevin-franz/" target="_blank" rel="noopener noreferrer">Prephoops</a></li>
+        <li><a href="https://prephoops.com/2026/10/updated-2028-kansas-rankings/" target="_blank" rel="noopener noreferrer">Prep Hoops Rankings</a></li>
+        <li><a href="https://www.ncsasports.org/mens-basketball-recruiting/kansas/overland-park/blue-valley-southwest-high-school/kevin-franz3" target="_blank" rel="noopener noreferrer">NCSA Sports</a></li>
+        <li><a href="https://www.fieldlevel.com/app/profile/kevin.franzjr/basketballmen?m=3" target="_blank" rel="noopener noreferrer">FieldLevel</a></li>
+        <li><a href="https://recruitlook.com/profile/20035511-74e5-481c-b21a-0e259f3a772e" target="_blank" rel="noopener noreferrer">RecruitLook</a></li>
+        <li><a href="https://instagram.com/kfranzjr2028" target="_blank" rel="noopener noreferrer">@kfranzjr2028</a></li>
+        {# TODO: no public URL yet. Paste the URL into the href and delete the two
+           comment markers around that line to publish it.
+        <li><a href="" target="_blank" rel="noopener noreferrer">Scorability</a></li>
+        <li><a href="" target="_blank" rel="noopener noreferrer">Sports Passports</a></li>
+        #}
       </ul>
     </div>
     <div>
@@ -36,6 +43,6 @@
   </div>
   <div class="b-footer-bottom">
     <span>&copy; {{ "now" | date("Y") if false else 2026 }} KEVIN FRANZ JR</span>
-    <span>BVSW &middot; #{{ player.jersey or "30" }} &middot; COMBO GUARD &middot; CLASS OF {{ player.class or "2028" }}</span>
+    <span>SM WEST &middot; #{{ player.jersey or "28" }} &middot; SG/SF &middot; CLASS OF {{ player.class or "2028" }}</span>
   </div>
 </footer>

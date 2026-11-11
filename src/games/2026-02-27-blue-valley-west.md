@@ -4,7 +4,7 @@ date: "2026-02-27T16:00:00.000Z"
 location: Blue Valley West (South Gym)
 homeAway: away
 time: "4:00 PM"
-result: ""
+result: L 63-85
 points: ""
 rebounds: ""
 assists: ""

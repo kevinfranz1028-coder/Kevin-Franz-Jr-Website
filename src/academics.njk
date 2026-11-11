@@ -137,10 +137,60 @@ active: academics
   {% endfor %}
 </section>
 
+{# ===== EARLY COLLEGE / JCCC DUAL ENROLLMENT ===== #}
+<div class="b-section-head">
+  <div class="b-section-head-left">
+    <span class="b-section-tag">/03 EARLY COLLEGE</span>
+    <h2 class="b-section-title">JCCC.</h2>
+  </div>
+  <span style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.1em; color:var(--b-mute); text-transform:uppercase;">
+    SMSD REAL WORLD LEARNING
+  </span>
+</div>
+<section style="display:grid; grid-template-columns:1fr 1fr; border-bottom:1px solid var(--b-line);">
+  <div style="padding:56px; background:var(--b-bg-2);">
+    <h3 style="font-family:'Archivo', sans-serif; font-weight:900; font-size:34px; line-height:1.05; letter-spacing:-0.02em; text-transform:uppercase; margin:0 0 20px; color:var(--b-text);">
+      Johnson County<br>Community College
+    </h3>
+    <p style="font-size:16px; line-height:1.7; color:var(--b-mute); margin:0 0 28px; max-width:440px;">
+      Full-time college course load at JCCC through SMSD's Real World Learning program, alongside {{ player.highSchool }} &mdash; earning college credit before graduation.
+    </p>
+    <div style="display:grid; gap:1px; background:var(--b-line); border:1px solid var(--b-line); max-width:440px;">
+      {% for row in [
+        ['STATUS', 'Full-time JCCC student'],
+        ['FALL 2026', '4 classes'],
+        ['SPRING 2027', '15 credit hours registered']
+      ] %}
+        <div style="background:var(--b-bg); padding:16px 20px; display:flex; justify-content:space-between; align-items:baseline; gap:16px;">
+          <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; color:var(--b-mute); text-transform:uppercase;">{{ row[0] }}</div>
+          <div style="font-family:'Archivo', sans-serif; font-weight:800; font-size:15px; color:var(--b-text); text-align:right;">{{ row[1] }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div style="padding:56px; background:var(--b-bg);">
+    <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin-bottom:20px;">SPRING 2027 &middot; REGISTERED COURSES</div>
+    <div style="display:grid; gap:1px; background:var(--b-line); border:1px solid var(--b-line);">
+      {% for c in [
+        ['MATH 171', 'College Algebra'],
+        ['ENGL 122', 'Composition II'],
+        ['JOUR 120', 'Mass Media &amp; Society'],
+        ['BUS 123',  'Personal Finance'],
+        ['COMS 121', 'Public Speaking']
+      ] %}
+        <div style="background:var(--b-bg-2); padding:16px 20px; display:grid; grid-template-columns:96px 1fr; gap:16px; align-items:baseline;">
+          <div style="font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.06em; color:var(--b-green-bright);">{{ c[0] }}</div>
+          <div style="font-family:'Archivo', sans-serif; font-weight:800; font-size:16px; color:var(--b-text);">{{ c[1] | safe }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
 {# ===== WHY METEOROLOGY ===== #}
 <section style="display:grid; grid-template-columns:1fr 1fr; border-bottom:1px solid var(--b-line); background:var(--b-bg-2);">
   <div style="padding:80px 56px;">
-    <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin-bottom:16px;">/03 WHY METEOROLOGY</div>
+    <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin-bottom:16px;">/04 WHY METEOROLOGY</div>
     <h2 style="font-family:'Archivo', sans-serif; font-weight:900; font-size:80px; line-height:0.9; letter-spacing:-0.04em; text-transform:uppercase; margin:0; color:var(--b-text);">
       Storms<br>are <span style="-webkit-text-stroke:2px var(--b-green-bright); -webkit-text-fill-color:transparent;">real-time</span><br>data.
     </h2>
@@ -170,7 +220,7 @@ active: academics
 
 {# ===== AWARDS ===== #}
 <section style="padding:56px 56px 80px; background:var(--b-bg);">
-  <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin-bottom:24px;">/04 AWARDS &amp; RECOGNITION</div>
+  <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin-bottom:24px;">/05 AWARDS &amp; RECOGNITION</div>
   <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:1px; background:var(--b-line); border:1px solid var(--b-line);">
     {% for a in [
       ['HONOR ROLL', 'All semesters since 6th grade'],

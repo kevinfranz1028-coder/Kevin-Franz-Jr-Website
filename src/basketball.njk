@@ -1,39 +1,45 @@
 ---
 layout: broadcast.njk
 title: Basketball
-description: Stats, schedule, highlights, and recruiting for Kevin Franz Jr. - Class of 2028 combo guard.
+description: Stats, schedule, highlights, and recruiting for Kevin Franz Jr. - Class of 2028 SG/SF.
 permalink: /basketball/
 active: basketball
 ---
 
 {% set schedule = [
-  { date: 'Dec 5',  opp: 'Washburn Rural',         loc: 'Away', result: 'L 38-52' },
-  { date: 'Dec 9',  opp: 'Wyandotte',              loc: 'Home', result: 'W 64-31' },
-  { date: 'Dec 16', opp: 'Gardner-Edgerton',       loc: 'Home', result: 'W 51-44' },
-  { date: 'Jan 6',  opp: 'Shawnee Mission North',  loc: 'Away', result: 'W 58-46' },
-  { date: 'Jan 8',  opp: 'Basehor-Linwood',        loc: 'Home', result: 'L 42-49' },
-  { date: 'Jan 13', opp: 'Louisburg',              loc: 'Away', result: 'W 55-40' },
-  { date: 'Jan 16', opp: 'Blue Valley West',       loc: 'Home', result: 'W 60-52' },
-  { date: 'Jan 21', opp: 'Olathe Northwest',       loc: 'Home', result: '—', upcoming: true },
-  { date: 'Jan 27', opp: 'Olathe East',            loc: 'Away', result: '—', upcoming: true },
-  { date: 'Jan 30', opp: 'Shawnee Mission West',   loc: 'Home', result: '—', upcoming: true },
-  { date: 'Feb 3',  opp: 'Saint Thomas Aquinas',   loc: 'Away', result: '—', upcoming: true },
-  { date: 'Feb 6',  opp: 'Blue Valley Northwest',  loc: 'Home', result: '—', upcoming: true },
-  { date: 'Feb 13', opp: 'Blue Valley',            loc: 'Away', result: '—', upcoming: true },
-  { date: 'Feb 17', opp: 'Bishop Miege',           loc: 'Home', result: '—', upcoming: true },
-  { date: 'Feb 20', opp: 'St. James Academy',      loc: 'Away', result: '—', upcoming: true }
+  { date: 'Dec 5',  opp: 'Washburn Rural',         loc: 'Away',    result: 'L 44-59' },
+  { date: 'Dec 9',  opp: 'Wyandotte',              loc: 'Away',    result: 'W 50-33' },
+  { date: 'Dec 16', opp: 'Gardner-Edgerton',       loc: 'Home',    result: 'L 58-66' },
+  { date: 'Jan 6',  opp: 'Shawnee Mission North',  loc: 'Home',    result: 'L 54-64' },
+  { date: 'Jan 8',  opp: 'Basehor-Linwood',        loc: 'Home',    result: 'W 72-46' },
+  { date: 'Jan 13', opp: 'Louisburg',              loc: 'Away',    result: 'W 76-44' },
+  { date: 'Jan 16', opp: 'Blue Valley West',       loc: 'Home',    result: 'L 55-64' },
+  { date: 'Jan 21', opp: 'Olathe Northwest',       loc: 'Away',    result: 'L 41-61' },
+  { date: 'Jan 27', opp: 'Olathe East',            loc: 'Home',    result: 'W 60-57' },
+  { date: 'Jan 30', opp: 'Shawnee Mission West',   loc: 'Away',    result: 'L 40-44' },
+  { date: 'Feb 3',  opp: 'Saint Thomas Aquinas',   loc: 'Home',    result: 'L 58-69' },
+  { date: 'Feb 4',  opp: 'J.C. Harmon',            loc: 'Away',    result: 'W 69-16' },
+  { date: 'Feb 6',  opp: 'Blue Valley Northwest',  loc: 'Home',    result: 'L 56-68' },
+  { date: 'Feb 10', opp: 'Blue Valley North',      loc: 'Away',    result: 'L 38-65' },
+  { date: 'Feb 11', opp: 'Metro Academy',          loc: 'Home',    result: 'W 85-35' },
+  { date: 'Feb 13', opp: 'Blue Valley',            loc: 'Home',    result: 'W 60-54' },
+  { date: 'Feb 14', opp: 'Blue Valley',            loc: 'Home',    result: 'L 50-65' },
+  { date: 'Feb 17', opp: 'Bishop Miege',           loc: 'Away',    result: 'L 50-65' },
+  { date: 'Feb 20', opp: 'St. James Academy',      loc: 'Away',    result: 'L 50-67' },
+  { date: 'Feb 26', opp: 'Bishop Miege',           loc: 'Home',    result: 'L 67-70' },
+  { date: 'Feb 27', opp: 'Blue Valley West',       loc: 'Away',    result: 'L 63-85' }
 ] %}
 {% set stats2526 = [
-  { label: 'PPG',    value: '5.4',  rank: '5th' },
-  { label: 'RPG',    value: '4.1',  rank: '1st' },
-  { label: 'APG',    value: '2.6',  rank: '2nd' },
-  { label: 'SPG',    value: '1.4',  rank: 'T-3rd' },
-  { label: 'BPG',    value: '0.4',  rank: 'T-3rd' },
-  { label: 'FG%',    value: '37.5', rank: '8th' },
-  { label: '3PT%',   value: '31.0', rank: '5th' },
-  { label: 'FT%',    value: '65.7', rank: '4th' },
-  { label: 'AST/TO', value: '2.05', rank: '2nd' },
-  { label: 'TOPG',   value: '1.25', rank: '7th' }
+  { label: 'PPG',    value: '5.6',  rank: '5th' },
+  { label: 'RPG',    value: '4.0',  rank: '1st' },
+  { label: 'APG',    value: '2.5',  rank: '2nd' },
+  { label: 'SPG',    value: '1.5',  rank: 'T-3rd' },
+  { label: 'BPG',    value: '0.3',  rank: 'T-3rd' },
+  { label: 'FG%',    value: '39.3', rank: '8th' },
+  { label: '3PT%',   value: '31.6', rank: '5th' },
+  { label: 'FT%',    value: '67.6', rank: '4th' },
+  { label: 'AST/TO', value: '2.18', rank: '2nd' },
+  { label: 'TOPG',   value: '1.16', rank: '7th' }
 ] %}
 {% set highlights = [
   { title: 'Summer 2023 Phenom Camp Mix', description: 'Los Angeles, CA — competing on the national stage', videoId: 'D99uLbwXy7s' },
@@ -60,12 +66,12 @@ active: basketball
       <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:20px;">
         <div>
           <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:22px; color:var(--b-text); text-transform:uppercase; letter-spacing:-0.01em;">{{ player.name }}</div>
-          <div style="font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--b-mute); letter-spacing:0.1em; margin-top:4px;">#{{ player.jersey }} &middot; COMBO GUARD</div>
+          <div style="font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--b-mute); letter-spacing:0.1em; margin-top:4px;">#{{ player.jersey }} &middot; SG/SF</div>
         </div>
         <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:48px; color:var(--b-green-bright); line-height:1;">{{ player.jersey }}</div>
       </div>
       <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--b-line); border:1px solid var(--b-line);">
-        {% for cell in [['HT', player.height], ['WT', player.weight], ['CLASS', player.class], ['HS', 'BVSW'], ['AAU', '3SSB'], ['GPA', player.gpa]] %}
+        {% for cell in [['HT', player.height], ['WT', player.weight], ['CLASS', player.class], ['HS', 'SM West'], ['CLUB', 'JC Hoops'], ['GPA', player.gpa]] %}
           <div style="background:var(--b-bg); padding:14px;">
             <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; color:var(--b-mute); text-transform:uppercase;">{{ cell[0] }}</div>
             <div style="font-family:'Archivo', sans-serif; font-weight:800; font-size:18px; color:var(--b-text); margin-top:4px;">{{ cell[1] }}</div>
@@ -165,19 +171,27 @@ active: basketball
       </div>
     </div>
     <div style="display:grid; gap:1px; background:var(--b-line); border:1px solid var(--b-line);">
+      {# Entries with an empty URL are TODO slots: skipped when rendering, so
+         nothing broken shows. Paste the public URL in to publish the card. #}
       {% for link in [
-        ['PREPHOOPS', 'Player profile and rankings', '#'],
-        ['NCSA SPORTS', 'Complete recruiting profile', '#'],
-        ['SPORTS PASSPORTS', 'Tournament history and stats', '#'],
-        ['INSTAGRAM', '@kfranzjr2028', 'https://instagram.com/kfranzjr2028']
+        ['PREPHOOPS', 'Player profile and rankings', 'https://prephoops.com/player/kevin-franz/'],
+        ['PREP HOOPS RANKINGS', 'Featured in the updated 2028 Kansas rankings, Oct 9 2026', 'https://prephoops.com/2026/10/updated-2028-kansas-rankings/'],
+        ['NCSA SPORTS', 'Complete recruiting profile', 'https://www.ncsasports.org/mens-basketball-recruiting/kansas/overland-park/blue-valley-southwest-high-school/kevin-franz3'],
+        ['INSTAGRAM', '@kfranzjr2028', 'https://instagram.com/kfranzjr2028'],
+        ['FIELDLEVEL', 'Coach-to-coach recruiting network', 'https://www.fieldlevel.com/app/profile/kevin.franzjr/basketballmen?m=3'],
+        ['RECRUITLOOK', 'Verified athlete profile', 'https://recruitlook.com/profile/20035511-74e5-481c-b21a-0e259f3a772e'],
+        ['SCORABILITY', 'Recruiting profile', ''],
+        ['SPORTS PASSPORTS', 'Tournament history and stats', '']
       ] %}
-        <a href="{{ link[2] }}" {% if link[2] != '#' %}target="_blank" rel="noopener"{% endif %} style="display:flex; justify-content:space-between; align-items:center; padding:24px 28px; background:var(--b-bg); color:var(--b-text); text-decoration:none;">
+        {% if link[2] %}
+        <a href="{{ link[2] }}" target="_blank" rel="noopener noreferrer" style="display:flex; justify-content:space-between; align-items:center; padding:24px 28px; background:var(--b-bg); color:var(--b-text); text-decoration:none;">
           <div>
             <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:18px; text-transform:uppercase; letter-spacing:0.02em;">{{ link[0] }}</div>
             <div style="font-size:13px; color:var(--b-mute); margin-top:4px;">{{ link[1] }}</div>
           </div>
           <span style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.12em; color:var(--b-green-bright);">VIEW &rarr;</span>
         </a>
+        {% endif %}
       {% endfor %}
     </div>
   </div>

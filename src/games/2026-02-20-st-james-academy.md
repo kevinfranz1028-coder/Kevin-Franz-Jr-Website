@@ -4,10 +4,10 @@ date: "2026-02-20T16:00:00.000Z"
 location: St. James Academy (Main Gym)
 homeAway: away
 time: "4:00 PM"
-result: ""
-points: ""
-rebounds: ""
-assists: ""
+result: L 50-67
+points: "3"
+rebounds: "3"
+assists: "3"
 season: 2025-2026
 team: JV
 ---
