@@ -81,13 +81,14 @@ active: academics
 
   <div style="padding:32px 28px; background:var(--b-bg); min-height:280px; display:flex; flex-direction:column;">
     <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-      <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-mute); text-transform:uppercase;">AP WORLD</div>
-      <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:32px; line-height:1; color:var(--b-text); letter-spacing:-0.03em;">DONE</div>
+      <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-mute); text-transform:uppercase;">AP WORLD HISTORY</div>
+      <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:48px; line-height:1; color:var(--b-text); letter-spacing:-0.03em;">B</div>
     </div>
-    <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin:24px 0 12px;">COMPLETED</div>
-    <p style="font-size:13px; color:var(--b-text); line-height:1.6; margin:0;">
-      AP World History completed.
-    </p>
+    <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin:24px 0 12px;">BOTH SEMESTERS</div>
+    <ul style="list-style:none; padding:0; margin:0; font-size:13px; color:var(--b-text); line-height:1.9;">
+      <li>B in semester 1</li>
+      <li>B in semester 2</li>
+    </ul>
   </div>
 
   <div style="padding:32px 28px; background:var(--b-bg); min-height:280px; display:flex; flex-direction:column;">
@@ -118,13 +119,13 @@ active: academics
       Johnson County<br>Community College
     </h3>
     <p style="font-size:16px; line-height:1.7; color:var(--b-mute); margin:0 0 28px; max-width:440px;">
-      Full-time college course load at JCCC through SMSD's Real World Learning program, alongside {{ player.highSchool }} &mdash; earning college credit before graduation. Admitted to the JCCC dual-degree program, with an ENGL 121 placement waiver.
+      Kevin is in Johnson County Community College's dual-degree program through SMSD's Real World Learning program. He is a full-time college student while still in high school at {{ player.highSchool }}, on track to graduate with both an associate degree from Johnson County Community College and his high school diploma.
     </p>
     <div style="display:grid; gap:1px; background:var(--b-line); border:1px solid var(--b-line); max-width:440px;">
       {% for row in [
-        ['STATUS', 'Full-time JCCC student'],
-        ['PROGRAM', 'Dual-degree, admitted'],
-        ['ENGL 121', 'Placement waiver'],
+        ['STATUS', 'Full-time college student'],
+        ['PROGRAM', 'JCCC dual degree'],
+        ['PATH', 'Associate degree and high school diploma'],
         ['FALL 2026', '4 classes'],
         ['SPRING 2027', '15 credit hours registered'],
         ['MISSING WORK', 'None']
@@ -140,32 +141,31 @@ active: academics
     <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin-bottom:20px;">FALL 2026 &middot; CURRENT COURSES</div>
     <div style="display:grid; gap:1px; background:var(--b-line); border:1px solid var(--b-line);">
       {% for c in [
-        ['ENGL 121', 'Composition I &middot; 92.79%'],
-        ['MUS 128',  '95.52%'],
-        ['GEOS 160', 'Meteorology &middot; 88.31%'],
-        ['ECON 230', '82.93%']
+        ['Composition I', 'A'],
+        ['History of Rock and Roll Music', 'A'],
+        ['Introduction to Meteorology', 'B'],
+        ['Principles of Macroeconomics', 'B']
       ] %}
-        <div style="background:var(--b-bg-2); padding:16px 20px; display:grid; grid-template-columns:96px 1fr; gap:16px; align-items:baseline;">
-          <div style="font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.06em; color:var(--b-green-bright);">{{ c[0] }}</div>
-          <div style="font-family:'Archivo', sans-serif; font-weight:800; font-size:16px; color:var(--b-text);">{{ c[1] | safe }}</div>
+        <div style="background:var(--b-bg-2); padding:16px 20px; display:flex; justify-content:space-between; align-items:baseline; gap:16px;">
+          <div style="font-family:'Archivo', sans-serif; font-weight:800; font-size:16px; color:var(--b-text);">{{ c[0] }}</div>
+          <div style="font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.06em; color:var(--b-green-bright); white-space:nowrap;">{{ c[1] }} (in progress)</div>
         </div>
       {% endfor %}
     </div>
     <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.08em; color:var(--b-mute); text-transform:uppercase; margin-top:12px;">
-      IN PROGRESS &middot; CANVAS, AS OF NOV 10 2026 &middot; NO MISSING WORK
+      IN PROGRESS &middot; NO MISSING WORK
     </div>
     <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin:32px 0 20px;">SPRING 2027 &middot; REGISTERED COURSES</div>
     <div style="display:grid; gap:1px; background:var(--b-line); border:1px solid var(--b-line);">
-      {% for c in [
-        ['MATH 171', 'College Algebra'],
-        ['ENGL 122', 'Composition II'],
-        ['JOUR 120', 'Mass Media &amp; Society'],
-        ['BUS 123',  'Personal Finance'],
-        ['COMS 121', 'Public Speaking']
+      {% for title in [
+        'College Algebra',
+        'Composition II',
+        'Mass Media and Society',
+        'Personal Finance',
+        'Public Speaking'
       ] %}
-        <div style="background:var(--b-bg-2); padding:16px 20px; display:grid; grid-template-columns:96px 1fr; gap:16px; align-items:baseline;">
-          <div style="font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.06em; color:var(--b-green-bright);">{{ c[0] }}</div>
-          <div style="font-family:'Archivo', sans-serif; font-weight:800; font-size:16px; color:var(--b-text);">{{ c[1] | safe }}</div>
+        <div style="background:var(--b-bg-2); padding:16px 20px;">
+          <div style="font-family:'Archivo', sans-serif; font-weight:800; font-size:16px; color:var(--b-text);">{{ title }}</div>
         </div>
       {% endfor %}
     </div>
