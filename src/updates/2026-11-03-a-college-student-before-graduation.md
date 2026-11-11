@@ -17,13 +17,11 @@ This fall I am taking **four JCCC classes**.
 
 For the spring term I am registered for **15 credit hours**:
 
-| Course | Title |
-| --- | --- |
-| MATH 171 | College Algebra |
-| ENGL 122 | Composition II |
-| JOUR 120 | Mass Media & Society |
-| BUS 123 | Personal Finance |
-| COMS 121 | Public Speaking |
+- College Algebra
+- Composition II
+- Mass Media and Society
+- Personal Finance
+- Public Speaking
 
 A full 15-hour schedule on top of basketball means the time management has to be real. The habits I built balancing school and a season — using travel time, blocking out hours for coursework, asking for help early — are the only reason this is workable.
 
