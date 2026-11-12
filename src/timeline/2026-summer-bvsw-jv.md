@@ -11,6 +11,7 @@ teams:
   - id: bvsw-jv-summer-2026
     when: Summer 2026
     name: BVSW JV
+    cardImage: ""
     jersey: "30"
     record: "10-3"
     games: "13"

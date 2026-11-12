@@ -41,6 +41,23 @@ module.exports = function(eleventyConfig) {
   });
 
   // One scannable line for a timeline team. Omits any field that was not provided.
+  // Jersey number when we have one, otherwise up to three initials for the placeholder.
+  eleventyConfig.addFilter("cardMark", function(team) {
+    if (!team || typeof team !== "object") return "";
+    if (team.jersey) return "#" + team.jersey;
+    const name = String(team.name || team.team || "").trim();
+    if (!name) return "";
+    return name
+      .split(/\s+/)
+      .filter(function(word) { return !/\d/.test(word); })
+      .map(function(word) { return word.replace(/[^A-Za-z]/g, ""); })
+      .filter(Boolean)
+      .map(function(word) { return word[0]; })
+      .join("")
+      .slice(0, 3)
+      .toUpperCase();
+  });
+
   eleventyConfig.addFilter("teamLine", function(team) {
     if (!team || typeof team !== "object") return "";
     const parts = [];

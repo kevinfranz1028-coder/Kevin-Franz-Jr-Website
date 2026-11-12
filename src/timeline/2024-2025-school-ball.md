@@ -4,6 +4,7 @@ permalink: /timeline/2024-2025-school-ball/
 year: 2024-2025
 grade: Freshman (9th Grade)
 team: BVSW Freshman Wolves
+cardImage: ""
 order: 31
 listed: false
 summary: Spring 2025 school ball with BVSW Freshman Wolves (#44), 4-12.

@@ -11,6 +11,7 @@ teams:
   - id: pac-16u-gold
     when: Spring 2026
     name: Pac 16U Gold
+    cardImage: ""
     jersey: "16"
     games: "23"
     ppg: "7.9"

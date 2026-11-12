@@ -11,6 +11,7 @@ teams:
   - id: yho-3ssb-gold
     when: Summer 2025
     name: YHO 3SSB Gold 2028 15U
+    cardImage: ""
     jersey: "10"
     record: "12-18"
     games: "30"

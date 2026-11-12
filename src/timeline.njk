@@ -25,68 +25,18 @@ permalink: /timeline/
     {% include "journey-strip.njk" %}
 </section>
 
-{# Stages come from each entry's existing "season" field, matching the Journey
-   strip. The trailing "Other" group is a safety net so no entry can ever be
-   dropped. Pages with listed: false stay published but are not shown twice. #}
-{% set stages = [
-  { label: 'Elementary',                   match: 'Elementary' },
-  { label: 'Middle School &middot; School Ball', match: 'Middle School' },
-  { label: 'Middle School &middot; AAU',         match: 'Middle School AAU' },
-  { label: 'High School &middot; School Ball',   match: 'High School' },
-  { label: 'High School &middot; AAU',           match: 'AAU' }
-] %}
-{% set shown = [] %}
+{# Anything whose season does not match a Journey row still gets a link.
+   Pages with listed: false stay published and are not shown twice. #}
+{% set stageMatches = ['Elementary', 'Middle School', 'Middle School AAU', 'High School', 'AAU'] %}
+{% set other = [] %}
+{% for item in collections.timeline %}
+    {% if item.data.listed != false and item.data.season not in stageMatches %}
+        {% set _ = other.push(item) %}
+    {% endif %}
+{% endfor %}
 
 <section class="section-content">
     <div class="container">
-        {% for stage in stages %}
-            {% set stageItems = [] %}
-            {% for item in collections.timeline %}
-                {% if item.data.listed != false and item.data.season == stage.match %}
-                    {% set _ = stageItems.push(item) %}
-                    {% set _ = shown.push(item.url) %}
-                {% endif %}
-            {% endfor %}
-
-            <h2>{{ stage.label | safe }}</h2>
-            <div class="updates-list" style="margin-bottom: 3rem;">
-                {% for item in stageItems | reverse %}
-                <div class="update-card">
-                    <div class="update-card-content">
-                        <h3 class="update-card-title">{{ item.data.year }}</h3>
-                        <time class="update-card-date">{{ item.data.grade }}{% if item.data.team %} &middot; {{ item.data.team }}{% endif %}</time>
-                        <p class="update-card-summary">{{ item.data.summary }}</p>
-                        {% if item.data.teams and item.data.teams.length %}
-                        <ul class="timeline-team-list">
-                            {% for t in item.data.teams %}
-                            <li>
-                                <a href="{{ item.url }}#{{ t.id }}">{{ t.when }} · {{ t.name }}{% if t.jersey %} #{{ t.jersey }}{% endif %}</a>
-                                {% if t.honor %}<span>{{ t.honor }}</span>{% endif %}
-                                {% if t.record or t.games or t.ppg or t.rpg or t.apg or t.spg %}
-                                <span>{{ t | teamLine }}</span>
-                                {% endif %}
-                            </li>
-                            {% endfor %}
-                        </ul>
-                        {% endif %}
-                        <a href="{{ item.url }}" class="update-card-link">View season</a>
-                    </div>
-                </div>
-                {% else %}
-                <div class="update-card">
-                    <div class="update-card-content">
-                        <h3 class="update-card-title">Details coming soon</h3>
-                        <p class="update-card-summary">Nothing recorded here yet.</p>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-        {% endfor %}
-
-        {% set other = [] %}
-        {% for item in collections.timeline %}
-            {% if item.data.listed != false and item.url not in shown %}{% set _ = other.push(item) %}{% endif %}
-        {% endfor %}
         {% if other | length %}
             <h2>Other</h2>
             <div class="updates-list" style="margin-bottom: 3rem;">

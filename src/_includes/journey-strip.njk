@@ -1,5 +1,8 @@
-{# Horizontal Journey strip. Stage labels match the groups in src/timeline.njk.
-   Oldest first within each stage. Pages with listed: false are omitted. #}
+{# One horizontal row per stage. A single rail of every team hides the stage
+   label as soon as a phone swipes, so each group keeps its own scroller.
+   Set cardImage on a team (or gallery[0].image on a one-team page) to a real
+   repo photo. Empty cardImage renders the black-and-gold mark. #}
+<link rel="stylesheet" href="/css/journey-cards.css">
 {% set stages = [
   { label: 'Elementary', match: 'Elementary' },
   { label: 'Middle School · School Ball', match: 'Middle School' },
@@ -7,7 +10,7 @@
   { label: 'High School · School Ball', match: 'High School' },
   { label: 'High School · AAU', match: 'AAU' }
 ] %}
-<div class="cg-journey-stages">
+<div class="bj-timeline">
   {% for stage in stages %}
     {% set stageItems = [] %}
     {% for item in collections.timeline %}
@@ -16,35 +19,74 @@
       {% endif %}
     {% endfor %}
     {% if stageItems.length %}
-    <div class="cg-journey-stage">
-      <h3>{{ stage.label }}</h3>
-      <div class="cg-journey-row">
-        {% for item in stageItems %}
-          {% if item.data.teams and item.data.teams.length %}
-            {% for t in item.data.teams %}
-            <a class="cg-journey-card" href="{{ item.url }}#{{ t.id }}">
-              <span class="cg-journey-when">{{ t.when }} · {{ item.data.year }}</span>
-              <strong>{{ t.name }}{% if t.jersey %} #{{ t.jersey }}{% endif %}</strong>
-              {% if t.honor %}<span class="cg-journey-honor">{{ t.honor }}</span>{% endif %}
-              {% if t.record or t.games or t.ppg or t.rpg or t.apg or t.spg %}
-              <span class="cg-journey-line">{{ t | teamLine }}</span>
-              {% endif %}
-            </a>
-            {% endfor %}
-          {% else %}
-            <a class="cg-journey-card" href="{{ item.url }}">
-              <span class="cg-journey-when">{{ item.data.year }}</span>
-              <strong>{{ item.data.team or item.data.grade }}</strong>
-              {% if item.data.stats %}
-              <span class="cg-journey-line">{{ item.data.stats | teamLine }}</span>
-              {% else %}
-              <span class="cg-journey-line">{{ item.data.grade }}</span>
-              {% endif %}
-            </a>
-          {% endif %}
-        {% endfor %}
+    <div class="bj-stage">
+      <div class="bj-stage-head">
+        <h3>{{ stage.label }}</h3>
+        <div class="bj-arrows">
+          <button type="button" class="bj-arrow" data-dir="-1" aria-label="Scroll {{ stage.label }} back">&#8592;</button>
+          <button type="button" class="bj-arrow" data-dir="1" aria-label="Scroll {{ stage.label }} forward">&#8594;</button>
+        </div>
+      </div>
+      <div class="bj-rail" tabindex="0" role="region" aria-label="{{ stage.label }}">
+        <div class="bj-track">
+          {% for item in stageItems %}
+            {% if item.data.teams and item.data.teams.length %}
+              {% for t in item.data.teams %}
+                {% set image = t.cardImage or (item.data.teams.length == 1 and item.data.gallery and item.data.gallery[0].image) %}
+                <a class="bj-card" href="{{ item.url }}#{{ t.id }}">
+                  <div class="bj-photo">
+                    {% if image %}
+                    <img src="{{ image }}" alt="">
+                    {% else %}
+                    <div class="bj-placeholder" aria-hidden="true">{{ t | cardMark }}</div>
+                    {% endif %}
+                    <p class="bj-year">{{ item.data.year }}</p>
+                  </div>
+                  <div class="bj-body">
+                    <p class="bj-season">{{ t.when }}</p>
+                    <p class="bj-team">{{ t.name }}{% if t.jersey %} #{{ t.jersey }}{% endif %}</p>
+                    {% if t.record %}<p class="bj-record">{{ t.record }}</p>{% endif %}
+                    {% if t.honor %}<p class="bj-honor">Team Captain</p>{% endif %}
+                    {% if t.ppg or t.rpg or t.apg %}
+                    <div class="bj-stats">
+                      {% if t.ppg %}<span><b>{{ t.ppg }}</b><em>PPG</em></span>{% endif %}
+                      {% if t.rpg %}<span><b>{{ t.rpg }}</b><em>RPG</em></span>{% endif %}
+                      {% if t.apg %}<span><b>{{ t.apg }}</b><em>APG</em></span>{% endif %}
+                    </div>
+                    {% endif %}
+                  </div>
+                </a>
+              {% endfor %}
+            {% else %}
+              {% set image = item.data.cardImage or (item.data.gallery and item.data.gallery[0].image) %}
+              {% set solo = { name: item.data.team, jersey: item.data.jersey, team: item.data.team } %}
+              <a class="bj-card" href="{{ item.url }}">
+                <div class="bj-photo">
+                  {% if image %}
+                  <img src="{{ image }}" alt="">
+                  {% else %}
+                  <div class="bj-placeholder" aria-hidden="true">{{ solo | cardMark }}</div>
+                  {% endif %}
+                  <p class="bj-year">{{ item.data.year }}</p>
+                </div>
+                <div class="bj-body">
+                  <p class="bj-season">{{ item.data.grade }}</p>
+                  <p class="bj-team">{{ item.data.team }}</p>
+                  {% if item.data.stats and (item.data.stats.ppg or item.data.stats.rpg or item.data.stats.apg) %}
+                  <div class="bj-stats">
+                    {% if item.data.stats.ppg %}<span><b>{{ item.data.stats.ppg }}</b><em>PPG</em></span>{% endif %}
+                    {% if item.data.stats.rpg %}<span><b>{{ item.data.stats.rpg }}</b><em>RPG</em></span>{% endif %}
+                    {% if item.data.stats.apg %}<span><b>{{ item.data.stats.apg }}</b><em>APG</em></span>{% endif %}
+                  </div>
+                  {% endif %}
+                </div>
+              </a>
+            {% endif %}
+          {% endfor %}
+        </div>
       </div>
     </div>
     {% endif %}
   {% endfor %}
 </div>
+<script src="/js/journey-scroll.js" defer></script>
