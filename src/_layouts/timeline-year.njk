@@ -15,8 +15,54 @@ layout: base.njk
     </div>
 </section>
 
-{# Stats Overview #}
-{% if stats %}
+{# One block per team when the page lists more than a single stat line.
+   Otherwise keep the original season statistics block. #}
+{% if teams and teams.length %}
+<section style="padding: 1rem 0 0; background-color: var(--bg-light);">
+    <div class="container">
+        {% for t in teams %}
+        <article class="timeline-team" id="{{ t.id }}">
+            <h2>{{ t.name }}{% if t.jersey %} #{{ t.jersey }}{% endif %}</h2>
+            <p class="timeline-team-meta">{{ t.when }}{% if t.record %} · {{ t.record }}{% endif %}</p>
+            {% if t.games or t.ppg or t.rpg or t.apg or t.spg %}
+            <div class="glance-grid">
+                {% if t.games %}
+                <div class="card-glance">
+                    <h3 class="card-title">Games Played</h3>
+                    <div style="font-size: 2.5rem; font-weight: 700; color: var(--primary-color); margin: 1rem 0;">{{ t.games }}</div>
+                </div>
+                {% endif %}
+                {% if t.ppg %}
+                <div class="card-glance">
+                    <h3 class="card-title">Points Per Game</h3>
+                    <div style="font-size: 2.5rem; font-weight: 700; color: var(--primary-color); margin: 1rem 0;">{{ t.ppg }}</div>
+                </div>
+                {% endif %}
+                {% if t.rpg %}
+                <div class="card-glance">
+                    <h3 class="card-title">Rebounds Per Game</h3>
+                    <div style="font-size: 2.5rem; font-weight: 700; color: var(--primary-color); margin: 1rem 0;">{{ t.rpg }}</div>
+                </div>
+                {% endif %}
+                {% if t.apg %}
+                <div class="card-glance">
+                    <h3 class="card-title">Assists Per Game</h3>
+                    <div style="font-size: 2.5rem; font-weight: 700; color: var(--primary-color); margin: 1rem 0;">{{ t.apg }}</div>
+                </div>
+                {% endif %}
+                {% if t.spg %}
+                <div class="card-glance">
+                    <h3 class="card-title">Steals Per Game</h3>
+                    <div style="font-size: 2.5rem; font-weight: 700; color: var(--primary-color); margin: 1rem 0;">{{ t.spg }}</div>
+                </div>
+                {% endif %}
+            </div>
+            {% endif %}
+        </article>
+        {% endfor %}
+    </div>
+</section>
+{% elif stats %}
 <section style="padding: 3rem 0; background-color: var(--bg-light);">
     <div class="container">
         <h2>Season Statistics</h2>
@@ -43,6 +89,12 @@ layout: base.njk
             <div class="card-glance">
                 <h3 class="card-title">Rebounds Per Game</h3>
                 <div style="font-size: 2.5rem; font-weight: 700; color: var(--primary-color); margin: 1rem 0;">{{ stats.rpg }}</div>
+            </div>
+            {% endif %}
+            {% if stats.spg %}
+            <div class="card-glance">
+                <h3 class="card-title">Steals Per Game</h3>
+                <div style="font-size: 2.5rem; font-weight: 700; color: var(--primary-color); margin: 1rem 0;">{{ stats.spg }}</div>
             </div>
             {% endif %}
         </div>

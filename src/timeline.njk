@@ -15,13 +15,23 @@ permalink: /timeline/
     </div>
 </section>
 
+<section class="cg-journey" aria-label="Journey">
+    <header class="cg-band">
+        <div>
+            <p class="cg-kicker">Journey</p>
+            <h2>Every team.</h2>
+        </div>
+    </header>
+    {% include "journey-strip.njk" %}
+</section>
+
 {# Stages come from each entry's existing "season" field, matching the Journey
-   strip on the home page. The trailing "Other" group is a safety net so no
-   entry can ever be dropped. #}
+   strip. The trailing "Other" group is a safety net so no entry can ever be
+   dropped. Pages with listed: false stay published but are not shown twice. #}
 {% set stages = [
   { label: 'Elementary',                   match: 'Elementary' },
   { label: 'Middle School &middot; School Ball', match: 'Middle School' },
-  { label: 'Middle School &middot; AAU',         match: '__unassigned__' },
+  { label: 'Middle School &middot; AAU',         match: 'Middle School AAU' },
   { label: 'High School &middot; School Ball',   match: 'High School' },
   { label: 'High School &middot; AAU',           match: 'AAU' }
 ] %}
@@ -32,7 +42,7 @@ permalink: /timeline/
         {% for stage in stages %}
             {% set stageItems = [] %}
             {% for item in collections.timeline %}
-                {% if item.data.season == stage.match %}
+                {% if item.data.listed != false and item.data.season == stage.match %}
                     {% set _ = stageItems.push(item) %}
                     {% set _ = shown.push(item.url) %}
                 {% endif %}
@@ -46,6 +56,18 @@ permalink: /timeline/
                         <h3 class="update-card-title">{{ item.data.year }}</h3>
                         <time class="update-card-date">{{ item.data.grade }}{% if item.data.team %} &middot; {{ item.data.team }}{% endif %}</time>
                         <p class="update-card-summary">{{ item.data.summary }}</p>
+                        {% if item.data.teams and item.data.teams.length %}
+                        <ul class="timeline-team-list">
+                            {% for t in item.data.teams %}
+                            <li>
+                                <a href="{{ item.url }}#{{ t.id }}">{{ t.when }} · {{ t.name }}{% if t.jersey %} #{{ t.jersey }}{% endif %}</a>
+                                {% if t.record or t.games or t.ppg or t.rpg or t.apg or t.spg %}
+                                <span>{{ t | teamLine }}</span>
+                                {% endif %}
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
                         <a href="{{ item.url }}" class="update-card-link">View season</a>
                     </div>
                 </div>
@@ -62,7 +84,7 @@ permalink: /timeline/
 
         {% set other = [] %}
         {% for item in collections.timeline %}
-            {% if item.url not in shown %}{% set _ = other.push(item) %}{% endif %}
+            {% if item.data.listed != false and item.url not in shown %}{% set _ = other.push(item) %}{% endif %}
         {% endfor %}
         {% if other | length %}
             <h2>Other</h2>
@@ -73,6 +95,18 @@ permalink: /timeline/
                         <h3 class="update-card-title">{{ item.data.year }}</h3>
                         <time class="update-card-date">{{ item.data.grade }}{% if item.data.team %} &middot; {{ item.data.team }}{% endif %}</time>
                         <p class="update-card-summary">{{ item.data.summary }}</p>
+                        {% if item.data.teams and item.data.teams.length %}
+                        <ul class="timeline-team-list">
+                            {% for t in item.data.teams %}
+                            <li>
+                                <a href="{{ item.url }}#{{ t.id }}">{{ t.when }} · {{ t.name }}{% if t.jersey %} #{{ t.jersey }}{% endif %}</a>
+                                {% if t.record or t.games or t.ppg or t.rpg or t.apg or t.spg %}
+                                <span>{{ t | teamLine }}</span>
+                                {% endif %}
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
                         <a href="{{ item.url }}" class="update-card-link">View season</a>
                     </div>
                 </div>

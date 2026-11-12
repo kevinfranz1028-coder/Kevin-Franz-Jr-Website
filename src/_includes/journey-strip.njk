@@ -1,0 +1,49 @@
+{# Horizontal Journey strip. Stage labels match the groups in src/timeline.njk.
+   Oldest first within each stage. Pages with listed: false are omitted. #}
+{% set stages = [
+  { label: 'Elementary', match: 'Elementary' },
+  { label: 'Middle School · School Ball', match: 'Middle School' },
+  { label: 'Middle School · AAU', match: 'Middle School AAU' },
+  { label: 'High School · School Ball', match: 'High School' },
+  { label: 'High School · AAU', match: 'AAU' }
+] %}
+<div class="cg-journey-stages">
+  {% for stage in stages %}
+    {% set stageItems = [] %}
+    {% for item in collections.timeline %}
+      {% if item.data.listed != false and item.data.season == stage.match %}
+        {% set _ = stageItems.push(item) %}
+      {% endif %}
+    {% endfor %}
+    {% if stageItems.length %}
+    <div class="cg-journey-stage">
+      <h3>{{ stage.label }}</h3>
+      <div class="cg-journey-row">
+        {% for item in stageItems %}
+          {% if item.data.teams and item.data.teams.length %}
+            {% for t in item.data.teams %}
+            <a class="cg-journey-card" href="{{ item.url }}#{{ t.id }}">
+              <span class="cg-journey-when">{{ t.when }} · {{ item.data.year }}</span>
+              <strong>{{ t.name }}{% if t.jersey %} #{{ t.jersey }}{% endif %}</strong>
+              {% if t.record or t.games or t.ppg or t.rpg or t.apg or t.spg %}
+              <span class="cg-journey-line">{{ t | teamLine }}</span>
+              {% endif %}
+            </a>
+            {% endfor %}
+          {% else %}
+            <a class="cg-journey-card" href="{{ item.url }}">
+              <span class="cg-journey-when">{{ item.data.year }}</span>
+              <strong>{{ item.data.team or item.data.grade }}</strong>
+              {% if item.data.stats %}
+              <span class="cg-journey-line">{{ item.data.stats | teamLine }}</span>
+              {% else %}
+              <span class="cg-journey-line">{{ item.data.grade }}</span>
+              {% endif %}
+            </a>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+  {% endfor %}
+</div>

@@ -40,6 +40,19 @@ module.exports = function(eleventyConfig) {
     return value.split(separator);
   });
 
+  // One scannable line for a timeline team. Omits any field that was not provided.
+  eleventyConfig.addFilter("teamLine", function(team) {
+    if (!team || typeof team !== "object") return "";
+    const parts = [];
+    if (team.record) parts.push(String(team.record));
+    if (team.games) parts.push(String(team.games) + " GP");
+    if (team.ppg) parts.push(String(team.ppg) + " PPG");
+    if (team.rpg) parts.push(String(team.rpg) + " RPG");
+    if (team.apg) parts.push(String(team.apg) + " APG");
+    if (team.spg) parts.push(String(team.spg) + " SPG");
+    return parts.join(" · ");
+  });
+
   // Collections
   eleventyConfig.addCollection("updates", function(collectionApi) {
     return collectionApi.getFilteredByGlob("src/updates/*.md").sort((a, b) => {
