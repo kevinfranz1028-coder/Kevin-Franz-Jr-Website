@@ -25,6 +25,7 @@
             <a class="cg-journey-card" href="{{ item.url }}#{{ t.id }}">
               <span class="cg-journey-when">{{ t.when }} · {{ item.data.year }}</span>
               <strong>{{ t.name }}{% if t.jersey %} #{{ t.jersey }}{% endif %}</strong>
+              {% if t.honor %}<span class="cg-journey-honor">{{ t.honor }}</span>{% endif %}
               {% if t.record or t.games or t.ppg or t.rpg or t.apg or t.spg %}
               <span class="cg-journey-line">{{ t | teamLine }}</span>
               {% endif %}

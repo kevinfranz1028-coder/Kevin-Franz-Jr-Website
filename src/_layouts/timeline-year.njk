@@ -24,6 +24,9 @@ layout: base.njk
         <article class="timeline-team" id="{{ t.id }}">
             <h2>{{ t.name }}{% if t.jersey %} #{{ t.jersey }}{% endif %}</h2>
             <p class="timeline-team-meta">{{ t.when }}{% if t.record %} · {{ t.record }}{% endif %}</p>
+            {% if t.honor %}
+            <p class="timeline-team-honor">{{ t.honor }}</p>
+            {% endif %}
             {% if t.games or t.ppg or t.rpg or t.apg or t.spg %}
             <div class="glance-grid">
                 {% if t.games %}

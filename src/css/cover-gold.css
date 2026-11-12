@@ -794,6 +794,11 @@ a:focus-visible, button:focus-visible {
   line-height: 0.92;
   text-transform: uppercase;
 }
+.cg-journey-honor {
+  font-size: 14px;
+  line-height: 1.35;
+  color: var(--black);
+}
 .cg-journey-line {
   margin-top: auto;
   font-size: 14px;
@@ -806,13 +811,19 @@ a:focus-visible, button:focus-visible {
 }
 .timeline-team h2 { margin-bottom: 0.35rem; }
 .timeline-team-meta {
-  margin: 0 0 1.25rem;
+  margin: 0 0 0.35rem;
   font-family: "IBM Plex Mono", ui-monospace, monospace;
   font-size: 13px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--gray);
 }
+.timeline-team-honor {
+  margin: 0 0 1.25rem;
+  font-size: 17px;
+  line-height: 1.4;
+}
+.timeline-team-meta:last-child { margin-bottom: 1.25rem; }
 .timeline-team-list {
   margin: 12px 0 4px;
   padding: 0;

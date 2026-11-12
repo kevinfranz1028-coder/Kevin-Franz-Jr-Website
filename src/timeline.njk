@@ -61,6 +61,7 @@ permalink: /timeline/
                             {% for t in item.data.teams %}
                             <li>
                                 <a href="{{ item.url }}#{{ t.id }}">{{ t.when }} · {{ t.name }}{% if t.jersey %} #{{ t.jersey }}{% endif %}</a>
+                                {% if t.honor %}<span>{{ t.honor }}</span>{% endif %}
                                 {% if t.record or t.games or t.ppg or t.rpg or t.apg or t.spg %}
                                 <span>{{ t | teamLine }}</span>
                                 {% endif %}
@@ -100,6 +101,7 @@ permalink: /timeline/
                             {% for t in item.data.teams %}
                             <li>
                                 <a href="{{ item.url }}#{{ t.id }}">{{ t.when }} · {{ t.name }}{% if t.jersey %} #{{ t.jersey }}{% endif %}</a>
+                                {% if t.honor %}<span>{{ t.honor }}</span>{% endif %}
                                 {% if t.record or t.games or t.ppg or t.rpg or t.apg or t.spg %}
                                 <span>{{ t | teamLine }}</span>
                                 {% endif %}
