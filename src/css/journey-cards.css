@@ -1,38 +1,29 @@
-/* Basketball journey cards. Namespaced so football can keep timeline.css. */
+/* Basketball journey: one scrolling rail. Namespaced so football keeps timeline.css. */
 
 .bj-timeline {
   background: var(--paper, #F7F3EA);
   color: #000;
-  padding: 8px 0 28px;
+  padding: 12px 0 28px;
 }
 
-.bj-stage {
-  padding: 18px 0 8px;
-  border-bottom: 1px solid #000;
-}
-
-.bj-stage-head {
+.bj-toolbar {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
   gap: 12px;
   padding: 0 16px 12px;
 }
 
-.bj-stage-head h3 {
+.bj-hint {
   margin: 0;
-  font-family: "Bebas Neue", "Arial Narrow", sans-serif;
-  font-size: clamp(28px, 6vw, 42px);
-  font-weight: 400;
-  letter-spacing: 0.03em;
-  line-height: 0.9;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
+  color: #4C4C4C;
 }
 
-.bj-arrows {
-  display: none;
-  gap: 8px;
-}
+.bj-arrows { display: none; gap: 8px; }
 
 .bj-arrow {
   width: 44px;
@@ -47,32 +38,73 @@
 }
 
 .bj-arrow:hover { background: #F5C400; color: #000; }
-.bj-arrow:focus-visible { outline: 3px solid #F5C400; outline-offset: 2px; }
+.bj-arrow:focus-visible,
+.bj-rail:focus-visible,
+.bj-card:focus-visible { outline: 3px solid #F5C400; outline-offset: 3px; }
 .bj-arrow:disabled { opacity: 0.35; cursor: default; }
-.bj-arrow[hidden] { display: none; }
 
 .bj-rail {
+  container-type: inline-size;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  padding: 0 16px 18px;
+  padding: 0 16px 8px;
   -webkit-overflow-scrolling: touch;
 }
 
-.bj-rail:focus-visible { outline: 3px solid #F5C400; outline-offset: -3px; }
-
 .bj-track {
+  position: relative;
   display: flex;
-  gap: 12px;
+  align-items: stretch;
+  gap: 16px;
   width: max-content;
+  padding-bottom: 42px;
+}
+
+.bj-track::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 16px;
+  height: 4px;
+  background: #F5C400;
+  z-index: 0;
+}
+
+.bj-mark {
+  flex: 0 0 auto;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 42px;
+  padding: 12px 8px;
+  background: #000;
+  color: #F5C400;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: "Bebas Neue", "Arial Narrow", sans-serif;
+  font-size: 26px;
+  letter-spacing: 0.14em;
+  line-height: 1;
+  text-transform: uppercase;
+  scroll-snap-align: start;
+}
+
+.bj-item {
+  position: relative;
+  flex: 0 0 calc((100cqi - 48px) / 4);
+  width: calc((100cqi - 48px) / 4);
+  scroll-snap-align: start;
+  min-width: 0;
 }
 
 .bj-card {
-  flex: 0 0 260px;
-  scroll-snap-align: start;
   display: flex;
   flex-direction: column;
-  min-height: 460px;
+  height: 100%;
+  min-height: 420px;
   background: #fff;
   border: 2px solid #000;
   color: #000;
@@ -80,11 +112,10 @@
 }
 
 .bj-card:hover { background: #F5C400; }
-.bj-card:focus-visible { outline: 3px solid #F5C400; outline-offset: 3px; }
 
 .bj-photo {
   position: relative;
-  height: 250px;
+  height: 190px;
   background: #000;
   border-bottom: 6px solid #F5C400;
   overflow: hidden;
@@ -106,7 +137,7 @@
     #000;
   color: #F5C400;
   font-family: "Bebas Neue", "Arial Narrow", sans-serif;
-  font-size: 84px;
+  font-size: 72px;
   letter-spacing: 0.04em;
   line-height: 1;
 }
@@ -119,7 +150,7 @@
   margin: 0;
   color: #fff;
   font-family: "Bebas Neue", "Arial Narrow", sans-serif;
-  font-size: 40px;
+  font-size: 34px;
   line-height: 0.85;
   letter-spacing: 0.02em;
   text-transform: uppercase;
@@ -130,8 +161,20 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
-  padding: 14px 14px 16px;
+  padding: 12px 12px 14px;
   flex: 1;
+}
+
+.bj-tag {
+  align-self: flex-start;
+  margin: 0;
+  padding: 2px 8px;
+  background: #000;
+  color: #F5C400;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .bj-season {
@@ -146,7 +189,7 @@
 .bj-team {
   margin: 0;
   font-family: "Bebas Neue", "Arial Narrow", sans-serif;
-  font-size: 32px;
+  font-size: 30px;
   font-weight: 400;
   letter-spacing: 0.02em;
   line-height: 0.92;
@@ -165,21 +208,17 @@
 
 .bj-stats {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   margin-top: auto;
-  padding-top: 10px;
+  padding-top: 8px;
   border-top: 2px solid #000;
 }
 
-.bj-stats span {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-}
+.bj-stats span { display: flex; flex-direction: column; min-width: 0; }
 
 .bj-stats b {
   font-family: "Bebas Neue", "Arial Narrow", sans-serif;
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 400;
   line-height: 1;
   color: #000;
@@ -192,12 +231,33 @@
   letter-spacing: 0.08em;
 }
 
+.bj-dot {
+  position: absolute;
+  left: 50%;
+  bottom: -30px;
+  width: 16px;
+  height: 16px;
+  transform: translateX(-50%);
+  background: #000;
+  border: 3px solid #F5C400;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+@media (max-width: 799px) {
+  .bj-item {
+    flex-basis: calc(100cqi / 1.2);
+    width: calc(100cqi / 1.2);
+  }
+  .bj-card { min-height: 460px; }
+  .bj-photo { height: 220px; }
+  .bj-hint { display: none; }
+}
+
 @media (min-width: 800px) {
   .bj-arrows { display: flex; }
-  .bj-stage-head,
+  .bj-toolbar,
   .bj-rail { padding-left: 40px; padding-right: 40px; }
-  .bj-card { flex-basis: 300px; min-height: 500px; }
-  .bj-photo { height: 280px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
