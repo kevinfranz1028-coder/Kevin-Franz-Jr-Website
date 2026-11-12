@@ -1,0 +1,51 @@
+{# One continuous rail, oldest to newest. A stage name appears in the row
+   only when Elementary, Middle School, or High School starts. School and AAU
+   are tags on the cards. Set cardImage to a real repo photo; an empty value
+   keeps the black-and-gold mark. #}
+<link rel="stylesheet" href="/css/journey-cards.css">
+<div class="bj-timeline">
+  <div class="bj-toolbar">
+    <p class="bj-hint">Swipe the row. On a keyboard, focus it and use the arrow keys.</p>
+    <div class="bj-arrows">
+      <button type="button" class="bj-arrow" data-dir="-1" aria-label="Scroll timeline back">&#8592;</button>
+      <button type="button" class="bj-arrow" data-dir="1" aria-label="Scroll timeline forward">&#8594;</button>
+    </div>
+  </div>
+  <div class="bj-rail" tabindex="0" role="region" aria-label="Basketball journey, oldest to newest">
+    <div class="bj-track">
+      {% for card in collections.timeline | journeyCards %}
+        {% if card.stageLabel %}
+        <div class="bj-mark">{{ card.stageLabel }}</div>
+        {% endif %}
+        <div class="bj-item">
+          <a class="bj-card" href="{{ card.href }}">
+            <div class="bj-photo">
+              {% if card.image %}
+              <img src="{{ card.image }}" alt="">
+              {% else %}
+              <div class="bj-placeholder" aria-hidden="true">{{ card.mark }}</div>
+              {% endif %}
+              <p class="bj-year">{{ card.year }}</p>
+            </div>
+            <div class="bj-body">
+              <p class="bj-tag">{{ card.kind }}</p>
+              <p class="bj-season">{{ card.when }}</p>
+              <p class="bj-team">{{ card.name }}{% if card.jersey %} #{{ card.jersey }}{% endif %}</p>
+              {% if card.record %}<p class="bj-record">{{ card.record }}</p>{% endif %}
+              {% if card.honor %}<p class="bj-honor">{{ card.honor }}</p>{% endif %}
+              {% if card.ppg or card.rpg or card.apg %}
+              <div class="bj-stats">
+                {% if card.ppg %}<span><b>{{ card.ppg }}</b><em>PPG</em></span>{% endif %}
+                {% if card.rpg %}<span><b>{{ card.rpg }}</b><em>RPG</em></span>{% endif %}
+                {% if card.apg %}<span><b>{{ card.apg }}</b><em>APG</em></span>{% endif %}
+              </div>
+              {% endif %}
+            </div>
+          </a>
+          <span class="bj-dot" aria-hidden="true"></span>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<script src="/js/journey-scroll.js" defer></script>

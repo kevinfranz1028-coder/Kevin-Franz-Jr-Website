@@ -748,6 +748,110 @@ a:focus-visible, button:focus-visible {
   min-height: 220px;
 }
 .timeline-horizontal, .timeline-header, .timeline-cards { max-width: 100%; }
+
+/* Journey strip: one card per team, school ball and AAU kept in separate rows. */
+.cg-journey { background: var(--paper); }
+.cg-journey-stage { padding: 18px 0 0; }
+.cg-journey-stage h3 {
+  margin: 0;
+  padding: 0 16px 10px;
+  font-size: 32px !important;
+  line-height: 0.95 !important;
+}
+.cg-journey-row {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 0 16px 18px;
+  scroll-snap-type: x mandatory;
+}
+.cg-journey-card {
+  flex: 0 0 min(78vw, 260px);
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 148px;
+  padding: 14px;
+  background: var(--white);
+  border: 2px solid var(--black);
+  color: var(--black);
+  text-decoration: none;
+}
+.cg-journey-card:hover { background: var(--gold); }
+.cg-journey-when {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+.cg-journey-card strong {
+  font-family: "Bebas Neue", "Arial Narrow", sans-serif;
+  font-size: 30px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 0.92;
+  text-transform: uppercase;
+}
+.cg-journey-honor {
+  font-size: 14px;
+  line-height: 1.35;
+  color: var(--black);
+}
+.cg-journey-line {
+  margin-top: auto;
+  font-size: 14px;
+  line-height: 1.35;
+  color: var(--gray);
+}
+.timeline-team {
+  padding: 2.25rem 0;
+  border-bottom: 2px solid var(--black);
+}
+.timeline-team h2 { margin-bottom: 0.35rem; }
+.timeline-team-meta {
+  margin: 0 0 0.35rem;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+.timeline-team-honor {
+  margin: 0 0 1.25rem;
+  font-size: 17px;
+  line-height: 1.4;
+}
+.timeline-team-meta:last-child { margin-bottom: 1.25rem; }
+.timeline-team-list {
+  margin: 12px 0 4px;
+  padding: 0;
+  list-style: none;
+}
+.timeline-team-list li {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 0;
+  border-top: 1px solid var(--black);
+  font-size: 15px;
+  line-height: 1.35;
+}
+.timeline-team-list a {
+  font-family: "Bebas Neue", "Arial Narrow", sans-serif;
+  font-size: 24px;
+  letter-spacing: 0.03em;
+  line-height: 1;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.timeline-team-list span { color: var(--gray); }
+@media (min-width: 800px) {
+  .cg-journey-stage h3 { padding: 0 40px 12px; font-size: 40px !important; }
+  .cg-journey-row { padding: 0 40px 22px; }
+  .cg-journey-card { flex-basis: 280px; }
+}
 .footer, .footer-wrapper { background: var(--black); color: #E7E1D4; }
 .footer a { color: var(--gold); }
 
