@@ -95,14 +95,9 @@
     ]
   },
   "achievements": {
-    "list": [],
-    "quote": {
-      "text": "n/a",
-      "attribution": "n/a"
-    }
+    "list": []
   },
   "training": {
-    "statement": "I'm always working to become a more complete guard – someone who can run a team, guard multiple positions, and make teammates better.",
     "focusAreas": "Off-Season Focus Areas\nBall handling under pressure and pick-and-roll reads\nCatch-and-shoot 3s and off-the-dribble shooting\nOn-ball defense and strength",
     "routine": "### Training Routine\n\n* Skill sessions: \\[X] days per week with \\[Trainer/Coach Name]\n* Weight room: \\[X] days per week focused on strength and mobility\n* Film study: breaking down our games and college guards I want to emulate"
   },
