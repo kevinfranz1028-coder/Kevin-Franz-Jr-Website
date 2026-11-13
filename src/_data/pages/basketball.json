@@ -42,53 +42,39 @@
         "items": [
           {
             "label": "PPG",
-            "value": "5.6",
-            "rank": "5th"
+            "value": "5.6"
           },
           {
             "label": "RPG",
-            "value": "4.0",
-            "rank": "1st"
+            "value": "4.0"
           },
           {
             "label": "APG",
-            "value": "2.5",
-            "rank": "2nd"
+            "value": "2.5"
           },
           {
             "label": "SPG",
-            "value": "1.5",
-            "rank": "T-3rd"
+            "value": "1.5"
           },
           {
             "label": "BPG",
-            "value": "0.3",
-            "rank": "T-3rd"
+            "value": "0.3"
           },
           {
             "label": "FG%",
-            "value": "39.3%",
-            "rank": "8th"
+            "value": "39%"
           },
           {
             "label": "3PT%",
-            "value": "31.6%",
-            "rank": "5th"
+            "value": "32%"
           },
           {
             "label": "FT%",
-            "value": "67.6%",
-            "rank": "4th"
+            "value": "68%"
           },
           {
             "label": "AST/TO",
-            "value": "2.18",
-            "rank": "2nd"
-          },
-          {
-            "label": "TOPG",
-            "value": "1.16",
-            "rank": "7th"
+            "value": "2.18"
           }
         ]
       }

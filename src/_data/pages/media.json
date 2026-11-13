@@ -1,88 +1,45 @@
 {
   "title": "Photography & Media Production",
   "header": {
-    "eyebrow": "Student Media Photographer & Videographer",
+    "eyebrow": "Media Production",
     "heading": "Media Production",
-    "subheading": "Class of 2028 | Blue Valley Southwest High School | Wolf Bite Media Production Team",
+    "subheading": "Class of 2028 | Media Production at Blue Valley Southwest",
     "image": "/images/media-hero.jpg"
   },
   "profile": {
     "heading": "Profile",
     "paragraphs": [
-      "Kevin Franz Jr. is a Class of 2028 student at Blue Valley Southwest High School and an active member of the Wolf Byte media production team. This season he has spent a lot of time on the sidelines covering BVSW games across multiple sports, as well as helping create a podcast for the Wolf Byte program.",
-      "Kevin is a credentialed photographer/videographer for Sporting KC, has covered several MNU basketball games and other local high school events, and is focused on growing in sports media — especially live sports photography, videography, and short-form content built for today’s digital platforms."
+      "Kevin Franz Jr. is a Class of 2028 student. He took Media Production I and Media Production II at Blue Valley Southwest and earned an A each semester.",
+      "Photography: @shotsbyfranz — https://www.instagram.com/shotsbyfranz/"
     ]
   },
   "experience": {
     "heading": "Media & Creative Experience",
     "items": [
-      "Active member of the Wolf Byte media production team at Blue Valley Southwest High School",
-      "Covers multiple school athletic programs, including soccer, basketball, baseball and volleyball",
-      "Focuses on game action and candid moments",
-      "Recently photographed and filmed a college football game: Pitt State vs. Northwest Missouri State at Children's Mercy Park (Sporting KC)",
-      "Interested in observing and learning from how college and professional media teams operate on game day"
+      "Media Production I — A (freshman year, Blue Valley Southwest)",
+      "Media Production II — A both semesters (sophomore year, Blue Valley Southwest)"
     ]
   },
   "skills": {
     "heading": "Skills & Interests",
     "items": [
-      "Sports photography (game action, sidelines, atmosphere)",
-      "Videography and highlight-style content for social and digital platforms",
-      "Basic editing and post-production workflow (organizing clips, selecting highlights, simple edits)",
-      "Planning shot lists and thinking through storylines before events",
-      "Learning more about professional sports media, content strategy, and game-day operations"
+      "Media production coursework",
+      "Photography: @shotsbyfranz"
     ]
   },
   "hobbies": {
     "heading": "Hobbies & Activities",
-    "text": "Outside of formal media work, Kevin is a student-athlete who loves basketball and staying connected to sports in any way he can—playing, watching film, or creating content. He enjoys experimenting with new camera angles, trying different perspectives, and learning new editing techniques to tell better stories about athletes, teams, and big moments on campus."
+    "text": "Photography: @shotsbyfranz."
   },
   "contact": {
     "heading": "Contact",
-    "phone": "913-229-2945",
-    "email": "Kfranzjr30@gmail.com",
-    "instagram": "@Shots_By_Franz",
-    "instagramUrl": "https://instagram.com/Shots_By_Franz"
+    "phone": "913-396-3717",
+    "email": "kevinfranz1028@gmail.com",
+    "instagram": "@shotsbyfranz",
+    "instagramUrl": "https://www.instagram.com/shotsbyfranz/"
   },
   "gallery": {
-    "heading": "Featured Work",
-    "items": [
-      {
-        "title": "Game of the Year #1 SMS @ #2 Olathe N",
-        "description": "Game action and sideline photography from the hypest game of the year! SMS won by 1 point! ",
-        "image": "",
-        "instagramUrl": "https://www.instagram.com/p/DUUnO6KFcn4/"
-      },
-      {
-        "title": "College Football Experience",
-        "description": "Penn State vs. Northwest Missouri State at Children's Mercy Park",
-        "image": "",
-        "instagramUrl": "https://www.instagram.com/p/DRGhD85kX-D/"
-      },
-      {
-        "title": "Recruiting Photos",
-        "description": "Had the opportunity to shoot BVSW standout kicker Rhys Poggio!",
-        "image": "",
-        "instagramUrl": "https://www.instagram.com/p/DT1OV26kX_X/"
-      },
-      {
-        "title": "Local Youth Basketball",
-        "description": "Caught some future BVSW hoopers \"Morse's Lady Sharpshooters\" in action! ",
-        "image": "",
-        "instagramUrl": "https://www.instagram.com/p/DUOySXPEbC7/"
-      },
-      {
-        "title": "Rivalry post BVSW VS BVNW Jan 2026",
-        "description": "",
-        "image": "",
-        "instagramUrl": "https://www.instagram.com/p/DUcWRSfFbue/"
-      },
-      {
-        "title": "College Hoops",
-        "description": "Snapped some great pics of an MNU game this season! ",
-        "image": "",
-        "instagramUrl": "https://www.instagram.com/p/DUMv8G0keqv/"
-      }
-    ]
+    "heading": "Photography",
+    "items": []
   }
 }

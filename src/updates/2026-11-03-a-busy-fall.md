@@ -22,7 +22,7 @@ With **JC Hoops 16U** the team has gone **10-3** this fall. My line across those
 - **2.8** assists per game
 - **38%** from three
 
-Shooting 38% from deep is the number I am happiest with. Last winter with the BVSW JV I shot 32% from three on 38 attempts, so the work on my catch-and-shoot has shown up where I wanted it to.
+Shooting 38% from deep is the number I am happiest with. Last winter with the BVSW JV I shot 32% from three.
 
 ## Between games
 

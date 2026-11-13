@@ -1,24 +1,16 @@
 ---
 layout: broadcast.njk
 title: Media
-description: Photography and media production by Kevin Franz Jr. - sports photography, sideline coverage, and credentialed Sporting KC work.
+description: "Photography and media production by Kevin Franz Jr. Photography: @shotsbyfranz."
 permalink: /media/
 active: media
 ---
 
 {% set reels = [
-  { tag: 'BVSW BASKETBALL',    shots: 142, vid: 4, where: 'Sidelines · Game action · Locker room' },
-  { tag: 'COLLEGE FOOTBALL',   shots: 87,  vid: 2, where: "Children's Mercy Park — Pitt State vs NWMSU" },
-  { tag: 'YOUTH HOOPS',        shots: 64,  vid: 1, where: "Morse's Lady Sharpshooters" },
-  { tag: 'RECRUITING SHOOTS',  shots: 38,  vid: 0, where: 'BVSW kicker Rhys Poggio' }
-] %}
-{% set gallery = [
-  { title: 'Game of the Year #1',          description: 'SMS @ #2 Olathe N — won by 1 point. Sideline + game-action. Hypest game of the year.', src: '/images/banner/large_Copy_of_618_A3237_2_Enhanced_NR_8707ac32b4.jpg', link: 'https://www.instagram.com/p/DUUnO6KFcn4/' },
-  { title: 'College Football Experience',  description: "Pitt State vs Northwest Missouri State at Children's Mercy Park",                       src: '/images/banner/large_Copy_of_655_A7902_Enhanced_NR_742d9cd3fb.jpg', link: 'https://www.instagram.com/p/DRGhD85kX-D/' },
-  { title: 'Recruiting Photos',            description: 'BVSW standout kicker Rhys Poggio',                                                       src: '/images/banner/large_Kevin_Jr_Layup_Black_and_White_Game_be9d381555.JPG', link: 'https://www.instagram.com/p/DT1OV26kX_X/' },
-  { title: 'Local Youth Basketball',       description: "Morse's Lady Sharpshooters — future BVSW hoopers in action",                            src: '/images/banner/large_Copy_of_655_A7945_Enhanced_NR_38a7db1e08.jpg', link: 'https://www.instagram.com/p/DUOySXPEbC7/' },
-  { title: 'Rivalry Post BVSW vs BVNW',    description: 'January 2026 — full rivalry coverage',                                                   src: '/images/banner/large_Copy_of_618_A3075_2_Enhanced_NR_0a0a68195a.jpg', link: 'https://www.instagram.com/p/DUcWRSfFbue/' },
-  { title: 'College Hoops · MNU',          description: 'Snapped some great pics of an MNU game this season',                                     src: '/images/banner/large_Kevin_Jr_Blocked_Shot_Black_and_White_Game_0761755000.JPG', link: 'https://www.instagram.com/p/DUMv8G0keqv/' }
+  { tag: 'MEDIA PRODUCTION I', where: 'Blue Valley Southwest · freshman year · A' },
+  { tag: 'MEDIA PRODUCTION II', where: 'Blue Valley Southwest · both semesters · A' },
+  { tag: 'PHOTOGRAPHY', where: '@shotsbyfranz on Instagram' },
+  { tag: 'INSTAGRAM', where: 'instagram.com/shotsbyfranz' }
 ] %}
 
 {# ===== HERO — viewfinder ===== #}
@@ -39,7 +31,7 @@ active: media
       <span>&bull; REC</span><span>1/250</span><span>F2.8</span><span>ISO 1600</span>
     </div>
     <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-text); text-transform:uppercase;">
-      WOLF BYTE MEDIA &middot; BVSW
+      MEDIA PRODUCTION &middot; BVSW
     </div>
   </div>
   <div style="position:absolute; bottom:56px; left:56px; right:56px; z-index:4;">
@@ -48,7 +40,7 @@ active: media
       Through the<br><span style="-webkit-text-stroke:2px var(--b-green-bright); -webkit-text-fill-color:transparent;">lens.</span>
     </h1>
     <p style="font-family:'Inter', sans-serif; font-size:18px; line-height:1.6; color:var(--b-mute); margin-top:24px; max-width:520px;">
-      Credentialed for Sporting KC. Sidelines for BVSW. @Shots_By_Franz on Instagram.
+      Photography: <a href="https://www.instagram.com/shotsbyfranz/" target="_blank" rel="noopener noreferrer" style="color:var(--b-green-bright);">@shotsbyfranz</a>. Media Production at Blue Valley Southwest.
     </p>
   </div>
 </section>
@@ -56,8 +48,8 @@ active: media
 {# ===== REELS ===== #}
 <div class="b-section-head">
   <div class="b-section-head-left">
-    <span class="b-section-tag">/01 REELS</span>
-    <h2 class="b-section-title">Coverage.</h2>
+    <span class="b-section-tag">/01 COURSEWORK</span>
+    <h2 class="b-section-title">Media class.</h2>
   </div>
 </div>
 <section style="display:grid; grid-template-columns:repeat(4, 1fr); gap:1px; background:var(--b-line); border-bottom:1px solid var(--b-line);">
@@ -67,17 +59,7 @@ active: media
         <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; color:{% if loop.first %}var(--b-green-bright){% else %}var(--b-mute){% endif %}; text-transform:uppercase;">{{ r.tag }}</div>
         <div style="font-family:'JetBrains Mono', monospace; font-size:10px; color:var(--b-mute);">{% if loop.first %}&bull;{% else %}&#9675;{% endif %}</div>
       </div>
-      <div style="display:flex; align-items:baseline; gap:16px;">
-        <div>
-          <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:48px; line-height:1; color:var(--b-text); letter-spacing:-0.03em;">{{ r.shots }}</div>
-          <div style="font-family:'JetBrains Mono', monospace; font-size:9px; color:var(--b-mute); letter-spacing:0.12em; margin-top:4px;">SHOTS</div>
-        </div>
-        <div>
-          <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:36px; line-height:1; color:var(--b-green-bright); letter-spacing:-0.03em;">{{ r.vid }}</div>
-          <div style="font-family:'JetBrains Mono', monospace; font-size:9px; color:var(--b-mute); letter-spacing:0.12em; margin-top:4px;">VIDEOS</div>
-        </div>
-      </div>
-      <div style="font-size:12px; color:var(--b-mute); margin-top:16px; line-height:1.5;">{{ r.where }}</div>
+      <div style="font-size:15px; color:var(--b-text); line-height:1.5;">{{ r.where }}</div>
     </div>
   {% endfor %}
 </section>
@@ -85,22 +67,14 @@ active: media
 {# ===== FEATURED WORK ===== #}
 <div class="b-section-head">
   <div class="b-section-head-left">
-    <span class="b-section-tag">/02 FEATURED WORK</span>
-    <h2 class="b-section-title">Frame<br>by frame.</h2>
+    <span class="b-section-tag">/02 INSTAGRAM</span>
+    <h2 class="b-section-title">@shotsbyfranz.</h2>
   </div>
 </div>
-<section style="display:grid; grid-template-columns:repeat(3, 1fr); gap:1px; background:var(--b-line); border-bottom:1px solid var(--b-line);">
-  {% for g in gallery %}
-    <a class="cg-on-photo" href="{{ g.link }}" target="_blank" rel="noopener" style="background:#000; text-decoration:none; color:inherit; display:block; position:relative; overflow:hidden; aspect-ratio:4/5;">
-      <img src="{{ g.src }}" alt="{{ g.title }}" style="width:100%; height:100%; object-fit:cover;">
-      <div style="position:absolute; inset:0; background:linear-gradient(180deg, transparent 40%, rgba(11,13,16,0.92) 100%);"></div>
-      <div style="position:absolute; left:24px; right:24px; bottom:24px;">
-        <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin-bottom:8px;">FRAME / {% if loop.index < 10 %}0{% endif %}{{ loop.index }}</div>
-        <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:22px; color:var(--b-text); text-transform:uppercase; letter-spacing:-0.01em;">{{ g.title }}</div>
-        <div style="font-size:13px; color:var(--b-mute); margin-top:6px; line-height:1.5;">{{ g.description }}</div>
-      </div>
-    </a>
-  {% endfor %}
+<section style="padding:56px; background:var(--b-bg); border-bottom:1px solid var(--b-line);">
+  <p style="font-size:18px; line-height:1.6; color:var(--b-mute); max-width:640px; margin:0;">
+    Photography: <a href="https://www.instagram.com/shotsbyfranz/" target="_blank" rel="noopener noreferrer" style="color:var(--b-green-bright);">@shotsbyfranz</a>
+  </p>
 </section>
 
 {# ===== SKILLS ===== #}
@@ -114,12 +88,10 @@ active: media
     </div>
     <div style="display:grid; grid-template-columns:1fr 1fr; gap:32px;">
       {% for k in [
-        ['SPORTS PHOTOGRAPHY', 'Game action, sidelines, atmosphere. Game-day storytelling.'],
-        ['VIDEOGRAPHY',         'Highlight-style content for social platforms. Quick-cut edits.'],
-        ['EDITING / POST',      'Selecting highlights, color, simple edits. Lightroom + Premiere.'],
-        ['SHOT PLANNING',       'Pre-event shot lists, storylines, coverage strategy.'],
-        ['SIDELINE OPS',        'Working credentialed events. Pro-team workflow.'],
-        ['CONTENT STRATEGY',    'Building IG-first content. Caption + carousel design.']
+        ['SPORTS PHOTOGRAPHY', 'Photography posted at @shotsbyfranz.'],
+        ['MEDIA PRODUCTION',    'Media Production I and Media Production II at Blue Valley Southwest. A in each semester.'],
+        ['VIDEOGRAPHY',         'Video as part of media production coursework.'],
+        ['EDITING',             'Class work in media production.']
       ] %}
         <div>
           <div style="font-family:'Archivo', sans-serif; font-weight:800; font-size:15px; color:var(--b-green-bright); text-transform:uppercase; letter-spacing:0.04em; margin-bottom:8px;">{{ k[0] }}</div>
@@ -133,12 +105,12 @@ active: media
 {# ===== BOOK A SHOOT ===== #}
 <section style="padding:56px; background:var(--b-bg); display:grid; grid-template-columns:1fr auto; gap:32px; align-items:center;">
   <div>
-    <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin-bottom:12px;">/04 BOOK A SHOOT</div>
+    <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin-bottom:12px;">/04 INSTAGRAM</div>
     <h2 style="font-family:'Archivo', sans-serif; font-weight:900; font-size:48px; line-height:1; letter-spacing:-0.03em; text-transform:uppercase; margin:0; color:var(--b-text);">
-      @Shots_By_Franz
+      @shotsbyfranz
     </h2>
   </div>
-  <a href="https://instagram.com/Shots_By_Franz" target="_blank" rel="noopener" style="display:flex; align-items:center; gap:12px; padding:18px 28px; background:var(--b-green-bright); color:var(--b-bg); font-family:'Archivo', sans-serif; font-weight:800; font-size:14px; letter-spacing:0.08em; text-transform:uppercase; text-decoration:none; clip-path:polygon(4% 0, 100% 0, 96% 100%, 0% 100%);">
+  <a href="https://www.instagram.com/shotsbyfranz/" target="_blank" rel="noopener" style="display:flex; align-items:center; gap:12px; padding:18px 28px; background:var(--b-green-bright); color:var(--b-bg); font-family:'Archivo', sans-serif; font-weight:800; font-size:14px; letter-spacing:0.08em; text-transform:uppercase; text-decoration:none; clip-path:polygon(4% 0, 100% 0, 96% 100%, 0% 100%);">
     FOLLOW ON INSTAGRAM &rarr;
   </a>
 </section>

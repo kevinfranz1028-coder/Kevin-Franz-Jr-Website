@@ -22,7 +22,7 @@ active: academics
         <span style="-webkit-text-stroke:2px var(--b-green-bright); -webkit-text-fill-color:transparent;">First.</span>
       </h1>
       <p style="font-family:'JetBrains Mono', monospace; font-size:13px; letter-spacing:0.06em; color:var(--b-mute); margin-top:32px; max-width:460px; line-height:1.6; text-transform:uppercase;">
-        {{ player.gpa or "3.75" }} GPA (3.82 weighted) &middot; Targeting meteorology / atmospheric science in college.
+        {{ player.gpa or "3.75" }} GPA (3.82 weighted) &middot; No honors courses &middot; AP World History is the only AP class.
       </p>
     </div>
     <div style="position:relative; width:280px; height:280px;">
@@ -98,7 +98,7 @@ active: academics
     </div>
     <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin:24px 0 12px;">METEOROLOGY MAJOR</div>
     <p style="font-size:13px; color:var(--b-text); line-height:1.6; margin:0;">
-      Atmospheric science &mdash; analyzing weather patterns, forecasting, and storm research. D1 schools with strong meteorology programs are the dream.
+      Plan to study meteorology / atmospheric science in college.
     </p>
   </div>
 </section>
@@ -110,7 +110,7 @@ active: academics
     <h2 class="b-section-title">JCCC.</h2>
   </div>
   <span style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.1em; color:var(--b-mute); text-transform:uppercase;">
-    SMSD REAL WORLD LEARNING
+    WILL GRADUATE WITH AN ASSOCIATE DEGREE
   </span>
 </div>
 <section style="display:grid; grid-template-columns:1fr 1fr; border-bottom:1px solid var(--b-line);">
@@ -119,16 +119,16 @@ active: academics
       Johnson County<br>Community College
     </h3>
     <p style="font-size:16px; line-height:1.7; color:var(--b-mute); margin:0 0 28px; max-width:440px;">
-      Kevin is in Johnson County Community College's dual-degree program through SMSD's Real World Learning program. He is a full-time college student while still in high school at {{ player.highSchool }}, on track to graduate with both an associate degree from Johnson County Community College and his high school diploma.
+      Kevin is in the Johnson County Community College dual degree program. He will graduate with an associate degree from Johnson County Community College and his high school diploma. He is taking only one class at {{ player.highSchool }}.
     </p>
     <div style="display:grid; gap:1px; background:var(--b-line); border:1px solid var(--b-line); max-width:440px;">
       {% for row in [
-        ['STATUS', 'Full-time college student'],
         ['PROGRAM', 'JCCC dual degree'],
-        ['PATH', 'Associate degree and high school diploma'],
-        ['FALL 2026', '4 classes'],
-        ['SPRING 2027', '15 credit hours registered'],
-        ['MISSING WORK', 'None']
+        ['DEGREE', 'Will graduate with an associate degree and a high school diploma'],
+        ['SM WEST', 'One high school class'],
+        ['GPA', '3.75 unweighted / 3.82 weighted'],
+        ['HONORS COURSES', 'None'],
+        ['AP', 'AP World History, B both semesters']
       ] %}
         <div style="background:var(--b-bg); padding:16px 20px; display:flex; justify-content:space-between; align-items:baseline; gap:16px;">
           <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; color:var(--b-mute); text-transform:uppercase;">{{ row[0] }}</div>
@@ -138,39 +138,22 @@ active: academics
     </div>
   </div>
   <div style="padding:56px; background:var(--b-bg);">
-    <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin-bottom:20px;">FALL 2026 &middot; CURRENT COURSES</div>
+    <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin-bottom:20px;">BLUE VALLEY SOUTHWEST &middot; GRADES 9–10</div>
     <div style="display:grid; gap:1px; background:var(--b-line); border:1px solid var(--b-line);">
       {% for c in [
-        ['Composition I', 'A'],
-        ['History of Rock and Roll Music', 'A'],
-        ['Introduction to Meteorology', 'B'],
-        ['Principles of Macroeconomics', 'B']
-      ] %}
-        <div style="background:var(--b-bg-2); padding:16px 20px; display:flex; justify-content:space-between; align-items:baseline; gap:16px;">
-          <div style="font-family:'Archivo', sans-serif; font-weight:800; font-size:16px; color:var(--b-text);">{{ c[0] }}</div>
-          <div style="font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.06em; color:var(--b-green-bright); white-space:nowrap;">{{ c[1] }} (in progress)</div>
-        </div>
-      {% endfor %}
-    </div>
-    <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.08em; color:var(--b-mute); text-transform:uppercase; margin-top:12px;">
-      IN PROGRESS &middot; NO MISSING WORK
-    </div>
-    <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin:32px 0 20px;">SPRING 2027 &middot; REGISTERED COURSES</div>
-    <div style="display:grid; gap:1px; background:var(--b-line); border:1px solid var(--b-line);">
-      {% for title in [
-        'College Algebra',
-        'Composition II',
-        'Mass Media and Society',
-        'Personal Finance',
-        'Public Speaking'
+        ['9th S1 · 3.86', 'Eng Lang Arts 9 A · Culinary Essentials A · Geometry B · Media Production I A · Physical Education A · Biology A · Spanish 3.0 A'],
+        ['9th S2 · 3.86', 'Business Software Applications A · Eng Lang Arts 9 A · Geometry B · Strength and Conditioning A · Biology A · World Geography A · Spanish 3.0 A'],
+        ['10th S1 · 3.71', 'Marketing: Branding and Selling A · Eng Lang Arts 10 A · Culinary Arts I A · Algebra II A · Media Production II A · Chemistry B · AP World History B'],
+        ['10th S2 · 3.57', 'Eng Lang Arts 10 B · Health and Wellness A · Introduction to Woodworking and Skilled Trades A · Algebra II A · Media Production II A · Chemistry B · AP World History B']
       ] %}
         <div style="background:var(--b-bg-2); padding:16px 20px;">
-          <div style="font-family:'Archivo', sans-serif; font-weight:800; font-size:16px; color:var(--b-text);">{{ title }}</div>
+          <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.08em; color:var(--b-green-bright); text-transform:uppercase;">{{ c[0] }}</div>
+          <div style="font-family:'Archivo', sans-serif; font-weight:700; font-size:15px; color:var(--b-text); margin-top:6px; line-height:1.45;">{{ c[1] }}</div>
         </div>
       {% endfor %}
     </div>
     <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.08em; color:var(--b-mute); text-transform:uppercase; margin-top:12px;">
-      15 CREDIT HOURS &middot; STILL A HIGH SCHOOL STUDENT AT {{ player.highSchool | upper }}
+      NO HONORS COURSES &middot; CUMULATIVE 3.75 / 3.82 WEIGHTED
     </div>
   </div>
 </section>
@@ -183,7 +166,7 @@ active: academics
       Storms<br>are <span style="-webkit-text-stroke:2px var(--b-green-bright); -webkit-text-fill-color:transparent;">real-time</span><br>data.
     </h2>
     <p style="font-size:16px; line-height:1.7; color:var(--b-mute); margin-top:32px; max-width:440px;">
-      Growing up in Tornado Alley, I learned to track radar before I could drive. Reading a sounding chart, watching a supercell organize, calling a tornado warning before the sirens &mdash; that's the rush. Atmospheric science is engineering plus chaos plus consequences. I want to study it for real.
+      The plan is to study meteorology and atmospheric science in college.
     </p>
   </div>
 </section>

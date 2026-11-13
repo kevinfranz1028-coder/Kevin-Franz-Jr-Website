@@ -3,7 +3,7 @@
   "hero": {
     "eyebrow": "Student–Athlete • Guard • Class of 2028",
     "heading": "Kevin Franz Jr.",
-    "subheading": "6'1\" guard and driven student, working to play college basketball and study atmospheric science.",
+    "subheading": "6'1\" SG/SF, Class of 2028, Shawnee Mission West. 3.75 GPA (3.82 weighted).",
     "image": "/images/hero-photo.jpg",
     "primaryButtonText": "View Basketball Profile",
     "primaryButtonLink": "/basketball/",
@@ -13,19 +13,19 @@
   "glanceCards": [
     {
       "title": "Academics",
-      "body": "GPA: [Current GPA]\nSchool: [High School Name]\nInterest: Atmospheric Science & Meteorology",
+      "body": "GPA: 3.75 unweighted (3.82 weighted)\nSchool: Shawnee Mission West\nPreviously Blue Valley Southwest, grades 9-10",
       "linkText": "View Academics →",
       "linkUrl": "/academics/"
     },
     {
       "title": "Basketball",
-      "body": "Position: Guard\nHeight: 6'2\"\nTeams: [High School Team], [Club/AAU Team]\n2024–25: [X] PPG • [Y] APG",
+      "body": "Position: SG/SF\nHeight: 6'1\"\nWeight: 190 lbs\nClub: JC Hoops 16U #28\nJV 2025-26: 19 games, team record 7-14, 5.6 PPG, 4.0 RPG, 2.5 APG",
       "linkText": "Full Basketball Profile →",
       "linkUrl": "/basketball/"
     },
     {
       "title": "Beyond the Court",
-      "body": "Weather nerd. Film-room junkie. Big on leadership, family, and helping younger players grow.",
+      "body": "Volunteers at youth basketball camps through school. Interested in meteorology.",
       "linkText": "Projects & Passions →",
       "linkUrl": "/projects/"
     }
@@ -33,7 +33,7 @@
   "about": {
     "eyebrow": "About Kevin",
     "heading": "Student. Teammate. Future meteorologist.",
-    "body": "I'm Kevin Franz Jr, a 6'2\" guard in the Class of 2028 at [High School Name] in [City, State].\n\nOn the court, I'm a pace-pusher and playmaker – I love creating for teammates, defending full court, and making the right reads under pressure. Off the court, I'm just as serious about the classroom. I'm especially drawn to weather and atmospheric science and plan to study meteorology in college.\n\nMy goals are simple: help my team win, keep growing as a leader, and earn the opportunity to play college basketball while pursuing a degree that challenges me.",
+    "body": "Kevin Franz Jr. is a 6'1\", 190 lb SG/SF in the Class of 2028 at Shawnee Mission West in Overland Park, Kansas. He plays club basketball with JC Hoops 16U, wearing #28.\n\nGPA is 3.75 unweighted and 3.82 weighted through 10th grade at Blue Valley Southwest. He is in the JCCC dual degree program and will graduate with an associate degree and his high school diploma. He is taking only one class at Shawnee Mission West.",
     "image": "/images/about-photo.jpg"
   },
   "tiles": [
@@ -45,7 +45,7 @@
     },
     {
       "title": "Academics & Resume",
-      "body": "Courses, GPA, awards, and work experience in one place.",
+      "body": "GPA, Blue Valley Southwest courses through 10th grade, and the JCCC dual degree.",
       "linkText": "Go to Academics →",
       "linkUrl": "/academics/"
     },

@@ -3,7 +3,7 @@ layout: post.njk
 title: New School, New Number
 type: Personal
 date: 2026-11-01
-summary: I transferred to Shawnee Mission West and I'm playing club ball with JC Hoops 16U wearing #28. Here is where things stand heading into junior year.
+summary: "Now at Shawnee Mission West and playing club ball with JC Hoops 16U wearing #28. Here is where things stand heading into junior year."
 featured: true
 ---
 
@@ -11,7 +11,7 @@ featured: true
 
 A few things have changed since the last update, so here is the short version.
 
-I've transferred to **Shawnee Mission West**. I spent my freshman and sophomore years at Blue Valley Southwest, and I'm grateful for both — the freshman season where I was a captain, and the JV season last winter that gave me 19 games of real tape. But SM West is home now.
+I'm now at **Shawnee Mission West**. I spent freshman and sophomore year at Blue Valley Southwest, including the freshman season as Team Captain of the Freshman A team, and the JV season last winter. SM West is home now.
 
 I'm also playing club basketball with **JC Hoops 16U**, wearing **#28**. That's the number I wore through most of my JC Hoops years, so it's good to have it back. The #30 you'll see in older box scores on this site is my Blue Valley Southwest number.
 
@@ -28,7 +28,7 @@ Shooting 46/38 is a big jump from the 39/32 I shot in the BVSW JV season last wi
 
 ## Last winter, for the record
 
-The 2025-26 BVSW JV season is finished and posted in full on the [Basketball page](/basketball/) — every game, every score, and my line in each one. The short version: team went 7-14, I had stats in 19 of the 21 games with 17 starts, and averaged 5.6 points, 4.0 rebounds and 2.5 assists with a 2.18 assist-to-turnover ratio.
+The 2025-26 BVSW JV season is on the [Basketball page](/basketball/). The team went 7-14. I played in 19 of the 21 games, with 17 starts, and averaged 5.6 points, 4.0 rebounds and 2.5 assists with a 2.18 assist-to-turnover ratio.
 
 It wasn't a winning season, but the assist-to-turnover number is the one I keep coming back to. Taking care of the ball is the part of my game I trust most.
 

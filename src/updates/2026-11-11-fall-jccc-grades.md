@@ -5,6 +5,8 @@ type: Academic Milestone
 date: 2026-11-11
 summary: Four college classes at JCCC this fall alongside SM West — Composition I A, History of Rock and Roll Music A, Introduction to Meteorology B, and Principles of Macroeconomics B, all in progress — with no missing work, and 15 credit hours registered for spring.
 featured: false
+eleventyExcludeFromCollections: true
+permalink: false
 ---
 
 ## Where the semester stands
