@@ -735,6 +735,26 @@ body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
   .b-footer-bottom { flex-direction: column; gap: 6px; }
 }
 
+/* Odd last card fills the row instead of leaving an empty grid cell.
+   On a single column, spanning 1 / -1 is the same width as every other card. */
+.contact-link-grid > :last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
+/* Keep this grid at two columns on small screens. The shared mobile rule
+   otherwise turns it into as many tracks as fit, and a full-width last
+   card would leave a hole in the row above it. Very narrow screens stack. */
+@media (max-width: 980px) {
+  .b-root section.contact-link-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+@media (max-width: 300px) {
+  .b-root section.contact-link-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
 @media (max-width: 560px) {
   .b-hero h1 { font-size: 48px; }
   .b-hero-stat-strip { grid-template-columns: repeat(2, 1fr); }
