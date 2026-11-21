@@ -1,0 +1,221 @@
+{
+  "sourceUrl": "https://www.gobound.com/ks/schools/shawneemissionwesths/calendar/ical",
+  "calendarPage": "https://www.gobound.com/ks/schools/shawneemissionwesths/calendar",
+  "sourceName": "Shawnee Mission West Bound athletics calendar",
+  "season": "2026-27",
+  "team": "Varsity Boys Basketball",
+  "school": "Shawnee Mission West",
+  "fetchedAt": "2026-11-21T06:54:48.479Z",
+  "games": [
+    {
+      "date": "2026-12-01",
+      "displayDate": "Tue, Dec 1, 2026",
+      "time": "7:00 PM",
+      "opponent": "Kansas City East Christian",
+      "homeAway": "Home",
+      "location": "Shawnee Mission West High School Main Gym",
+      "summary": "Boys Basketball: Kansas City East Christian vs Shawnee Mission West (Varsity)"
+    },
+    {
+      "date": "2026-12-04",
+      "displayDate": "Fri, Dec 4, 2026",
+      "time": "7:00 PM",
+      "opponent": "Wichita North",
+      "homeAway": "Away",
+      "location": "Wichita North High School Main Gym",
+      "summary": "Boys Basketball: Shawnee Mission West vs Wichita North (Varsity)"
+    },
+    {
+      "date": "2026-12-10",
+      "displayDate": "Thu, Dec 10, 2026",
+      "time": "7:30 PM",
+      "opponent": "Maranatha Christian",
+      "homeAway": "Away",
+      "location": "Maranatha Christian Academy Gym",
+      "summary": "Boys Basketball: Shawnee Mission West vs Maranatha Christian (Varsity)"
+    },
+    {
+      "date": "2026-12-11",
+      "displayDate": "Fri, Dec 11, 2026",
+      "time": "7:15 PM",
+      "opponent": "Topeka West",
+      "homeAway": "Away",
+      "location": "Topeka West High School",
+      "summary": "Boys Basketball: Shawnee Mission West vs Topeka West (Varsity)"
+    },
+    {
+      "date": "2026-12-15",
+      "displayDate": "Tue, Dec 15, 2026",
+      "time": "7:00 PM",
+      "opponent": "Olathe South",
+      "homeAway": "Away",
+      "location": "Olathe South High School South Gym - Main",
+      "summary": "Boys Basketball: Shawnee Mission West vs Olathe South (Varsity)"
+    },
+    {
+      "date": "2026-12-18",
+      "displayDate": "Fri, Dec 18, 2026",
+      "time": "7:00 PM",
+      "opponent": "Gardner Edgerton",
+      "homeAway": "Home",
+      "location": "Shawnee Mission West High School Main Gym",
+      "summary": "Boys Basketball: Gardner Edgerton vs Shawnee Mission West (Varsity)"
+    },
+    {
+      "date": "2027-01-05",
+      "displayDate": "Tue, Jan 5, 2027",
+      "time": "7:00 PM",
+      "opponent": "Park Hill South",
+      "homeAway": "Home",
+      "location": "Shawnee Mission West High School Main Gym",
+      "summary": "Boys Basketball: Park Hill South vs Shawnee Mission West (Varsity)"
+    },
+    {
+      "date": "2027-01-08",
+      "displayDate": "Fri, Jan 8, 2027",
+      "time": "7:00 PM",
+      "opponent": "Shawnee Mission South",
+      "homeAway": "Home",
+      "location": "Shawnee Mission West High School Main Gym",
+      "summary": "Boys Basketball: Shawnee Mission South vs Shawnee Mission West (Varsity)"
+    },
+    {
+      "date": "2027-01-12",
+      "displayDate": "Tue, Jan 12, 2027",
+      "time": "7:00 PM",
+      "opponent": "Olathe North",
+      "homeAway": "Home",
+      "location": "Shawnee Mission West High School Main Gym",
+      "summary": "Boys Basketball: Olathe North vs Shawnee Mission West (Varsity)"
+    },
+    {
+      "date": "2027-01-15",
+      "displayDate": "Fri, Jan 15, 2027",
+      "time": "7:00 PM",
+      "opponent": "Lawrence",
+      "homeAway": "Away",
+      "location": "Lawrence High School LHS Main Gym",
+      "summary": "Boys Basketball: Shawnee Mission West vs Lawrence (Varsity)"
+    },
+    {
+      "date": "2027-01-21",
+      "displayDate": "Thu, Jan 21, 2027",
+      "time": "3:00 PM–10:00 PM",
+      "opponent": "Viking Classic Tournament",
+      "homeAway": "Home",
+      "location": "Shawnee Mission West High School Main Gym",
+      "summary": "Boys Basketball: Viking Classic Tournament (Varsity)",
+      "note": "The feed lists this as a tournament block. Individual opponents and tip times are not in the feed."
+    },
+    {
+      "date": "2027-01-22",
+      "displayDate": "Fri, Jan 22, 2027",
+      "time": "3:00 PM–10:00 PM",
+      "opponent": "Viking Classic Tournament",
+      "homeAway": "Home",
+      "location": "Shawnee Mission West High School Main Gym",
+      "summary": "Boys Basketball: Viking Classic Tournament (Varsity)",
+      "note": "The feed lists this as a tournament block. Individual opponents and tip times are not in the feed."
+    },
+    {
+      "date": "2027-01-23",
+      "displayDate": "Sat, Jan 23, 2027",
+      "time": "3:00 PM–10:00 PM",
+      "opponent": "Viking Classic Tournament",
+      "homeAway": "Home",
+      "location": "Shawnee Mission West High School Main Gym",
+      "summary": "Boys Basketball: Viking Classic Tournament (Varsity)",
+      "note": "The feed lists this as a tournament block. Individual opponents and tip times are not in the feed."
+    },
+    {
+      "date": "2027-01-27",
+      "displayDate": "Wed, Jan 27, 2027",
+      "time": "7:00 PM",
+      "opponent": "Hayden Catholic",
+      "homeAway": "Home",
+      "location": "Shawnee Mission West High School Main Gym",
+      "summary": "Boys Basketball: Hayden Catholic vs Shawnee Mission West (Varsity)"
+    },
+    {
+      "date": "2027-01-29",
+      "displayDate": "Fri, Jan 29, 2027",
+      "time": "7:00 PM",
+      "opponent": "Shawnee Legacy Prepatory Academy",
+      "homeAway": "Home",
+      "location": "Shawnee Mission West High School Main Gym",
+      "summary": "Boys Basketball: Shawnee Legacy Prepatory Academy vs Shawnee Mission West (Varsity)"
+    },
+    {
+      "date": "2027-02-02",
+      "displayDate": "Tue, Feb 2, 2027",
+      "time": "7:00 PM",
+      "opponent": "Olathe East",
+      "homeAway": "Away",
+      "location": "Olathe East High School Main Gym",
+      "summary": "Boys Basketball: Shawnee Mission West vs Olathe East (Varsity)"
+    },
+    {
+      "date": "2027-02-05",
+      "displayDate": "Fri, Feb 5, 2027",
+      "time": "7:00 PM",
+      "opponent": "Mill Valley",
+      "homeAway": "Home",
+      "location": "Shawnee Mission West High School Main Gym",
+      "summary": "Boys Basketball: Mill Valley vs Shawnee Mission West (Varsity)"
+    },
+    {
+      "date": "2027-02-09",
+      "displayDate": "Tue, Feb 9, 2027",
+      "time": "7:00 PM",
+      "opponent": "Olathe Northwest",
+      "homeAway": "Home",
+      "location": "Shawnee Mission West High School Main Gym",
+      "summary": "Boys Basketball: Olathe Northwest vs Shawnee Mission West (Varsity)"
+    },
+    {
+      "date": "2027-02-12",
+      "displayDate": "Fri, Feb 12, 2027",
+      "time": "7:00 PM",
+      "opponent": "Shawnee Mission Northwest",
+      "homeAway": "Away",
+      "location": "Shawnee Mission Northwest High School Main Gym",
+      "summary": "Boys Basketball: Shawnee Mission West vs Shawnee Mission Northwest (Varsity)"
+    },
+    {
+      "date": "2027-02-16",
+      "displayDate": "Tue, Feb 16, 2027",
+      "time": "7:00 PM",
+      "opponent": "Lawrence Free State",
+      "homeAway": "Home",
+      "location": "Shawnee Mission West High School Main Gym",
+      "summary": "Boys Basketball: Lawrence Free State vs Shawnee Mission West (Varsity)"
+    },
+    {
+      "date": "2027-02-19",
+      "displayDate": "Fri, Feb 19, 2027",
+      "time": "7:00 PM",
+      "opponent": "Shawnee Mission East",
+      "homeAway": "Away",
+      "location": "Shawnee Mission East High School Main Gym",
+      "summary": "Boys Basketball: Shawnee Mission West vs Shawnee Mission East (Varsity)"
+    },
+    {
+      "date": "2027-02-23",
+      "displayDate": "Tue, Feb 23, 2027",
+      "time": "7:00 PM",
+      "opponent": "Olathe West",
+      "homeAway": "Away",
+      "location": "Olathe West High School Main Gym",
+      "summary": "Boys Basketball: Shawnee Mission West vs Olathe West (Varsity)"
+    },
+    {
+      "date": "2027-02-26",
+      "displayDate": "Fri, Feb 26, 2027",
+      "time": "7:00 PM",
+      "opponent": "Shawnee Mission North",
+      "homeAway": "Home",
+      "location": "Shawnee Mission West High School Main Gym",
+      "summary": "Boys Basketball: Shawnee Mission North vs Shawnee Mission West (Varsity)"
+    }
+  ]
+}

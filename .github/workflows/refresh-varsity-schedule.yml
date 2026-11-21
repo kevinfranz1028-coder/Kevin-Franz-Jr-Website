@@ -1,0 +1,31 @@
+# Rebuild the site so the Cloudflare Pages build can refetch the Bound ICS.
+# Kevin adds the hook URL as a GitHub Actions secret. This workflow does not
+# create or change Cloudflare or DNS settings.
+name: Refresh varsity schedule
+
+on:
+  schedule:
+    # Daily at 13:00 UTC (7:00 AM Central during standard time).
+    - cron: "0 13 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Cloudflare Pages rebuild
+        env:
+          CLOUDFLARE_DEPLOY_HOOK_URL: ${{ secrets.CLOUDFLARE_DEPLOY_HOOK_URL }}
+        run: |
+          if [ -z "$CLOUDFLARE_DEPLOY_HOOK_URL" ]; then
+            echo "Repo secret CLOUDFLARE_DEPLOY_HOOK_URL is not set."
+            echo "In Cloudflare Pages, open the project, create a deploy hook, and save that URL as the GitHub Actions secret CLOUDFLARE_DEPLOY_HOOK_URL."
+            echo "The Pages build command should stay npm run build so the rebuild refetches the Bound calendar."
+            echo "This workflow does not create or change Cloudflare settings."
+            exit 1
+          fi
+          curl --fail-with-body --silent --show-error -X POST "$CLOUDFLARE_DEPLOY_HOOK_URL"
+          echo "Cloudflare Pages rebuild requested."

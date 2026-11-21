@@ -1,184 +1,98 @@
 ---
 layout: broadcast.njk
 title: Basketball
-description: Stats, schedule, highlights, and recruiting for Kevin Franz Jr. - Class of 2028 SG/SF.
+description: Junior year. Shawnee Mission West Vikings varsity, 2026-27.
 permalink: /basketball/
 active: basketball
 ---
 
-{% set schedule = [
-  { date: 'Dec 5',  opp: 'Washburn Rural',         loc: 'Away',    result: 'L 44-59' },
-  { date: 'Dec 9',  opp: 'Wyandotte',              loc: 'Away',    result: 'W 50-33' },
-  { date: 'Dec 16', opp: 'Gardner-Edgerton',       loc: 'Home',    result: 'L 58-66' },
-  { date: 'Jan 6',  opp: 'Shawnee Mission North',  loc: 'Home',    result: 'L 54-64' },
-  { date: 'Jan 8',  opp: 'Basehor-Linwood',        loc: 'Home',    result: 'W 72-46' },
-  { date: 'Jan 13', opp: 'Louisburg',              loc: 'Away',    result: 'W 76-44' },
-  { date: 'Jan 16', opp: 'Blue Valley West',       loc: 'Home',    result: 'L 55-64' },
-  { date: 'Jan 21', opp: 'Olathe Northwest',       loc: 'Away',    result: 'L 41-61' },
-  { date: 'Jan 27', opp: 'Olathe East',            loc: 'Home',    result: 'W 60-57' },
-  { date: 'Jan 30', opp: 'Shawnee Mission West',   loc: 'Away',    result: 'L 40-44' },
-  { date: 'Feb 3',  opp: 'Saint Thomas Aquinas',   loc: 'Home',    result: 'L 58-69' },
-  { date: 'Feb 4',  opp: 'J.C. Harmon',            loc: 'Away',    result: 'W 69-16' },
-  { date: 'Feb 6',  opp: 'Blue Valley Northwest',  loc: 'Home',    result: 'L 56-68' },
-  { date: 'Feb 10', opp: 'Blue Valley North',      loc: 'Away',    result: 'L 38-65' },
-  { date: 'Feb 11', opp: 'Metro Academy',          loc: 'Home',    result: 'W 85-35' },
-  { date: 'Feb 13', opp: 'Blue Valley',            loc: 'Home',    result: 'W 60-54' },
-  { date: 'Feb 14', opp: 'Blue Valley',            loc: 'Home',    result: 'L 50-65' },
-  { date: 'Feb 17', opp: 'Bishop Miege',           loc: 'Away',    result: 'L 50-65' },
-  { date: 'Feb 20', opp: 'St. James Academy',      loc: 'Away',    result: 'L 50-67' },
-  { date: 'Feb 26', opp: 'Bishop Miege',           loc: 'Home',    result: 'L 67-70' },
-  { date: 'Feb 27', opp: 'Blue Valley West',       loc: 'Away',    result: 'L 63-85' }
-] %}
-{% set stats2526 = [
-  { label: 'PPG',    value: '5.6' },
-  { label: 'RPG',    value: '4.0' },
-  { label: 'APG',    value: '2.5' },
-  { label: 'SPG',    value: '1.5' },
-  { label: 'BPG',    value: '0.3' },
-  { label: 'FG%',    value: '39' },
-  { label: '3PT%',   value: '32' },
-  { label: 'FT%',    value: '68' },
-  { label: 'AST/TO', value: '2.18' }
-] %}
-{# ===== HERO ===== #}
-<section class="cg-pagehead" style="position:relative; min-height:520px; background:#000; overflow:hidden; border-bottom:8px solid #F5C400;">
-  <img src="/images/banner/large_Copy_of_618_A3075_2_Enhanced_NR_0a0a68195a.jpg" alt="" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.55;">
-  <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.82) 72%, #000 100%);"></div>
-  <div style="position:relative; z-index:2; padding:80px 56px; display:grid; grid-template-columns:1.4fr 1fr; gap:48px; align-items:end; min-height:520px;">
+<section class="cg-pagehead bb-hero">
+  <img class="bb-hero-photo" src="{{ basketballSeason.heroPhoto }}" alt="{{ basketballSeason.heroPhotoAlt }}">
+  <div class="bb-hero-shade"></div>
+  <div class="bb-hero-grid">
     <div>
-      <div style="display:flex; align-items:center; gap:10px; font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin-bottom:24px;">
-        <span>&bull;</span> BASKETBALL &middot; 2025–26
-      </div>
-      <h1 style="font-family:'Archivo', sans-serif; font-weight:900; font-size:160px; line-height:0.85; letter-spacing:-0.045em; text-transform:uppercase; margin:0; color:var(--b-text);">
-        The<br><span style="-webkit-text-stroke:2px var(--b-green-bright); -webkit-text-fill-color:transparent;">Game.</span>
-      </h1>
-      <p style="font-family:'Inter', sans-serif; font-size:18px; line-height:1.6; color:var(--b-mute); margin-top:32px; max-width:560px;">
-        Stats, schedule, film, and recruiting profiles.
-      </p>
+      <p class="bb-kicker">{{ basketballSeason.kicker }}</p>
+      <h1>Shawnee<br>Mission<br><span>West.</span></h1>
+      <p class="bb-dek">{{ basketballSeason.mascot }} &middot; {{ basketballSeason.level }} &middot; {{ basketballSeason.seasonLabel }}</p>
     </div>
-    <div class="cg-paper" style="background:#fff; border:1px solid #000; padding:28px;">
-      <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:20px;">
-        <div>
-          <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:22px; color:var(--b-text); text-transform:uppercase; letter-spacing:-0.01em;">{{ player.name }}</div>
-          <div style="font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--b-mute); letter-spacing:0.1em; margin-top:4px;">#{{ player.jersey }} &middot; SG/SF</div>
-        </div>
-        <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:48px; color:var(--b-green-bright); line-height:1;">{{ player.jersey }}</div>
-      </div>
-      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--b-line); border:1px solid var(--b-line);">
-        {% for cell in [['HT', player.height], ['WT', player.weight], ['CLASS', player.class], ['HS', 'SM West'], ['CLUB', 'JC Hoops'], ['GPA', player.gpa]] %}
-          <div style="background:var(--b-bg); padding:14px;">
-            <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; color:var(--b-mute); text-transform:uppercase;">{{ cell[0] }}</div>
-            <div style="font-family:'Archivo', sans-serif; font-weight:800; font-size:18px; color:var(--b-text); margin-top:4px;">{{ cell[1] }}</div>
-          </div>
-        {% endfor %}
-      </div>
+    <div class="cg-paper bb-card">
+      <p class="bb-card-name">{{ player.name }}</p>
+      <p class="bb-card-meta">{{ basketballSeason.school }} {{ basketballSeason.mascot }}</p>
+      <p class="bb-card-meta">{{ basketballSeason.level }} &middot; {{ basketballSeason.seasonLabel }}</p>
+      <p class="bb-honor">{{ basketballSeason.honor }}</p>
+      <a class="bb-card-link" href="{{ basketballSeason.jvSeasonHref }}">{{ basketballSeason.jvSeasonLabel }} &rarr;</a>
     </div>
   </div>
 </section>
 
-{# ===== STATS ===== #}
 <div class="b-section-head">
   <div class="b-section-head-left">
     <span class="b-section-tag">/01 NUMBERS</span>
-    <h2 class="b-section-title">2025–26.</h2>
+    <h2 class="b-section-title">Varsity stats.</h2>
   </div>
-  <span style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.1em; color:var(--b-mute); text-transform:uppercase;">
-    BVSW JV &middot; 19 games &middot; team record 7–14 &middot; 5.6 PPG &middot; 4.0 RPG &middot; 2.5 APG
-  </span>
 </div>
-<section style="display:grid; grid-template-columns:repeat(5, 1fr); gap:1px; background:var(--b-line); border-bottom:1px solid var(--b-line);">
-  {% for s in stats2526 %}
-    <div style="padding:28px; background:var(--b-bg); min-height:160px; display:flex; flex-direction:column; justify-content:space-between; position:relative;">
-      <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-        <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--b-mute);">{{ s.label }}</div>
-      </div>
-      <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:56px; line-height:1; letter-spacing:-0.04em; color:var(--b-text);">{{ s.value }}</div>
-    </div>
-  {% endfor %}
+<section class="bb-soon" aria-label="Varsity stats coming soon">
+  <strong>Coming soon.</strong>
+  <p>No varsity stats are posted yet.</p>
 </section>
 
-{# ===== SCHEDULE ===== #}
 <div class="b-section-head">
   <div class="b-section-head-left">
     <span class="b-section-tag">/02 SCHEDULE</span>
-    <h2 class="b-section-title">Season.</h2>
+    <h2 class="b-section-title">{{ basketballSeason.seasonLabel }}.</h2>
   </div>
 </div>
-<section class="cg-rows" style="border-bottom:1px solid var(--b-line);">
-  <div style="display:grid; grid-template-columns:90px 1fr 90px 110px 130px; padding:14px 48px; border-bottom:1px solid var(--b-line); font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--b-mute); background:var(--b-bg-2);">
-    <div>DATE</div><div>OPPONENT</div><div>LOC</div><div>STATUS</div><div>RESULT</div>
+<section class="bb-schedule" aria-label="Varsity schedule">
+  {% if smWestVarsitySchedule and smWestVarsitySchedule.games and smWestVarsitySchedule.games.length %}
+  <div class="bb-row bb-row-head">
+    <div>Date</div>
+    <div>Opponent</div>
+    <div>Site</div>
+    <div>Time</div>
+    <div>Location</div>
   </div>
-  {% for g in schedule %}
-    <div style="display:grid; grid-template-columns:90px 1fr 90px 110px 130px; padding:18px 48px; {% if not loop.last %}border-bottom:1px solid var(--b-line);{% endif %} align-items:center; background:{% if g.upcoming %}transparent{% else %}var(--b-bg){% endif %};">
-      <div style="font-family:'JetBrains Mono', monospace; font-size:13px; color:var(--b-mute); letter-spacing:0.04em;">{{ g.date }}</div>
-      <div style="font-family:'Archivo', sans-serif; font-weight:700; font-size:16px; color:var(--b-text);">{{ g.opp }}</div>
-      <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.1em; color:var(--b-mute); text-transform:uppercase;">{{ g.loc }}</div>
-      <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:{% if g.upcoming %}var(--b-amber){% else %}var(--b-green-bright){% endif %};">{% if g.upcoming %}&#9675; UPCOMING{% else %}&bull; FINAL{% endif %}</div>
-      <div style="font-family:'Archivo', sans-serif; font-weight:800; font-size:15px; letter-spacing:0.04em; color:{% if g.result.startsWith('W') %}var(--b-green-bright){% elif g.result.startsWith('L') %}var(--b-red){% else %}var(--b-mute){% endif %};">{{ g.result }}</div>
-    </div>
+  {% for game in smWestVarsitySchedule.games %}
+  <article class="bb-row">
+    <div class="bb-date">{{ game.displayDate }}</div>
+    <div class="bb-opp">{{ game.opponent }}</div>
+    <div class="bb-site">{{ game.homeAway or "Site not listed" }}</div>
+    <div class="bb-time">{{ game.time }}</div>
+    <div class="bb-where">{{ game.location or "Location not listed" }}</div>
+    {% if game.note %}<p class="bb-note">{{ game.note }}</p>{% endif %}
+  </article>
   {% endfor %}
+  <p class="bb-source">
+    Source: <a href="{{ smWestVarsitySchedule.sourceUrl }}">{{ smWestVarsitySchedule.sourceName }}</a>.
+    Calendar page: <a href="{{ smWestVarsitySchedule.calendarPage }}">Shawnee Mission West on Bound</a>.
+    {% if smWestVarsitySchedule.fetchedAt %}Fetched {{ smWestVarsitySchedule.fetchedAt }}.{% endif %}
+  </p>
+  {% else %}
+  <div class="bb-soon">
+    <strong>Schedule unavailable.</strong>
+    <p>The saved schedule file has no games. Nothing is filled in by hand.</p>
+  </div>
+  {% endif %}
 </section>
 
-{# ===== HIGHLIGHTS ===== #}
 <div class="b-section-head">
   <div class="b-section-head-left">
     <span class="b-section-tag">/03 FILM</span>
     <h2 class="b-section-title">Highlights.</h2>
   </div>
 </div>
-<section style="padding:40px 48px; border-bottom:1px solid var(--b-line);">
-  <div style="background:var(--b-bg-2); border:1px solid var(--b-line); width:100%; max-width:560px;">
-    <div style="aspect-ratio:16/9; background:var(--b-bg-3); display:grid; place-items:center; padding:32px;">
-      <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:28px; line-height:1.05; letter-spacing:-0.02em; text-transform:uppercase; color:var(--b-text); text-align:center;">
-        New highlights<br>coming soon.
-      </div>
-    </div>
-    <div style="padding:24px 28px;">
-      <p style="font-size:14px; color:var(--b-mute); margin:0;">Middle school camp film is on the <a href="/timeline/2023-2024/" style="color:var(--b-green-bright);">2023–24 timeline</a>.</p>
-    </div>
-  </div>
+<section class="bb-soon" aria-label="Highlights coming soon">
+  <strong>Coming soon.</strong>
 </section>
 
-{# ===== RECRUITING ===== #}
-<section style="padding:80px 48px; background:var(--b-bg-2);">
-  <div style="display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start;">
-    <div>
-      <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin-bottom:16px;">/04 RECRUITING</div>
-      <h2 style="font-family:'Archivo', sans-serif; font-weight:900; font-size:64px; line-height:0.95; text-transform:uppercase; letter-spacing:-0.03em; margin:0;">
-        For coaches<br>&amp; <span style="-webkit-text-stroke:2px var(--b-green-bright); -webkit-text-fill-color:transparent;">scouts.</span>
-      </h2>
-      <p style="font-size:16px; color:var(--b-mute); margin-top:24px; max-width:420px;">
-        Find Kevin's profile across major recruiting platforms. For direct inquiries, contact the family.
-      </p>
-      <div style="display:flex; flex-direction:column; gap:8px; margin-top:32px;">
-        <a href="mailto:{{ player.parentEmail }}" style="color:var(--b-text); font-family:'Archivo', sans-serif; font-weight:800; font-size:20px; text-decoration:none; border-bottom:1px solid var(--b-line); padding-bottom:10px;">{{ player.parentEmail }}</a>
-        <a href="tel:{{ player.parentPhone }}" style="color:var(--b-text); font-family:'Archivo', sans-serif; font-weight:800; font-size:20px; text-decoration:none; border-bottom:1px solid var(--b-line); padding-bottom:10px;">{{ player.parentPhone }}</a>
-      </div>
-    </div>
-    <div style="display:grid; gap:1px; background:var(--b-line); border:1px solid var(--b-line);">
-      {# Entries with an empty URL are TODO slots: skipped when rendering, so
-         nothing broken shows. Paste the public URL in to publish the card. #}
-      {% for link in [
-        ['PREPHOOPS', 'Player profile and rankings', 'https://prephoops.com/player/kevin-franz/'],
-        ['PREP HOOPS RANKINGS', 'Featured in the updated 2028 Kansas rankings, Oct 9 2026', 'https://prephoops.com/2026/10/updated-2028-kansas-rankings/'],
-        ['NCSA SPORTS', 'Complete recruiting profile', 'https://www.ncsasports.org/mens-basketball-recruiting/kansas/overland-park/blue-valley-southwest-high-school/kevin-franz3'],
-        ['INSTAGRAM', '@kfranzjr2028', 'https://instagram.com/kfranzjr2028'],
-        ['X', '@kfranzjr2028', 'https://x.com/kfranzjr2028'],
-        ['FIELDLEVEL', 'Coach-to-coach recruiting network', 'https://www.fieldlevel.com/app/profile/kevin.franzjr/basketballmen?m=3'],
-        ['RECRUITLOOK', 'Verified athlete profile', 'https://recruitlook.com/profile/20035511-74e5-481c-b21a-0e259f3a772e'],
-        ['SCORABILITY', 'Recruiting profile', ''],
-        ['SPORTS PASSPORTS', 'Tournament history and stats', '']
-      ] %}
-        {% if link[2] %}
-        <a href="{{ link[2] }}" target="_blank" rel="noopener noreferrer" style="display:flex; justify-content:space-between; align-items:center; padding:24px 28px; background:var(--b-bg); color:var(--b-text); text-decoration:none;">
-          <div>
-            <div style="font-family:'Archivo', sans-serif; font-weight:900; font-size:18px; text-transform:uppercase; letter-spacing:0.02em;">{{ link[0] }}</div>
-            <div style="font-size:13px; color:var(--b-mute); margin-top:4px;">{{ link[1] }}</div>
-          </div>
-          <span style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.12em; color:var(--b-green-bright);">VIEW &rarr;</span>
-        </a>
-        {% endif %}
-      {% endfor %}
-    </div>
+<section class="bb-contact">
+  <div>
+    <p class="bb-kicker bb-kicker-ink">/04 CONTACT</p>
+    <h2>For coaches.</h2>
+    <p>The {{ basketballSeason.jvSeasonLabel }} season, with its stats and games, is on the journey.</p>
+    <a class="bb-card-link" href="{{ basketballSeason.jvSeasonHref }}">{{ basketballSeason.jvSeasonLabel }} &rarr;</a>
+  </div>
+  <div class="bb-contact-links">
+    <a href="mailto:{{ player.parentEmail }}">{{ player.parentEmail }}</a>
+    <a href="tel:{{ player.parentPhone }}">{{ player.parentPhone }}</a>
   </div>
 </section>

@@ -4,7 +4,7 @@
   "description": "Student-athlete recruiting profile for Kevin Franz Jr.",
   "scripts": {
     "start": "eleventy --serve",
-    "build": "eleventy",
+    "build": "node scripts/fetch-smwest-varsity-schedule.js && eleventy",
     "cms": "npx decap-server & node scripts/auto-deploy.js & eleventy --serve",
     "deploy": "git add src/ && git commit -m 'Content update via CMS' && git push origin main"
   },

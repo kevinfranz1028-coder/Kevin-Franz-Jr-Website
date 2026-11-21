@@ -1,0 +1,171 @@
+{
+  "season": "2025-26",
+  "team": "BVSW JV",
+  "line": "BVSW JV · 19 games · team record 7–14 · 5.6 PPG · 4.0 RPG · 2.5 APG",
+  "stats": [
+    {
+      "label": "PPG",
+      "value": "5.6"
+    },
+    {
+      "label": "RPG",
+      "value": "4.0"
+    },
+    {
+      "label": "APG",
+      "value": "2.5"
+    },
+    {
+      "label": "SPG",
+      "value": "1.5"
+    },
+    {
+      "label": "BPG",
+      "value": "0.3"
+    },
+    {
+      "label": "FG%",
+      "value": "39"
+    },
+    {
+      "label": "3PT%",
+      "value": "32"
+    },
+    {
+      "label": "FT%",
+      "value": "68"
+    },
+    {
+      "label": "AST/TO",
+      "value": "2.18"
+    }
+  ],
+  "games": [
+    {
+      "date": "Dec 5",
+      "opp": "Washburn Rural",
+      "loc": "Away",
+      "result": "L 44-59"
+    },
+    {
+      "date": "Dec 9",
+      "opp": "Wyandotte",
+      "loc": "Away",
+      "result": "W 50-33"
+    },
+    {
+      "date": "Dec 16",
+      "opp": "Gardner-Edgerton",
+      "loc": "Home",
+      "result": "L 58-66"
+    },
+    {
+      "date": "Jan 6",
+      "opp": "Shawnee Mission North",
+      "loc": "Home",
+      "result": "L 54-64"
+    },
+    {
+      "date": "Jan 8",
+      "opp": "Basehor-Linwood",
+      "loc": "Home",
+      "result": "W 72-46"
+    },
+    {
+      "date": "Jan 13",
+      "opp": "Louisburg",
+      "loc": "Away",
+      "result": "W 76-44"
+    },
+    {
+      "date": "Jan 16",
+      "opp": "Blue Valley West",
+      "loc": "Home",
+      "result": "L 55-64"
+    },
+    {
+      "date": "Jan 21",
+      "opp": "Olathe Northwest",
+      "loc": "Away",
+      "result": "L 41-61"
+    },
+    {
+      "date": "Jan 27",
+      "opp": "Olathe East",
+      "loc": "Home",
+      "result": "W 60-57"
+    },
+    {
+      "date": "Jan 30",
+      "opp": "Shawnee Mission West",
+      "loc": "Away",
+      "result": "L 40-44"
+    },
+    {
+      "date": "Feb 3",
+      "opp": "Saint Thomas Aquinas",
+      "loc": "Home",
+      "result": "L 58-69"
+    },
+    {
+      "date": "Feb 4",
+      "opp": "J.C. Harmon",
+      "loc": "Away",
+      "result": "W 69-16"
+    },
+    {
+      "date": "Feb 6",
+      "opp": "Blue Valley Northwest",
+      "loc": "Home",
+      "result": "L 56-68"
+    },
+    {
+      "date": "Feb 10",
+      "opp": "Blue Valley North",
+      "loc": "Away",
+      "result": "L 38-65"
+    },
+    {
+      "date": "Feb 11",
+      "opp": "Metro Academy",
+      "loc": "Home",
+      "result": "W 85-35"
+    },
+    {
+      "date": "Feb 13",
+      "opp": "Blue Valley",
+      "loc": "Home",
+      "result": "W 60-54"
+    },
+    {
+      "date": "Feb 14",
+      "opp": "Blue Valley",
+      "loc": "Home",
+      "result": "L 50-65"
+    },
+    {
+      "date": "Feb 17",
+      "opp": "Bishop Miege",
+      "loc": "Away",
+      "result": "L 50-65"
+    },
+    {
+      "date": "Feb 20",
+      "opp": "St. James Academy",
+      "loc": "Away",
+      "result": "L 50-67"
+    },
+    {
+      "date": "Feb 26",
+      "opp": "Bishop Miege",
+      "loc": "Home",
+      "result": "L 67-70"
+    },
+    {
+      "date": "Feb 27",
+      "opp": "Blue Valley West",
+      "loc": "Away",
+      "result": "L 63-85"
+    }
+  ]
+}
