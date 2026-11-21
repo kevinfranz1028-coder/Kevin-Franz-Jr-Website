@@ -258,6 +258,39 @@ eleventyExcludeFromCollections: true
     width: 100%;
     min-height: 180px;
   }
+  .decided {
+    margin: 18px 0;
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    padding: 0 12px 12px;
+  }
+  .decided summary {
+    cursor: pointer;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-size: 14px;
+  }
+  .decided summary:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
+  .decided .group-text { margin-top: 0; }
+  .decided .card { margin-left: 0; margin-right: 0; }
+  .decided a { color: var(--green); }
+  .q-done {
+    margin: 0 0 12px;
+    padding: 14px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+  }
+  .q-done .done-label {
+    margin: 0 0 8px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+  }
   .toast {
     position: fixed;
     left: 50%;
@@ -288,12 +321,12 @@ eleventyExcludeFromCollections: true
   <div class="topbar-row">
     <h1>Kevin Franz Jr. — <span>Audit review</span></h1>
     <p id="saved" class="saved" aria-live="polite"></p>
-    <p id="progress" class="progress">0/37 decided · 0/37 answered</p>
+    <p id="progress" class="progress">0/15 decided · 0/20 answered</p>
   </div>
   <div class="topbar-row">
     <div class="tabs" role="tablist" aria-label="Review sections">
       <button type="button" role="tab" id="tab-audit" aria-controls="panel-audit" aria-selected="true">Audit Approvals</button>
-      <button type="button" role="tab" id="tab-questions" aria-controls="panel-questions" aria-selected="false">37 Questions</button>
+      <button type="button" role="tab" id="tab-questions" aria-controls="panel-questions" aria-selected="false">20 Questions</button>
     </div>
     <label class="filter" for="only-open"><input type="checkbox" id="only-open"> Show undecided/unanswered only</label>
     <div class="topbar-actions">
@@ -309,8 +342,8 @@ eleventyExcludeFromCollections: true
 
   <div id="panel-audit" role="tabpanel" aria-labelledby="tab-audit">
     <div class="intro">
-      <h2>Approve, keep, or edit every flagged item</h2>
-      <p>68 verified claims are not on this list. Nothing here changes the public site. Decisions stay in this browser until you copy or download them.</p>
+      <h2>Approve, keep, or edit what's still open</h2>
+      <p>68 verified claims are not on this list. 22 flagged items are already decided and listed at the bottom. Nothing here changes the public site. Decisions stay in this browser until you copy or download them.</p>
       <ul class="counts" id="audit-counts"></ul>
       <p>Use the green Recommended button when you agree with the audit. Confirm &amp; keep leaves the current wording up. Needs edit means you will type the correction in the note.</p>
     </div>
@@ -318,26 +351,37 @@ eleventyExcludeFromCollections: true
       <button type="button" class="btn" id="approve-all">Approve all recommended hides/removals</button>
       <button type="button" class="btn btn-danger" id="reset-audit">Reset decisions</button>
     </div>
-    <p class="meta">Approve all sets every flagged item to the audit’s recommended action, including fixes and the two confirmations. Your notes stay. Reset clears audit decisions and notes only, after you confirm. Questionnaire answers stay either way.</p>
+    <p class="meta">Approve all sets every still-open item to the audit’s recommended action. Your notes stay. Reset puts the open items back to your Nov 21 export. Questionnaire answers stay either way. Already decided items stay as they are.</p>
     <nav class="jump" id="audit-jump" aria-label="Audit sections"></nav>
     <div id="audit-root"></div>
-    <p id="audit-empty" class="empty" hidden>Every flagged item has a decision. Uncheck the filter to review them.</p>
+    <p id="audit-empty" class="empty" hidden>Every open item has a decision. Uncheck the filter to review them.</p>
     <div class="actions">
       <button type="button" class="btn" id="approve-all-bottom">Approve all recommended hides/removals</button>
       <button type="button" class="btn btn-danger" id="reset-audit-bottom">Reset decisions</button>
     </div>
+    <details class="decided" id="audit-decided">
+      <summary>Already decided (22)</summary>
+      <p class="group-text">Approved hide/remove stays off. Needs edit items here moved to Kev's worksheet.</p>
+      <div id="audit-decided-root"></div>
+    </details>
   </div>
 
   <div id="panel-questions" role="tabpanel" aria-labelledby="tab-questions" hidden>
     <div class="intro">
-      <h2>37 questions</h2>
+      <h2>20 questions</h2>
       <p id="q-caption"></p>
       <p id="q-howto"></p>
+      <p>17 questions moved to Kev's worksheet. They are under Already decided, with the K code. These 20 are still yours.</p>
       <p>Short answers are enough. A blank answer stays unresolved. These boxes save as you type.</p>
     </div>
     <nav class="jump" id="question-jump" aria-label="Question sections"></nav>
     <div id="question-root"></div>
-    <p id="question-empty" class="empty" hidden>Every question has an answer. Uncheck the filter to review them.</p>
+    <p id="question-empty" class="empty" hidden>Every open question has an answer. Uncheck the filter to review them.</p>
+    <details class="decided" id="question-decided">
+      <summary>Already decided (17)</summary>
+      <p class="group-text">These questions are on Kev's worksheet.</p>
+      <div id="question-decided-root"></div>
+    </details>
   </div>
 </div>
 <textarea id="copy-fallback" class="copy-fallback" hidden readonly></textarea>
@@ -1633,7 +1677,7 @@ eleventyExcludeFromCollections: true
 }</script>
 <script>
 (function () {
-  var STORAGE_KEY = "kfjr_audit_review_v2";
+  var STORAGE_KEY = "kfjr_audit_review_v3";
   var VALID = { approve_hide: 1, approve_fix: 1, confirm_keep: 1, needs_edit: 1 };
   var LABELS = {
     approve_hide: "Approve hide/remove",
@@ -1656,19 +1700,117 @@ eleventyExcludeFromCollections: true
     section.items.forEach(function (q) { questions.push(q); });
   });
 
+  var ACTIVE = {
+    "ybl-2019": 1,
+    "phenom-2023-label": 1,
+    "camp-highlights-wording": 1,
+    "recruitlook-verified": 1,
+    "awards-to-honor": 1,
+    "schedule-home-away": 1,
+    "sports-photography": 1,
+    "film-coming-soon": 1,
+    "current-film-lines": 1,
+    "journey-card-photos": 1,
+    "unlinked-game-pages": 1,
+    "transfer-url": 1,
+    "camera-readout": 1,
+    "x-account-empty": 1,
+    "ncsa-url": 1
+  };
+  var DECIDED = {
+    "squad-kc": { decision: "approve_hide", kev: "" },
+    "jc-hoops-academy": { decision: "approve_hide", kev: "" },
+    "value-first-in-last-out": { decision: "approve_hide", kev: "" },
+    "aaron-henson": { decision: "approve_hide", kev: "" },
+    "ekl-feb-21": { decision: "approve_hide", kev: "" },
+    "pace-pusher-paragraph": { decision: "approve_hide", kev: "" },
+    "wing-angles": { decision: "approve_hide", kev: "" },
+    "admin-page": { decision: "approve_hide", kev: "" },
+    "hero-pace-line": { decision: "needs_edit", kev: "K1" },
+    "number-28-blurb": { decision: "needs_edit", kev: "K1" },
+    "value-team-first": { decision: "needs_edit", kev: "K11" },
+    "value-curiosity": { decision: "needs_edit", kev: "K11" },
+    "value-family": { decision: "needs_edit", kev: "K11" },
+    "jv-development-focus": { decision: "needs_edit", kev: "K3" },
+    "proudest-ast-to": { decision: "needs_edit", kev: "K17" },
+    "happiest-38": { decision: "needs_edit", kev: "K17" },
+    "watches-game-film": { decision: "needs_edit", kev: "K4" },
+    "videography-tile": { decision: "needs_edit", kev: "K14" },
+    "editing-tile": { decision: "needs_edit", kev: "K14" },
+    "seven-years": { decision: "needs_edit", kev: "K6" },
+    "workouts-jc-hoops": { decision: "needs_edit", kev: "K5" },
+    "workouts-busy-fall": { decision: "needs_edit", kev: "K5" }
+  };
+  var MOVED = {
+    H1: "K1", H2: "K2", H3: "K15", T1: "K9", T4: "K7", T5: "K8", T6: "K3", T7: "K5",
+    C1: "K11", C3: "K12", C4: "K10", P1: "K4", P2: "K16", M1: "K13", M2: "K14", M3: "K15", U1: "K17"
+  };
+  var PRIOR_DECISIONS = {
+    "camp-highlights-wording": "needs_edit",
+    "awards-to-honor": "needs_edit",
+    "schedule-home-away": "needs_edit",
+    "ncsa-url": "needs_edit"
+  };
+  var PRIOR_NOTES = {
+  "schedule-home-away": "I can provide the schedule max of",
+  "ncsa-url": "We can get it updated just put it on a to do list for grok bot",
+  "ybl-2019": "This should house Kevin’s younger years anything not related to Kevin before middle school shouldn’t be on there. I have video of him and team names and events he participated in we could see what we could create there",
+  "phenom-2023-label": "Sam Diego was his first year going 6th grade summer and Los Angeles was 7th grade summer. We can get more details and create a little montage or something. I’ve got plenty of video.",
+  "recruitlook-verified": "I think recruitlooks made the updates."
+};
+
+  var activeAudit = auditItems.filter(function (item) { return ACTIVE[item.id]; });
+  var decidedAudit = auditItems.filter(function (item) { return DECIDED[item.id]; });
+  var activeQuestions = questions.filter(function (q) { return !MOVED[q.code]; });
+  var movedQuestions = questions.filter(function (q) { return !!MOVED[q.code]; });
+  var ACTIVE_Q = {};
+  activeQuestions.forEach(function (q) { ACTIVE_Q[q.code] = 1; });
+
   var buckets = { false: 0, unverified: 0, placeholder: 0 };
   auditItems.forEach(function (item) { buckets[item.bucket] += 1; });
-  if (auditItems.length !== 37 || buckets.false !== 3 || buckets.unverified !== 25 || buckets.placeholder !== 9 || questions.length !== 37) {
+  var openBuckets = { false: 0, unverified: 0, placeholder: 0 };
+  activeAudit.forEach(function (item) { openBuckets[item.bucket] += 1; });
+  var classified = 0;
+  var overlap = 0;
+  auditItems.forEach(function (item) {
+    var on = !!ACTIVE[item.id];
+    var off = !!DECIDED[item.id];
+    if (on && off) overlap += 1;
+    if (on || off) classified += 1;
+  });
+  var hideCount = 0;
+  var movedEdit = 0;
+  Object.keys(DECIDED).forEach(function (key) {
+    if (DECIDED[key].decision === "approve_hide") hideCount += 1;
+    if (DECIDED[key].decision === "needs_edit" && DECIDED[key].kev) movedEdit += 1;
+  });
+  if (auditItems.length !== 37 || buckets.false !== 3 || buckets.unverified !== 25 || buckets.placeholder !== 9 || questions.length !== 37 || classified !== 37 || overlap !== 0 || activeAudit.length !== 15 || decidedAudit.length !== 22 || hideCount !== 8 || movedEdit !== 14 || activeQuestions.length !== 20 || movedQuestions.length !== 17 || Object.keys(MOVED).length !== 17 || openBuckets.false !== 0 || openBuckets.unverified !== 7 || openBuckets.placeholder !== 8) {
     var fatal = document.getElementById("fatal");
     fatal.hidden = false;
-    fatal.textContent = "This page is missing audit items or questions. Expected 3 false, 25 unverified, 9 placeholders, and 37 questions.";
+    fatal.textContent = "This page is missing audit items or questions. Expected 15 open items, 22 already decided, and 20 open questions.";
     return;
   }
 
   var state = loadState();
 
+  function copyMap(source) {
+    var out = {};
+    Object.keys(source).forEach(function (key) { out[key] = source[key]; });
+    return out;
+  }
+
+  function baseline() {
+    return {
+      decisions: copyMap(PRIOR_DECISIONS),
+      notes: copyMap(PRIOR_NOTES),
+      answers: {},
+      tab: "audit",
+      onlyOpen: false
+    };
+  }
+
   function loadState() {
-    var empty = { decisions: {}, notes: {}, answers: {}, tab: "audit", onlyOpen: false };
+    var empty = baseline();
     try {
       var raw = localStorage.getItem(STORAGE_KEY);
       if (!raw) return empty;
@@ -1678,11 +1820,19 @@ eleventyExcludeFromCollections: true
       var answers = {};
       if (parsed.decisions) {
         Object.keys(parsed.decisions).forEach(function (key) {
-          if (VALID[parsed.decisions[key]]) decisions[key] = parsed.decisions[key];
+          if (ACTIVE[key] && VALID[parsed.decisions[key]]) decisions[key] = parsed.decisions[key];
         });
       }
-      if (parsed.notes) notes = parsed.notes;
-      if (parsed.answers) answers = parsed.answers;
+      if (parsed.notes) {
+        Object.keys(parsed.notes).forEach(function (key) {
+          if (ACTIVE[key] && typeof parsed.notes[key] === "string") notes[key] = parsed.notes[key];
+        });
+      }
+      if (parsed.answers) {
+        Object.keys(parsed.answers).forEach(function (key) {
+          if (ACTIVE_Q[key] && typeof parsed.answers[key] === "string") answers[key] = parsed.answers[key];
+        });
+      }
       return {
         decisions: decisions,
         notes: notes,
@@ -1710,15 +1860,18 @@ eleventyExcludeFromCollections: true
   function renderAudit() {
     var counts = document.getElementById("audit-counts");
     [
-      ["3 false or likely false", "false"],
-      ["25 unverified", "unverified"],
-      ["9 placeholders", "placeholder"]
+      ["15 still open", ""],
+      ["7 unverified", "unverified"],
+      ["8 placeholders", "placeholder"],
+      ["22 already decided", "hide"]
     ].forEach(function (pair) {
       counts.appendChild(el("li", { class: pair[1] }, pair[0]));
     });
     var jump = document.getElementById("audit-jump");
     var root = document.getElementById("audit-root");
     data.groups.forEach(function (group) {
+      var open = group.items.filter(function (item) { return ACTIVE[item.id]; });
+      if (!open.length) return;
       var link = el("a", { href: "#" + group.id }, group.nav);
       jump.appendChild(link);
       var section = el("section", { class: "group", id: group.id });
@@ -1728,9 +1881,32 @@ eleventyExcludeFromCollections: true
       intro.textContent = group.intro;
       head.appendChild(intro);
       section.appendChild(head);
-      group.items.forEach(function (item) { section.appendChild(renderCard(item)); });
+      open.forEach(function (item) { section.appendChild(renderCard(item)); });
       root.appendChild(section);
     });
+    var doneRoot = document.getElementById("audit-decided-root");
+    decidedAudit.forEach(function (item) {
+      doneRoot.appendChild(renderLockedCard(item, DECIDED[item.id]));
+    });
+  }
+
+  function renderLockedCard(item, meta) {
+    var card = el("article", { class: "card is-locked" });
+    var pills = el("div", { class: "pills" });
+    pills.appendChild(el("span", { class: "pill hide" }, "Done"));
+    var bucketLabel = item.bucket === "false" ? "False or likely false" : item.bucket === "unverified" ? "Unverified" : "Placeholder";
+    pills.appendChild(el("span", { class: "pill " + item.bucket }, bucketLabel));
+    card.appendChild(pills);
+    card.appendChild(el("h3", null, item.claim));
+    card.appendChild(metaLine("Page", item.page));
+    card.appendChild(metaLine("Decision", decisionLabel(meta.decision)));
+    if (meta.kev) {
+      var line = el("p", { class: "meta" });
+      line.appendChild(el("b", null, "Worksheet: "));
+      line.appendChild(el("a", { href: "/kev-worksheet/#q-" + meta.kev }, meta.kev));
+      card.appendChild(line);
+    }
+    return card;
   }
 
   function renderCard(item) {
@@ -1786,27 +1962,41 @@ eleventyExcludeFromCollections: true
     document.getElementById("q-howto").textContent = data.questions.howTo;
     var jump = document.getElementById("question-jump");
     var root = document.getElementById("question-root");
+    var doneRoot = document.getElementById("question-decided-root");
     data.questions.sections.forEach(function (section) {
-      jump.appendChild(el("a", { href: "#" + section.id }, section.title.replace(/^Q · /, "")));
-      var wrap = el("section", { class: "group", id: section.id });
-      var head = el("div", { class: "group-head" });
-      head.appendChild(el("h2", null, section.title));
-      wrap.appendChild(head);
-      section.items.forEach(function (q) {
-        var field = el("div", { class: "q-field", id: "q-" + q.code, "data-code": q.code });
-        var label = el("label", { for: "answer-" + q.code }, q.text);
-        var box = el("textarea", {
-          id: "answer-" + q.code,
-          "data-answer-for": q.code,
-          rows: "2",
-          placeholder: "Type your answer"
+      var open = section.items.filter(function (q) { return !MOVED[q.code]; });
+      if (open.length) {
+        jump.appendChild(el("a", { href: "#" + section.id }, section.title.replace(/^Q · /, "")));
+        var wrap = el("section", { class: "group", id: section.id });
+        var head = el("div", { class: "group-head" });
+        head.appendChild(el("h2", null, section.title));
+        wrap.appendChild(head);
+        open.forEach(function (q) {
+          var field = el("div", { class: "q-field", id: "q-" + q.code, "data-code": q.code });
+          var label = el("label", { for: "answer-" + q.code }, q.text);
+          var box = el("textarea", {
+            id: "answer-" + q.code,
+            "data-answer-for": q.code,
+            rows: "2",
+            placeholder: "Type your answer"
+          });
+          box.value = state.answers[q.code] || "";
+          field.appendChild(label);
+          field.appendChild(box);
+          wrap.appendChild(field);
         });
-        box.value = state.answers[q.code] || "";
-        field.appendChild(label);
-        field.appendChild(box);
-        wrap.appendChild(field);
+        root.appendChild(wrap);
+      }
+      section.items.forEach(function (q) {
+        if (!MOVED[q.code]) return;
+        var field = el("div", { class: "q-done" });
+        field.appendChild(el("p", { class: "done-label" }, q.text));
+        var line = el("p", { class: "hint" });
+        line.appendChild(document.createTextNode("On Kev's worksheet as "));
+        line.appendChild(el("a", { href: "/kev-worksheet/#q-" + MOVED[q.code] }, MOVED[q.code]));
+        field.appendChild(line);
+        doneRoot.appendChild(field);
       });
-      root.appendChild(wrap);
     });
   }
 
@@ -1829,8 +2019,8 @@ eleventyExcludeFromCollections: true
   }
 
   function counts() {
-    var decided = auditItems.filter(function (item) { return !!state.decisions[item.id]; }).length;
-    var answered = questions.filter(function (q) { return (state.answers[q.code] || "").trim().length > 0; }).length;
+    var decided = activeAudit.filter(function (item) { return !!state.decisions[item.id]; }).length;
+    var answered = activeQuestions.filter(function (q) { return (state.answers[q.code] || "").trim().length > 0; }).length;
     return { decided: decided, answered: answered };
   }
 
@@ -1839,10 +2029,11 @@ eleventyExcludeFromCollections: true
     var progress = document.getElementById("progress");
     progress.textContent = "";
     progress.appendChild(el("strong", null, String(c.decided)));
-    progress.appendChild(document.createTextNode("/37 decided · "));
+    progress.appendChild(document.createTextNode("/" + activeAudit.length + " decided · "));
     progress.appendChild(el("strong", null, String(c.answered)));
-    progress.appendChild(document.createTextNode("/37 answered"));
-    document.getElementById("meter-bar").style.width = ((c.decided + c.answered) / 74 * 100) + "%";
+    progress.appendChild(document.createTextNode("/" + activeQuestions.length + " answered"));
+    var total = activeAudit.length + activeQuestions.length;
+    document.getElementById("meter-bar").style.width = ((c.decided + c.answered) / total * 100) + "%";
   }
 
   function applyFilter() {
@@ -1885,11 +2076,11 @@ eleventyExcludeFromCollections: true
     var decisions = {};
     var notes = {};
     var answers = {};
-    auditItems.forEach(function (item) {
+    activeAudit.forEach(function (item) {
       if (VALID[state.decisions[item.id]]) decisions[item.id] = state.decisions[item.id];
       if (state.notes[item.id]) notes[item.id] = state.notes[item.id];
     });
-    questions.forEach(function (q) {
+    activeQuestions.forEach(function (q) {
       if (state.answers[q.code]) answers[q.code] = state.answers[q.code];
     });
     var payload = {
@@ -1929,7 +2120,7 @@ eleventyExcludeFromCollections: true
   }
 
   function approveAll() {
-    auditItems.forEach(function (item) { state.decisions[item.id] = item.recommended; });
+    activeAudit.forEach(function (item) { state.decisions[item.id] = item.recommended; });
     document.querySelectorAll("[data-audit-id]").forEach(syncCard);
     persist(true);
     updateProgress();
@@ -1937,11 +2128,12 @@ eleventyExcludeFromCollections: true
   }
 
   function resetAudit() {
-    if (!window.confirm("Clear every audit decision and note? Your questionnaire answers stay.")) return;
-    state.decisions = {};
-    state.notes = {};
+    if (!window.confirm("Reset the open items to your Nov 21 export? Needs edit goes back on the four items you already marked, and your notes from that export come back. Questionnaire answers stay. Already decided items stay.")) return;
+    state.decisions = copyMap(PRIOR_DECISIONS);
+    state.notes = copyMap(PRIOR_NOTES);
     document.querySelectorAll("[data-note-for]").forEach(function (node) {
-      node.value = "";
+      var id = node.getAttribute("data-note-for");
+      node.value = state.notes[id] || "";
       autosize(node);
     });
     document.querySelectorAll("[data-audit-id]").forEach(syncCard);
@@ -1967,14 +2159,18 @@ eleventyExcludeFromCollections: true
       "",
       "Exported: " + new Date().toISOString(),
       "",
-      "Audit decisions: " + c.decided + "/37",
-      "Questionnaire answers: " + c.answered + "/37",
+      "Audit decisions: " + c.decided + "/" + activeAudit.length,
+      "Questionnaire answers: " + c.answered + "/" + activeQuestions.length,
+      "",
+      "Open items only. Already decided items are not in this export.",
       "",
       "## Audit approvals"
     ];
     data.groups.forEach(function (group) {
+      var open = group.items.filter(function (item) { return ACTIVE[item.id]; });
+      if (!open.length) return;
       lines.push("", "### " + group.title, "", group.intro);
-      group.items.forEach(function (item) {
+      open.forEach(function (item) {
         var note = (state.notes[item.id] || "").trim();
         lines.push("", "#### " + item.claim);
         lines.push("- Page: " + item.page);
@@ -1990,8 +2186,10 @@ eleventyExcludeFromCollections: true
     });
     lines.push("", "## Questionnaire");
     data.questions.sections.forEach(function (section) {
+      var open = section.items.filter(function (q) { return ACTIVE_Q[q.code]; });
+      if (!open.length) return;
       lines.push("", "### " + section.title);
-      section.items.forEach(function (q) {
+      open.forEach(function (q) {
         var answer = (state.answers[q.code] || "").trim();
         lines.push("", "**" + q.text + "**", answer || "(unanswered)");
       });
@@ -2003,7 +2201,7 @@ eleventyExcludeFromCollections: true
   function buildJson() {
     var c = counts();
     var byDecision = { approve_hide: 0, approve_fix: 0, confirm_keep: 0, needs_edit: 0, undecided: 0 };
-    var audit = auditItems.map(function (item) {
+    var audit = activeAudit.map(function (item) {
       var decision = state.decisions[item.id] || "";
       byDecision[decision || "undecided"] += 1;
       return {
@@ -2023,20 +2221,21 @@ eleventyExcludeFromCollections: true
       };
     });
     var questionnaire = {};
-    questions.forEach(function (q) {
+    activeQuestions.forEach(function (q) {
       questionnaire[q.code] = state.answers[q.code] || "";
     });
     return {
       exportedAt: new Date().toISOString(),
       page: "/audit-review/",
       storageKey: STORAGE_KEY,
+      scope: "open items only",
       summary: {
-        auditTotal: 37,
+        auditTotal: activeAudit.length,
         auditDecided: c.decided,
-        auditUndecided: 37 - c.decided,
-        questionsTotal: 37,
+        auditUndecided: activeAudit.length - c.decided,
+        questionsTotal: activeQuestions.length,
         questionsAnswered: c.answered,
-        questionsUnanswered: 37 - c.answered,
+        questionsUnanswered: activeQuestions.length - c.answered,
         decisions: byDecision
       },
       audit: audit,
