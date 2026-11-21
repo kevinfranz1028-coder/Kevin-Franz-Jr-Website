@@ -3,7 +3,11 @@
     <div>
       <div class="b-footer-display">FRANZ JR<br><span style="color:var(--b-green-bright)">'{{ player.class | default('2028') | replace('20','') }}.</span></div>
       <p style="font-size:15px; line-height:1.6; color:#E7E1D4; max-width:340px; margin-top:16px;">
+        {% if active == "basketball" %}
+        Junior year at {{ player.highSchool or "Shawnee Mission West" }}.
+        {% else %}
         {{ player.height or "6'1\"" }} / {{ player.weight or "190" }} lb guard-forward out of {{ player.highSchool or "Shawnee Mission West" }}. Interested in meteorology or media.
+        {% endif %}
       </p>
     </div>
     <div>
@@ -44,6 +48,10 @@
   </div>
   <div class="b-footer-bottom">
     <span>&copy; 2026 KEVIN FRANZ JR</span>
+    {% if active == "basketball" %}
+    <span>SM WEST &middot; CLASS OF {{ player.class or "2028" }}</span>
+    {% else %}
     <span>SM WEST &middot; #{{ player.jersey or "28" }} &middot; {{ player.position or "SG/SF" }} &middot; CLASS OF {{ player.class or "2028" }}</span>
+    {% endif %}
   </div>
 </footer>
