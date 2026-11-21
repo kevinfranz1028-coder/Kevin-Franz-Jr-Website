@@ -13,6 +13,7 @@ const path = require("path");
 const SOURCE_URL = process.env.SCHEDULE_ICS_URL || "https://www.gobound.com/ks/schools/shawneemissionwesths/calendar/ical";
 const CALENDAR_PAGE = "https://www.gobound.com/ks/schools/shawneemissionwesths/calendar";
 const OUT = path.join(__dirname, "..", "src/_data/smWestVarsitySchedule.json");
+const OVERRIDES = path.join(__dirname, "..", "src/_data/scheduleOverrides.json");
 const SEASON_START = "20261101";
 const SEASON_END = "20270331";
 const SCHOOL = /shawnee mission west/i;
@@ -195,6 +196,40 @@ function sameGames(left, right) {
   return JSON.stringify(left) === JSON.stringify(right);
 }
 
+function loadOverrides() {
+  const data = JSON.parse(fs.readFileSync(OVERRIDES, "utf8"));
+  if (!data || !Array.isArray(data.overrides)) {
+    throw new Error("scheduleOverrides.json has no overrides array.");
+  }
+  return data.overrides;
+}
+
+function applyOverrides(games, overrides) {
+  const used = new Set();
+  const next = games.map((game) => {
+    const index = overrides.findIndex((item, itemIndex) => {
+      if (used.has(itemIndex)) return false;
+      if (item.date !== game.date) return false;
+      const needle = String(item.matchOpponent || "").toLowerCase();
+      return needle && String(game.opponent || "").toLowerCase().includes(needle);
+    });
+    if (index === -1) return game;
+    used.add(index);
+    const item = overrides[index];
+    const updated = Object.assign({}, game);
+    ["time", "opponent", "homeAway", "location"].forEach((key) => {
+      if (Object.prototype.hasOwnProperty.call(item, key)) updated[key] = item[key];
+    });
+    if (item.note) updated.note = item.note;
+    return updated;
+  });
+  const missed = overrides.filter((item, index) => !used.has(index));
+  if (missed.length) {
+    throw new Error("Unmatched schedule override: " + missed.map((item) => item.date + " " + item.matchOpponent).join("; "));
+  }
+  return next;
+}
+
 async function main() {
   let ics;
   try {
@@ -217,6 +252,12 @@ async function main() {
   if (!games.length) {
     keepLastGood("The feed had no 2026-27 varsity boys basketball events.");
     return;
+  }
+  try {
+    games = applyOverrides(games, loadOverrides());
+  } catch (error) {
+    console.error(error.message);
+    process.exit(1);
   }
   const existing = readExisting();
   if (existing && Array.isArray(existing.games) && existing.games.length >= 10 && games.length * 2 < existing.games.length) {

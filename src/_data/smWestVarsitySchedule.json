@@ -5,7 +5,7 @@
   "season": "2026-27",
   "team": "Varsity Boys Basketball",
   "school": "Shawnee Mission West",
-  "fetchedAt": "2026-11-21T06:54:48.479Z",
+  "fetchedAt": "2026-11-21T07:03:28.321Z",
   "games": [
     {
       "date": "2026-12-01",
@@ -28,11 +28,12 @@
     {
       "date": "2026-12-10",
       "displayDate": "Thu, Dec 10, 2026",
-      "time": "7:30 PM",
+      "time": "7:00 PM",
       "opponent": "Maranatha Christian",
       "homeAway": "Away",
       "location": "Maranatha Christian Academy Gym",
-      "summary": "Boys Basketball: Shawnee Mission West vs Maranatha Christian (Varsity)"
+      "summary": "Boys Basketball: Shawnee Mission West vs Maranatha Christian (Varsity)",
+      "note": "Coach Manthe's sheet: varsity tip 7:00 PM CT. Bound lists 7:30 PM."
     },
     {
       "date": "2026-12-11",
@@ -100,32 +101,32 @@
     {
       "date": "2027-01-21",
       "displayDate": "Thu, Jan 21, 2027",
-      "time": "3:00 PM–10:00 PM",
+      "time": "TBD",
       "opponent": "Viking Classic Tournament",
-      "homeAway": "Home",
-      "location": "Shawnee Mission West High School Main Gym",
+      "homeAway": "TBD",
+      "location": "TBD",
       "summary": "Boys Basketball: Viking Classic Tournament (Varsity)",
-      "note": "The feed lists this as a tournament block. Individual opponents and tip times are not in the feed."
+      "note": "Coach Manthe's sheet: tip and site TBD. Bound's 3:00–10:00 PM Main Gym block is not used."
     },
     {
       "date": "2027-01-22",
       "displayDate": "Fri, Jan 22, 2027",
-      "time": "3:00 PM–10:00 PM",
+      "time": "TBD",
       "opponent": "Viking Classic Tournament",
-      "homeAway": "Home",
-      "location": "Shawnee Mission West High School Main Gym",
+      "homeAway": "TBD",
+      "location": "TBD",
       "summary": "Boys Basketball: Viking Classic Tournament (Varsity)",
-      "note": "The feed lists this as a tournament block. Individual opponents and tip times are not in the feed."
+      "note": "Coach Manthe's sheet: tip and site TBD. Bound's 3:00–10:00 PM Main Gym block is not used."
     },
     {
       "date": "2027-01-23",
       "displayDate": "Sat, Jan 23, 2027",
-      "time": "3:00 PM–10:00 PM",
+      "time": "TBD",
       "opponent": "Viking Classic Tournament",
-      "homeAway": "Home",
-      "location": "Shawnee Mission West High School Main Gym",
+      "homeAway": "TBD",
+      "location": "TBD",
       "summary": "Boys Basketball: Viking Classic Tournament (Varsity)",
-      "note": "The feed lists this as a tournament block. Individual opponents and tip times are not in the feed."
+      "note": "Coach Manthe's sheet: tip and site TBD. Bound's 3:00–10:00 PM Main Gym block is not used."
     },
     {
       "date": "2027-01-27",
@@ -140,10 +141,11 @@
       "date": "2027-01-29",
       "displayDate": "Fri, Jan 29, 2027",
       "time": "7:00 PM",
-      "opponent": "Shawnee Legacy Prepatory Academy",
+      "opponent": "Shawnee Legacy Preparatory Academy",
       "homeAway": "Home",
       "location": "Shawnee Mission West High School Main Gym",
-      "summary": "Boys Basketball: Shawnee Legacy Prepatory Academy vs Shawnee Mission West (Varsity)"
+      "summary": "Boys Basketball: Shawnee Legacy Prepatory Academy vs Shawnee Mission West (Varsity)",
+      "note": "Coach Manthe's sheet lists Legacy Prep. Spelling is Shawnee Legacy Preparatory Academy."
     },
     {
       "date": "2027-02-02",
