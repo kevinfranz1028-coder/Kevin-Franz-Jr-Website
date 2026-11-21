@@ -1,0 +1,2409 @@
+---
+permalink: /audit-review/index.html
+eleventyExcludeFromCollections: true
+---
+{% raw %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="googlebot" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%2314171c'/%3E%3C/svg%3E">
+<title>Kevin Franz Jr. — Audit review</title>
+<style>
+  :root {
+    --bg: #0b0d10;
+    --bg-2: #14171c;
+    --bg-3: #1c2127;
+    --line: #262b33;
+    --text: #e8eaed;
+    --mute: #9aa1ab;
+    --green: #22c55e;
+    --green-dark: #15803d;
+    --amber: #f59e0b;
+    --red: #ef4444;
+    --blue: #60a5fa;
+    --header-h: 132px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.5;
+    color-scheme: dark;
+  }
+  [hidden] { display: none !important; }
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background: rgba(11, 13, 16, 0.94);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+    padding: calc(10px + env(safe-area-inset-top)) 16px 0;
+  }
+  .topbar-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 12px;
+    padding-bottom: 10px;
+  }
+  .topbar h1 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    flex: 1 1 220px;
+  }
+  .topbar h1 span { color: var(--green); }
+  .saved {
+    min-width: 4.5em;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: transparent;
+  }
+  .saved.show { color: var(--green); }
+  .progress {
+    margin: 0;
+    font-size: 13px;
+    color: var(--mute);
+    font-variant-numeric: tabular-nums;
+  }
+  .progress strong { color: var(--text); }
+  .tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+  .tabs button, .btn, .choice {
+    font-family: inherit;
+    cursor: pointer;
+    min-height: 44px;
+  }
+  .tabs button {
+    background: var(--bg-3);
+    color: var(--mute);
+    border: 1px solid var(--line);
+    padding: 8px 12px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .tabs button[aria-selected="true"] {
+    color: var(--bg);
+    background: var(--green);
+    border-color: var(--green);
+  }
+  .filter {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--mute);
+    min-height: 44px;
+  }
+  .filter input { width: 18px; height: 18px; accent-color: var(--green); }
+  .topbar-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-left: auto; }
+  .btn {
+    background: var(--green);
+    color: #06210f;
+    border: none;
+    padding: 10px 14px;
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .btn:hover { background: var(--green-dark); color: white; }
+  .btn-ghost {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--line);
+  }
+  .btn-ghost:hover { border-color: var(--green); color: var(--green); background: transparent; }
+  .btn-danger { background: transparent; color: var(--red); border: 1px solid #5c2a32; }
+  .btn-danger:hover { background: #3a1418; color: white; }
+  .meter { height: 3px; background: var(--bg-3); }
+  .meter > span { display: block; height: 100%; width: 0; background: var(--green); }
+  .container { max-width: 920px; margin: 0 auto; padding: 24px 16px calc(48px + env(safe-area-inset-bottom)); }
+  .intro, .group, .card, .q-field {
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+  }
+  .intro { padding: 18px 18px 8px; margin-bottom: 16px; border-left: 3px solid var(--green); }
+  .intro h2 { margin: 0 0 8px; font-size: 22px; }
+  .intro p, .group-text, .hint, .meta { color: var(--mute); font-size: 14px; }
+  .intro p { margin: 0 0 10px; }
+  .counts { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 12px; padding: 0; list-style: none; }
+  .counts li {
+    border: 1px solid var(--line);
+    background: var(--bg-3);
+    padding: 6px 10px;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .counts .false { color: #fecaca; border-color: #5c2a32; }
+  .counts .unverified { color: #fde68a; border-color: #5c4a1e; }
+  .counts .placeholder { color: #bfdbfe; border-color: #1e3a5c; }
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 8px 0 16px;
+  }
+  .actions .btn { flex: 1 1 240px; }
+  .jump { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
+  .jump a {
+    color: var(--mute);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 8px 10px;
+    border: 1px solid var(--line);
+    background: var(--bg-3);
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+  .jump a:hover { color: var(--green); border-color: var(--green); }
+  .group { margin-bottom: 18px; scroll-margin-top: calc(var(--header-h) + 12px); }
+  .group-head { padding: 16px 16px 0; }
+  .group h2 { margin: 0 0 8px; font-size: 18px; }
+  .group-text { margin: 0 0 12px; overflow-wrap: anywhere; }
+  .card, .q-field { margin: 0 12px 12px; padding: 14px; scroll-margin-top: calc(var(--header-h) + 12px); }
+  .card h3, .q-field label {
+    margin: 0 0 8px;
+    font-size: 16px;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+  }
+  .q-field label { display: block; font-weight: 700; }
+  .pills { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+  .pill {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: 1px solid var(--line);
+    padding: 3px 7px;
+    color: var(--mute);
+  }
+  .pill.false { color: #fecaca; border-color: var(--red); }
+  .pill.unverified { color: #fde68a; border-color: var(--amber); }
+  .pill.placeholder { color: #bfdbfe; border-color: var(--blue); }
+  .pill.hide { color: var(--green); border-color: var(--green); }
+  .meta { margin: 0 0 6px; overflow-wrap: anywhere; }
+  .meta b { color: var(--text); font-weight: 700; }
+  .hint { margin: 8px 0 0; }
+  .choices { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .choice {
+    flex: 1 1 160px;
+    background: var(--bg);
+    color: var(--text);
+    border: 1px solid var(--line);
+    padding: 10px 12px;
+    font-size: 13px;
+    font-weight: 700;
+    text-align: left;
+  }
+  .choice .rec {
+    display: block;
+    margin-top: 2px;
+    color: var(--green);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .choice[aria-pressed="true"] { color: white; }
+  .choice[data-choice="approve_hide"][aria-pressed="true"] { background: #3a1418; border-color: var(--red); }
+  .choice[data-choice="approve_fix"][aria-pressed="true"] { background: #132033; border-color: var(--blue); }
+  .choice[data-choice="confirm_keep"][aria-pressed="true"] { background: #14301f; border-color: var(--green); }
+  .choice[data-choice="needs_edit"][aria-pressed="true"] { background: #3a2c10; border-color: var(--amber); }
+  textarea {
+    width: 100%;
+    margin-top: 10px;
+    min-height: 72px;
+    resize: vertical;
+    background: var(--bg);
+    color: var(--text);
+    border: 1px solid var(--line);
+    padding: 10px 12px;
+    font: 16px/1.45 inherit;
+    overflow: hidden;
+  }
+  textarea:focus, .choice:focus-visible, .btn:focus-visible, .tabs button:focus-visible, .jump a:focus-visible {
+    outline: 2px solid var(--green);
+    outline-offset: 2px;
+  }
+  .empty {
+    border: 1px dashed var(--line);
+    padding: 16px;
+    color: var(--mute);
+  }
+  .fatal {
+    margin: 16px;
+    padding: 16px;
+    background: #3a1418;
+    border: 1px solid var(--red);
+  }
+  .copy-fallback {
+    margin-top: 12px;
+    width: 100%;
+    min-height: 180px;
+  }
+  .decided {
+    margin: 18px 0;
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    padding: 0 12px 12px;
+  }
+  .decided summary {
+    cursor: pointer;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-size: 14px;
+  }
+  .decided summary:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
+  .decided .group-text { margin-top: 0; }
+  .decided .card { margin-left: 0; margin-right: 0; }
+  .decided a { color: var(--green); }
+  .q-done {
+    margin: 0 0 12px;
+    padding: 14px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+  }
+  .q-done .done-label {
+    margin: 0 0 8px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+  }
+  .toast {
+    position: fixed;
+    left: 50%;
+    bottom: calc(16px + env(safe-area-inset-bottom));
+    transform: translateX(-50%);
+    z-index: 80;
+    background: var(--green);
+    color: #06210f;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 14px 22px;
+    min-width: 160px;
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  }
+  @media (max-width: 640px) {
+    .topbar h1 { font-size: 14px; }
+    .choice { flex-basis: 100%; }
+    .topbar-actions { margin-left: 0; width: 100%; }
+    .topbar-actions .btn { flex: 1 1 140px; }
+    .card, .q-field { margin-left: 8px; margin-right: 8px; }
+  }
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-row">
+    <h1>Kevin Franz Jr. — <span>Audit review</span></h1>
+    <p id="saved" class="saved" aria-live="polite"></p>
+    <p id="progress" class="progress">0/15 decided · 0/20 answered</p>
+  </div>
+  <div class="topbar-row">
+    <div class="tabs" role="tablist" aria-label="Review sections">
+      <button type="button" role="tab" id="tab-audit" aria-controls="panel-audit" aria-selected="true">Audit Approvals</button>
+      <button type="button" role="tab" id="tab-questions" aria-controls="panel-questions" aria-selected="false">20 Questions</button>
+    </div>
+    <label class="filter" for="only-open"><input type="checkbox" id="only-open"> Show undecided/unanswered only</label>
+    <div class="topbar-actions">
+      <button type="button" class="btn" id="copy-btn">Copy answers</button>
+      <button type="button" class="btn btn-ghost" id="download-btn">Download JSON</button>
+    </div>
+  </div>
+  <div class="meter" aria-hidden="true"><span id="meter-bar"></span></div>
+</header>
+
+<div class="container">
+  <div id="fatal" class="fatal" hidden></div>
+
+  <div id="panel-audit" role="tabpanel" aria-labelledby="tab-audit">
+    <div class="intro">
+      <h2>Approve, keep, or edit what's still open</h2>
+      <p>68 verified claims are not on this list. 22 flagged items are already decided and listed at the bottom. Nothing here changes the public site. Decisions stay in this browser until you copy or download them.</p>
+      <ul class="counts" id="audit-counts"></ul>
+      <p>Use the green Recommended button when you agree with the audit. Confirm &amp; keep leaves the current wording up. Needs edit means you will type the correction in the note.</p>
+    </div>
+    <div class="actions">
+      <button type="button" class="btn" id="approve-all">Approve all recommended hides/removals</button>
+      <button type="button" class="btn btn-danger" id="reset-audit">Reset decisions</button>
+    </div>
+    <p class="meta">Approve all sets every still-open item to the audit’s recommended action. Your notes stay. Reset puts the open items back to your Nov 21 export. Questionnaire answers stay either way. Already decided items stay as they are.</p>
+    <nav class="jump" id="audit-jump" aria-label="Audit sections"></nav>
+    <div id="audit-root"></div>
+    <p id="audit-empty" class="empty" hidden>Every open item has a decision. Uncheck the filter to review them.</p>
+    <div class="actions">
+      <button type="button" class="btn" id="approve-all-bottom">Approve all recommended hides/removals</button>
+      <button type="button" class="btn btn-danger" id="reset-audit-bottom">Reset decisions</button>
+    </div>
+    <details class="decided" id="audit-decided">
+      <summary>Already decided (22)</summary>
+      <p class="group-text">Approved hide/remove stays off. Needs edit items here moved to Kev's worksheet.</p>
+      <div id="audit-decided-root"></div>
+    </details>
+  </div>
+
+  <div id="panel-questions" role="tabpanel" aria-labelledby="tab-questions" hidden>
+    <div class="intro">
+      <h2>20 questions</h2>
+      <p id="q-caption"></p>
+      <p id="q-howto"></p>
+      <p>17 questions moved to Kev's worksheet. They are under Already decided, with the K code. These 20 are still yours.</p>
+      <p>Short answers are enough. A blank answer stays unresolved. These boxes save as you type.</p>
+    </div>
+    <nav class="jump" id="question-jump" aria-label="Question sections"></nav>
+    <div id="question-root"></div>
+    <p id="question-empty" class="empty" hidden>Every open question has an answer. Uncheck the filter to review them.</p>
+    <details class="decided" id="question-decided">
+      <summary>Already decided (17)</summary>
+      <p class="group-text">These questions are on Kev's worksheet.</p>
+      <div id="question-decided-root"></div>
+    </details>
+  </div>
+</div>
+<textarea id="copy-fallback" class="copy-fallback" hidden readonly></textarea>
+<div id="toast" class="toast" hidden role="status" aria-live="polite"></div>
+<script type="application/json" id="review-data">{
+  "groups": [
+    {
+      "id": "hide-1",
+      "nav": "Hide list #1",
+      "title": "Hide list #1",
+      "intro": "Remove Squad KC and JC Hoops Academy everywhere: the home Journey strip, the Timeline page, and the 2023–24 and 2024–25 AAU pages. You said on Nov 4 that neither was Kev’s team, and GameChanger has no stats for him on either one.",
+      "items": [
+        {
+          "id": "squad-kc",
+          "bucket": "false",
+          "page": "Timeline (Journey strip and season pages)",
+          "claim": "Squad KC, Winter 2023–24, 3-0",
+          "where": "Journey, 2023–24 AAU",
+          "why": "False: you said Nov 4 it isn’t his team; GameChanger shows only “Kev Sr”",
+          "recommendation": "Remove",
+          "recommended": "approve_hide",
+          "buttons": [
+            {
+              "value": "approve_hide",
+              "label": "Approve hide/remove"
+            },
+            {
+              "value": "confirm_keep",
+              "label": "Confirm & keep"
+            },
+            {
+              "value": "needs_edit",
+              "label": "Needs edit"
+            }
+          ],
+          "notePlaceholder": "A source if this should stay. Otherwise leave this blank.",
+          "hint": "",
+          "hideList": 1
+        },
+        {
+          "id": "jc-hoops-academy",
+          "bucket": "false",
+          "page": "Timeline (Journey strip and season pages)",
+          "claim": "JC Hoops Academy, Spring 2025",
+          "where": "Journey, 2024–25 AAU",
+          "why": "False: you said Nov 4 it isn’t his team; no stats",
+          "recommendation": "Remove",
+          "recommended": "approve_hide",
+          "buttons": [
+            {
+              "value": "approve_hide",
+              "label": "Approve hide/remove"
+            },
+            {
+              "value": "confirm_keep",
+              "label": "Confirm & keep"
+            },
+            {
+              "value": "needs_edit",
+              "label": "Needs edit"
+            }
+          ],
+          "notePlaceholder": "A source if this should stay. Otherwise leave this blank.",
+          "hint": "",
+          "hideList": 1
+        }
+      ]
+    },
+    {
+      "id": "hide-2",
+      "nav": "Hide list #2",
+      "title": "Hide list #2",
+      "intro": "Remove “first one in, last one out” from Character. It’s the same filler as the fake Palmgren quote.",
+      "items": [
+        {
+          "id": "value-first-in-last-out",
+          "bucket": "false",
+          "page": "Character & Service page",
+          "claim": "Accountability: “first one in, last one out”",
+          "where": "Values /02",
+          "why": "False: likely false: the same filler as the fake Palmgren quote",
+          "recommendation": "Remove",
+          "recommended": "approve_hide",
+          "buttons": [
+            {
+              "value": "approve_hide",
+              "label": "Approve hide/remove"
+            },
+            {
+              "value": "confirm_keep",
+              "label": "Confirm & keep"
+            },
+            {
+              "value": "needs_edit",
+              "label": "Needs edit"
+            }
+          ],
+          "notePlaceholder": "Type a fix, a source, or an instruction.",
+          "hint": "",
+          "hideList": 2
+        }
+      ]
+    },
+    {
+      "id": "hide-3",
+      "nav": "Hide list #3",
+      "title": "Hide list #3",
+      "intro": "Hide the Aaron Henson coach reference on Contact. We have nothing in writing from him. GameChanger shows only one YouHoop season (Summer 2025), so “working with Kevin since 2024” has no source. It stays down until you give me the JC Hoops coach.",
+      "items": [
+        {
+          "id": "aaron-henson",
+          "bucket": "unverified",
+          "page": "Contact page",
+          "claim": "Aaron Henson, YouHoop 3SSB AAU coach, a.henson@youhoop.com, “working with Kevin since 2024”",
+          "where": "/01 Coaching references",
+          "why": "Unverified: nothing in writing; GameChanger has only Summer 2025 with YouHoop",
+          "recommendation": "Hide until confirmed",
+          "recommended": "approve_hide",
+          "buttons": [
+            {
+              "value": "approve_hide",
+              "label": "Approve hide/remove"
+            },
+            {
+              "value": "confirm_keep",
+              "label": "Confirm & keep"
+            },
+            {
+              "value": "needs_edit",
+              "label": "Needs edit"
+            }
+          ],
+          "notePlaceholder": "Keep him, hide him, or name the JC Hoops coach and whether that coach agreed.",
+          "hint": "",
+          "hideList": 3
+        }
+      ]
+    },
+    {
+      "id": "hide-4",
+      "nav": "Hide list #4",
+      "title": "Hide list #4",
+      "intro": "Hide the 2019–2020 Youth Basketball League card and page. There’s no source for it, and the page is generic filler (“Foundation Building… Building basketball IQ”).",
+      "items": [
+        {
+          "id": "ybl-2019",
+          "bucket": "unverified",
+          "page": "Timeline (Journey strip and season pages)",
+          "claim": "2019–2020 Youth Basketball League, 4th–5th grade, “Foundation Building” text",
+          "where": "Journey, /timeline/2019-2020/",
+          "why": "Unverified: not in GameChanger; filler text",
+          "recommendation": "Hide until confirmed",
+          "recommended": "approve_hide",
+          "buttons": [
+            {
+              "value": "approve_hide",
+              "label": "Approve hide/remove"
+            },
+            {
+              "value": "confirm_keep",
+              "label": "Confirm & keep"
+            },
+            {
+              "value": "needs_edit",
+              "label": "Needs edit"
+            }
+          ],
+          "notePlaceholder": "The league’s real name if it should go back up, or say to keep it off.",
+          "hint": "",
+          "hideList": 4
+        }
+      ]
+    },
+    {
+      "id": "hide-5",
+      "nav": "Hide list #5",
+      "title": "Hide list #5",
+      "intro": "Keep the second Phenom video but drop its “Summer 2023, Los Angeles” label, and change Contact’s “Summer 2022 and 2023 camp highlights” to match. Only San Diego, summer 2022, is documented.",
+      "items": [
+        {
+          "id": "phenom-2023-label",
+          "bucket": "unverified",
+          "page": "Timeline (Journey strip and season pages)",
+          "claim": "Phenom Camp, Summer 2023, Los Angeles (video)",
+          "where": "2023–24 page, Contact",
+          "why": "Unverified: the video is real (you bought it), but no email shows the year or city; you wrote “2023 and 2024” in Feb 2026",
+          "recommendation": "Keep video; hide year and city",
+          "recommended": "approve_fix",
+          "buttons": [
+            {
+              "value": "approve_fix",
+              "label": "Approve fix"
+            },
+            {
+              "value": "confirm_keep",
+              "label": "Confirm & keep"
+            },
+            {
+              "value": "needs_edit",
+              "label": "Needs edit"
+            }
+          ],
+          "notePlaceholder": "Year and city, if you know them. Or say to drop both and keep the video.",
+          "hint": "Approve fix keeps the second Phenom video and drops the “Summer 2023, Los Angeles” label. Needs edit is where the real year and city go.",
+          "hideList": 5
+        },
+        {
+          "id": "camp-highlights-wording",
+          "bucket": "unverified",
+          "page": "Contact page",
+          "claim": "Middle school film: “Summer 2022 and 2023 camp highlights”",
+          "where": "/02 Quick links",
+          "why": "Unverified: only 2022 is documented",
+          "recommendation": "Reword to “camp highlights”",
+          "recommended": "approve_fix",
+          "buttons": [
+            {
+              "value": "approve_fix",
+              "label": "Approve fix"
+            },
+            {
+              "value": "confirm_keep",
+              "label": "Confirm & keep"
+            },
+            {
+              "value": "needs_edit",
+              "label": "Needs edit"
+            }
+          ],
+          "notePlaceholder": "The replacement wording, if “camp highlights” is not what you want.",
+          "hint": "Approve fix changes Contact’s line to “camp highlights.” Only San Diego, summer 2022, is documented.",
+          "hideList": 5
+        }
+      ]
+    },
+    {
+      "id": "hide-6",
+      "nav": "Hide list #6",
+      "title": "Hide list #6",
+      "intro": "Hide the EKL JV Tournament (Feb 21) game page. It’s empty, and that game isn’t in GameChanger.",
+      "items": [
+        {
+          "id": "ekl-feb-21",
+          "bucket": "unverified",
+          "page": "Game pages (/games/, unlinked)",
+          "claim": "EKL JV Tournament (Games 5-8), Feb 21: empty",
+          "where": "1 game page",
+          "why": "Unverified: not in GameChanger; no result",
+          "recommendation": "Remove",
+          "recommended": "approve_hide",
+          "buttons": [
+            {
+              "value": "approve_hide",
+              "label": "Approve hide/remove"
+            },
+            {
+              "value": "confirm_keep",
+              "label": "Confirm & keep"
+            },
+            {
+              "value": "needs_edit",
+              "label": "Needs edit"
+            }
+          ],
+          "notePlaceholder": "Results if Kev played. Otherwise leave this blank and the page comes off.",
+          "hint": "",
+          "hideList": 6
+        }
+      ]
+    },
+    {
+      "id": "hide-7",
+      "nav": "Hide list #7",
+      "title": "Hide list #7",
+      "intro": "Take “Verified” out of the RecruitLook label and hide the link until RecruitLook replaces “PAC Gold Parson 16u” with JC Hoops 16U.",
+      "items": [
+        {
+          "id": "recruitlook-verified",
+          "bucket": "unverified",
+          "page": "Basketball page",
+          "claim": "RecruitLook: “Verified athlete profile”",
+          "where": "/04 Recruiting, Contact, footer",
+          "why": "Unverified: nothing supports “Verified,” and it still shows the wrong team",
+          "recommendation": "Hide until confirmed",
+          "recommended": "approve_hide",
+          "buttons": [
+            {
+              "value": "approve_hide",
+              "label": "Approve hide/remove"
+            },
+            {
+              "value": "confirm_keep",
+              "label": "Confirm & keep"
+            },
+            {
+              "value": "needs_edit",
+              "label": "Needs edit"
+            }
+          ],
+          "notePlaceholder": "Say when RecruitLook shows JC Hoops 16U, or if the link should stay down.",
+          "hint": "",
+          "hideList": 7
+        }
+      ]
+    },
+    {
+      "id": "hide-8",
+      "nav": "Hide list #8",
+      "title": "Hide list #8",
+      "intro": "Hide the lines written in Kev’s voice until he confirms them: the home hero (“Pace, playmaking, and full-court defense”), the “#28 — Pace, decisions, on-ball defense” blurb, the “pace-pusher and playmaker” paragraph, three Character values, the JV development-focus list, the “proudest of” and “happiest with” lines, “playing more on the wing… angles to the glass,” “Watches game film,” and the Media Videography and Editing tiles.",
+      "items": [
+        {
+          "id": "hero-pace-line",
+          "bucket": "unverified",
+          "page": "Home page and footer",
+          "claim": "“Pace, playmaking, and full-court defense.”",
+          "where": "Hero subhead",
+          "why": "Unverified: a scouting line with no coach or Kev source",
+          "recommendation": "Hide until confirmed",
+          "recommended": "approve_hide",
+          "buttons": [
+            {
+              "value": "approve_hide",
+              "label": "Approve hide/remove"
+            },
+            {
+              "value": "confirm_keep",
+              "label": "Confirm & keep"
+            },
+            {
+              "value": "needs_edit",
+              "label": "Needs edit"
+            }
+          ],
+          "notePlaceholder": "Type a fix, a source, or an instruction.",
+          "hint": "",
+          "hideList": 8
+        },
+        {
+          "id": "number-28-blurb",
+          "bucket": "unverified",
+          "page": "Home page and footer",
+          "claim": "“#28 — Pace, decisions, on-ball defense.”",
+          "where": "Basketball pillar",
+          "why": "Unverified: self-description",
+          "recommendation": "Hide until confirmed",
+          "recommended": "approve_hide",
+          "buttons": [
+            {
+              "value": "approve_hide",
+              "label": "Approve hide/remove"
+            },
+            {
+              "value": "confirm_keep",
+              "label": "Confirm & keep"
+            },
+            {
+              "value": "needs_edit",
+              "label": "Needs edit"
+            }
+          ],
+          "notePlaceholder": "Type a fix, a source, or an instruction.",
+          "hint": "",
+          "hideList": 8
+        },
+        {
+          "id": "pace-pusher-paragraph",
+          "bucket": "unverified",
+          "page": "Home page and footer",
+          "claim": "“On the floor I’m a pace-pusher and playmaker… Off the floor I’m just as serious about the classroom.”",
+          "where": "Profile section",
+          "why": "Unverified: Kev’s voice, not in writing from him",
+          "recommendation": "Hide until confirmed",
+          "recommended": "approve_hide",
+          "buttons": [
+            {
+              "value": "approve_hide",
+              "label": "Approve hide/remove"
+            },
+            {
+              "value": "confirm_keep",
+              "label": "Confirm & keep"
+            },
+            {
+              "value": "needs_edit",
+              "label": "Needs edit"
+            }
+          ],
+          "notePlaceholder": "Type a fix, a source, or an instruction.",
+          "hint": "",
+          "hideList": 8
+        },
+        {
+          "id": "value-team-first",
+          "bucket": "unverified",
+          "page": "Character & Service page",
+          "claim": "Team First: “Success is measured by what we achieve together…”",
+          "where": "Values /01",
+          "why": "Unverified: Kev’s voice",
+          "recommendation": "Hide until confirmed",
+          "recommended": "approve_hide",
+          "buttons": [
+            {
+              "value": "approve_hide",
+              "label": "Approve hide/remove"
+            },
+            {
+              "value": "confirm_keep",
+              "label": "Confirm & keep"
+            },
+            {
+              "value": "needs_edit",
+              "label": "Needs edit"
+            }
+          ],
+          "notePlaceholder": "Type a fix, a source, or an instruction.",
+          "hint": "",
+          "hideList": 8
+        },
+        {
+          "id": "value-curiosity",
+          "bucket": "unverified",
+          "page": "Character & Service page",
+          "claim": "Curiosity: “film, books, weather charts, you name it”",
+          "where": "Values /03",
+          "why": "Unverified: Kev’s voice",
+          "recommendation": "Hide until confirmed",
+          "recommended": "approve_hide",
+          "buttons": [
+            {
+              "value": "approve_hide",
+              "label": "Approve hide/remove"
+            },
+            {
+              "value": "confirm_keep",
+              "label": "Confirm & keep"
+            },
+            {
+              "value": "needs_edit",
+              "label": "Needs edit"
+            }
+          ],
+          "notePlaceholder": "Type a fix, a source, or an instruction.",
+          "hint": "",
+          "hideList": 8
+        },
+        {
+          "id": "value-family",
+          "bucket": "unverified",
+          "page": "Character & Service page",
+          "claim": "Family: “Everything starts with the people who support me…”",
+          "where": "Values /04",
+          "why": "Unverified: Kev’s voice",
+          "recommendation": "Hide until confirmed",
+          "recommended": "approve_hide",
+          "buttons": [
+            {
+              "value": "approve_hide",
+              "label": "Approve hide/remove"
+            },
+            {
+              "value": "confirm_keep",
+              "label": "Confirm & keep"
+            },
+            {
+              "value": "needs_edit",
+              "label": "Needs edit"
+            }
+          ],
+          "notePlaceholder": "Type a fix, a source, or an instruction.",
+          "hint": "",
+          "hideList": 8
+        },
+        {
+          "id": "jv-development-focus",
+          "bucket": "unverified",
+          "page": "Timeline (Journey strip and season pages)",
+          "claim": "Development focus: catch-and-shoot, finishing through contact, reading help defense",
+          "where": "2025–26 page",
+          "why": "Unverified: no source",
+          "recommendation": "Hide until confirmed",
+          "recommended": "approve_hide",
+          "buttons": [
+            {
+              "value": "approve_hide",
+              "label": "Approve hide/remove"
+            },
+            {
+              "value": "confirm_keep",
+              "label": "Confirm & keep"
+            },
+            {
+              "value": "needs_edit",
+              "label": "Needs edit"
+            }
+          ],
+          "notePlaceholder": "Type a fix, a source, or an instruction.",
+          "hint": "",
+          "hideList": 8
+        },
+        {
+          "id": "proudest-ast-to",
+          "bucket": "unverified",
+          "page": "Timeline (Journey strip and season pages)",
+          "claim": "“The assist-to-turnover number is the one I am proudest of…”",
+          "where": "2025–26 page",
+          "why": "Unverified: Kev’s voice",
+          "recommendation": "Hide until confirmed",
+          "recommended": "approve_hide",
+          "buttons": [
+            {
+              "value": "approve_hide",
+              "label": "Approve hide/remove"
+            },
+            {
+              "value": "confirm_keep",
+              "label": "Confirm & keep"
+            },
+            {
+              "value": "needs_edit",
+              "label": "Needs edit"
+            }
+          ],
+          "notePlaceholder": "Type a fix, a source, or an instruction.",
+          "hint": "",
+          "hideList": 8
+        },
+        {
+          "id": "happiest-38",
+          "bucket": "unverified",
+          "page": "Updates (4 published posts)",
+          "claim": "A Busy Fall: “38% is the number I am happiest with” and “Both events put you in front of a lot of people…”",
+          "where": "Nov 3, 2026 post",
+          "why": "Unverified: Kev’s voice",
+          "recommendation": "Hide until confirmed",
+          "recommended": "approve_hide",
+          "buttons": [
+            {
+              "value": "approve_hide",
+              "label": "Approve hide/remove"
+            },
+            {
+              "value": "confirm_keep",
+              "label": "Confirm & keep"
+            },
+            {
+              "value": "needs_edit",
+              "label": "Needs edit"
+            }
+          ],
+          "notePlaceholder": "Type a fix, a source, or an instruction.",
+          "hint": "",
+          "hideList": 8
+        },
+        {
+          "id": "wing-angles",
+          "bucket": "unverified",
+          "page": "Updates (4 published posts)",
+          "claim": "New School: “Playing more on the wing has given me cleaner looks and better angles to the glass”; “the part of my game I trust most”",
+          "where": "Nov 1, 2026 post",
+          "why": "Unverified: Kev’s voice",
+          "recommendation": "Hide until confirmed",
+          "recommended": "approve_hide",
+          "buttons": [
+            {
+              "value": "approve_hide",
+              "label": "Approve hide/remove"
+            },
+            {
+              "value": "confirm_keep",
+              "label": "Confirm & keep"
+            },
+            {
+              "value": "needs_edit",
+              "label": "Needs edit"
+            }
+          ],
+          "notePlaceholder": "Type a fix, a source, or an instruction.",
+          "hint": "",
+          "hideList": 8
+        },
+        {
+          "id": "watches-game-film",
+          "bucket": "unverified",
+          "page": "Projects & Passions page",
+          "claim": "“Basketball IQ — Watches game film.”",
+          "where": "Three threads",
+          "why": "Unverified: no source",
+          "recommendation": "Hide until confirmed",
+          "recommended": "approve_hide",
+          "buttons": [
+            {
+              "value": "approve_hide",
+              "label": "Approve hide/remove"
+            },
+            {
+              "value": "confirm_keep",
+              "label": "Confirm & keep"
+            },
+            {
+              "value": "needs_edit",
+              "label": "Needs edit"
+            }
+          ],
+          "notePlaceholder": "Type a fix, a source, or an instruction.",
+          "hint": "",
+          "hideList": 8
+        },
+        {
+          "id": "videography-tile",
+          "bucket": "unverified",
+          "page": "Media & Photography page",
+          "claim": "Videography: “Video as part of media production coursework”",
+          "where": "/03 Skills",
+          "why": "Unverified: no source",
+          "recommendation": "Hide until confirmed",
+          "recommended": "approve_hide",
+          "buttons": [
+            {
+              "value": "approve_hide",
+              "label": "Approve hide/remove"
+            },
+            {
+              "value": "confirm_keep",
+              "label": "Confirm & keep"
+            },
+            {
+              "value": "needs_edit",
+              "label": "Needs edit"
+            }
+          ],
+          "notePlaceholder": "Type a fix, a source, or an instruction.",
+          "hint": "",
+          "hideList": 8
+        },
+        {
+          "id": "editing-tile",
+          "bucket": "unverified",
+          "page": "Media & Photography page",
+          "claim": "Editing: “Class work in media production”",
+          "where": "/03 Skills",
+          "why": "Unverified: no source",
+          "recommendation": "Hide until confirmed",
+          "recommended": "approve_hide",
+          "buttons": [
+            {
+              "value": "approve_hide",
+              "label": "Approve hide/remove"
+            },
+            {
+              "value": "confirm_keep",
+              "label": "Confirm & keep"
+            },
+            {
+              "value": "needs_edit",
+              "label": "Needs edit"
+            }
+          ],
+          "notePlaceholder": "Type a fix, a source, or an instruction.",
+          "hint": "",
+          "hideList": 8
+        }
+      ]
+    },
+    {
+      "id": "hide-9",
+      "nav": "Hide list #9",
+      "title": "Hide list #9",
+      "intro": "Hide “Seven years on the floor” (it rests on the unsourced 2019–20 season) and the “consistent offseason workouts” line (your calendar shows the sessions were scheduled, not that he went).",
+      "items": [
+        {
+          "id": "seven-years",
+          "bucket": "unverified",
+          "page": "Home page and footer",
+          "claim": "“Seven years on the floor”",
+          "where": "Contents › Timeline",
+          "why": "Unverified: rests on the unsourced 2019–20 season",
+          "recommendation": "Hide until confirmed",
+          "recommended": "approve_hide",
+          "buttons": [
+            {
+              "value": "approve_hide",
+              "label": "Approve hide/remove"
+            },
+            {
+              "value": "confirm_keep",
+              "label": "Confirm & keep"
+            },
+            {
+              "value": "needs_edit",
+              "label": "Needs edit"
+            }
+          ],
+          "notePlaceholder": "Type a fix, a source, or an instruction.",
+          "hint": "",
+          "hideList": 9
+        },
+        {
+          "id": "workouts-jc-hoops",
+          "bucket": "unverified",
+          "page": "Timeline (Journey strip and season pages)",
+          "claim": "“Between events I have kept up consistent offseason workouts”",
+          "where": "JC Hoops 16U page",
+          "why": "Unverified: your calendar shows sessions were scheduled; attendance not confirmed",
+          "recommendation": "Hide until confirmed",
+          "recommended": "approve_hide",
+          "buttons": [
+            {
+              "value": "approve_hide",
+              "label": "Approve hide/remove"
+            },
+            {
+              "value": "confirm_keep",
+              "label": "Confirm & keep"
+            },
+            {
+              "value": "needs_edit",
+              "label": "Needs edit"
+            }
+          ],
+          "notePlaceholder": "Type a fix, a source, or an instruction.",
+          "hint": "Same line as the A Busy Fall post. Decide this page on its own, or say in the note that one decision covers both.",
+          "hideList": 9
+        },
+        {
+          "id": "workouts-busy-fall",
+          "bucket": "unverified",
+          "page": "Updates (4 published posts)",
+          "claim": "A Busy Fall: “consistent offseason workouts”",
+          "where": "Nov 3, 2026 post",
+          "why": "Unverified: attendance not confirmed",
+          "recommendation": "Hide until confirmed",
+          "recommended": "approve_hide",
+          "buttons": [
+            {
+              "value": "approve_hide",
+              "label": "Approve hide/remove"
+            },
+            {
+              "value": "confirm_keep",
+              "label": "Confirm & keep"
+            },
+            {
+              "value": "needs_edit",
+              "label": "Needs edit"
+            }
+          ],
+          "notePlaceholder": "Type a fix, a source, or an instruction.",
+          "hint": "Same line as the JC Hoops 16U page. Decide this post on its own, or say in the note that one decision covers both.",
+          "hideList": 9
+        }
+      ]
+    },
+    {
+      "id": "hide-10",
+      "nav": "Hide list #10",
+      "title": "Hide list #10",
+      "intro": "Change Contact’s “GPA, courses, awards (PDF)” to “honor.” Kev has one: Team Captain.",
+      "items": [
+        {
+          "id": "awards-to-honor",
+          "bucket": "unverified",
+          "page": "Contact page",
+          "claim": "Academic resume: “GPA, courses, awards (PDF)”",
+          "where": "/02 Quick links",
+          "why": "Unverified: there’s one honor, not several awards",
+          "recommendation": "Change to “honor”",
+          "recommended": "approve_fix",
+          "buttons": [
+            {
+              "value": "approve_fix",
+              "label": "Approve fix"
+            },
+            {
+              "value": "confirm_keep",
+              "label": "Confirm & keep"
+            },
+            {
+              "value": "needs_edit",
+              "label": "Needs edit"
+            }
+          ],
+          "notePlaceholder": "Anything besides changing “awards” to “honor” (Team Captain).",
+          "hint": "Approve fix changes “GPA, courses, awards (PDF)” to “honor.” Kev has one: Team Captain.",
+          "hideList": 10
+        }
+      ]
+    },
+    {
+      "id": "other-unverified",
+      "nav": "Other unverified",
+      "title": "Other unverified claims",
+      "intro": "These two unverified claims are not on the hide list. Dec 9 and Feb 14 still need a Home or Away confirmation. The sports-photography line stays unresolved until someone can check @shotsbyfranz.",
+      "items": [
+        {
+          "id": "schedule-home-away",
+          "bucket": "unverified",
+          "page": "Basketball page",
+          "claim": "Home or Away for each game",
+          "where": "/02 Schedule",
+          "why": "Unverified: two conflict with GameChanger: Dec 9 Wyandotte (site says Away) and Feb 14 Blue Valley (site says Home; the other team lists it at Blue Valley)",
+          "recommendation": "Keep; confirm 2 games",
+          "recommended": "confirm_keep",
+          "buttons": [
+            {
+              "value": "confirm_keep",
+              "label": "Confirm & keep"
+            },
+            {
+              "value": "approve_fix",
+              "label": "Approve fix"
+            },
+            {
+              "value": "needs_edit",
+              "label": "Needs edit"
+            }
+          ],
+          "notePlaceholder": "Dec 9 vs Wyandotte: Home or Away. Feb 14 vs Blue Valley: Home or Away.",
+          "hint": "Confirm & keep leaves the schedule up. Type Home or Away for both games in the note. Approve fix means those two site listings should change to what you type.",
+          "hideList": null
+        },
+        {
+          "id": "sports-photography",
+          "bucket": "unverified",
+          "page": "Media & Photography page",
+          "claim": "Sports photography: “Photography posted at @shotsbyfranz”",
+          "where": "/03 Skills",
+          "why": "Unverified: Instagram needs a login, so we’ve never checked the account’s content",
+          "recommendation": "Hide until confirmed",
+          "recommended": "approve_hide",
+          "buttons": [
+            {
+              "value": "approve_hide",
+              "label": "Approve hide/remove"
+            },
+            {
+              "value": "confirm_keep",
+              "label": "Confirm & keep"
+            },
+            {
+              "value": "needs_edit",
+              "label": "Needs edit"
+            }
+          ],
+          "notePlaceholder": "Type a fix, a source, or an instruction.",
+          "hint": "The @shotsbyfranz handle is confirmed. This line is flagged because the account’s posts have not been checked.",
+          "hideList": null
+        }
+      ]
+    },
+    {
+      "id": "placeholders",
+      "nav": "Placeholders",
+      "title": "Placeholders, broken or stale",
+      "intro": "These nine are not rows in the claim tables. The empty Feb 21 game page is Hide list #6, on its own card, and is not repeated here.",
+      "items": [
+        {
+          "id": "film-coming-soon",
+          "bucket": "placeholder",
+          "page": "Placeholders, broken or stale",
+          "claim": "Basketball › Film: “New highlights coming soon.” The Oct 4 HSAA highlight is now in your Drive and could go here once you OK it.",
+          "where": "Basketball page › Film",
+          "why": "Placeholder, broken, or stale.",
+          "recommendation": "Fix: replace “New highlights coming soon” with the Oct 4 HSAA highlight once you OK it.",
+          "recommended": "approve_fix",
+          "buttons": [
+            {
+              "value": "approve_fix",
+              "label": "Approve fix"
+            },
+            {
+              "value": "confirm_keep",
+              "label": "Confirm & keep"
+            },
+            {
+              "value": "needs_edit",
+              "label": "Needs edit"
+            }
+          ],
+          "notePlaceholder": "OK the Oct 4 highlight, and say if it should live on YouTube, Hudl, or this page.",
+          "hint": "Approve fix means that placeholder comes down after you OK the highlight in the note.",
+          "hideList": null
+        },
+        {
+          "id": "current-film-lines",
+          "bucket": "placeholder",
+          "page": "Placeholders, broken or stale",
+          "claim": "“Current film is being put together” on the 2026–27 SM West and JC Hoops 16U pages, and the New School post’s line about only 2022–23 camp mixes: these need updating once film goes up.",
+          "where": "2026–27 SM West page, JC Hoops 16U page, and the New School post",
+          "why": "Placeholder, broken, or stale.",
+          "recommendation": "Fix: update the “current film is being put together” lines, and the New School line about only 2022–23 camp mixes, once film is up.",
+          "recommended": "approve_fix",
+          "buttons": [
+            {
+              "value": "approve_fix",
+              "label": "Approve fix"
+            },
+            {
+              "value": "confirm_keep",
+              "label": "Confirm & keep"
+            },
+            {
+              "value": "needs_edit",
+              "label": "Needs edit"
+            }
+          ],
+          "notePlaceholder": "What those lines should say, or say to wait until the film is live.",
+          "hint": "",
+          "hideList": null
+        },
+        {
+          "id": "journey-card-photos",
+          "bucket": "placeholder",
+          "page": "Placeholders, broken or stale",
+          "claim": "Every Journey card (home and Timeline) shows initials or a jersey number (YBL, #28, AB, JHO, SK…) where a photo should be.",
+          "where": "Home Journey strip and Timeline cards",
+          "why": "Placeholder, broken, or stale.",
+          "recommendation": "Fix: replace the initials and jersey marks with one real photo per season.",
+          "recommended": "approve_fix",
+          "buttons": [
+            {
+              "value": "approve_fix",
+              "label": "Approve fix"
+            },
+            {
+              "value": "confirm_keep",
+              "label": "Confirm & keep"
+            },
+            {
+              "value": "needs_edit",
+              "label": "Needs edit"
+            }
+          ],
+          "notePlaceholder": "Which photos, or a Drive folder. Say “leave the initials” if they should stay.",
+          "hint": "",
+          "hideList": null
+        },
+        {
+          "id": "unlinked-game-pages",
+          "bucket": "placeholder",
+          "page": "Placeholders, broken or stale",
+          "claim": "22 game pages under /games/ are published but nothing links to them. The 19 with Kev’s stats match GameChanger.",
+          "where": "/games/ (22 published pages, nothing links to them)",
+          "why": "Placeholder, broken, or stale.",
+          "recommendation": "Fix: link the pages that have real stats from the schedule. The 19 with Kev’s stats match GameChanger. Do not use this item to delete the empty Feb 21 page.",
+          "recommended": "approve_fix",
+          "buttons": [
+            {
+              "value": "approve_fix",
+              "label": "Approve fix"
+            },
+            {
+              "value": "confirm_keep",
+              "label": "Confirm & keep"
+            },
+            {
+              "value": "needs_edit",
+              "label": "Needs edit"
+            }
+          ],
+          "notePlaceholder": "Link them, leave them unlinked, or name any page to unpublish.",
+          "hint": "The empty Feb 21 page is Hide list #6, on its own card.",
+          "hideList": null
+        },
+        {
+          "id": "transfer-url",
+          "bucket": "placeholder",
+          "page": "Placeholders, broken or stale",
+          "claim": "The New School post’s web address still has “transfer” in it (/updates/2026-11-01-transfer-to-sm-west-jc-hoops/). It’s only in the link, not the page text.",
+          "where": "New School post URL",
+          "why": "Placeholder, broken, or stale.",
+          "recommendation": "Fix: rename /updates/2026-11-01-transfer-to-sm-west-jc-hoops/ so “transfer” is not in the address.",
+          "recommended": "approve_fix",
+          "buttons": [
+            {
+              "value": "approve_fix",
+              "label": "Approve fix"
+            },
+            {
+              "value": "confirm_keep",
+              "label": "Confirm & keep"
+            },
+            {
+              "value": "needs_edit",
+              "label": "Needs edit"
+            }
+          ],
+          "notePlaceholder": "OK the rename, or type the address you want.",
+          "hint": "The word “transfer” is only in the link, not in the page text.",
+          "hideList": null
+        },
+        {
+          "id": "camera-readout",
+          "bucket": "placeholder",
+          "page": "Placeholders, broken or stale",
+          "claim": "The Media page header shows camera readouts (REC · 1/250 · F2.8 · ISO 1600). It’s decoration, but it reads like real shot data.",
+          "where": "Media page header",
+          "why": "Placeholder, broken, or stale.",
+          "recommendation": "Hide/remove the camera readout so REC · 1/250 · F2.8 · ISO 1600 does not read like real shot data.",
+          "recommended": "approve_hide",
+          "buttons": [
+            {
+              "value": "approve_hide",
+              "label": "Approve hide/remove"
+            },
+            {
+              "value": "confirm_keep",
+              "label": "Confirm & keep"
+            },
+            {
+              "value": "needs_edit",
+              "label": "Needs edit"
+            }
+          ],
+          "notePlaceholder": "Drop it, keep it, or say what the header should say instead.",
+          "hint": "",
+          "hideList": null
+        },
+        {
+          "id": "x-account-empty",
+          "bucket": "placeholder",
+          "page": "Placeholders, broken or stale",
+          "claim": "The X account @kfranzjr2028 is linked but still has no posts and no photo.",
+          "where": "Footer link to X @kfranzjr2028",
+          "why": "Placeholder, broken, or stale.",
+          "recommendation": "Hide the X link until @kfranzjr2028 has posts and a photo. The handle itself is already confirmed.",
+          "recommended": "approve_hide",
+          "buttons": [
+            {
+              "value": "approve_hide",
+              "label": "Approve hide/remove"
+            },
+            {
+              "value": "confirm_keep",
+              "label": "Confirm & keep"
+            },
+            {
+              "value": "needs_edit",
+              "label": "Needs edit"
+            }
+          ],
+          "notePlaceholder": "Hide the link, or keep it and note what you will add to the account.",
+          "hint": "",
+          "hideList": null
+        },
+        {
+          "id": "ncsa-url",
+          "bucket": "placeholder",
+          "page": "Placeholders, broken or stale",
+          "claim": "The NCSA link’s address still includes blue-valley-southwest-high-school. It’s the real URL; NCSA would need to update it.",
+          "where": "NCSA link on Basketball, Contact, and the footer",
+          "why": "Placeholder, broken, or stale.",
+          "recommendation": "Keep the link. It is the real NCSA address; NCSA would need to update it.",
+          "recommended": "confirm_keep",
+          "buttons": [
+            {
+              "value": "confirm_keep",
+              "label": "Confirm & keep"
+            },
+            {
+              "value": "approve_hide",
+              "label": "Approve hide/remove"
+            },
+            {
+              "value": "needs_edit",
+              "label": "Needs edit"
+            }
+          ],
+          "notePlaceholder": "Keep it, hide it, or paste a new NCSA address if they have issued one.",
+          "hint": "Confirm & keep leaves the real URL in place. This site cannot change NCSA’s address.",
+          "hideList": null
+        },
+        {
+          "id": "admin-page",
+          "bucket": "placeholder",
+          "page": "Placeholders, broken or stale",
+          "claim": "/admin/ (the old CMS sign-in page) is published. It holds no content.",
+          "where": "/admin/",
+          "why": "Placeholder, broken, or stale.",
+          "recommendation": "Hide/remove the public /admin/ sign-in. It holds no content.",
+          "recommended": "approve_hide",
+          "buttons": [
+            {
+              "value": "approve_hide",
+              "label": "Approve hide/remove"
+            },
+            {
+              "value": "confirm_keep",
+              "label": "Confirm & keep"
+            },
+            {
+              "value": "needs_edit",
+              "label": "Needs edit"
+            }
+          ],
+          "notePlaceholder": "Remove it, or say if you still use that page.",
+          "hint": "",
+          "hideList": null
+        }
+      ]
+    }
+  ],
+  "questions": {
+    "caption": "Short answers are fine. Questions the old May list asked that we’ve since answered (jersey, height, weight, GPA, school, club team, contact info, schedule, Instagram) were dropped. So were the storm log, Sporting KC, the Palmgren quote and the “why meteorology” essay, since those are gone from the site.",
+    "howTo": "Reply in chat with the question numbers, e.g. “T3: 2024, Seal Beach.” Anything you don’t answer stays hidden.",
+    "sections": [
+      {
+        "id": "q-global-and-contact",
+        "title": "Q · Global and contact",
+        "items": [
+          {
+            "code": "G1",
+            "text": "G1. What’s Kev’s email, so I can give him access to the locked site?"
+          },
+          {
+            "code": "G2",
+            "text": "G2. Who is the JC Hoops coach for the Contact page (name, email or phone)? Has that coach said it’s OK to be listed?"
+          },
+          {
+            "code": "G3",
+            "text": "G3. Should Aaron Henson stay as a reference? If so, has he agreed, and when did Kev actually play for him?"
+          },
+          {
+            "code": "G4",
+            "text": "G4. Does Kev have a Hudl profile (or want one) to link? Should Scorability or Sports Passports be added?"
+          },
+          {
+            "code": "G5",
+            "text": "G5. Did SM West tryouts place Kev on varsity or JV, and what’s his SM West jersey number?"
+          }
+        ]
+      },
+      {
+        "id": "q-home-and-how-kev-describes-his-game",
+        "title": "Q · Home and how Kev describes his game",
+        "items": [
+          {
+            "code": "H1",
+            "text": "H1. Is “pace, playmaking, and full-court defense” how Kev or a coach describes his game? If a coach has put it in writing, who?"
+          },
+          {
+            "code": "H2",
+            "text": "H2. Can Kev write 2–3 sentences about his game and himself to replace the “pace-pusher and playmaker” paragraph? Or should it stay hidden?"
+          },
+          {
+            "code": "H3",
+            "text": "H3. Should the Journey cards get one real photo per season? If so, which photos (Drive folder is fine)?"
+          }
+        ]
+      },
+      {
+        "id": "q-timeline-and-camps",
+        "title": "Q · Timeline and camps",
+        "items": [
+          {
+            "code": "T1",
+            "text": "T1. 2019–2020 “Youth Basketball League,” 4th–5th grade: was it real? What was the league’s name? Should it go back up, or stay removed?"
+          },
+          {
+            "code": "T2",
+            "text": "T2. Can I remove Squad KC and JC Hoops Academy now? (You said on Nov 4 they weren’t his teams.)"
+          },
+          {
+            "code": "T3",
+            "text": "T3. JC Hoops Orange, Winter 2023–24, 3 games: was that Kev’s team? It’s in GameChanger as “Kevin.”"
+          },
+          {
+            "code": "T4",
+            "text": "T4. The second Phenom camp video: what year (2023 or 2024) and which city (Los Angeles, Seal Beach, other)?"
+          },
+          {
+            "code": "T5",
+            "text": "T5. Which camps documented in your email should go on the site? PGC Playmaker College (KC, June 2022), PGC Scoring College on scholarship (Naperville, June 2023), Phenom (San Diego, summer 2022), KU Bill Self camp (June 2024), Oklahoma State team camp (June 2026)?"
+          },
+          {
+            "code": "T6",
+            "text": "T6. Are “catch-and-shoot from the wing, finishing through contact, reading help defense” Kev’s real goals? Keep them or cut them?"
+          },
+          {
+            "code": "T7",
+            "text": "T7. Did Kev do the BYB Elite tryout prep (Oct–Nov) and the SM West weight room and open gyms? Can we say “consistent offseason workouts”?"
+          },
+          {
+            "code": "T8",
+            "text": "T8. Should the SM West schedule go on the site once it’s out?"
+          }
+        ]
+      },
+      {
+        "id": "q-basketball-page-and-game-pages",
+        "title": "Q · Basketball page and game pages",
+        "items": [
+          {
+            "code": "B1",
+            "text": "B1. Dec 9 vs Wyandotte and Feb 14 vs Blue Valley: home or away?"
+          },
+          {
+            "code": "B2",
+            "text": "B2. EKL JV Tournament, Feb 21: did Kev play? If so, what were the results? Otherwise I’ll remove that page."
+          },
+          {
+            "code": "B3",
+            "text": "B3. Should the schedule link to the per-game pages, or should those stay unlinked?"
+          },
+          {
+            "code": "B4",
+            "text": "B4. Can the Oct 4 HSAA showcase highlight go on the site as Kev’s current film (YouTube, Hudl, or the site itself)?"
+          },
+          {
+            "code": "B5",
+            "text": "B5. Has RecruitLook fixed the team to JC Hoops 16U? Keep the link once it has?"
+          }
+        ]
+      },
+      {
+        "id": "q-character-projects-media",
+        "title": "Q · Character, Projects, Media",
+        "items": [
+          {
+            "code": "C1",
+            "text": "C1. Can Kev write his own values (one line each), or should the four values come off?"
+          },
+          {
+            "code": "C2",
+            "text": "C2. OK to remove “first one in, last one out”?"
+          },
+          {
+            "code": "C3",
+            "text": "C3. Any leadership roles besides Freshman A captain (team, school, church, camps)?"
+          },
+          {
+            "code": "C4",
+            "text": "C4. Youth camps through school: which camps and roughly when? (Optional. The current line stays either way.)"
+          },
+          {
+            "code": "P1",
+            "text": "P1. Does Kev regularly watch game film (alone, with his team, with a coach)? Keep “watches game film”?"
+          },
+          {
+            "code": "P2",
+            "text": "P2. Should the site mention his JCCC Intro to Meteorology class as part of the meteorology interest?"
+          },
+          {
+            "code": "M1",
+            "text": "M1. Is @shotsbyfranz mostly sports photography? Has he done any shoots we can show in writing (credential, client email)?"
+          },
+          {
+            "code": "M2",
+            "text": "M2. Did his Media Production classes include video shooting and editing (and which software)? Otherwise the Videography and Editing tiles come off."
+          },
+          {
+            "code": "M3",
+            "text": "M3. Should Kev choose up to 6 of his own photos for a Media gallery?"
+          },
+          {
+            "code": "M4",
+            "text": "M4. Keep or drop the camera-readout decoration on the Media header?"
+          }
+        ]
+      },
+      {
+        "id": "q-academics-football-updates",
+        "title": "Q · Academics, Football, Updates",
+        "items": [
+          {
+            "code": "A1",
+            "text": "A1. Should JCCC courses and grades go on the site at the end of the fall semester (they’re hidden now)?"
+          },
+          {
+            "code": "A2",
+            "text": "A2. Is there an SAT or ACT date yet?"
+          },
+          {
+            "code": "F1",
+            "text": "F1. Football: add his position and level (freshman, JV), or keep the page short as it is?"
+          },
+          {
+            "code": "U1",
+            "text": "U1. Can Kev OK the first-person lines in the Nov posts (“proudest of AST/TO,” “happiest with 38%,” “playing more on the wing”)? Keep them or cut them?"
+          },
+          {
+            "code": "U2",
+            "text": "U2. OK to change the New School post’s link so “transfer” isn’t in the address?"
+          },
+          {
+            "code": "U3",
+            "text": "U3. Momentiv Player Spotlight article: once you’ve reviewed it, should it be linked from the site?"
+          }
+        ]
+      }
+    ]
+  }
+}</script>
+<script>
+(function () {
+  var STORAGE_KEY = "kfjr_audit_review_v3";
+  var VALID = { approve_hide: 1, approve_fix: 1, confirm_keep: 1, needs_edit: 1 };
+  var LABELS = {
+    approve_hide: "Approve hide/remove",
+    approve_fix: "Approve fix",
+    confirm_keep: "Confirm & keep",
+    needs_edit: "Needs edit"
+  };
+  var data = JSON.parse(document.getElementById("review-data").textContent);
+  var auditItems = [];
+  data.groups.forEach(function (group) {
+    group.items.forEach(function (item) {
+      item.groupId = group.id;
+      item.groupTitle = group.title;
+      item.groupIntro = group.intro;
+      auditItems.push(item);
+    });
+  });
+  var questions = [];
+  data.questions.sections.forEach(function (section) {
+    section.items.forEach(function (q) { questions.push(q); });
+  });
+
+  var ACTIVE = {
+    "ybl-2019": 1,
+    "phenom-2023-label": 1,
+    "camp-highlights-wording": 1,
+    "recruitlook-verified": 1,
+    "awards-to-honor": 1,
+    "schedule-home-away": 1,
+    "sports-photography": 1,
+    "film-coming-soon": 1,
+    "current-film-lines": 1,
+    "journey-card-photos": 1,
+    "unlinked-game-pages": 1,
+    "transfer-url": 1,
+    "camera-readout": 1,
+    "x-account-empty": 1,
+    "ncsa-url": 1
+  };
+  var DECIDED = {
+    "squad-kc": { decision: "approve_hide", kev: "" },
+    "jc-hoops-academy": { decision: "approve_hide", kev: "" },
+    "value-first-in-last-out": { decision: "approve_hide", kev: "" },
+    "aaron-henson": { decision: "approve_hide", kev: "" },
+    "ekl-feb-21": { decision: "approve_hide", kev: "" },
+    "pace-pusher-paragraph": { decision: "approve_hide", kev: "" },
+    "wing-angles": { decision: "approve_hide", kev: "" },
+    "admin-page": { decision: "approve_hide", kev: "" },
+    "hero-pace-line": { decision: "needs_edit", kev: "K1" },
+    "number-28-blurb": { decision: "needs_edit", kev: "K1" },
+    "value-team-first": { decision: "needs_edit", kev: "K11" },
+    "value-curiosity": { decision: "needs_edit", kev: "K11" },
+    "value-family": { decision: "needs_edit", kev: "K11" },
+    "jv-development-focus": { decision: "needs_edit", kev: "K3" },
+    "proudest-ast-to": { decision: "needs_edit", kev: "K17" },
+    "happiest-38": { decision: "needs_edit", kev: "K17" },
+    "watches-game-film": { decision: "needs_edit", kev: "K4" },
+    "videography-tile": { decision: "needs_edit", kev: "K14" },
+    "editing-tile": { decision: "needs_edit", kev: "K14" },
+    "seven-years": { decision: "needs_edit", kev: "K6" },
+    "workouts-jc-hoops": { decision: "needs_edit", kev: "K5" },
+    "workouts-busy-fall": { decision: "needs_edit", kev: "K5" }
+  };
+  var MOVED = {
+    H1: "K1", H2: "K2", H3: "K15", T1: "K9", T4: "K7", T5: "K8", T6: "K3", T7: "K5",
+    C1: "K11", C3: "K12", C4: "K10", P1: "K4", P2: "K16", M1: "K13", M2: "K14", M3: "K15", U1: "K17"
+  };
+  var PRIOR_DECISIONS = {
+    "camp-highlights-wording": "needs_edit",
+    "awards-to-honor": "needs_edit",
+    "schedule-home-away": "needs_edit",
+    "ncsa-url": "needs_edit"
+  };
+  var PRIOR_NOTES = {
+  "schedule-home-away": "I can provide the schedule max of",
+  "ncsa-url": "We can get it updated just put it on a to do list for grok bot",
+  "ybl-2019": "This should house Kevin’s younger years anything not related to Kevin before middle school shouldn’t be on there. I have video of him and team names and events he participated in we could see what we could create there",
+  "phenom-2023-label": "Sam Diego was his first year going 6th grade summer and Los Angeles was 7th grade summer. We can get more details and create a little montage or something. I’ve got plenty of video.",
+  "recruitlook-verified": "I think recruitlooks made the updates."
+};
+
+  var activeAudit = auditItems.filter(function (item) { return ACTIVE[item.id]; });
+  var decidedAudit = auditItems.filter(function (item) { return DECIDED[item.id]; });
+  var activeQuestions = questions.filter(function (q) { return !MOVED[q.code]; });
+  var movedQuestions = questions.filter(function (q) { return !!MOVED[q.code]; });
+  var ACTIVE_Q = {};
+  activeQuestions.forEach(function (q) { ACTIVE_Q[q.code] = 1; });
+
+  var buckets = { false: 0, unverified: 0, placeholder: 0 };
+  auditItems.forEach(function (item) { buckets[item.bucket] += 1; });
+  var openBuckets = { false: 0, unverified: 0, placeholder: 0 };
+  activeAudit.forEach(function (item) { openBuckets[item.bucket] += 1; });
+  var classified = 0;
+  var overlap = 0;
+  auditItems.forEach(function (item) {
+    var on = !!ACTIVE[item.id];
+    var off = !!DECIDED[item.id];
+    if (on && off) overlap += 1;
+    if (on || off) classified += 1;
+  });
+  var hideCount = 0;
+  var movedEdit = 0;
+  Object.keys(DECIDED).forEach(function (key) {
+    if (DECIDED[key].decision === "approve_hide") hideCount += 1;
+    if (DECIDED[key].decision === "needs_edit" && DECIDED[key].kev) movedEdit += 1;
+  });
+  if (auditItems.length !== 37 || buckets.false !== 3 || buckets.unverified !== 25 || buckets.placeholder !== 9 || questions.length !== 37 || classified !== 37 || overlap !== 0 || activeAudit.length !== 15 || decidedAudit.length !== 22 || hideCount !== 8 || movedEdit !== 14 || activeQuestions.length !== 20 || movedQuestions.length !== 17 || Object.keys(MOVED).length !== 17 || openBuckets.false !== 0 || openBuckets.unverified !== 7 || openBuckets.placeholder !== 8) {
+    var fatal = document.getElementById("fatal");
+    fatal.hidden = false;
+    fatal.textContent = "This page is missing audit items or questions. Expected 15 open items, 22 already decided, and 20 open questions.";
+    return;
+  }
+
+  var state = loadState();
+
+  function copyMap(source) {
+    var out = {};
+    Object.keys(source).forEach(function (key) { out[key] = source[key]; });
+    return out;
+  }
+
+  function baseline() {
+    return {
+      decisions: copyMap(PRIOR_DECISIONS),
+      notes: copyMap(PRIOR_NOTES),
+      answers: {},
+      tab: "audit",
+      onlyOpen: false
+    };
+  }
+
+  function loadState() {
+    var empty = baseline();
+    try {
+      var raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return empty;
+      var parsed = JSON.parse(raw);
+      var decisions = {};
+      var notes = {};
+      var answers = {};
+      if (parsed.decisions) {
+        Object.keys(parsed.decisions).forEach(function (key) {
+          if (ACTIVE[key] && VALID[parsed.decisions[key]]) decisions[key] = parsed.decisions[key];
+        });
+      }
+      if (parsed.notes) {
+        Object.keys(parsed.notes).forEach(function (key) {
+          if (ACTIVE[key] && typeof parsed.notes[key] === "string") notes[key] = parsed.notes[key];
+        });
+      }
+      if (parsed.answers) {
+        Object.keys(parsed.answers).forEach(function (key) {
+          if (ACTIVE_Q[key] && typeof parsed.answers[key] === "string") answers[key] = parsed.answers[key];
+        });
+      }
+      return {
+        decisions: decisions,
+        notes: notes,
+        answers: answers,
+        tab: parsed.tab === "questions" ? "questions" : "audit",
+        onlyOpen: !!parsed.onlyOpen
+      };
+    } catch (err) {
+      return empty;
+    }
+  }
+
+  function el(tag, attrs, text) {
+    var node = document.createElement(tag);
+    if (attrs) {
+      Object.keys(attrs).forEach(function (key) {
+        if (key === "class") node.className = attrs[key];
+        else node.setAttribute(key, attrs[key]);
+      });
+    }
+    if (text != null) node.textContent = text;
+    return node;
+  }
+
+  function renderAudit() {
+    var counts = document.getElementById("audit-counts");
+    [
+      ["15 still open", ""],
+      ["7 unverified", "unverified"],
+      ["8 placeholders", "placeholder"],
+      ["22 already decided", "hide"]
+    ].forEach(function (pair) {
+      counts.appendChild(el("li", { class: pair[1] }, pair[0]));
+    });
+    var jump = document.getElementById("audit-jump");
+    var root = document.getElementById("audit-root");
+    data.groups.forEach(function (group) {
+      var open = group.items.filter(function (item) { return ACTIVE[item.id]; });
+      if (!open.length) return;
+      var link = el("a", { href: "#" + group.id }, group.nav);
+      jump.appendChild(link);
+      var section = el("section", { class: "group", id: group.id });
+      var head = el("div", { class: "group-head" });
+      head.appendChild(el("h2", null, group.title));
+      var intro = el("p", { class: "group-text" });
+      intro.textContent = group.intro;
+      head.appendChild(intro);
+      section.appendChild(head);
+      open.forEach(function (item) { section.appendChild(renderCard(item)); });
+      root.appendChild(section);
+    });
+    var doneRoot = document.getElementById("audit-decided-root");
+    decidedAudit.forEach(function (item) {
+      doneRoot.appendChild(renderLockedCard(item, DECIDED[item.id]));
+    });
+  }
+
+  function renderLockedCard(item, meta) {
+    var card = el("article", { class: "card is-locked" });
+    var pills = el("div", { class: "pills" });
+    pills.appendChild(el("span", { class: "pill hide" }, "Done"));
+    var bucketLabel = item.bucket === "false" ? "False or likely false" : item.bucket === "unverified" ? "Unverified" : "Placeholder";
+    pills.appendChild(el("span", { class: "pill " + item.bucket }, bucketLabel));
+    card.appendChild(pills);
+    card.appendChild(el("h3", null, item.claim));
+    card.appendChild(metaLine("Page", item.page));
+    card.appendChild(metaLine("Decision", decisionLabel(meta.decision)));
+    if (meta.kev) {
+      var line = el("p", { class: "meta" });
+      line.appendChild(el("b", null, "Worksheet: "));
+      line.appendChild(el("a", { href: "/kev-worksheet/#q-" + meta.kev }, meta.kev));
+      card.appendChild(line);
+    }
+    return card;
+  }
+
+  function renderCard(item) {
+    var card = el("article", { class: "card", id: "item-" + item.id, "data-audit-id": item.id });
+    var pills = el("div", { class: "pills" });
+    var bucketLabel = item.bucket === "false" ? "False or likely false" : item.bucket === "unverified" ? "Unverified" : "Placeholder";
+    pills.appendChild(el("span", { class: "pill " + item.bucket }, bucketLabel));
+    if (item.hideList) pills.appendChild(el("span", { class: "pill hide" }, "Hide list #" + item.hideList));
+    card.appendChild(pills);
+    card.appendChild(el("h3", null, item.claim));
+    card.appendChild(metaLine("Page", item.page));
+    card.appendChild(metaLine("Where", item.where));
+    card.appendChild(metaLine("Why it was flagged", item.why));
+    card.appendChild(metaLine("Recommended action", item.recommendation));
+    if (item.hint) {
+      var hint = el("p", { class: "hint" });
+      hint.textContent = item.hint;
+      card.appendChild(hint);
+    }
+    var choices = el("div", { class: "choices", role: "group", "aria-label": "Decision for " + item.claim });
+    item.buttons.forEach(function (button) {
+      var node = el("button", {
+        type: "button",
+        class: "choice" + (button.value === item.recommended ? " is-recommended" : ""),
+        "data-choice": button.value,
+        "aria-pressed": "false"
+      });
+      node.appendChild(document.createTextNode(button.label));
+      if (button.value === item.recommended) node.appendChild(el("span", { class: "rec" }, "Recommended"));
+      choices.appendChild(node);
+    });
+    card.appendChild(choices);
+    var note = el("textarea", {
+      "data-note-for": item.id,
+      rows: "2",
+      placeholder: item.notePlaceholder || "Type a fix, a source, or an instruction.",
+      "aria-label": "Note for " + item.claim
+    });
+    note.value = state.notes[item.id] || "";
+    card.appendChild(note);
+    return card;
+  }
+
+  function metaLine(label, value) {
+    var p = el("p", { class: "meta" });
+    p.appendChild(el("b", null, label + ": "));
+    p.appendChild(document.createTextNode(value));
+    return p;
+  }
+
+  function renderQuestions() {
+    document.getElementById("q-caption").textContent = data.questions.caption;
+    document.getElementById("q-howto").textContent = data.questions.howTo;
+    var jump = document.getElementById("question-jump");
+    var root = document.getElementById("question-root");
+    var doneRoot = document.getElementById("question-decided-root");
+    data.questions.sections.forEach(function (section) {
+      var open = section.items.filter(function (q) { return !MOVED[q.code]; });
+      if (open.length) {
+        jump.appendChild(el("a", { href: "#" + section.id }, section.title.replace(/^Q · /, "")));
+        var wrap = el("section", { class: "group", id: section.id });
+        var head = el("div", { class: "group-head" });
+        head.appendChild(el("h2", null, section.title));
+        wrap.appendChild(head);
+        open.forEach(function (q) {
+          var field = el("div", { class: "q-field", id: "q-" + q.code, "data-code": q.code });
+          var label = el("label", { for: "answer-" + q.code }, q.text);
+          var box = el("textarea", {
+            id: "answer-" + q.code,
+            "data-answer-for": q.code,
+            rows: "2",
+            placeholder: "Type your answer"
+          });
+          box.value = state.answers[q.code] || "";
+          field.appendChild(label);
+          field.appendChild(box);
+          wrap.appendChild(field);
+        });
+        root.appendChild(wrap);
+      }
+      section.items.forEach(function (q) {
+        if (!MOVED[q.code]) return;
+        var field = el("div", { class: "q-done" });
+        field.appendChild(el("p", { class: "done-label" }, q.text));
+        var line = el("p", { class: "hint" });
+        line.appendChild(document.createTextNode("On Kev's worksheet as "));
+        line.appendChild(el("a", { href: "/kev-worksheet/#q-" + MOVED[q.code] }, MOVED[q.code]));
+        field.appendChild(line);
+        doneRoot.appendChild(field);
+      });
+    });
+  }
+
+  function autosize(node) {
+    node.style.height = "auto";
+    node.style.height = Math.max(72, node.scrollHeight) + "px";
+  }
+
+  function autosizeAll() {
+    document.querySelectorAll("textarea").forEach(autosize);
+  }
+
+  function syncCard(card) {
+    var id = card.getAttribute("data-audit-id");
+    var decision = state.decisions[id] || "";
+    card.classList.toggle("is-done", !!decision);
+    card.querySelectorAll("[data-choice]").forEach(function (button) {
+      button.setAttribute("aria-pressed", button.getAttribute("data-choice") === decision ? "true" : "false");
+    });
+  }
+
+  function counts() {
+    var decided = activeAudit.filter(function (item) { return !!state.decisions[item.id]; }).length;
+    var answered = activeQuestions.filter(function (q) { return (state.answers[q.code] || "").trim().length > 0; }).length;
+    return { decided: decided, answered: answered };
+  }
+
+  function updateProgress() {
+    var c = counts();
+    var progress = document.getElementById("progress");
+    progress.textContent = "";
+    progress.appendChild(el("strong", null, String(c.decided)));
+    progress.appendChild(document.createTextNode("/" + activeAudit.length + " decided · "));
+    progress.appendChild(el("strong", null, String(c.answered)));
+    progress.appendChild(document.createTextNode("/" + activeQuestions.length + " answered"));
+    var total = activeAudit.length + activeQuestions.length;
+    document.getElementById("meter-bar").style.width = ((c.decided + c.answered) / total * 100) + "%";
+  }
+
+  function applyFilter() {
+    var on = document.getElementById("only-open").checked;
+    var auditVisible = 0;
+    document.querySelectorAll("[data-audit-id]").forEach(function (card) {
+      var done = !!state.decisions[card.getAttribute("data-audit-id")];
+      var focused = card.contains(document.activeElement);
+      card.hidden = on && done && !focused;
+      if (!card.hidden) auditVisible += 1;
+    });
+    document.querySelectorAll("#audit-root .group").forEach(function (group) {
+      var any = false;
+      group.querySelectorAll("[data-audit-id]").forEach(function (card) { if (!card.hidden) any = true; });
+      group.hidden = !any;
+    });
+    document.getElementById("audit-empty").hidden = auditVisible !== 0;
+
+    var questionVisible = 0;
+    document.querySelectorAll(".q-field").forEach(function (field) {
+      var code = field.getAttribute("data-code");
+      var done = (state.answers[code] || "").trim().length > 0;
+      var focused = field.contains(document.activeElement);
+      field.hidden = on && done && !focused;
+      if (!field.hidden) questionVisible += 1;
+    });
+    document.querySelectorAll("#question-root .group").forEach(function (group) {
+      var any = false;
+      group.querySelectorAll(".q-field").forEach(function (field) { if (!field.hidden) any = true; });
+      group.hidden = !any;
+    });
+    document.getElementById("question-empty").hidden = questionVisible !== 0;
+    document.querySelectorAll("textarea").forEach(function (node) {
+      if (!node.hidden && node.offsetParent !== null) autosize(node);
+    });
+  }
+
+  var savedTimer = 0;
+  function persist(showSaved) {
+    var decisions = {};
+    var notes = {};
+    var answers = {};
+    activeAudit.forEach(function (item) {
+      if (VALID[state.decisions[item.id]]) decisions[item.id] = state.decisions[item.id];
+      if (state.notes[item.id]) notes[item.id] = state.notes[item.id];
+    });
+    activeQuestions.forEach(function (q) {
+      if (state.answers[q.code]) answers[q.code] = state.answers[q.code];
+    });
+    var payload = {
+      decisions: decisions,
+      notes: notes,
+      answers: answers,
+      tab: state.tab,
+      onlyOpen: !!state.onlyOpen,
+      updatedAt: new Date().toISOString()
+    };
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+      if (showSaved) {
+        var saved = document.getElementById("saved");
+        saved.textContent = "Saved";
+        saved.classList.add("show");
+        clearTimeout(savedTimer);
+        savedTimer = setTimeout(function () { saved.classList.remove("show"); }, 1200);
+      }
+    } catch (err) {
+      var savedFail = document.getElementById("saved");
+      savedFail.textContent = "Not saved";
+      savedFail.classList.add("show");
+    }
+  }
+
+  function showTab(name, save) {
+    state.tab = name === "questions" ? "questions" : "audit";
+    var audit = state.tab === "audit";
+    document.getElementById("panel-audit").hidden = !audit;
+    document.getElementById("panel-questions").hidden = audit;
+    document.getElementById("tab-audit").setAttribute("aria-selected", audit ? "true" : "false");
+    document.getElementById("tab-questions").setAttribute("aria-selected", audit ? "false" : "true");
+    if (save !== false) persist(false);
+    sizeHeader();
+    applyFilter();
+  }
+
+  function approveAll() {
+    activeAudit.forEach(function (item) { state.decisions[item.id] = item.recommended; });
+    document.querySelectorAll("[data-audit-id]").forEach(syncCard);
+    persist(true);
+    updateProgress();
+    applyFilter();
+  }
+
+  function resetAudit() {
+    if (!window.confirm("Reset the open items to your Nov 21 export? Needs edit goes back on the four items you already marked, and your notes from that export come back. Questionnaire answers stay. Already decided items stay.")) return;
+    state.decisions = copyMap(PRIOR_DECISIONS);
+    state.notes = copyMap(PRIOR_NOTES);
+    document.querySelectorAll("[data-note-for]").forEach(function (node) {
+      var id = node.getAttribute("data-note-for");
+      node.value = state.notes[id] || "";
+      autosize(node);
+    });
+    document.querySelectorAll("[data-audit-id]").forEach(syncCard);
+    persist(true);
+    updateProgress();
+    applyFilter();
+  }
+
+  function decisionLabel(value) {
+    return LABELS[value] || "Undecided";
+  }
+
+  function noteLines(note) {
+    if (!note) return ["- Note: (none)"];
+    if (note.indexOf("\n") === -1) return ["- Note: " + note];
+    return ["- Note:"].concat(note.split("\n").map(function (line) { return "  " + line; }));
+  }
+
+  function buildMarkdown() {
+    var c = counts();
+    var lines = [
+      "# kevinfranzjr.com audit review",
+      "",
+      "Exported: " + new Date().toISOString(),
+      "",
+      "Audit decisions: " + c.decided + "/" + activeAudit.length,
+      "Questionnaire answers: " + c.answered + "/" + activeQuestions.length,
+      "",
+      "Open items only. Already decided items are not in this export.",
+      "",
+      "## Audit approvals"
+    ];
+    data.groups.forEach(function (group) {
+      var open = group.items.filter(function (item) { return ACTIVE[item.id]; });
+      if (!open.length) return;
+      lines.push("", "### " + group.title, "", group.intro);
+      open.forEach(function (item) {
+        var note = (state.notes[item.id] || "").trim();
+        lines.push("", "#### " + item.claim);
+        lines.push("- Page: " + item.page);
+        lines.push("- Where: " + item.where);
+        lines.push("- Why: " + item.why);
+        lines.push("- Recommended: " + item.recommendation);
+        lines.push("- Decision: " + decisionLabel(state.decisions[item.id]));
+        noteLines(note).forEach(function (line) { lines.push(line); });
+        if (item.id === "schedule-home-away" && !note) {
+          lines.push("- Still needed: Home or Away for Dec 9 vs Wyandotte, and Home or Away for Feb 14 vs Blue Valley.");
+        }
+      });
+    });
+    lines.push("", "## Questionnaire");
+    data.questions.sections.forEach(function (section) {
+      var open = section.items.filter(function (q) { return ACTIVE_Q[q.code]; });
+      if (!open.length) return;
+      lines.push("", "### " + section.title);
+      open.forEach(function (q) {
+        var answer = (state.answers[q.code] || "").trim();
+        lines.push("", "**" + q.text + "**", answer || "(unanswered)");
+      });
+    });
+    lines.push("");
+    return lines.join("\n");
+  }
+
+  function buildJson() {
+    var c = counts();
+    var byDecision = { approve_hide: 0, approve_fix: 0, confirm_keep: 0, needs_edit: 0, undecided: 0 };
+    var audit = activeAudit.map(function (item) {
+      var decision = state.decisions[item.id] || "";
+      byDecision[decision || "undecided"] += 1;
+      return {
+        id: item.id,
+        bucket: item.bucket,
+        group: item.groupTitle,
+        hideList: item.hideList,
+        page: item.page,
+        claim: item.claim,
+        where: item.where,
+        why: item.why,
+        recommendedAction: item.recommendation,
+        recommendedDecision: decisionLabel(item.recommended),
+        decision: decision,
+        decisionLabel: decisionLabel(decision),
+        note: state.notes[item.id] || ""
+      };
+    });
+    var questionnaire = {};
+    activeQuestions.forEach(function (q) {
+      questionnaire[q.code] = state.answers[q.code] || "";
+    });
+    return {
+      exportedAt: new Date().toISOString(),
+      page: "/audit-review/",
+      storageKey: STORAGE_KEY,
+      scope: "open items only",
+      summary: {
+        auditTotal: activeAudit.length,
+        auditDecided: c.decided,
+        auditUndecided: activeAudit.length - c.decided,
+        questionsTotal: activeQuestions.length,
+        questionsAnswered: c.answered,
+        questionsUnanswered: activeQuestions.length - c.answered,
+        decisions: byDecision
+      },
+      audit: audit,
+      questionnaire: questionnaire
+    };
+  }
+
+  var toastTimer = 0;
+  function showToast(message) {
+    var toast = document.getElementById("toast");
+    toast.hidden = false;
+    toast.textContent = message;
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toast.hidden = true; }, 5000);
+  }
+
+  function flashButton(button, text) {
+    if (!button.getAttribute("data-label")) button.setAttribute("data-label", button.textContent);
+    button.textContent = text;
+    clearTimeout(button._timer);
+    button._timer = setTimeout(function () {
+      button.textContent = button.getAttribute("data-label");
+    }, 5000);
+  }
+
+  function fallbackCopy(text) {
+    var box = document.getElementById("copy-fallback");
+    box.hidden = false;
+    box.value = text;
+    box.focus();
+    box.select();
+    var ok = false;
+    try { ok = document.execCommand("copy"); } catch (err) { ok = false; }
+    if (ok) box.hidden = true;
+    return ok;
+  }
+
+  function copyAnswers() {
+    var text = buildMarkdown();
+    var button = document.getElementById("copy-btn");
+    var finished = false;
+    function finish(ok) {
+      if (ok) {
+        finished = true;
+        flashButton(button, "Copied!");
+        showToast("Copied!");
+        document.getElementById("copy-fallback").hidden = true;
+        return;
+      }
+      if (finished) return;
+      finished = true;
+      var copied = fallbackCopy(text);
+      if (copied) {
+        flashButton(button, "Copied!");
+        showToast("Copied!");
+      } else {
+        flashButton(button, "Copy failed");
+        showToast("Copy the selected text");
+      }
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      var timer = setTimeout(function () { finish(false); }, 800);
+      navigator.clipboard.writeText(text).then(function () {
+        clearTimeout(timer);
+        finish(true);
+      }).catch(function () {
+        clearTimeout(timer);
+        finish(false);
+      });
+    } else {
+      finish(false);
+    }
+  }
+
+  function downloadJson() {
+    var blob = new Blob([JSON.stringify(buildJson(), null, 2)], { type: "application/json" });
+    var url = URL.createObjectURL(blob);
+    var link = document.createElement("a");
+    link.href = url;
+    link.download = "kfjr-audit-and-questionnaire-answers.json";
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+    flashButton(document.getElementById("download-btn"), "Downloaded");
+    showToast("Downloaded");
+  }
+
+  function sizeHeader() {
+    var header = document.querySelector(".topbar");
+    document.documentElement.style.setProperty("--header-h", header.offsetHeight + "px");
+  }
+
+  document.getElementById("tab-audit").addEventListener("click", function () { showTab("audit"); });
+  document.getElementById("tab-questions").addEventListener("click", function () { showTab("questions"); });
+  document.getElementById("only-open").addEventListener("change", function (event) {
+    state.onlyOpen = event.target.checked;
+    persist(false);
+    applyFilter();
+  });
+  document.getElementById("copy-btn").addEventListener("click", copyAnswers);
+  document.getElementById("download-btn").addEventListener("click", downloadJson);
+  document.getElementById("approve-all").addEventListener("click", approveAll);
+  document.getElementById("approve-all-bottom").addEventListener("click", approveAll);
+  document.getElementById("reset-audit").addEventListener("click", resetAudit);
+  document.getElementById("reset-audit-bottom").addEventListener("click", resetAudit);
+
+  document.body.addEventListener("click", function (event) {
+    var jump = event.target.closest(".jump a");
+    if (jump && state.onlyOpen) {
+      state.onlyOpen = false;
+      document.getElementById("only-open").checked = false;
+      persist(false);
+      applyFilter();
+    }
+    var button = event.target.closest("[data-choice]");
+    if (!button) return;
+    var card = button.closest("[data-audit-id]");
+    var id = card.getAttribute("data-audit-id");
+    var value = button.getAttribute("data-choice");
+    if (state.decisions[id] === value) delete state.decisions[id];
+    else state.decisions[id] = value;
+    syncCard(card);
+    persist(true);
+    updateProgress();
+    applyFilter();
+  });
+
+  document.body.addEventListener("input", function (event) {
+    var node = event.target;
+    if (node.hasAttribute("data-note-for")) {
+      state.notes[node.getAttribute("data-note-for")] = node.value;
+      autosize(node);
+      persist(true);
+    }
+    if (node.hasAttribute("data-answer-for")) {
+      state.answers[node.getAttribute("data-answer-for")] = node.value;
+      autosize(node);
+      persist(true);
+      updateProgress();
+      applyFilter();
+    }
+  });
+
+  document.body.addEventListener("focusout", function () {
+    setTimeout(applyFilter, 0);
+  });
+
+  window.addEventListener("resize", sizeHeader);
+
+  renderAudit();
+  renderQuestions();
+  document.querySelectorAll("[data-audit-id]").forEach(syncCard);
+  var hadSaved = false;
+  try { hadSaved = !!localStorage.getItem(STORAGE_KEY); } catch (err) { hadSaved = false; }
+  document.getElementById("only-open").checked = !!state.onlyOpen;
+  showTab(state.tab, false);
+  updateProgress();
+  autosizeAll();
+  sizeHeader();
+  if (hadSaved) {
+    var saved = document.getElementById("saved");
+    saved.textContent = "Saved";
+    saved.classList.add("show");
+    savedTimer = setTimeout(function () { saved.classList.remove("show"); }, 1200);
+  }
+})();
+</script>
+</body>
+</html>
+{% endraw %}
