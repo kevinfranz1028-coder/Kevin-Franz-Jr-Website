@@ -985,6 +985,7 @@ a:focus-visible, button:focus-visible {
 }
 .bb-contact p { max-width: 36rem; }
 .bb-contact-links { display: flex; flex-direction: column; gap: 10px; align-self: end; }
+.bb-contact > div > .bb-contact-links { margin-top: 28px; align-self: start; }
 .bb-contact-links a {
   color: #000;
   font-family: "Bebas Neue", "Arial Narrow", sans-serif;
@@ -992,6 +993,45 @@ a:focus-visible, button:focus-visible {
   letter-spacing: 0.02em;
   text-decoration: none;
   border-bottom: 2px solid #000;
+}
+.bb-recruit-links {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #000;
+  background: #fff;
+  align-self: stretch;
+}
+.bb-recruit-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 20px;
+  color: #000;
+  text-decoration: none;
+  border-top: 1px solid #000;
+}
+.bb-recruit-link:first-child { border-top: 0; }
+.bb-recruit-link strong {
+  display: block;
+  font-family: "Bebas Neue", "Arial Narrow", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+}
+.bb-recruit-link em {
+  display: block;
+  margin-top: 4px;
+  font-style: normal;
+  font-size: 14px;
+  color: #4C4C4C;
+}
+.bb-recruit-view {
+  flex-shrink: 0;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .jv-log { padding: 8px 0 12px; }

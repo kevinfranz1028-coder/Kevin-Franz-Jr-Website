@@ -86,13 +86,39 @@ active: basketball
 
 <section class="bb-contact">
   <div>
-    <p class="bb-kicker bb-kicker-ink">/04 CONTACT</p>
-    <h2>For coaches.</h2>
+    <p class="bb-kicker bb-kicker-ink">/04 RECRUITING</p>
+    <h2>For coaches &amp; scouts.</h2>
+    <p>Find Kevin's profile across major recruiting platforms. For direct inquiries, contact the family.</p>
     <p>The {{ basketballSeason.jvSeasonLabel }} season, with its stats and games, is on the journey.</p>
     <a class="bb-card-link" href="{{ basketballSeason.jvSeasonHref }}">{{ basketballSeason.jvSeasonLabel }} &rarr;</a>
+    <div class="bb-contact-links">
+      <a href="mailto:{{ player.parentEmail }}">{{ player.parentEmail }}</a>
+      <a href="tel:{{ player.parentPhone }}">{{ player.parentPhone }}</a>
+    </div>
   </div>
-  <div class="bb-contact-links">
-    <a href="mailto:{{ player.parentEmail }}">{{ player.parentEmail }}</a>
-    <a href="tel:{{ player.parentPhone }}">{{ player.parentPhone }}</a>
+  <div class="bb-recruit-links">
+    {# Entries with an empty URL are TODO slots: skipped when rendering, so
+       nothing broken shows. Paste the public URL in to publish the card. #}
+    {% for link in [
+      ['PREPHOOPS', 'Player profile and rankings', 'https://prephoops.com/player/kevin-franz/'],
+      ['PREP HOOPS RANKINGS', 'Featured in the updated 2028 Kansas rankings, Oct 9 2026', 'https://prephoops.com/2026/10/updated-2028-kansas-rankings/'],
+      ['NCSA SPORTS', 'Complete recruiting profile', 'https://www.ncsasports.org/mens-basketball-recruiting/kansas/overland-park/blue-valley-southwest-high-school/kevin-franz3'],
+      ['INSTAGRAM', '@kfranzjr2028', 'https://instagram.com/kfranzjr2028'],
+      ['X', '@kfranzjr2028', 'https://x.com/kfranzjr2028'],
+      ['FIELDLEVEL', 'Coach-to-coach recruiting network', 'https://www.fieldlevel.com/app/profile/kevin.franzjr/basketballmen?m=3'],
+      ['RECRUITLOOK', 'Verified athlete profile', 'https://recruitlook.com/profile/20035511-74e5-481c-b21a-0e259f3a772e'],
+      ['SCORABILITY', 'Recruiting profile', ''],
+      ['SPORTS PASSPORTS', 'Tournament history and stats', '']
+    ] %}
+      {% if link[2] %}
+      <a class="bb-recruit-link" href="{{ link[2] }}" target="_blank" rel="noopener noreferrer">
+        <span>
+          <strong>{{ link[0] }}</strong>
+          <em>{{ link[1] }}</em>
+        </span>
+        <span class="bb-recruit-view">View &rarr;</span>
+      </a>
+      {% endif %}
+    {% endfor %}
   </div>
 </section>
