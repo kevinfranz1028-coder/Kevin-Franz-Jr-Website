@@ -1,0 +1,24 @@
+<section class="jv-log" aria-label="2025-26 BVSW JV stats and games">
+  <p class="jv-line">{{ bvswJv202526.line }}</p>
+  <div class="jv-stats">
+    {% for stat in bvswJv202526.stats %}
+    <div>
+      <span>{{ stat.label }}</span>
+      <strong>{{ stat.value }}</strong>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="jv-games">
+    <div class="jv-game jv-game-head">
+      <span>Date</span><span>Opponent</span><span>Loc</span><span>Result</span>
+    </div>
+    {% for game in bvswJv202526.games %}
+    <div class="jv-game">
+      <span>{{ game.date }}</span>
+      <span>{{ game.opp }}</span>
+      <span>{{ game.loc }}</span>
+      <span>{{ game.result }}</span>
+    </div>
+    {% endfor %}
+  </div>
+</section>

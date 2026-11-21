@@ -1,0 +1,42 @@
+{
+  "source": "Coach James Manthe's 2026-27 season calendar, parsed 2026-11-20",
+  "sourceUrl": "https://docs.google.com/spreadsheets/d/1dCBBrCVuLcxAqBpf5p3786CAizc7zo_A/edit",
+  "overrides": [
+    {
+      "date": "2026-12-10",
+      "matchOpponent": "Maranatha",
+      "time": "7:00 PM",
+      "note": "Coach Manthe's sheet: varsity tip 7:00 PM CT. Bound lists 7:30 PM."
+    },
+    {
+      "date": "2027-01-21",
+      "matchOpponent": "Viking Classic",
+      "time": "TBD",
+      "homeAway": "TBD",
+      "location": "TBD",
+      "note": "Coach Manthe's sheet: tip and site TBD. Bound's 3:00–10:00 PM Main Gym block is not used."
+    },
+    {
+      "date": "2027-01-22",
+      "matchOpponent": "Viking Classic",
+      "time": "TBD",
+      "homeAway": "TBD",
+      "location": "TBD",
+      "note": "Coach Manthe's sheet: tip and site TBD. Bound's 3:00–10:00 PM Main Gym block is not used."
+    },
+    {
+      "date": "2027-01-23",
+      "matchOpponent": "Viking Classic",
+      "time": "TBD",
+      "homeAway": "TBD",
+      "location": "TBD",
+      "note": "Coach Manthe's sheet: tip and site TBD. Bound's 3:00–10:00 PM Main Gym block is not used."
+    },
+    {
+      "date": "2027-01-29",
+      "matchOpponent": "Shawnee Legacy",
+      "opponent": "Shawnee Legacy Preparatory Academy",
+      "note": "Coach Manthe's sheet lists Legacy Prep. Spelling is Shawnee Legacy Preparatory Academy."
+    }
+  ]
+}
