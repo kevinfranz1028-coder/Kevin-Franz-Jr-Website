@@ -35,3 +35,11 @@
   X-Robots-Tag: noindex, nofollow
 /audit-review/*
   X-Robots-Tag: noindex, nofollow
+
+# Unlisted worksheet for Kev. Not linked from the site.
+/kev-worksheet
+  X-Robots-Tag: noindex, nofollow
+/kev-worksheet/
+  X-Robots-Tag: noindex, nofollow
+/kev-worksheet/*
+  X-Robots-Tag: noindex, nofollow
