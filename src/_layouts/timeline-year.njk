@@ -17,10 +17,11 @@ layout: base.njk
 
 {# One block per team when the page lists more than a single stat line.
    Otherwise keep the original season statistics block. #}
-{% if teams and teams.length %}
+{% set shownTeams = teams | visibleTeams %}
+{% if shownTeams and shownTeams.length %}
 <section style="padding: 1rem 0 0; background-color: var(--bg-light);">
     <div class="container">
-        {% for t in teams %}
+        {% for t in shownTeams %}
         <article class="timeline-team" id="{{ t.id }}">
             <h2>{{ t.name }}{% if t.jersey %} #{{ t.jersey }}{% endif %}</h2>
             <p class="timeline-team-meta">{{ t.when }}{% if t.record %} · {{ t.record }}{% endif %}</p>

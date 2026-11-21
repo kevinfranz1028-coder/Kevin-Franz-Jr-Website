@@ -46,9 +46,10 @@ permalink: /timeline/
                         <h3 class="update-card-title">{{ item.data.year }}</h3>
                         <time class="update-card-date">{{ item.data.grade }}{% if item.data.team %} &middot; {{ item.data.team }}{% endif %}</time>
                         <p class="update-card-summary">{{ item.data.summary }}</p>
-                        {% if item.data.teams and item.data.teams.length %}
+                        {% set shownTeams = item.data.teams | visibleTeams %}
+                        {% if shownTeams and shownTeams.length %}
                         <ul class="timeline-team-list">
-                            {% for t in item.data.teams %}
+                            {% for t in shownTeams %}
                             <li>
                                 <a href="{{ item.url }}#{{ t.id }}">{{ t.when }} · {{ t.name }}{% if t.jersey %} #{{ t.jersey }}{% endif %}</a>
                                 {% if t.honor %}<span>{{ t.honor }}</span>{% endif %}

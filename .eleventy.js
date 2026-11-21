@@ -76,6 +76,8 @@ module.exports = function(eleventyConfig) {
       const kind = (season === "Middle School AAU" || season === "AAU") ? "AAU" : "School";
       const teams = Array.isArray(item.data.teams) && item.data.teams.length ? item.data.teams : [null];
       teams.forEach(function(team) {
+        // listed: false hides a team from the Journey rail without deleting the page.
+        if (team && team.listed === false) return;
         const when = team && team.when ? team.when : "";
         let rank = seasonRank(when);
         if (rank === null) {
@@ -118,6 +120,14 @@ module.exports = function(eleventyConfig) {
       previous = card.stage;
     });
     return cards;
+  });
+
+  // Teams kept in front matter but hidden from Journey, the Timeline index, and season pages.
+  eleventyConfig.addFilter("visibleTeams", function(teams) {
+    if (!Array.isArray(teams)) return [];
+    return teams.filter(function(team) {
+      return team && team.listed !== false;
+    });
   });
 
   // Jersey number when we have one, otherwise up to three initials for the placeholder.
