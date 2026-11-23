@@ -24,13 +24,13 @@ JC Hoops 16U is **10-3** through 13 games. My line so far:
 - **2.8 assists** per game
 - **46%** from the field, **38%** from three
 
-Shooting 46/38 is a big jump from the 39/32 I shot in the BVSW JV season last winter, and the rebounding is up a lot too. Playing more on the wing has given me cleaner looks and better angles to the glass.
+Shooting 46/38 is a big jump from the 39/32 I shot in the BVSW JV season last winter, and the rebounding is up a lot too.
 
 ## Last winter, for the record
 
 The 2025-26 BVSW JV season is on the [Basketball page](/basketball/). The team went 7-14. I played in 19 of the 21 games, with 17 starts, and averaged 5.6 points, 4.0 rebounds and 2.5 assists with a 2.18 assist-to-turnover ratio.
 
-It wasn't a winning season, but the assist-to-turnover number is the one I keep coming back to. Taking care of the ball is the part of my game I trust most.
+It wasn't a winning season, but the assist-to-turnover number is the one I keep coming back to.
 
 ## What's next
 

@@ -5,8 +5,10 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/css");
   eleventyConfig.addPassthroughCopy("src/js");
   eleventyConfig.addPassthroughCopy("src/images");
-  eleventyConfig.addPassthroughCopy("src/admin");
   eleventyConfig.addPassthroughCopy("src/files");
+
+  // Old CMS sign-in. Do not publish /admin/ or its config.
+  eleventyConfig.ignores.add("src/admin/**");
 
   // Cloudflare Pages configuration
   eleventyConfig.addPassthroughCopy("src/_routes.json");
