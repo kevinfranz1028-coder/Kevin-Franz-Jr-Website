@@ -11,8 +11,6 @@ featured: true
 
 It has been a busy fall. In early October I competed at the **High School All-American (HSAA) Showcase** in Kansas City, and on **October 11** I played at **Prep Hoops' The Expo: Kansas City**, where I wore jersey **#927**.
 
-That is a different test from league play — you get a handful of possessions to show what you do well, and you have to be decisive.
-
 ## JC Hoops 16U
 
 With **JC Hoops 16U** the team has gone **10-3** this fall. My line across those games:
