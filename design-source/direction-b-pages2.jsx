@@ -220,7 +220,6 @@ function BContactPage() {
       </div>
       <section style={{display:'grid', gridTemplateColumns:'repeat(2, 1fr)', gap:1, background:'var(--b-line)', borderBottom:'1px solid var(--b-line)'}}>
         {[
-          { role:'BVSW VARSITY HEAD COACH', name:'RJ Palmgren', email:'rpalmgren@bluevalleyk12.org', since:'2023' },
           { role:'YOUHOOP 3SSB · AAU COACH', name:'Aaron Henson', email:'a.henson@youhoop.com', since:'2024' },
         ].map((c, i) => (
           <div key={i} style={{background:'var(--b-bg)', padding:'40px 36px'}}>
