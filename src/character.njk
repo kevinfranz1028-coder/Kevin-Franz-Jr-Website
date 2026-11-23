@@ -7,9 +7,7 @@ active: character
 ---
 
 {% set values = [
-  { num: '/01', title: 'Team First',    description: 'Success is measured by what we achieve together — every screen, every sprint back, every box-out.' },
-  { num: '/03', title: 'Curiosity',     description: 'Always learning, always asking questions — film, books, weather charts, you name it.' },
-  { num: '/04', title: 'Family',        description: 'Everything starts with the people who support me — parents, coaches, teammates.' }
+  { num: '/03', title: 'Curiosity', description: 'Always learning, always asking questions.' }
 ] %}
 
 {# ===== HERO ===== #}
@@ -23,7 +21,7 @@ active: character
 </section>
 
 {# ===== VALUES ===== #}
-<section class="character-values" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:1px; padding:1px; background:var(--b-line); border-bottom:1px solid var(--b-line);">
+<section class="character-values" style="display:grid; grid-template-columns:minmax(0, 1fr); gap:1px; padding:1px; background:var(--b-line); border-bottom:1px solid var(--b-line);">
   {% for v in values %}
     <div style="background:var(--b-bg-2); padding:36px 28px; display:flex; flex-direction:column;">
       <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; color:var(--b-green-bright); text-transform:uppercase; margin-bottom:20px;">{{ v.num }}</div>
