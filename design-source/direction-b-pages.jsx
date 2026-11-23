@@ -238,24 +238,6 @@ function BCharacterPage() {
     <div className="b-root">
       <BNav active="character" />
 
-      {/* Hero — quote-led */}
-      <section style={{padding:'120px 56px', background:'var(--b-bg)', borderBottom:'1px solid var(--b-line)', position:'relative', overflow:'hidden'}}>
-        <div style={{position:'absolute', top:40, right:56, fontFamily:'Archivo, sans-serif', fontSize:600, fontWeight:900, color:'var(--b-bg-2)', lineHeight:0.7, pointerEvents:'none', userSelect:'none', letterSpacing:'-0.05em'}}>"</div>
-        <div style={{position:'relative', zIndex:2, maxWidth:1100}}>
-          <div style={{fontFamily:'JetBrains Mono, monospace', fontSize:11, letterSpacing:'0.14em', color:'var(--b-green-bright)', textTransform:'uppercase', marginBottom:32}}>● CHARACTER & SERVICE</div>
-          <h1 style={{fontFamily:'Fraunces, serif', fontWeight:500, fontStyle:'italic', fontSize:96, lineHeight:1.05, letterSpacing:'-0.03em', margin:0, color:'var(--b-text)'}}>
-            Kevin leads by example. He's the first one in the gym and the last to leave. His work ethic is contagious.
-          </h1>
-          <div style={{marginTop:40, display:'flex', alignItems:'center', gap:20}}>
-            <div style={{width:60, height:1, background:'var(--b-green-bright)'}} />
-            <div>
-              <div style={{fontFamily:'Archivo, sans-serif', fontWeight:800, fontSize:18, color:'var(--b-text)', textTransform:'uppercase', letterSpacing:'0.02em'}}>Coach RJ Palmgren</div>
-              <div style={{fontFamily:'JetBrains Mono, monospace', fontSize:12, color:'var(--b-mute)', letterSpacing:'0.08em', marginTop:4}}>BVSW VARSITY HEAD COACH</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Values — flippable */}
       <div className="b-section-head">
         <div className="b-section-head-left">
