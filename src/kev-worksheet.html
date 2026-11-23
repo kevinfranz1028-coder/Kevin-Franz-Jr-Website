@@ -1,0 +1,848 @@
+---
+permalink: /kev-worksheet/index.html
+eleventyExcludeFromCollections: true
+---
+{% raw %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="googlebot" content="noindex,nofollow">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%2314171c'/%3E%3C/svg%3E">
+<title>Worksheet for Kev</title>
+<style>
+  :root {
+    --bg: #0b0d10;
+    --bg-2: #14171c;
+    --bg-3: #1c2127;
+    --line: #262b33;
+    --text: #e8eaed;
+    --mute: #9aa1ab;
+    --green: #22c55e;
+    --green-dark: #15803d;
+    --header-h: 108px;
+    --bar-h: 76px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 17px;
+    line-height: 1.5;
+    color-scheme: dark;
+  }
+  [hidden] { display: none !important; }
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background: rgba(11, 13, 16, 0.94);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+    padding: calc(10px + env(safe-area-inset-top)) 16px 0;
+  }
+  .topbar-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 12px;
+    padding-bottom: 8px;
+  }
+  .topbar h1 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    line-height: 1.3;
+    flex: 1 1 180px;
+  }
+  .saved {
+    min-width: 4.5em;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: transparent;
+  }
+  .saved.show { color: var(--green); }
+  .progress {
+    margin: 0 0 8px;
+    font-size: 15px;
+    color: var(--mute);
+    font-variant-numeric: tabular-nums;
+  }
+  .progress strong { color: var(--text); }
+  .meter { height: 3px; background: var(--bg-3); }
+  .meter > span { display: block; height: 100%; width: 0; background: var(--green); }
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 20px 16px calc(var(--bar-h) + 28px + env(safe-area-inset-bottom));
+  }
+  .intro, .group, .q-field {
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+  }
+  .intro {
+    padding: 18px;
+    margin-bottom: 16px;
+    border-left: 3px solid var(--green);
+  }
+  .intro p { margin: 0; color: var(--text); font-size: 17px; }
+  .jump { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
+  .jump a {
+    color: var(--mute);
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 1.3;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+    background: var(--bg-3);
+    min-height: 44px;
+    max-width: 100%;
+    display: inline-flex;
+    align-items: center;
+    overflow-wrap: anywhere;
+  }
+  .jump a:hover { color: var(--green); border-color: var(--green); }
+  .group { margin-bottom: 18px; scroll-margin-top: calc(var(--header-h) + 12px); }
+  .group-head { padding: 16px 16px 4px; }
+  .group h2 { margin: 0 0 8px; font-size: 20px; line-height: 1.3; overflow-wrap: anywhere; }
+  .q-field {
+    margin: 0 12px 12px;
+    padding: 14px;
+    scroll-margin-top: calc(var(--header-h) + 12px);
+  }
+  .q-field label {
+    display: block;
+    margin: 0 0 10px;
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+  }
+  .kcode { color: var(--green); }
+  .prompt { color: var(--text); font-size: 17px; overflow-wrap: anywhere; }
+  .prompt p { margin: 0 0 10px; }
+  .prompt ul { margin: 0 0 10px; padding-left: 1.25em; }
+  .prompt li { margin: 0 0 6px; }
+  .hint { margin: 0 0 4px; color: var(--mute); font-size: 16px; overflow-wrap: anywhere; }
+  textarea {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 10px;
+    min-height: 96px;
+    resize: none;
+    background: var(--bg);
+    color: var(--text);
+    border: 1px solid var(--line);
+    padding: 12px;
+    font: 17px/1.45 inherit;
+    overflow: hidden;
+  }
+  textarea:focus, .btn:focus-visible, .jump a:focus-visible {
+    outline: 2px solid var(--green);
+    outline-offset: 2px;
+  }
+  .actionbar {
+    position: fixed;
+    z-index: 50;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    gap: 8px;
+    padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+    background: rgba(11, 13, 16, 0.96);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid var(--line);
+  }
+  .btn {
+    font-family: inherit;
+    cursor: pointer;
+    min-height: 48px;
+    flex: 1 1 0;
+    min-width: 0;
+    background: var(--green);
+    color: #06210f;
+    border: none;
+    padding: 12px 10px;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    line-height: 1.2;
+  }
+  .btn:hover { background: var(--green-dark); color: white; }
+  .btn-ghost {
+    background: var(--bg-2);
+    color: var(--text);
+    border: 1px solid var(--line);
+  }
+  .btn-ghost:hover { border-color: var(--green); color: var(--green); background: var(--bg-2); }
+  .fatal {
+    margin: 0 0 16px;
+    padding: 16px;
+    background: #3a1418;
+    border: 1px solid #ef4444;
+  }
+  .copy-fallback {
+    margin-top: 12px;
+    width: 100%;
+    min-height: 180px;
+  }
+  .toast {
+    position: fixed;
+    left: 50%;
+    bottom: calc(var(--bar-h) + 12px + env(safe-area-inset-bottom));
+    transform: translateX(-50%);
+    z-index: 80;
+    max-width: calc(100% - 32px);
+    background: var(--green);
+    color: #06210f;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 14px 18px;
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  }
+  @media (max-width: 640px) {
+    .q-field { margin-left: 0; margin-right: 0; }
+    .group { border-left: none; border-right: none; }
+  }
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-row">
+    <h1>Worksheet for Kev</h1>
+    <p id="saved" class="saved" aria-live="polite"></p>
+  </div>
+  <p id="progress" class="progress" aria-live="polite">0 of 17 answered</p>
+  <div class="meter" aria-hidden="true"><span id="meter-bar"></span></div>
+</header>
+<div class="container">
+  <div id="fatal" class="fatal" hidden></div>
+  <div class="intro">
+    <p id="intro">Answer what you know, skip what you don't. Hit Copy answers when you're done and send them to Dad.</p>
+  </div>
+  <nav class="jump" id="jump" aria-label="Sections"></nav>
+  <div id="root"></div>
+  <textarea id="copy-fallback" class="copy-fallback" hidden readonly></textarea>
+</div>
+<div class="actionbar">
+  <button type="button" class="btn" id="copy-btn">Copy answers</button>
+  <button type="button" class="btn btn-ghost" id="download-btn">Download JSON</button>
+</div>
+<div id="toast" class="toast" hidden role="status" aria-live="polite"></div>
+<script type="application/json" id="worksheet-data">{
+  "sections": [
+    {
+      "title": "Basketball and journey",
+      "questions": [
+        {
+          "code": "K1",
+          "title": "How would you describe your game?",
+          "heading": "K1. How would you describe your game?",
+          "hint": "We would use this on the home page in place of those two lines, or take them down if they don't sound like you.",
+          "mapsTo": "audit #10 and #11 (Needs edit); questionnaire H1.",
+          "parts": [
+            {
+              "type": "p",
+              "text": "The site currently uses two short lines: \"Pace, playmaking, and full-court defense.\" and \"#28 — Pace, decisions, on-ball defense.\" Do those feel like you, or would you say it differently? A short phrase is enough. If a coach has described your game that way, tell us who."
+            }
+          ]
+        },
+        {
+          "code": "K2",
+          "title": "Can you write two or three sentences about how you play, and who you are off the floor?",
+          "heading": "K2. Can you write two or three sentences about how you play, and who you are off the floor?",
+          "hint": "This would replace the removed home profile paragraph, and only if you actually write it.",
+          "mapsTo": "questionnaire H2; audit #12 (already approved hide/remove).",
+          "parts": [
+            {
+              "type": "p",
+              "text": "There was a home-page paragraph written as you (\"pace-pusher and playmaker… serious about the classroom\"). That one is already coming down. If you want something in your own words there, write it here. If you'd rather have no first-person paragraph, say so."
+            }
+          ]
+        },
+        {
+          "code": "K3",
+          "title": "What are you working on in your game right now?",
+          "heading": "K3. What are you working on in your game right now?",
+          "hint": "We would use this as your development-focus list, or hide it if it isn't right.",
+          "mapsTo": "audit #16 (Needs edit); questionnaire T6.",
+          "parts": [
+            {
+              "type": "p",
+              "text": "The 2025–26 page lists catch-and-shoot from the wing, finishing through contact, and reading help defense. Are those really what you've been working on? Keep them, change them, or take them off."
+            }
+          ]
+        },
+        {
+          "code": "K4",
+          "title": "Do you watch game film?",
+          "heading": "K4. Do you watch game film?",
+          "hint": "This decides whether \"Watches game film\" stays on the Projects page.",
+          "mapsTo": "audit #20 (Needs edit); questionnaire P1.",
+          "parts": [
+            {
+              "type": "p",
+              "text": "Do you regularly watch game film — on your own, with the team, or with a coach? Is it fair for the site to say that you watch game film?"
+            }
+          ]
+        },
+        {
+          "code": "K5",
+          "title": "Did you actually get to those offseason workouts?",
+          "heading": "K5. Did you actually get to those offseason workouts?",
+          "hint": "This line is on the JC Hoops 16U page and in the Nov 3 \"A Busy Fall\" post. We'll only keep it if you say you were actually there.",
+          "mapsTo": "audit #24 and #25 (Needs edit); questionnaire T7.",
+          "parts": [
+            {
+              "type": "p",
+              "text": "This fall the calendar had BYB Elite tryout prep (October–November) and SM West weight room and open gyms. Did you go? Is it fair to say you've kept up consistent offseason workouts, or should we take that line off?"
+            }
+          ]
+        },
+        {
+          "code": "K6",
+          "title": "About when did you start playing organized basketball?",
+          "heading": "K6. About when did you start playing organized basketball?",
+          "hint": "We would use this to fix or replace the unsourced \"seven years on the floor\" line, not to invent a new number.",
+          "mapsTo": "audit #23 (Needs edit).",
+          "parts": [
+            {
+              "type": "p",
+              "text": "A grade, a year, or even \"I don't remember exactly\" is fine. Don't worry about counting years for us."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Camps and younger years",
+      "questions": [
+        {
+          "code": "K7",
+          "title": "What do you remember from the two Phenom camps?",
+          "heading": "K7. What do you remember from the two Phenom camps?",
+          "hint": "The second Phenom video stays; we need the label and any short description to be right. Your dad also has more video if a short montage makes sense later.",
+          "mapsTo": "audit #6 (Undecided) and #7 (Needs edit); questionnaire T4.",
+          "parts": [
+            {
+              "type": "p",
+              "text": "Your dad said San Diego was your first one, the summer before 6th grade, and Los Angeles was the summer before 7th grade. Does that match what you remember? What stands out from those camps, if anything, that you'd be okay having on the site?"
+            }
+          ]
+        },
+        {
+          "code": "K8",
+          "title": "Which camps do you remember going to?",
+          "heading": "K8. Which camps do you remember going to?",
+          "hint": "We would only list camps you remember attending. This also helps rewrite the Contact line that currently says \"Summer 2022 and 2023 camp highlights.\"",
+          "mapsTo": "questionnaire T5; audit #7 (Needs edit).",
+          "parts": [
+            {
+              "type": "p",
+              "text": "These have come up in emails and on the site. Check the ones you remember, add any we missed, and tell us if one should not be listed:"
+            },
+            {
+              "type": "ul",
+              "items": [
+                "PGC Playmaker College (Kansas City, June 2022)",
+                "PGC Scoring College (Naperville, June 2023)",
+                "Phenom (San Diego and Los Angeles — see K7)",
+                "KU Bill Self camp (June 2024)",
+                "Oklahoma State team camp (June 2026)",
+                "Any others?"
+              ]
+            }
+          ]
+        },
+        {
+          "code": "K9",
+          "title": "What do you remember from basketball before middle school?",
+          "heading": "K9. What do you remember from basketball before middle school?",
+          "hint": "We would use this, together with your dad's video and team names, to rebuild the old 2019–2020 card as your pre-middle-school years.",
+          "mapsTo": "audit #5 (Undecided); questionnaire T1.",
+          "parts": [
+            {
+              "type": "p",
+              "text": "Team names, events, roughly what grade, or a \"I don't really remember\" are all useful. Your dad has video, team names, and events, and wants that part of the Timeline to cover your younger years — not a generic \"youth league\" card."
+            }
+          ]
+        },
+        {
+          "code": "K10",
+          "title": "Have you helped at any youth camps through school?",
+          "heading": "K10. Have you helped at any youth camps through school?",
+          "hint": "The current site line about youth camps can stay or get more specific if you name real camps.",
+          "mapsTo": "questionnaire C4.",
+          "parts": [
+            {
+              "type": "p",
+              "text": "Which camps, and roughly when? If you haven't, or you don't want that mentioned, say so. This one is optional."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "In your own words",
+      "questions": [
+        {
+          "code": "K11",
+          "title": "Can you write your Character values in your own words?",
+          "heading": "K11. Can you write your Character values in your own words?",
+          "hint": "We would only publish values you actually write. If you'd rather have none, we'll take them down.",
+          "mapsTo": "audit #13, #14, and #15 (Needs edit); questionnaire C1.",
+          "parts": [
+            {
+              "type": "p",
+              "text": "The Character page still has three values written as you:"
+            },
+            {
+              "type": "ul",
+              "items": [
+                "Team First: \"Success is measured by what we achieve together…\"",
+                "Curiosity: \"film, books, weather charts, you name it\"",
+                "Family: \"Everything starts with the people who support me…\""
+              ]
+            },
+            {
+              "type": "p",
+              "text": "Want to rewrite each in one line, pick different values, or take this section down? A filler line that wasn't really yours (\"first one in, last one out\") is already coming off."
+            }
+          ]
+        },
+        {
+          "code": "K12",
+          "title": "Any leadership roles besides Freshman A captain?",
+          "heading": "K12. Any leadership roles besides Freshman A captain?",
+          "hint": "We would add only roles you name. We will not invent honors or titles.",
+          "mapsTo": "questionnaire C3.",
+          "parts": [
+            {
+              "type": "p",
+              "text": "You were Team Captain of BVSW Freshman A in 2024–25. That's already confirmed. Have you had any other leadership roles — on a team, at school, at church, or at camps? Only list ones you actually had. If captain is the only one, that's completely fine."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Media and photography",
+      "questions": [
+        {
+          "code": "K13",
+          "title": "What's on your @shotsbyfranz Instagram?",
+          "heading": "K13. What's on your @shotsbyfranz Instagram?",
+          "hint": "This decides whether the \"Photography posted at @shotsbyfranz\" line stays, and how we describe your photo work.",
+          "mapsTo": "audit #28 (Undecided); questionnaire M1.",
+          "parts": [
+            {
+              "type": "p",
+              "text": "Is it mostly sports photography? Have you done any shoots we could mention (a credential, a client email, or just tell us what they were)? If you'd rather not have the account on the site, say so."
+            }
+          ]
+        },
+        {
+          "code": "K14",
+          "title": "Did Media Production include shooting and editing video?",
+          "heading": "K14. Did Media Production include shooting and editing video?",
+          "hint": "Those two skill tiles stay only if you say the class work is real, and we'll name the software only if you do.",
+          "mapsTo": "audit #21 and #22 (Needs edit); questionnaire M2.",
+          "parts": [
+            {
+              "type": "p",
+              "text": "If you edit, what software do you use? If that wasn't really part of class, we'll take the Videography and Editing tiles off the Media page."
+            }
+          ]
+        },
+        {
+          "code": "K15",
+          "title": "Want to pick some of your own photos?",
+          "heading": "K15. Want to pick some of your own photos?",
+          "hint": "We would use only photos you (or your dad) choose. We will not generate pictures of you.",
+          "mapsTo": "questionnaire M3 and H3; audit #31 (Undecided).",
+          "parts": [
+            {
+              "type": "p",
+              "text": "Two parts, if you're up for it: (1) up to 6 of your photos for a Media gallery, and (2) one real photo per season on the Journey and Timeline cards, instead of initials or a jersey number. You can name files, a Drive folder, or just say you'd rather pick them with your dad."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "School and interests",
+      "questions": [
+        {
+          "code": "K16",
+          "title": "Should the site mention your JCCC Intro to Meteorology class?",
+          "heading": "K16. Should the site mention your JCCC Intro to Meteorology class?",
+          "hint": "We would mention the class only if you want it there. This is not a grades question.",
+          "mapsTo": "questionnaire P2.",
+          "parts": [
+            {
+              "type": "p",
+              "text": "You have an interest in weather, and that class is part of it. Do you want the class mentioned on the site, or would you rather keep the meteorology interest more general?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Approvals on things written as you",
+      "questions": [
+        {
+          "code": "K17",
+          "title": "Are these November lines actually things you'd say?",
+          "heading": "K17. Are these November lines actually things you'd say?",
+          "hint": "We would keep first-person lines only if you OK them, or swap in wording you write here.",
+          "mapsTo": "audit #17 and #18 (Needs edit); questionnaire U1.",
+          "parts": [
+            {
+              "type": "p",
+              "text": "Two posts still have lines written as you:"
+            },
+            {
+              "type": "ul",
+              "items": [
+                "\"The assist-to-turnover number is the one I am proudest of…\"",
+                "\"38% is the number I am happiest with\" and \"Both events put you in front of a lot of people…\""
+              ]
+            },
+            {
+              "type": "p",
+              "text": "Keep them, rewrite them in your own words, or take them down? (A third first-person line, about playing more on the wing, is already coming off.)"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}</script>
+<script>
+(function () {
+  var STORAGE_KEY = "kfjr_kev_worksheet_v1";
+  var data = JSON.parse(document.getElementById("worksheet-data").textContent);
+  var questions = [];
+  data.sections.forEach(function (section) {
+    section.questions.forEach(function (q) {
+      q.section = section.title;
+      questions.push(q);
+    });
+  });
+  var codes = questions.map(function (q) { return q.code; });
+  var expected = [];
+  for (var n = 1; n <= 17; n += 1) expected.push("K" + n);
+  var fatalText = "";
+  if (data.sections.length !== 6 || questions.length !== 17 || codes.join(",") !== expected.join(",")) {
+    fatalText = "This worksheet is missing questions. Expected K1 through K17 in 6 sections.";
+  }
+  questions.forEach(function (q) {
+    if (!q.title || !q.hint || !q.parts || !q.parts.length) fatalText = "This worksheet is missing the text for " + q.code + ".";
+  });
+  if (fatalText) {
+    var fatal = document.getElementById("fatal");
+    fatal.hidden = false;
+    fatal.textContent = fatalText;
+    return;
+  }
+
+  var state = loadState();
+
+  function loadState() {
+    var empty = { answers: {} };
+    try {
+      var raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return empty;
+      var parsed = JSON.parse(raw);
+      var answers = {};
+      if (parsed.answers) {
+        expected.forEach(function (code) {
+          if (typeof parsed.answers[code] === "string") answers[code] = parsed.answers[code];
+        });
+      }
+      return { answers: answers };
+    } catch (err) {
+      return empty;
+    }
+  }
+
+  function el(tag, attrs, text) {
+    var node = document.createElement(tag);
+    if (attrs) {
+      Object.keys(attrs).forEach(function (key) {
+        if (key === "class") node.className = attrs[key];
+        else node.setAttribute(key, attrs[key]);
+      });
+    }
+    if (text != null) node.textContent = text;
+    return node;
+  }
+
+  function slug(title) {
+    return "section-" + title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+  }
+
+  function render() {
+    var jump = document.getElementById("jump");
+    var root = document.getElementById("root");
+    data.sections.forEach(function (section) {
+      var id = slug(section.title);
+      jump.appendChild(el("a", { href: "#" + id }, section.title));
+      var wrap = el("section", { class: "group", id: id });
+      var head = el("div", { class: "group-head" });
+      head.appendChild(el("h2", null, section.title));
+      wrap.appendChild(head);
+      section.questions.forEach(function (q) {
+        var field = el("div", { class: "q-field", id: "q-" + q.code, "data-code": q.code });
+        var label = el("label", { for: "answer-" + q.code });
+        label.appendChild(el("span", { class: "kcode" }, q.code + "."));
+        label.appendChild(document.createTextNode(" " + q.title));
+        var prompt = el("div", { class: "prompt", id: "prompt-" + q.code });
+        q.parts.forEach(function (part) {
+          if (part.type === "ul") {
+            var list = el("ul");
+            part.items.forEach(function (item) { list.appendChild(el("li", null, item)); });
+            prompt.appendChild(list);
+          } else {
+            prompt.appendChild(el("p", null, part.text));
+          }
+        });
+        var hint = el("p", { class: "hint", id: "hint-" + q.code }, "Hint: " + q.hint);
+        var box = el("textarea", {
+          id: "answer-" + q.code,
+          "data-answer-for": q.code,
+          rows: "3",
+          placeholder: "Type your answer",
+          "aria-describedby": "prompt-" + q.code + " hint-" + q.code
+        });
+        box.value = state.answers[q.code] || "";
+        field.appendChild(label);
+        field.appendChild(prompt);
+        field.appendChild(hint);
+        field.appendChild(box);
+        wrap.appendChild(field);
+      });
+      root.appendChild(wrap);
+    });
+  }
+
+  function autosize(node) {
+    node.style.height = "auto";
+    node.style.height = Math.max(96, node.scrollHeight) + "px";
+  }
+
+  function answeredCount() {
+    return questions.filter(function (q) {
+      return (state.answers[q.code] || "").trim().length > 0;
+    }).length;
+  }
+
+  function updateProgress() {
+    var count = answeredCount();
+    var progress = document.getElementById("progress");
+    progress.textContent = "";
+    progress.appendChild(el("strong", null, String(count)));
+    progress.appendChild(document.createTextNode(" of 17 answered"));
+    document.getElementById("meter-bar").style.width = (count / 17 * 100) + "%";
+  }
+
+  var savedTimer = 0;
+  function persist(showSaved) {
+    var answers = {};
+    questions.forEach(function (q) {
+      var value = state.answers[q.code];
+      if (value && value.trim()) answers[q.code] = value;
+    });
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({
+        answers: answers,
+        updatedAt: new Date().toISOString()
+      }));
+      if (showSaved) {
+        var saved = document.getElementById("saved");
+        saved.textContent = "Saved";
+        saved.classList.add("show");
+        clearTimeout(savedTimer);
+        savedTimer = setTimeout(function () { saved.classList.remove("show"); }, 1200);
+      }
+    } catch (err) {
+      var savedFail = document.getElementById("saved");
+      savedFail.textContent = "Not saved";
+      savedFail.classList.add("show");
+    }
+  }
+
+  function promptText(q) {
+    return q.parts.map(function (part) {
+      if (part.type === "ul") return part.items.map(function (item) { return "- " + item; }).join("\n");
+      return part.text;
+    }).join("\n\n");
+  }
+
+  function buildPlain() {
+    return questions.map(function (q) {
+      var answer = (state.answers[q.code] || "").trim();
+      return q.code + " \u2014 " + q.title + ": " + (answer || "(skipped)");
+    }).join("\n\n") + "\n";
+  }
+
+  function buildJson() {
+    var answered = answeredCount();
+    return {
+      exportedAt: new Date().toISOString(),
+      page: "/kev-worksheet/",
+      storageKey: STORAGE_KEY,
+      summary: {
+        total: 17,
+        answered: answered,
+        skipped: 17 - answered
+      },
+      answers: questions.map(function (q) {
+        var answer = (state.answers[q.code] || "").trim();
+        return {
+          code: q.code,
+          section: q.section,
+          question: q.title,
+          prompt: promptText(q),
+          hint: q.hint,
+          mapsTo: q.mapsTo || "",
+          answer: answer,
+          skipped: !answer
+        };
+      })
+    };
+  }
+
+  var toastTimer = 0;
+  function showToast(message) {
+    var toast = document.getElementById("toast");
+    toast.hidden = false;
+    toast.textContent = message;
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toast.hidden = true; }, 5000);
+  }
+
+  function flashButton(button, text) {
+    if (!button.getAttribute("data-label")) button.setAttribute("data-label", button.textContent);
+    button.textContent = text;
+    clearTimeout(button._timer);
+    button._timer = setTimeout(function () {
+      button.textContent = button.getAttribute("data-label");
+    }, 5000);
+  }
+
+  function fallbackCopy(text) {
+    var box = document.getElementById("copy-fallback");
+    box.hidden = false;
+    box.value = text;
+    box.focus();
+    box.select();
+    var ok = false;
+    try { ok = document.execCommand("copy"); } catch (err) { ok = false; }
+    if (ok) box.hidden = true;
+    return ok;
+  }
+
+  function copyAnswers() {
+    var text = buildPlain();
+    var button = document.getElementById("copy-btn");
+    var finished = false;
+    function finish(ok) {
+      if (ok) {
+        finished = true;
+        flashButton(button, "Copied!");
+        showToast("Copied!");
+        document.getElementById("copy-fallback").hidden = true;
+        return;
+      }
+      if (finished) return;
+      finished = true;
+      var copied = fallbackCopy(text);
+      if (copied) {
+        flashButton(button, "Copied!");
+        showToast("Copied!");
+      } else {
+        flashButton(button, "Copy failed");
+        showToast("Copy the selected text");
+      }
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      var timer = setTimeout(function () { finish(false); }, 800);
+      navigator.clipboard.writeText(text).then(function () {
+        clearTimeout(timer);
+        finish(true);
+      }).catch(function () {
+        clearTimeout(timer);
+        finish(false);
+      });
+    } else {
+      finish(false);
+    }
+  }
+
+  function downloadJson() {
+    var blob = new Blob([JSON.stringify(buildJson(), null, 2)], { type: "application/json" });
+    var url = URL.createObjectURL(blob);
+    var link = document.createElement("a");
+    link.href = url;
+    link.download = "kfjr-kev-worksheet.json";
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+    flashButton(document.getElementById("download-btn"), "Downloaded");
+    showToast("Downloaded");
+  }
+
+  function sizeHeader() {
+    var header = document.querySelector(".topbar");
+    var bar = document.querySelector(".actionbar");
+    document.documentElement.style.setProperty("--header-h", header.offsetHeight + "px");
+    document.documentElement.style.setProperty("--bar-h", bar.offsetHeight + "px");
+  }
+
+  document.getElementById("copy-btn").addEventListener("click", copyAnswers);
+  document.getElementById("download-btn").addEventListener("click", downloadJson);
+  document.body.addEventListener("input", function (event) {
+    var node = event.target;
+    if (!node.hasAttribute("data-answer-for")) return;
+    var code = node.getAttribute("data-answer-for");
+    if (node.value && node.value.trim()) state.answers[code] = node.value;
+    else delete state.answers[code];
+    autosize(node);
+    persist(true);
+    updateProgress();
+  });
+  window.addEventListener("resize", sizeHeader);
+
+  render();
+  document.querySelectorAll("textarea").forEach(function (node) {
+    if (node.id !== "copy-fallback") autosize(node);
+  });
+  updateProgress();
+  sizeHeader();
+  var hadSaved = false;
+  try { hadSaved = !!localStorage.getItem(STORAGE_KEY); } catch (err) { hadSaved = false; }
+  if (hadSaved) {
+    var saved = document.getElementById("saved");
+    saved.textContent = "Saved";
+    saved.classList.add("show");
+    savedTimer = setTimeout(function () { saved.classList.remove("show"); }, 1200);
+  }
+})();
+</script>
+</body>
+</html>
+{% endraw %}
