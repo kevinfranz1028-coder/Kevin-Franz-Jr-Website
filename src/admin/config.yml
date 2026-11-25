@@ -606,7 +606,7 @@ collections:
           - {label: "Current GPA", name: "gpa", widget: "string"}
           - {label: "Current PPG", name: "ppg", widget: "string"}
           - {label: "Current APG", name: "apg", widget: "string"}
-          - {label: "Parent Email", name: "parentEmail", widget: "string"}
+          - {label: "Recruiting Email", name: "parentEmail", widget: "string", hint: "Kevin Jr. dedicated recruiting inbox. Shown on the contact page, in both footers and in every mailto link."}
           - {label: "Parent Phone", name: "parentPhone", widget: "string", required: false}
           - {label: "Highlight Video URL", name: "highlightVideo", widget: "string", required: false, hint: "YouTube link to highlight reel (shown in sidebar)"}
           - {label: "YouTube Channel URL", name: "youtubeUrl", widget: "string", required: false, hint: "YouTube channel link (shown in sidebar)"}
